@@ -399,13 +399,33 @@
       margin-bottom: var(--space-xs);
     }
  
-    .service-item dt {
+    .service-item dt.service-name {
       font-family: var(--font-display);
-      font-size: 1.0625rem;
-      font-weight: 400;
+      font-size: 1.125rem;
+      font-weight: 600;
       color: var(--colour-heading);
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-xs);
       line-height: 1.3;
+    }
+ 
+    .service-qualifier-below {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--colour-meta);
+      margin-bottom: var(--space-md);
+    }
+ 
+    .service-outcome {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-style: italic;
+      color: var(--colour-teal);
+      margin-bottom: var(--space-md);
     }
  
     .service-badge {
@@ -627,7 +647,7 @@
       <div class="container">
         <span class="section-label">EAA compliance consultancy</span>
         <h1 id="hero-heading">Clarity-first EAA compliance — <em>building accessibility that works.</em></h1>
-        <p class="hero-intro">Most European organisations aren't failing EAA compliance on purpose. They don't know where to begin. We start with a free assessment and build from there.</p>
+        <p class="hero-intro">We know you aren't failing EAA compliance on purpose. Chances are you don't know where to begin — or whether it even applies to you. That's exactly what we help with.</p>
         <a href="mailto:hello@usableaccess.io" class="cta-button">Get your free assessment</a>
       </div>
     </section>
@@ -664,39 +684,34 @@
         <dl class="service-list">
  
           <div class="service-item">
-            <dt>
-              <span class="service-qualifier">If you're not sure where to begin</span>
-              Free Initial Assessment
-            </dt>
+            <dt class="service-name">Free Initial Assessment</dt>
+            <dd class="service-qualifier-below">If you're not sure where to begin</dd>
             <dd class="service-desc">One conversation gives you a clear picture of your legal position, your biggest risks, and what a proportionate first step looks like. Most organisations find this useful regardless of whether we work together.</dd>
+            <dd class="service-outcome">So you know where to begin.</dd>
             <dd class="service-price">No charge</dd>
           </div>
  
           <div class="service-item service-item--featured" aria-label="Most popular service">
-            <dt>
-              <span class="service-qualifier">If you want to know what barriers cost you</span>
-              UX-Enhanced Audit
-              <span class="service-badge" aria-hidden="true">Most popular</span>
-            </dt>
+            <dt class="service-name">UX-Enhanced Audit <span class="service-badge" aria-hidden="true">Most popular</span></dt>
+            <dd class="service-qualifier-below">If you want to know what your barriers are costing you</dd>
             <dd class="service-desc">Everything in the Quick Compliance Audit, plus an expert assessment of whether your product actually works for users with disabilities — not just whether it passes technical tests. Findings include which user journeys are breaking and what that costs in lost transactions and excluded users.</dd>
+            <dd class="service-outcome">So you know what your barriers are costing you.</dd>
             <dd class="service-price"><span class="price-amount">€3,800</span> — €5,500</dd>
           </div>
  
           <div class="service-item">
-            <dt>
-              <span class="service-qualifier">If you need to know where you stand legally</span>
-              Quick Compliance Audit
-            </dt>
+            <dt class="service-name">Quick Compliance Audit</dt>
+            <dd class="service-qualifier-below">If you need to know where you stand legally</dd>
             <dd class="service-desc">A complete technical assessment of your primary digital product against EAA requirements. You receive a prioritised list of what to fix, in what order, with specific guidance for your development team.</dd>
+            <dd class="service-outcome">So you know where you stand legally.</dd>
             <dd class="service-price"><span class="price-amount">€2,500</span> — €3,800</dd>
           </div>
  
           <div class="service-item">
-            <dt>
-              <span class="service-qualifier">If you need to prove ongoing compliance</span>
-              Complete Compliance Framework
-            </dt>
+            <dt class="service-name">Complete Compliance Framework</dt>
+            <dd class="service-qualifier-below">If you need to prove ongoing compliance</dd>
             <dd class="service-desc">For organisations that need to show a regulator, a board, or an enterprise procurement team that accessibility is actively managed. At the end you have a dated, documented record of active management — the thing enforcement bodies actually look for. For organisations with significant compliance risk, the framework costs less than a single enforcement action.</dd>
+            <dd class="service-outcome">So you can demonstrate ongoing compliance.</dd>
             <dd class="service-price"><span class="price-amount">€12,000</span> — €15,000</dd>
           </div>
  
