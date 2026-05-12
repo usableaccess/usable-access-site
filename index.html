@@ -272,6 +272,53 @@
     }
  
     /* =====================
+       REFRAME SECTION
+       ===================== */
+ 
+    .reframe {
+      padding: var(--space-3xl) 0;
+      border-bottom: 1px solid var(--colour-border);
+      background-color: var(--colour-white);
+    }
+ 
+    .reframe-lead {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--colour-heading);
+      line-height: 1.4;
+      max-width: 36em;
+      margin-bottom: var(--space-lg);
+    }
+ 
+    .reframe-statement {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--colour-teal);
+      line-height: 1.2;
+      max-width: 20em;
+      margin-bottom: var(--space-lg);
+    }
+ 
+    .reframe-body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--colour-secondary);
+      line-height: 1.75;
+      max-width: 36em;
+    }
+ 
+    @media (min-width: 640px) {
+      .reframe-lead { font-size: 1.375rem; }
+      .reframe-statement { font-size: 2rem; }
+    }
+ 
+    @media (min-width: 960px) {
+      .reframe-statement { font-size: 2.25rem; }
+    }
+ 
+    /* =====================
        WHAT WE DO — MOBILE FIRST
        ===================== */
  
@@ -647,8 +694,16 @@
       <div class="container">
         <span class="section-label">EAA compliance consultancy</span>
         <h1 id="hero-heading">Clarity-first EAA compliance — <em>building accessibility that works.</em></h1>
-        <p class="hero-intro">We know you aren't failing EAA compliance on purpose. Chances are you don't know where to begin — or whether it even applies to you. That's exactly what we help with.</p>
+        <p class="hero-intro">We know you aren't failing EAA compliance on purpose. Chances are you don't know where to begin — or even if it applies to you. That's what we're here for — to help you understand what EAA compliance means for you.</p>
         <a href="mailto:hello@usableaccess.io" class="cta-button">Get your free assessment</a>
+      </div>
+    </section>
+ 
+    <section class="reframe" aria-labelledby="reframe-heading">
+      <div class="container">
+        <p class="reframe-lead">It might look like another compliance obligation, but it's actually an opportunity — to reach the customers you've been missing.</p>
+        <p class="reframe-statement">Inaccessible design is invisible revenue loss.</p>
+        <p class="reframe-body">Most organisations come to us worried about EAA fines. They leave understanding that revenue is being lost because of a lack of accessibility. Users with disabilities represent 15–20% of your potential customer base. When they encounter a barrier they cannot overcome, they don't complain — they leave. That lost revenue is invisible because you track who completed the journey, not who couldn't continue it.</p>
       </div>
     </section>
  
@@ -656,7 +711,7 @@
       <div class="container">
         <span class="section-label">What we do</span>
         <h2 id="what-we-do-heading">Compliance that works for real users,<br>not just auditors.</h2>
-        <p class="section-intro">We combine technical WCAG auditing with UX research methodology and governance framework support — because accessibility that works is different from accessibility that is compliant.</p>
+        <p class="section-intro">We combine technical WCAG auditing with UX research methodology and governance framework support — because accessibility that works is different from accessibility that is merely compliant.</p>
  
         <div class="pillars">
           <div class="pillar">
@@ -685,7 +740,6 @@
  
           <div class="service-item">
             <dt class="service-name">Free Initial Assessment</dt>
-            <dd class="service-qualifier-below">If you're not sure where to begin</dd>
             <dd class="service-desc">One conversation gives you a clear picture of your legal position, your biggest risks, and what a proportionate first step looks like. Most organisations find this useful regardless of whether we work together.</dd>
             <dd class="service-outcome">So you know where to begin.</dd>
             <dd class="service-price">No charge</dd>
@@ -693,15 +747,13 @@
  
           <div class="service-item service-item--featured" aria-label="Most popular service">
             <dt class="service-name">UX-Enhanced Audit <span class="service-badge" aria-hidden="true">Most popular</span></dt>
-            <dd class="service-qualifier-below">If you want to know what your barriers are costing you</dd>
-            <dd class="service-desc">Everything in the Quick Compliance Audit, plus an expert assessment of whether your product actually works for users with disabilities — not just whether it passes technical tests. Findings include which user journeys are breaking and what that costs in lost transactions and excluded users.</dd>
-            <dd class="service-outcome">So you know what your barriers are costing you.</dd>
+            <dd class="service-desc">We help you understand what your barriers are costing you in potential customers, and how to implement changes so the potential is realised and new customers are won. Everything in the Quick Compliance Audit, plus an expert assessment of whether your product actually works for users with disabilities — not just whether it passes technical tests. Findings include which user journeys are breaking and where and how to clear the path so that all of your potential customers can complete the journey.</dd>
+            <dd class="service-outcome">So you can see what's standing between you and your customers — and what it's costing.</dd>
             <dd class="service-price"><span class="price-amount">€3,800</span> — €5,500</dd>
           </div>
  
           <div class="service-item">
             <dt class="service-name">Quick Compliance Audit</dt>
-            <dd class="service-qualifier-below">If you need to know where you stand legally</dd>
             <dd class="service-desc">A complete technical assessment of your primary digital product against EAA requirements. You receive a prioritised list of what to fix, in what order, with specific guidance for your development team.</dd>
             <dd class="service-outcome">So you know where you stand legally.</dd>
             <dd class="service-price"><span class="price-amount">€2,500</span> — €3,800</dd>
@@ -709,7 +761,6 @@
  
           <div class="service-item">
             <dt class="service-name">Complete Compliance Framework</dt>
-            <dd class="service-qualifier-below">If you need to prove ongoing compliance</dd>
             <dd class="service-desc">For organisations that need to show a regulator, a board, or an enterprise procurement team that accessibility is actively managed. At the end you have a dated, documented record of active management — the thing enforcement bodies actually look for. For organisations with significant compliance risk, the framework costs less than a single enforcement action.</dd>
             <dd class="service-outcome">So you can demonstrate ongoing compliance.</dd>
             <dd class="service-price"><span class="price-amount">€12,000</span> — €15,000</dd>
