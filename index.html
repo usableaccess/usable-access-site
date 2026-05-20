@@ -135,6 +135,7 @@
       text-transform: uppercase;
       display: block;
       width: 100%;
+      text-align: center;
     }
  
     /* =====================
@@ -271,6 +272,23 @@
       .hero-intro { max-width: 560px; }
     }
  
+    .hero-statement {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--colour-teal);
+      line-height: 1.3;
+      margin-top: var(--space-xl);
+    }
+ 
+    @media (min-width: 640px) {
+      .hero-statement { font-size: 1.5rem; }
+    }
+ 
+    @media (min-width: 960px) {
+      .hero-statement { font-size: 1.75rem; }
+    }
+ 
     /* =====================
        REFRAME SECTION
        ===================== */
@@ -288,16 +306,6 @@
       color: var(--colour-heading);
       line-height: 1.4;
       max-width: 36em;
-      margin-bottom: var(--space-lg);
-    }
- 
-    .reframe-statement {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--colour-teal);
-      line-height: 1.2;
-      max-width: 20em;
       margin-bottom: var(--space-lg);
     }
  
@@ -696,13 +704,13 @@
         <h1 id="hero-heading">Clarity-first EAA compliance — <em>building accessibility that works.</em></h1>
         <p class="hero-intro">We know you aren't failing EAA compliance on purpose. Chances are you don't know where to begin — or even if it applies to you. That's what we're here for — to help you understand what EAA compliance means for you.</p>
         <a href="mailto:hello@usableaccess.io" class="cta-button">Get your free assessment</a>
+        <p class="hero-statement">Inaccessible design is invisible revenue loss.</p>
       </div>
     </section>
  
     <section class="reframe" aria-labelledby="reframe-heading">
       <div class="container">
         <p class="reframe-lead">It might look like another compliance obligation, but it's actually an opportunity — to reach the customers you've been missing.</p>
-        <p class="reframe-statement">Inaccessible design is invisible revenue loss.</p>
         <p class="reframe-body">Most organisations come to us worried about EAA fines. They leave understanding that revenue is being lost because of a lack of accessibility. Users with disabilities represent 15–20% of your potential customer base. When they encounter a barrier they cannot overcome, they don't complain — they leave. That lost revenue is invisible because you track who completed the journey, not who couldn't continue it.</p>
       </div>
     </section>
@@ -803,11 +811,3 @@
  
   </main>
  
-  <footer>
-    <div class="container">
-      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; usableaccess.io</p>
-    </div>
-  </footer>
- 
-</body>
-</html>
