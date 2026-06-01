@@ -216,16 +216,14 @@
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
-      right: 0;
+      left: calc(-1 * var(--container-pad));
+      right: calc(-1 * var(--container-pad));
       background: var(--colour-white);
       border-bottom: 2px solid var(--colour-teal);
       padding: var(--space-md) var(--container-pad);
       list-style: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       z-index: 200;
-      margin-left: calc(-1 * var(--container-pad));
-      width: 100vw;
     }
     .nav-links.is-open {
       display: block;
