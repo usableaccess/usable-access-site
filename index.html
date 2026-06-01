@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Usable Access — Clarity-first EAA compliance for European organisations</title>
-  <meta name="description" content="Usable Access provides clarity-first EAA compliance consultancy for European SMBs. We help organisations across Ireland, the Netherlands, and Sweden understand what EAA compliance actually requires — and build accessibility that works.">
+  <title>Usable Access — Clarity-first EAA Compliance</title>
+  <meta name="description" content="EAA compliance consultancy for Ireland, Netherlands and Sweden. We help European SMBs understand what the EAA requires and build accessibility that works.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -174,36 +174,102 @@
       align-items: center;
     }
 
+    /* ── Hamburger button ── */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .nav-toggle:focus {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 4px;
+    }
+    .nav-toggle-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--colour-heading);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      transform-origin: center;
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ── Mobile nav menu ── */
     .nav-links {
       display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--colour-white);
+      border-bottom: 2px solid var(--colour-teal);
+      padding: var(--space-md) var(--container-pad);
+      list-style: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      z-index: 99;
+    }
+    .nav-links.is-open {
+      display: block;
+    }
+    .nav-links li {
+      border-bottom: 1px solid var(--colour-border);
+    }
+    .nav-links li:last-child {
+      border-bottom: none;
+    }
+    .nav-links a {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--colour-secondary);
+      text-decoration: none;
+      padding: var(--space-md) 0;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--colour-teal); }
+    .nav-links a:focus {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
     }
 
     @media (min-width: 640px) {
-
+      .nav-toggle { display: none; }
+      header { position: sticky; }
       .nav-links {
-        display: flex;
-        list-style: none;
+        display: flex !important;
+        position: static;
+        border-bottom: none;
+        padding: 0;
+        box-shadow: none;
+        background: none;
         gap: var(--space-xl);
       }
-
+      .nav-links li { border-bottom: none; }
       .nav-links a {
-        font-family: var(--font-body);
         font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--colour-secondary);
-        text-decoration: none;
-        letter-spacing: 0.01em;
+        padding: 0;
       }
-
-      .nav-links a:hover {
+      .nav-links a[aria-current="page"] {
         color: var(--colour-teal);
+        border-bottom: 2px solid var(--colour-teal);
+        padding-bottom: 2px;
       }
-
-      .nav-links a:focus {
-        outline: 3px solid var(--colour-teal);
-        outline-offset: 3px;
-      }
-
     }
 
     /* =====================
@@ -793,11 +859,16 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
-          <ul class="nav-links">
-            <li><a href="#what-we-do">What we do</a></li>
-            <li><a href="#services">Services</a></li>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
             <li><a href="/insights.html">Insights</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -816,7 +887,7 @@
       </div>
     </section>
 
-    <section class="reframe" aria-labelledby="reframe-heading">
+    <section class="reframe" >
       <div class="container">
         <p class="reframe-lead">It might look like another compliance obligation, but it's actually an opportunity — to reach the customers you've been missing.</p>
         <p class="reframe-body">Most organisations come to us worried about EAA fines. They leave understanding that revenue is being lost because of a lack of accessibility. Disabled users represent a significant share of your potential customer base, with estimates ranging from 15% to over 20% depending on how disability is defined. When they encounter a barrier they cannot overcome, they don't complain — they leave. That lost revenue is invisible because you track who completed the journey, not who couldn't continue it.</p>
@@ -971,5 +1042,47 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+
+      // Close when a nav link is clicked (for same-page anchors)
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

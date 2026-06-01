@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EAA Accessibility Statement — What It Must Contain | Usable Access</title>
-  <meta name="description" content="An EAA accessibility statement is mandatory for organisations offering digital products or services in the EU. Learn what it must include, what happens without one, and how Irish regulators use it in complaint investigations.">
+  <meta name="description" content="An EAA accessibility statement is mandatory. Irish regulators request it first in any complaint. Learn what it must contain and what happens without one.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,9 +34,51 @@
     .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
     header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .nav-links { display: none; }
+
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .nav-toggle-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--colour-heading);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      transform-origin: center;
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--colour-white);
+      border-bottom: 2px solid var(--colour-teal);
+      padding: var(--space-md) var(--container-pad);
+      list-style: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      z-index: 99;
+    }
+    .nav-links.is-open { display: block; }
+    .nav-links li { border-bottom: 1px solid var(--colour-border); }
+    .nav-links li:last-child { border-bottom: none; }
     @media (min-width: 640px) {
-      .nav-links { display: flex; list-style: none; gap: var(--space-xl); }
+      .nav-toggle { display: none; }
+      .nav-links { display: flex !important; position: static; border-bottom: none; padding: 0; box-shadow: none; background: none; list-style: none; gap: var(--space-xl); }
+      .nav-links li { border-bottom: none; }
       .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; letter-spacing: 0.01em; }
       .nav-links a:hover { color: var(--colour-teal); }
       .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
@@ -90,7 +132,12 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
-          <ul class="nav-links">
+                    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
             <li><a href="/#what-we-do">What we do</a></li>
             <li><a href="/#services">Services</a></li>
             <li><a href="/insights.html" aria-current="page">Insights</a></li>
@@ -170,5 +217,40 @@
       <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
     </div>
   </footer>
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
