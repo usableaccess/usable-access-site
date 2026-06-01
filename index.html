@@ -169,11 +169,15 @@
       overflow: visible;
     }
 
+    nav {
+      width: 100%;
+    }
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
+      width: 100%;
     }
 
     /* ── Hamburger button ── */
@@ -259,7 +263,9 @@
         padding: 0;
         box-shadow: none;
         background: none;
+        list-style: none;
         gap: var(--space-xl);
+        align-items: center;
       }
       .nav-links li { border-bottom: none; }
       .nav-links a {
