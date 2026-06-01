@@ -166,12 +166,14 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      overflow: visible;
     }
 
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     /* ── Hamburger button ── */
@@ -221,7 +223,9 @@
       padding: var(--space-md) var(--container-pad);
       list-style: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      z-index: 99;
+      z-index: 200;
+      margin-left: calc(-1 * var(--container-pad));
+      width: 100vw;
     }
     .nav-links.is-open {
       display: block;
@@ -250,7 +254,6 @@
 
     @media (min-width: 640px) {
       .nav-toggle { display: none; }
-      header { position: sticky; }
       .nav-links {
         display: flex !important;
         position: static;
