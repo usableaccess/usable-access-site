@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Germany: law firms are already sending BFSG warning letters — Usable Access</title>
+  <meta name="description" content="When the BFSG took effect in Germany, law firms moved before regulators. Private warning letters are already circulating. The exposure is live regardless of whether you've heard from any authority.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --colour-teal:         #0F6B6B;
+      --colour-teal-deep:    #0A5252;
+      --colour-teal-subtle:  #F4FAFA;
+      --colour-teal-badge:   #E0F2F2;
+      --colour-orange:       #B05000;
+      --colour-orange-dark:  #8B3D00;
+      --colour-orange-tint:  #FEF6EE;
+      --colour-heading:      #1A1A1A;
+      --colour-body:         #2C2C2C;
+      --colour-secondary:    #555555;
+      --colour-meta:         #595959;
+      --colour-border:       #DDDDDD;
+      --colour-bg-subtle:    #F9F9F9;
+      --colour-white:        #ffffff;
+      --font-display: 'Lora', Georgia, serif;
+      --font-body:    'Inter', Arial, sans-serif;
+      --space-xs:  0.25rem;
+      --space-sm:  0.5rem;
+      --space-md:  1rem;
+      --space-lg:  1.5rem;
+      --space-xl:  2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --container-max: 960px;
+      --container-pad: 1.25rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--colour-body); background-color: var(--colour-white); }
+
+    .skip-link { position: absolute; top: -100%; left: 0; background: var(--colour-teal); color: var(--colour-white); padding: 0.75rem 1.25rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; z-index: 200; }
+    .skip-link:focus { top: 0; }
+
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+
+    /* ── Article container ── */
+    .article-container { max-width: 680px; }
+
+    .site-logo { display: flex; flex-direction: column; gap: 3px; line-height: 1; text-decoration: none; margin-right: var(--space-xl); }
+    .site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
+    .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
+
+    header { background-color: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-links { display: none; }
+    @media (min-width: 640px) {
+      .nav-links { display: flex; list-style: none; gap: var(--space-xl); }
+      .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; letter-spacing: 0.01em; }
+      .nav-links a:hover { color: var(--colour-teal); }
+      .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    }
+
+    /* ── Article header ── */
+    .article-header { padding: var(--space-2xl) 0 var(--space-xl); border-bottom: 1px solid var(--colour-border); }
+    .article-breadcrumb { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); margin-bottom: var(--space-lg); }
+    .article-breadcrumb a { color: var(--colour-teal); text-decoration: underline; }
+    .article-breadcrumb a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+    .article-meta { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg); flex-wrap: wrap; }
+    .article-tag { display: inline-block; font-family: var(--font-body); font-size: 0.625rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; background: var(--colour-teal-badge); color: var(--colour-teal-deep); }
+    .article-date { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); }
+    .article-market { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); }
+    .article-meta-sep { color: var(--colour-border); }
+
+    .article-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
+    @media (min-width: 640px) { .article-title { font-size: 2.25rem; } }
+
+    .article-deck { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; line-height: 1.5; color: var(--colour-secondary); font-style: italic; }
+
+    /* ── Article body ── */
+    .article-body { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--colour-border); }
+    .article-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-lg); max-width: 36em; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body strong { font-weight: 600; color: var(--colour-heading); }
+
+    /* ── CTA block ── */
+    .article-cta { background-color: var(--colour-teal); padding: var(--space-2xl); margin: var(--space-2xl) 0; }
+    .article-cta h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--colour-white); margin-bottom: var(--space-md); }
+    .article-cta p { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-white); line-height: 1.65; margin-bottom: var(--space-lg); max-width: 36em; }
+    .cta-button { display: inline-block; background-color: var(--colour-orange); color: var(--colour-white); font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.875rem 1.75rem; text-decoration: none; border-radius: 0; }
+    .cta-button:hover { background-color: var(--colour-orange-dark); }
+    .cta-button:focus { outline: 3px solid var(--colour-white); outline-offset: 3px; }
+
+    /* ── Back to insights ── */
+    .article-nav { padding: var(--space-xl) 0; }
+    .back-link { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-teal); text-decoration: underline; }
+    .back-link:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+    footer { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
+    footer a { color: var(--colour-teal); text-decoration: underline; }
+    footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="article-header">
+      <div class="container">
+        <div class="article-container">
+
+          <nav aria-label="Breadcrumb" class="article-breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Intelligence
+          </nav>
+
+          <div class="article-meta">
+            <span class="article-tag">Intelligence</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-date">27 May 2026</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-market">Germany-exposed organisations</span>
+          </div>
+
+          <h1 class="article-title">Germany: law firms are already sending BFSG warning letters</h1>
+          <p class="article-deck">When the BFSG took effect, it wasn't regulators who moved first. The exposure is live regardless of whether you've heard from any authority.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>If your organisation offers digital products or services to consumers in Germany, something changed in August 2025 that your legal team may not have yet flagged.</p>
+
+          <p>When the BFSG — Germany's implementation of the European Accessibility Act — took effect, it wasn't regulators who moved first. It was law firms, sending private warning letters (Abmahnungen) to businesses with consumer-facing digital products and services, citing accessibility violations.</p>
+
+          <p>The first letters arrived within six weeks of the law taking effect. By the end of 2025, they were arriving across Germany in steady numbers, and the volume intensified through Q1 2026. The market surveillance authority (MLBF) entered its active enforcement phase in January 2026 and formal enforcement decisions are expected in Q2 2026 — which means they could arrive any week now.</p>
+
+          <p><strong>An Abmahnung is not a notification. It is a demand.</strong> It demands immediate cessation of the violation, a signed declaration of future compliance with a contractual penalty clause, and reimbursement of the sender's legal costs — typically €1,000–3,000 per letter. Ignore it and the case goes to court.</p>
+
+          <p>Under German competition law (UWG), any competitor or law firm can send an Abmahnung when they identify a legal violation. No regulator needs to be involved. It is a self-funding private enforcement mechanism, and the exposure is live even if you have not heard from any regulatory authority. Separately, the Bundesnetzagentur can impose fines of up to €100,000 for serious or repeated violations, entirely independent of any Abmahnung.</p>
+
+          <p>The pattern is familiar to anyone who watched cookie consent enforcement unfold. Law firms moved first there too — sending Abmahnungen for missing cookie banners before regulators had issued a single fine. By the time regulatory cases arrived, the market had already been reshaped: businesses had paid legal costs, signed compliance declarations, and updated their sites. The mechanism is identical here, and the same law firms are already using it. The pressure is increasing, not easing.</p>
+
+          <p>Most organisations we speak with aren't failing accessibility on purpose. They simply don't know where they stand. Our free initial assessment tells you whether or not you are exposed and what your current position is. No obligation.</p>
+
+          <div class="article-cta">
+            <h2>Find out where you stand</h2>
+            <p>One conversation gives you a clear picture of your legal position, your biggest risks, and what a proportionate first step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <div class="article-nav">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
