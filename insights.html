@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights — Usable Access</title>
+  <meta name="description" content="EAA enforcement intelligence and compliance guides for European organisations. Analysis of enforcement activity across Ireland, the Netherlands, Sweden, and Germany — updated weekly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --colour-teal:         #0F6B6B;
+      --colour-teal-deep:    #0A5252;
+      --colour-teal-subtle:  #F4FAFA;
+      --colour-teal-badge:   #E0F2F2;
+      --colour-orange:       #B05000;
+      --colour-orange-dark:  #8B3D00;
+      --colour-orange-tint:  #FEF6EE;
+      --colour-heading:      #1A1A1A;
+      --colour-body:         #2C2C2C;
+      --colour-secondary:    #555555;
+      --colour-meta:         #595959;
+      --colour-border:       #DDDDDD;
+      --colour-bg-subtle:    #F9F9F9;
+      --colour-white:        #ffffff;
+      --font-display: 'Lora', Georgia, serif;
+      --font-body:    'Inter', Arial, sans-serif;
+      --space-xs:  0.25rem;
+      --space-sm:  0.5rem;
+      --space-md:  1rem;
+      --space-lg:  1.5rem;
+      --space-xl:  2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --container-max: 960px;
+      --container-pad: 1.25rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--colour-body); background-color: var(--colour-white); }
+
+    /* ── Skip link ── */
+    .skip-link { position: absolute; top: -100%; left: 0; background: var(--colour-teal); color: var(--colour-white); padding: 0.75rem 1.25rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; z-index: 200; }
+    .skip-link:focus { top: 0; }
+
+    /* ── Screen reader only ── */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ── Layout ── */
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+
+    /* ── Logo ── */
+    .site-logo { display: flex; flex-direction: column; gap: 3px; line-height: 1; text-decoration: none; margin-right: var(--space-xl); }
+    .site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
+    .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
+
+    /* ── Header ── */
+    header { background-color: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-links { display: none; }
+    @media (min-width: 640px) {
+      .nav-links { display: flex; list-style: none; gap: var(--space-xl); }
+      .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; letter-spacing: 0.01em; }
+      .nav-links a:hover { color: var(--colour-teal); }
+      .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+      .nav-links a[aria-current="page"] { color: var(--colour-teal); border-bottom: 2px solid var(--colour-teal); padding-bottom: 2px; }
+    }
+
+    /* ── Section label ── */
+    .section-label { display: block; font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--colour-teal); margin-bottom: var(--space-md); }
+
+    /* ── Insights hero ── */
+    .insights-hero { padding: var(--space-2xl) 0 var(--space-3xl); border-bottom: 1px solid var(--colour-border); }
+    .insights-hero h1 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
+    .insights-hero p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-secondary); max-width: 36em; }
+    @media (min-width: 640px) { .insights-hero h1 { font-size: 2.25rem; } }
+    @media (min-width: 960px) { .insights-hero h1 { font-size: 2.5rem; } }
+
+    /* ── Article grid ── */
+    .insights-grid { padding: var(--space-3xl) 0; border-bottom: 1px solid var(--colour-border); }
+    .article-list { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 640px) { .article-list { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .article-list { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ── Article card ── */
+    .article-card { background: var(--colour-white); border: 1.5px solid var(--colour-border); border-top: 3px solid var(--colour-teal); padding: var(--space-lg); display: flex; flex-direction: column; text-decoration: none; transition: border-color 0.15s ease; }
+    .article-card:hover { border-color: var(--colour-teal); border-top-color: var(--colour-teal); }
+    .article-card:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    .article-card--intelligence { border-top-color: var(--colour-teal); }
+    .article-card--positioning { border-top-color: var(--colour-orange); }
+
+    .article-meta { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); flex-wrap: wrap; }
+    .article-tag { display: inline-block; font-family: var(--font-body); font-size: 0.625rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; }
+    .article-tag--intelligence { background: var(--colour-teal-badge); color: var(--colour-teal-deep); }
+    .article-tag--positioning { background: var(--colour-orange-tint); color: var(--colour-orange); }
+    .article-date { font-family: var(--font-body); font-size: 0.75rem; color: var(--colour-meta); }
+
+    .article-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-sm); }
+    .article-excerpt { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-secondary); line-height: 1.65; flex: 1; margin-bottom: var(--space-md); }
+    .article-market { font-family: var(--font-body); font-size: 0.75rem; color: var(--colour-meta); margin-top: auto; padding-top: var(--space-sm); border-top: 1px solid var(--colour-border); }
+
+    /* ── Footer ── */
+    footer { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
+    footer a { color: var(--colour-teal); text-decoration: underline; }
+    footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="insights-hero" aria-labelledby="insights-heading">
+      <div class="container">
+        <span class="section-label">Insights</span>
+        <h1 id="insights-heading">EAA enforcement intelligence<br>for European organisations.</h1>
+        <p>Practical analysis of European Accessibility Act enforcement across Ireland, the Netherlands, and Sweden — updated as the regulatory picture develops.</p>
+      </div>
+    </section>
+
+    <section class="insights-grid" aria-labelledby="articles-heading">
+      <div class="container">
+        <h2 id="articles-heading" class="sr-only">All insights</h2>
+        <div class="article-list">
+
+          <!-- POST 2 — Four EAA requirements -->
+          <a href="/insights/what-eaa-compliance-actually-requires.html" class="article-card article-card--positioning">
+            <div class="article-meta">
+              <span class="article-tag article-tag--positioning">Positioning</span>
+              <span class="article-date">29 May 2026</span>
+            </div>
+            <h3 class="article-title">What EAA compliance actually requires</h3>
+            <p class="article-excerpt">EAA compliance has four requirements. Most organisations know about one of them. Technical conformance, a published accessibility statement, active governance, and documentary evidence — all four are mandatory.</p>
+            <span class="article-market">All markets</span>
+          </a>
+
+          <!-- POST 1 — Germany/BFSG -->
+          <a href="/insights/bfsg-germany-enforcement-abmahnungen.html" class="article-card article-card--intelligence">
+            <div class="article-meta">
+              <span class="article-tag article-tag--intelligence">Intelligence</span>
+              <span class="article-date">27 May 2026</span>
+            </div>
+            <h3 class="article-title">Germany: law firms are already sending BFSG warning letters</h3>
+            <p class="article-excerpt">When the BFSG took effect, it wasn't regulators who moved first. Law firms began sending private warning letters to businesses within weeks. The exposure is live regardless of whether you've heard from any authority.</p>
+            <span class="article-market">Germany-exposed organisations</span>
+          </a>
+
+          <!-- Guide — EAA compliance Ireland -->
+          <a href="/eaa-compliance-ireland.html" class="article-card article-card--intelligence">
+            <div class="article-meta">
+              <span class="article-tag article-tag--intelligence">Guide</span>
+            </div>
+            <h3 class="article-title">EAA compliance in Ireland — what directors need to know</h3>
+            <p class="article-excerpt">Ireland is the only EU country where EAA non-compliance can result in a criminal conviction. This guide covers the four compliance requirements, ComReg enforcement, and the due diligence defence.</p>
+            <span class="article-market">Ireland</span>
+          </a>
+
+          <!-- Guide — Accessibility statement -->
+          <a href="/eaa-accessibility-statement.html" class="article-card article-card--positioning">
+            <div class="article-meta">
+              <span class="article-tag article-tag--positioning">Guide</span>
+            </div>
+            <h3 class="article-title">The EAA accessibility statement — what it is and why most organisations don't have one</h3>
+            <p class="article-excerpt">A published accessibility statement is a mandatory EAA requirement. Irish regulators request it first in any complaint investigation. Most organisations we speak with don't have one.</p>
+            <span class="article-market">All markets</span>
+          </a>
+
+          <!-- Guide — EAA fines by country -->
+          <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html" class="article-card article-card--intelligence">
+            <div class="article-meta">
+              <span class="article-tag article-tag--intelligence">Guide</span>
+            </div>
+            <h3 class="article-title">EAA fines and penalties — Ireland, Netherlands, Sweden</h3>
+            <p class="article-excerpt">Country-by-country breakdown of EAA enforcement penalties, enforcement authorities, and active enforcement status across the three most active markets.</p>
+            <span class="article-market">Ireland · Netherlands · Sweden</span>
+          </a>
+
+          <!-- Guide — BFSG Germany -->
+          <a href="/bfsg-germany-accessibility-compliance.html" class="article-card article-card--intelligence">
+            <div class="article-meta">
+              <span class="article-tag article-tag--intelligence">Guide</span>
+            </div>
+            <h3 class="article-title">BFSG Germany — what the Abmahnung wave means for your business</h3>
+            <p class="article-excerpt">Germany's BFSG took effect in June 2025. Law firms have already sent private warning letters. This guide explains the mechanism, the enforcement timeline, and what compliance requires.</p>
+            <span class="article-market">Germany-exposed organisations</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Accessibility Statement — What It Must Contain | Usable Access</title>
+  <meta name="description" content="An EAA accessibility statement is mandatory for organisations offering digital products or services in the EU. Learn what it must include, what happens without one, and how Irish regulators use it in complaint investigations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal: #0F6B6B; --colour-teal-deep: #0A5252; --colour-teal-subtle: #F4FAFA;
+      --colour-teal-badge: #E0F2F2; --colour-orange: #B05000; --colour-orange-dark: #8B3D00;
+      --colour-orange-tint: #FEF6EE; --colour-heading: #1A1A1A; --colour-body: #2C2C2C;
+      --colour-secondary: #555555; --colour-meta: #595959; --colour-border: #DDDDDD;
+      --colour-bg-subtle: #F9F9F9; --colour-white: #ffffff;
+      --font-display: 'Lora', Georgia, serif; --font-body: 'Inter', Arial, sans-serif;
+      --space-xs: 0.25rem; --space-sm: 0.5rem; --space-md: 1rem; --space-lg: 1.5rem;
+      --space-xl: 2rem; --space-2xl: 3rem; --space-3xl: 4rem;
+      --container-max: 960px; --container-pad: 1.25rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--colour-body); background: var(--colour-white); }
+    .skip-link { position: absolute; top: -100%; left: 0; background: var(--colour-teal); color: var(--colour-white); padding: 0.75rem 1.25rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; z-index: 200; }
+    .skip-link:focus { top: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+    .article-container { max-width: 680px; }
+    .site-logo { display: flex; flex-direction: column; gap: 3px; line-height: 1; text-decoration: none; margin-right: var(--space-xl); }
+    .site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
+    .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
+    header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-links { display: none; }
+    @media (min-width: 640px) {
+      .nav-links { display: flex; list-style: none; gap: var(--space-xl); }
+      .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; letter-spacing: 0.01em; }
+      .nav-links a:hover { color: var(--colour-teal); }
+      .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+      .nav-links a[aria-current="page"] { color: var(--colour-teal); border-bottom: 2px solid var(--colour-teal); padding-bottom: 2px; }
+    }
+    .page-header { padding: var(--space-2xl) 0 var(--space-xl); border-bottom: 1px solid var(--colour-border); }
+    .section-label { display: block; font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--colour-teal); margin-bottom: var(--space-md); }
+    .page-header h1 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
+    .page-header .deck { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 400; font-style: italic; color: var(--colour-secondary); line-height: 1.5; max-width: 36em; }
+    @media (min-width: 640px) { .page-header h1 { font-size: 2.25rem; } }
+    .breadcrumb { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); margin-bottom: var(--space-lg); }
+    .breadcrumb a { color: var(--colour-teal); text-decoration: underline; }
+    .breadcrumb a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    .page-body { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--colour-border); }
+    .page-body h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-md); margin-top: var(--space-2xl); }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-lg); max-width: 36em; }
+    .page-body ul { margin: 0 0 var(--space-lg) var(--space-xl); }
+    .page-body ul li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
+    .page-body strong { font-weight: 600; color: var(--colour-heading); }
+    .callout { background: var(--colour-teal-subtle); border-left: 4px solid var(--colour-teal); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
+    .callout p { margin-bottom: 0; }
+    .callout--orange { background: var(--colour-orange-tint); border-left-color: var(--colour-orange); }
+    .penalty-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-xl); font-family: var(--font-body); font-size: 0.9375rem; }
+    .penalty-table th { background: var(--colour-teal); color: var(--colour-white); padding: var(--space-sm) var(--space-md); text-align: left; font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.02em; }
+    .penalty-table td { padding: var(--space-sm) var(--space-md); border-bottom: 1px solid var(--colour-border); color: var(--colour-body); vertical-align: top; }
+    .penalty-table tr:nth-child(even) td { background: var(--colour-bg-subtle); }
+    .penalty-table td:first-child { font-weight: 600; color: var(--colour-heading); }
+    .article-cta { background: var(--colour-teal); padding: var(--space-2xl); margin: var(--space-2xl) 0; }
+    .article-cta h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--colour-white); margin-bottom: var(--space-md); margin-top: 0; }
+    .article-cta p { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-white); line-height: 1.65; margin-bottom: var(--space-lg); max-width: 36em; }
+    .cta-button { display: inline-block; background: var(--colour-orange); color: var(--colour-white); font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.875rem 1.75rem; text-decoration: none; border-radius: 0; }
+    .cta-button:hover { background: var(--colour-orange-dark); }
+    .cta-button:focus { outline: 3px solid var(--colour-white); outline-offset: 3px; }
+    .back-link-section { padding: var(--space-xl) 0; }
+    .back-link { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-teal); text-decoration: underline; }
+    .back-link:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    footer { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
+    footer a { color: var(--colour-teal); text-decoration: underline; }
+    footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Accessibility Statement
+          </nav>
+          <span class="section-label">Guide</span>
+          <h1>The EAA accessibility statement — what it is and why most organisations don't have one</h1>
+          <p class="deck">A published accessibility statement is a mandatory EAA requirement. Irish regulators request it first in any complaint investigation. Most organisations we speak with don't have one.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+          
+          <p>One of the four mandatory requirements of EAA compliance is a published accessibility statement. It is not optional, it is not a best practice, and it is not the same as a privacy policy or cookie notice. The absence of an accessibility statement is itself a compliance failure — before any audit has even been run.</p>
+
+          <h2>What an accessibility statement is</h2>
+          <p>An accessibility statement is a public declaration, published on your website or within your digital product, that sets out:</p>
+          <ul>
+            <li>Your current accessibility compliance position — what standard you are meeting and to what extent</li>
+            <li>What is not yet fully accessible and why</li>
+            <li>Your remediation plan — what you are doing to address the gaps and when</li>
+            <li>How users can report accessibility issues or request accessible alternatives</li>
+            <li>Contact details for accessibility queries</li>
+          </ul>
+
+          <h2>Why it matters beyond compliance</h2>
+          <p>Irish regulators review the accessibility statement at the very start of any complaint process — before looking at anything else. It is typically the first document they request. An organisation without one starts any investigation at a disadvantage, regardless of how much technical work they have done on their product.</p>
+          <p>The statement also creates a documented baseline and an evidentiary trail — which is exactly what enforcement bodies look for when assessing whether an organisation was actively managing its obligations or simply ignoring them.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>Most organisations we speak with don't have one.</strong> The accessibility statement is the most commonly missing EAA compliance requirement — and the easiest to address with structured support.</p>
+          </div>
+
+          <h2>What makes a statement compliant</h2>
+          <p>A compliant accessibility statement must be accurate, specific, and kept up to date. Generic statements that claim full WCAG 2.1 AA compliance without evidence, or that copy boilerplate from another organisation, are not compliant and can create additional legal exposure if the claims are inaccurate.</p>
+          <p>The statement must reflect your actual compliance position. If there are known barriers — and there almost always are — they must be documented along with a realistic timeline for remediation.</p>
+
+          <h2>How frequently it needs updating</h2>
+          <p>The accessibility statement should be reviewed and updated whenever significant changes are made to the product or service, and at least annually. If your compliance position improves, the statement should reflect that. If new issues are identified, they should be added.</p>
+
+          <h2>Where the statement must be published</h2>
+          <p>The statement must be easily findable. For websites, it should be accessible from the footer on every page, or at minimum from the main accessibility or legal information page. For apps, it should be accessible from within the app and from the app store listing.</p>
+
+          <h2>Who needs an accessibility statement</h2>
+          <p>Any organisation providing covered digital products or services to consumers in the EU. This includes organisations headquartered outside the EU — if you serve EU consumers, you are subject to EAA obligations including the accessibility statement requirement.</p>
+          <p>Microenterprises may be exempt from some EAA obligations, but should verify this specifically — the exemption does not apply uniformly across all obligations or all member states.</p>
+
+          <div class="article-cta">
+            <h2>Find out where you stand</h2>
+            <p>One conversation gives you a clear picture of your legal position, your biggest risks, and what a proportionate first step looks like. No obligation.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back-link-section">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
+    </div>
+  </footer>
+</body>
+</html>
