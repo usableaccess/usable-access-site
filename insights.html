@@ -60,9 +60,7 @@
 
     /* ── Header ── */
     header { background-color: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center;
-      position: relative;
-    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
 
     .nav-toggle {
       display: flex;
@@ -124,6 +122,75 @@
     @media (min-width: 640px) { .insights-hero h1 { font-size: 2.25rem; } }
     @media (min-width: 960px) { .insights-hero h1 { font-size: 2.5rem; } }
 
+
+    /* ── Filters ── */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      align-items: center;
+    }
+    .filters-label {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--colour-meta);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-right: var(--space-xs);
+    }
+    .filter-btn {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--colour-secondary);
+      background: var(--colour-white);
+      border: 1.5px solid var(--colour-border);
+      padding: 0.375rem 0.875rem;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: all 0.15s ease;
+      border-radius: 0;
+    }
+    .filter-btn:hover {
+      border-color: var(--colour-teal);
+      color: var(--colour-teal);
+    }
+    .filter-btn:focus {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+    }
+    .filter-btn[aria-pressed="true"] {
+      background: var(--colour-teal);
+      border-color: var(--colour-teal);
+      color: var(--colour-white);
+    }
+    .filter-btn[aria-pressed="true"]:hover {
+      background: var(--colour-teal-deep);
+      border-color: var(--colour-teal-deep);
+    }
+    .filter-count {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      color: var(--colour-meta);
+      margin-left: auto;
+      align-self: center;
+    }
+    .article-card[hidden] {
+      display: none;
+    }
+    .no-results {
+      display: none;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--colour-secondary);
+      padding: var(--space-2xl) 0;
+      grid-column: 1 / -1;
+    }
+    .no-results.is-visible {
+      display: block;
+    }
     /* ── Article grid ── */
     .insights-grid { padding: var(--space-3xl) 0; border-bottom: 1px solid var(--colour-border); }
     .article-list { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
@@ -196,10 +263,19 @@
     <section class="insights-grid" aria-labelledby="articles-heading">
       <div class="container">
         <h2 id="articles-heading" class="sr-only">All insights</h2>
-        <div class="article-list">
+        <div class="filters" role="group" aria-label="Filter insights by type">
+          <span class="filters-label" aria-hidden="true">Filter:</span>
+          <button class="filter-btn" aria-pressed="true" data-filter="all">All</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Intelligence">Intelligence</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Positioning">Positioning</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Guide">Guide</button>
+          <span class="filter-count" aria-live="polite" aria-atomic="true" id="filter-count">6 items</span>
+        </div>
+        <p class="no-results" role="status" id="no-results">No insights match this filter.</p>
+        <div class="article-list" id="article-list">
 
           <!-- POST 2 — Four EAA requirements -->
-          <a href="/insights/what-eaa-compliance-actually-requires.html" class="article-card article-card--positioning">
+          <a href="/insights/what-eaa-compliance-actually-requires.html" class="article-card article-card--positioning" data-type="Positioning">
             <div class="article-meta">
               <span class="article-tag article-tag--positioning">Positioning</span>
               <span class="article-date">29 May 2026</span>
@@ -210,7 +286,7 @@
           </a>
 
           <!-- POST 1 — Germany/BFSG -->
-          <a href="/insights/bfsg-germany-enforcement-abmahnungen.html" class="article-card article-card--intelligence">
+          <a href="/insights/bfsg-germany-enforcement-abmahnungen.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
               <span class="article-tag article-tag--intelligence">Intelligence</span>
               <span class="article-date">27 May 2026</span>
@@ -221,7 +297,7 @@
           </a>
 
           <!-- Guide — EAA compliance Ireland -->
-          <a href="/eaa-compliance-ireland.html" class="article-card article-card--intelligence">
+          <a href="/eaa-compliance-ireland.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
               <span class="article-tag article-tag--intelligence">Guide</span>
             </div>
@@ -231,7 +307,7 @@
           </a>
 
           <!-- Guide — Accessibility statement -->
-          <a href="/eaa-accessibility-statement.html" class="article-card article-card--intelligence">
+          <a href="/eaa-accessibility-statement.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
               <span class="article-tag article-tag--intelligence">Guide</span>
             </div>
@@ -241,7 +317,7 @@
           </a>
 
           <!-- Guide — EAA fines by country -->
-          <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html" class="article-card article-card--intelligence">
+          <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
               <span class="article-tag article-tag--intelligence">Guide</span>
             </div>
@@ -251,7 +327,7 @@
           </a>
 
           <!-- Guide — BFSG Germany -->
-          <a href="/bfsg-germany-accessibility-compliance.html" class="article-card article-card--intelligence">
+          <a href="/bfsg-germany-accessibility-compliance.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
               <span class="article-tag article-tag--intelligence">Guide</span>
             </div>
@@ -272,6 +348,68 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      var buttons = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('#article-list .article-card');
+      var countEl = document.getElementById('filter-count');
+      var noResults = document.getElementById('no-results');
+      var currentFilter = 'all';
+
+      function updateCount(visible) {
+        var label = visible === 1 ? '1 item' : visible + ' items';
+        countEl.textContent = label;
+      }
+
+      function applyFilter(filter) {
+        currentFilter = filter;
+        var visible = 0;
+
+        cards.forEach(function(card) {
+          var type = card.getAttribute('data-type') || '';
+          var show = filter === 'all' || type === filter;
+          if (show) {
+            card.removeAttribute('hidden');
+            visible++;
+          } else {
+            card.setAttribute('hidden', '');
+          }
+        });
+
+        updateCount(visible);
+        noResults.classList.toggle('is-visible', visible === 0);
+      }
+
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var filter = btn.getAttribute('data-filter');
+
+          // Update pressed state
+          buttons.forEach(function(b) {
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          });
+
+          applyFilter(filter);
+        });
+
+        // Keyboard: left/right arrows move between filter buttons
+        btn.addEventListener('keydown', function(e) {
+          var btnsArr = Array.from(buttons);
+          var idx = btnsArr.indexOf(btn);
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            btnsArr[(idx + 1) % btnsArr.length].focus();
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            btnsArr[(idx - 1 + btnsArr.length) % btnsArr.length].focus();
+          }
+        });
+      });
+
+      // Initialise count
+      updateCount(cards.length);
+    })();
+  </script>
   <script>
     (function() {
       var toggle = document.querySelector('.nav-toggle');
