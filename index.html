@@ -286,7 +286,7 @@
     .section-label {
       display: block;
       font-family: var(--font-body);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -465,7 +465,7 @@
 
     .pillar h3 {
       font-family: var(--font-body);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -537,7 +537,7 @@
     .service-qualifier {
       display: block;
       font-family: var(--font-body);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -557,7 +557,7 @@
     .service-qualifier-below {
       display: block;
       font-family: var(--font-body);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -579,7 +579,7 @@
       background-color: var(--colour-teal-badge);
       color: var(--colour-teal-deep);
       font-family: var(--font-body);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 0.2rem 0.5rem;
       margin-left: var(--space-sm);
@@ -707,7 +707,7 @@
     .insight-tag {
       display: inline-block;
       font-family: var(--font-body);
-      font-size: 0.625rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -787,7 +787,7 @@
 
     .contact-option h3 {
       font-family: var(--font-body);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -852,6 +852,31 @@
       outline-offset: 3px;
     }
 
+
+    /* ── Enhanced focus styles ── */
+    :focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>

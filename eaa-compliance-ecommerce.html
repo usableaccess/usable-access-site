@@ -93,6 +93,31 @@
     footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
     footer a{color:var(--colour-teal);text-decoration:underline}
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+
+    /* ── Enhanced focus styles ── */
+    :focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head><body>
   <a href="#main" class="skip-link">Skip to main content</a>

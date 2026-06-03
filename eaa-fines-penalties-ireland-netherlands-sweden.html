@@ -33,9 +33,7 @@
     .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
     .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
     header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center;
-      position: relative;
-    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
 
     .nav-toggle {
       display: flex;
@@ -87,7 +85,7 @@
       .nav-links a[aria-current="page"] { color: var(--colour-teal); border-bottom: 2px solid var(--colour-teal); padding-bottom: 2px; }
     }
     .page-header { padding: var(--space-2xl) 0 var(--space-xl); border-bottom: 1px solid var(--colour-border); }
-    .section-label { display: block; font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--colour-teal); margin-bottom: var(--space-md); }
+    .section-label { display: block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--colour-teal); margin-bottom: var(--space-md); }
     .page-header h1 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
     .page-header .deck { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 400; font-style: italic; color: var(--colour-secondary); line-height: 1.5; max-width: 36em; }
     @media (min-width: 640px) { .page-header h1 { font-size: 2.25rem; } }
@@ -122,6 +120,31 @@
     footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
     footer a { color: var(--colour-teal); text-decoration: underline; }
     footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+    /* ── Enhanced focus styles ── */
+    :focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
