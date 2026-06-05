@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Statement — Usable Access</title>
+  <meta name="description" content="Accessibility statement for usableaccess.io. Our current compliance position, known limitations, and how to contact us with accessibility queries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .page-body{padding:var(--space-2xl) 0}
+    .page-body h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .status-block{background:var(--colour-teal-subtle);border:1.5px solid var(--colour-teal);padding:var(--space-xl);margin-bottom:var(--space-xl)}
+    .status-block h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-teal-deep);margin-bottom:var(--space-md);margin-top:0}
+    .status-block p{margin-bottom:var(--space-sm);max-width:none}
+    .status-block p:last-child{margin-bottom:0}
+    .contact-block{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);padding:var(--space-xl);margin-bottom:var(--space-xl)}
+    .contact-block h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-md);margin-top:0}
+    .contact-block p{margin-bottom:var(--space-sm);max-width:none}
+    .contact-block a{color:var(--colour-teal);text-decoration:underline}
+    .contact-block a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .meta-line{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta);margin-top:var(--space-2xl);padding-top:var(--space-xl);border-top:1px solid var(--colour-border)}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <span class="section-label">Legal</span>
+          <h1>Accessibility statement</h1>
+          <p class="deck">This statement covers usableaccess.io and sets out our current accessibility position, what we know is not yet fully accessible, and how to contact us.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <div class="status-block">
+            <h2>Compliance status</h2>
+            <p>Usable Access is committed to making usableaccess.io accessible to the broadest possible audience, regardless of ability or the technology used to access it.</p>
+            <p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA, which is the standard referenced by EN 301 549 &mdash; the harmonised European standard under the European Accessibility Act.</p>
+            <p><strong>Current position:</strong> We believe usableaccess.io is substantially compliant with WCAG 2.1 Level AA. We test our pages against accessibility criteria during development and review them on a regular basis. Several colour pairs on this site achieve AAA contrast ratios (7:1 or above); the remaining pairs meet AA (4.5:1 or above).</p>
+          </div>
+
+          <h2>Technical specifications</h2>
+          <p>usableaccess.io is built with HTML, CSS, and JavaScript. Pages are designed to work with the following assistive technologies and browsers:</p>
+          <ul>
+            <li>Screen readers: VoiceOver (iOS and macOS), TalkBack (Android), NVDA (Windows)</li>
+            <li>Keyboard-only navigation (no mouse required)</li>
+            <li>Browser zoom up to 200% without loss of content or functionality</li>
+            <li>High contrast mode and forced colour settings</li>
+            <li>Reduced motion settings at the operating system level</li>
+          </ul>
+          <p>Pages use semantic HTML landmarks, ARIA attributes where necessary, skip navigation links, and visible focus indicators. All images have text alternatives. All form controls are labelled. No content flashes more than three times per second.</p>
+
+          <h2>Known limitations</h2>
+          <p>We are not aware of any content on usableaccess.io that we know to be inaccessible. If you find something that does not work as expected with your assistive technology, we want to know &mdash; please contact us using the details below.</p>
+          <p>We do not use overlays, plugins, or third-party tools to retrofit accessibility. Accessibility is built into the code of this site directly.</p>
+
+          <h2>Scope</h2>
+          <p>This statement covers all pages on usableaccess.io. It does not cover third-party services linked from this site, including our Calendly booking page, which is operated by Calendly LLC and subject to their own accessibility statement.</p>
+
+          <h2>Disproportionate burden</h2>
+          <p>We are not claiming any disproportionate burden exemption for any part of this site.</p>
+
+          <div class="contact-block">
+            <h2>Contact us about accessibility</h2>
+            <p>If you experience any difficulty using usableaccess.io, or if you find content that you believe is not accessible, please contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a></p>
+            <p>We aim to respond to accessibility queries within five working days. If you require content in an alternative format, please let us know and we will do our best to provide it.</p>
+          </div>
+
+          <h2>Enforcement</h2>
+          <p>If you are not satisfied with our response to an accessibility query, you may contact the relevant national enforcement authority. In Ireland, the enforcement authority for electronic communications services under the European Accessibility Act is <strong>ComReg</strong> (Commission for Communications Regulation). In the European Union more broadly, enforcement is handled by the relevant national authority in the member state where you are located.</p>
+
+          <p class="meta-line">This statement was prepared on <strong>5 June 2026</strong> and will be reviewed annually, or following any significant change to the site. Last reviewed: 5 June 2026.</p>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

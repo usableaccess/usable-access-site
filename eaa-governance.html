@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EAA Compliance for E-commerce — Online Retailers | Usable Access</title>
-  <meta name="description" content="Online retailers face EAA enforcement in Germany, Sweden and the Netherlands. Learn what the first wave of enforcement means for your e-commerce business.">
+  <title>EAA Governance — What It Means and Why It Matters | Usable Access</title>
+  <meta name="description" content="Most EAA non-compliance is a governance failure, not a technical one. Learn what EAA governance requires, why it matters, and what enforcement bodies look for.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
     .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
     .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
     .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
-    .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
     nav{width:100%}
     header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
     .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
@@ -54,7 +54,7 @@
       .nav-links a{font-size:.875rem;padding:0}
     }
     .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
-    .section-label{display:block;font-family:var(--font-body);font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
     .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
     .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
     @media(min-width:640px){.page-header h1{font-size:2.25rem}}
@@ -70,54 +70,33 @@
     .page-body strong{font-weight:600;color:var(--colour-heading)}
     .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
     .callout p{margin-bottom:0;max-width:none}
-    .market-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
-    @media(min-width:640px){.market-grid{grid-template-columns:repeat(2,1fr)}}
-    .market-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
-    .market-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
-    .market-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .four-elements{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.four-elements{grid-template-columns:repeat(2,1fr)}}
+    .element-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .element-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .element-number{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-xs)}
+    .element-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
     .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
     .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
     .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
     .cta-button{display:inline-block;background:var(--colour-orange);color:var(--colour-white);font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none}
     .cta-button:hover{background:var(--colour-orange-dark)}
     .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
-    .back-link-section{padding:var(--space-xl) 0}
-    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
-    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
     .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
     .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
     .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
     .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
     footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
     footer a{color:var(--colour-teal);text-decoration:underline}
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
-
-    /* ── Enhanced focus styles ── */
-    :focus-visible {
-      outline: 3px solid var(--colour-teal);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
-    }
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--colour-teal);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
-    }
-
-    /* ── Reduced motion ── */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
 </head><body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -149,11 +128,11 @@
       <div class="container">
         <div class="article-container">
           <nav aria-label="Breadcrumb" class="breadcrumb">
-            <a href="/insights.html">Insights</a> &rsaquo; Sector guide
+            <a href="/insights.html">Insights</a> &rsaquo; Guide
           </nav>
-          <span class="section-label">Sector guide &mdash; E-commerce</span>
-          <h1>EAA compliance for e-commerce: what online retailers need to know</h1>
-          <p class="deck">Online retailers are the primary target of EAA enforcement across Germany, Sweden and the Netherlands. If you sell to EU consumers, the first wave of enforcement is already under way.</p>
+          <span class="section-label">Guide</span>
+          <h1>EAA governance: what it means and why most organisations are missing it</h1>
+          <p class="deck">Most EAA non-compliance is not a technical failure. It is a governance failure. The audit passes. Then the team changes, and the next release introduces a new barrier.</p>
         </div>
       </div>
     </div>
@@ -161,52 +140,63 @@
       <div class="container">
         <div class="article-container">
 
-          <p>E-commerce is the most actively enforced sector under the European Accessibility Act and its national implementations. If your organisation sells products or services to consumers in the EU via a website or app, you are in scope. This is not a future obligation: enforcement has started.</p>
+          <p>Technical accessibility can be achieved. The harder problem is keeping it. A product that passes an accessibility audit today is not guaranteed to be compliant next quarter. Every new feature, every team restructure, every product release is an opportunity for accessibility to regress. Without governance, it will.</p>
 
-          <h2>Why e-commerce is the primary enforcement target</h2>
-          <p>Several factors make online retail the sector most likely to receive enforcement attention first. Consumer-facing websites are easy to test and assess. Disabled consumers are highly active online shoppers. And the financial harm of inaccessible e-commerce is concrete and direct: a purchase not completed, a booking not made, a customer lost.</p>
-          <p>Research data from the Barómetro de Accesibilidad Web 2025, covering 204 private-sector websites across seven sectors, found that the majority of e-commerce sites failed to meet core accessibility requirements. The blocking rate for disabled users attempting to complete purchases is significant: tasks that sighted users complete in seconds are simply not available to many assistive technology users.</p>
+          <p>The BAF Beyond Compliance report, a two-year longitudinal study tracking organisations across banking, e-commerce and telecoms, found a clear pattern: organisations treating accessibility as a continuous process, with regular audits, design systems and dedicated accountability, sustained results above 80%. Organisations treating it as a one-off project did not.</p>
 
-          <h2>Enforcement across each market</h2>
-          <div class="market-grid">
-            <div class="market-card">
-              <h3>Germany</h3>
-              <p>The BFSG (Germany's EAA implementation) took effect in June 2025. Law firms began sending private warning letters (Abmahnungen) to e-commerce businesses within weeks. An Abmahnung is a legal demand: immediate compliance, a signed declaration with a contractual penalty clause, and reimbursement of the sender's legal costs (typically &euro;1,000&ndash;3,000). Ignore it and the case goes to court. The Bundesnetzagentur can additionally impose fines up to &euro;100,000 for serious violations.</p>
+          <h2>What EAA governance actually requires</h2>
+          <p>Governance is the third of the four mandatory EAA compliance requirements, alongside technical conformance, a published accessibility statement, and documentary evidence. It is also the one most commonly absent.</p>
+
+          <div class="four-elements">
+            <div class="element-card">
+              <span class="element-number">Element 1</span>
+              <h3>Named accountability</h3>
+              <p>A specific person or role is accountable for accessibility. Not a team. Not "the product department." A named owner who can be identified in any enforcement investigation.</p>
             </div>
-            <div class="market-card">
-              <h3>Sweden</h3>
-              <p>PTS (Post and Telecom Authority) has launched 28 supervisory investigations, with named inspections of major online retailers including H&amp;M, IKEA and Coop. Sweden's maximum fine is SEK 10,000,000 (approximately &euro;900,000). Sweden operates two fine types: a Sanktionsavgift for non-cooperation with PTS, and a Vite for accessibility issues not remediated within a grace period. Penalty decisions are expected throughout 2026.</p>
+            <div class="element-card">
+              <span class="element-number">Element 2</span>
+              <h3>Regular testing rhythm</h3>
+              <p>Accessibility is tested on a defined schedule, not only before major launches. New features are checked before release, not after. Automated and manual testing are both in place.</p>
             </div>
-            <div class="market-card">
-              <h3>Netherlands</h3>
-              <p>The ACM (Authority for Consumers and Markets) is conducting active audits. The fine ceiling is &euro;900,000 or 10% of annual turnover. There is also a mandatory reporting requirement most organisations have missed: businesses must proactively report their accessibility compliance status to the ACM, with documentation and a compliance declaration ready on request. Failure to report puts an organisation at the front of the audit queue.</p>
+            <div class="element-card">
+              <span class="element-number">Element 3</span>
+              <h3>Process survival</h3>
+              <p>The compliance process does not depend on one person. If the person responsible for accessibility left tomorrow, the organisation would know what to do next. Documentation, checklists, and onboarding for new team members.</p>
             </div>
-            <div class="market-card">
-              <h3>Ireland</h3>
-              <p>ComReg is the enforcement authority for digital services. Ireland's implementation is notable for criminal sanctions: directors, managers and other officers can be held personally liable for serious or persistent non-compliance. The penalty on conviction in the higher courts is a fine up to &euro;60,000 and/or imprisonment up to 18 months.</p>
+            <div class="element-card">
+              <span class="element-number">Element 4</span>
+              <h3>Documentary evidence</h3>
+              <p>Dated assessments, remediation records, and a paper trail that shows active management over time. This is what enforcement bodies request first. It is the difference between demonstrating due diligence and being unable to.</p>
             </div>
           </div>
 
-          <h2>What EAA compliance requires for e-commerce</h2>
-          <p>EAA compliance is not a single audit. For an e-commerce organisation, it requires four things:</p>
-          <ul>
-            <li><strong>Technical conformance</strong> against EN 301 549 (WCAG 2.1 Level AA in practice) across your website, app, and any customer-facing digital service.</li>
-            <li><strong>A published accessibility statement</strong> on your site, setting out your current compliance position, what is not yet accessible, and your remediation plan. This is the first document enforcement bodies request.</li>
-            <li><strong>Active governance</strong>: a named owner for accessibility, a regular testing rhythm, and a process that survives team changes and new product releases.</li>
-            <li><strong>Documentary evidence</strong> of ongoing management: assessments, remediation records, and a compliance trail that demonstrates active engagement rather than passive non-compliance.</li>
-          </ul>
+          <h2>Why governance is what enforcement bodies look for</h2>
+          <p>When an enforcement body investigates an EAA complaint, it does not only look at whether the product is currently accessible. It looks at whether the organisation was actively managing its accessibility obligations. The question is not just "is it compliant now?" but "was this organisation taking reasonable steps, over time, to achieve and maintain compliance?"</p>
+          <p>In Ireland, the due diligence defence against criminal liability requires exactly this kind of evidence. A director cannot rely on a single historic audit. They need to demonstrate an active, ongoing process. The same principle applies in the Netherlands, where the ACM assesses whether organisations have taken genuine steps toward compliance rather than simply ignoring the obligation.</p>
 
           <div class="callout">
-            <p><strong>The accessibility statement is critical.</strong> In Germany, it is required as part of BFSG compliance. In Ireland, it is the first document ComReg requests in any complaint investigation. In the Netherlands, it forms part of the mandatory reporting declaration. An organisation without one starts any enforcement interaction at a disadvantage.</p>
+            <p><strong>The governance question to ask now:</strong> if the person responsible for accessibility in your organisation left tomorrow, what would happen to your compliance position? If the answer is unclear, that is the governance gap. It is also what enforcement bodies look for when assessing whether non-compliance was wilful or incidental.</p>
           </div>
 
-          <h2>The commercial case</h2>
-          <p>Beyond enforcement, inaccessible e-commerce has a direct commercial cost. Disabled consumers represent a significant share of purchasing power. When a checkout process, product filter, or account management flow is inaccessible, those customers go elsewhere. The revenue lost does not appear in any analytics report because those users never made it to the point of attempting a transaction.</p>
-          <p>Organisations that have addressed accessibility consistently report reduced customer service costs, higher conversion rates among assistive technology users, and improved SEO performance as a secondary benefit of the structural improvements required for accessibility.</p>
+          <h2>Governance and the accessibility statement</h2>
+          <p>A well-maintained accessibility statement is both evidence of governance and a governance tool. It records your current compliance position, what is not yet accessible, and your remediation plan. Keeping it up to date requires a governance process. Its existence demonstrates one.</p>
+          <p>In Ireland, the accessibility statement is the first document ComReg requests in any complaint investigation. In the Netherlands, it forms part of the mandatory reporting declaration to the ACM. An organisation without a current, accurate statement starts any enforcement interaction at a disadvantage.</p>
+
+          <h2>What good governance looks like in practice</h2>
+          <p>For most SMBs, proportionate accessibility governance does not require a dedicated accessibility team or expensive tooling. It requires three things to be in place and documented:</p>
+          <ul>
+            <li>A named owner with defined responsibilities and sufficient time allocated to the role</li>
+            <li>A testing schedule tied to your release calendar, with results recorded</li>
+            <li>A remediation process that tracks identified issues through to resolution</li>
+          </ul>
+          <p>The Solid Foundations Method, used across Europe to assess EAA compliance, evaluates whether the core elements users need to complete essential tasks are in place. It is an expert evaluation, not a replacement for user testing with disabled people. Both matter. Governance is what ensures the findings from both are acted on and maintained.</p>
+
+          <h2>The difference is process, not effort</h2>
+          <p>Organisations that sustain accessibility are not trying harder than those that do not. They have built a process that survives team changes, product releases, and restructures. The effort is in building the process once, correctly. After that, it runs.</p>
 
           <div class="article-cta">
             <h2>Find out where your organisation stands</h2>
-            <p>Our free initial assessment covers your sector-specific exposure, which of the four EAA requirements you have addressed, and what a proportionate next step looks like.</p>
+            <p>Our free initial assessment covers your governance position, which of the four EAA requirements you have addressed, and what a proportionate next step looks like.</p>
             <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
           </div>
 
@@ -218,9 +208,9 @@
         <div class="article-container">
           <h2>Related guides</h2>
           <ul class="related-list">
-            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
-            <li><a href="/bfsg-germany-accessibility-compliance.html">BFSG Germany &mdash; what the Abmahnung wave means for your business</a></li>
             <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
+            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what directors need to know</a></li>
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
             <li><a href="/insights.html">All insights</a></li>
           </ul>
         </div>
