@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Disproportionate Burden Exemption | Usable Access</title>
+  <meta name="description" content="The EAA disproportionate burden exemption requires a documented assessment. Assuming it applies is not the same as qualifying for it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .blockquote{border-left:4px solid var(--colour-teal);padding:var(--space-md) var(--space-lg) var(--space-md) var(--space-xl);margin:0 0 var(--space-xl)}
+    .blockquote p{font-family:var(--font-display);font-size:1.0625rem;font-style:italic;color:var(--colour-heading);line-height:1.6;margin-bottom:var(--space-sm);max-width:none}
+    .blockquote cite{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);font-style:normal}
+    .assessment-steps{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.assessment-steps{grid-template-columns:repeat(2,1fr)}}
+    .step-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .step-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .step-number{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-xs)}
+    .step-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:var(--colour-white);font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Guide
+          </nav>
+          <span class="section-label">Guide</span>
+          <h1>The EAA disproportionate burden exemption &mdash; what it actually requires</h1>
+          <p class="deck">The exemption is a safeguard with conditions, not an opt-out. Assuming it applies is not the same as qualifying for it. Most organisations claiming it have not done the assessment the exemption requires.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>The EAA disproportionate burden exemption is real, and it exists for good reason. Accessibility requirements can, in specific circumstances, impose costs that are disproportionate to the benefit achieved. The exemption allows organisations to defer or limit certain accessibility obligations in those circumstances.</p>
+
+          <p>The problem is how the exemption is being used in practice. Close to the EAA application date, organisations began asking whether the disproportionate burden clause could be applied to avoid compliance entirely. Inmaculada Placencia Porrero, Senior Expert in Disability at DG JUST and one of the architects of the EAA, addressed this directly in a February 2026 interview:</p>
+
+          <blockquote class="blockquote">
+            <p>&ldquo;These provisions are safeguards, not escape routes. They allow alternatives when specific points create real burden that would be disproportionate &mdash; in production, investment, service delivery &mdash; but they were never meant as a mechanism to do nothing.&rdquo;</p>
+            <cite>Inmaculada Placencia Porrero, Senior Expert in Disability, DG JUST, European Commission. BAF Beyond Compliance report, February 2026.</cite>
+          </blockquote>
+
+          <p>The exemption requires a documented assessment. Without that assessment, the exemption is not available.</p>
+
+          <h2>What the exemption actually covers</h2>
+          <p>The disproportionate burden provision in the EAA allows an organisation to limit its accessibility obligations in cases where compliance would impose costs that are genuinely disproportionate to the benefit. It is not a blanket exemption from EAA compliance. It applies to specific accessibility requirements, in specific circumstances, for a defined period.</p>
+
+          <p>The exemption does not remove the obligation to make reasonable accessibility improvements. It allows deferral or partial compliance where the full requirement would be disproportionate to the organisation&rsquo;s size, resources, and the nature of the product or service. The remaining accessibility work still needs to be done.</p>
+
+          <h2>Microenterprise exemption: a separate provision</h2>
+          <p>Microenterprises are exempt from the EAA&rsquo;s accessibility requirements for services. A microenterprise is defined as an organisation with <strong>fewer than 10 employees and annual turnover or balance sheet total not exceeding &euro;2 million</strong>. Both conditions must be met. An organisation with 8 employees and &euro;3 million turnover is not a microenterprise and is not exempt.</p>
+
+          <p>The microenterprise exemption applies to service providers only, not product manufacturers. If you manufacture products covered by the EAA, the exemption does not apply regardless of size.</p>
+
+          <h2>What the disproportionate burden assessment must include</h2>
+          <p>To rely on the disproportionate burden exemption, an organisation must carry out and document an assessment. Undocumented reliance on the exemption does not satisfy the requirement &mdash; and is itself a compliance failure. The assessment must address:</p>
+
+          <div class="assessment-steps">
+            <div class="step-card">
+              <span class="step-number">Element 1</span>
+              <h3>Net cost of compliance</h3>
+              <p>The estimated cost of implementing the specific accessibility requirement, after accounting for any available public funding, grants, or support. Gross cost alone is not sufficient.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">Element 2</span>
+              <h3>Size and resources of the organisation</h3>
+              <p>The total resources available to the organisation, including revenue, assets, and human resources. Cost must be assessed in proportion to the organisation&rsquo;s capacity, not in isolation.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">Element 3</span>
+              <h3>Estimated benefit to persons with disabilities</h3>
+              <p>How many people with disabilities would benefit from the specific accessibility improvement, and to what degree. A high benefit relative to cost is a strong indicator that the exemption does not apply.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">Element 4</span>
+              <h3>Frequency and duration of use</h3>
+              <p>How often and for how long persons with disabilities use the product or service in question. High-frequency or essential services face a higher threshold for the exemption to apply.</p>
+            </div>
+          </div>
+
+          <p>The assessment must be documented, dated, and retained. It must be made available to enforcement authorities on request. In the Netherlands, the ACM can request it as part of its mandatory reporting framework. In Ireland, it forms part of the due diligence evidence a director would need in any enforcement investigation.</p>
+
+          <h2>Who decides whether the exemption applies</h2>
+          <p>The organisation carries out the initial assessment and makes the determination. But enforcement bodies review that determination. An assessment that reaches a convenient conclusion without credible evidence of the cost and benefit analysis will not withstand scrutiny.</p>
+
+          <p>Enforcement bodies do not simply accept a claim of disproportionate burden. They assess whether the process was genuine: whether the analysis was conducted, documented, and proportionate to the organisation&rsquo;s actual circumstances.</p>
+
+          <h2>How enforcement bodies treat undocumented claims</h2>
+          <p>An organisation that claims disproportionate burden without a documented assessment has no defence. The exemption requires the assessment. Without it, the organisation is non-compliant &mdash; and the claim of disproportionate burden cannot be relied upon.</p>
+
+          <div class="callout">
+            <p><strong>The practical test:</strong> can your organisation produce a dated, written assessment showing the specific accessibility requirement reviewed, the estimated compliance cost, the resources available, and the benefit to disabled users? If not, the exemption is not available to you, regardless of whether compliance would genuinely be difficult.</p>
+          </div>
+
+          <p>In some markets the consequences of an undocumented claim are particularly acute. In Ireland, the due diligence defence against director liability requires active, documented compliance management. Claiming disproportionate burden without documentation would undermine rather than support that defence. In Sweden, the Sanktionsavgift for failing to cooperate with PTS applies regardless of the accessibility work done &mdash; an undocumented exemption claim does not constitute cooperation.</p>
+
+          <h2>The exemption and the accessibility statement</h2>
+          <p>Where an organisation has carried out a disproportionate burden assessment and determined that certain accessibility requirements are not being met, that determination must be reflected in the accessibility statement. The statement must identify what is not yet accessible, the reason, and the remediation plan or timeline. An accessibility statement that simply claims disproportionate burden without the underlying assessment to support it is itself a compliance failure.</p>
+
+          <div class="callout--orange callout">
+            <p><strong>The most common error:</strong> treating the disproportionate burden exemption as a reason not to begin accessibility work, rather than as a time-limited accommodation for specific requirements where genuine disproportionality can be demonstrated. The exemption is not an alternative to compliance. It is a documented process within a compliance programme.</p>
+          </div>
+
+          <div class="article-cta">
+            <h2>Find out where your organisation stands</h2>
+            <p>Our free initial assessment covers your current compliance position, whether a disproportionate burden assessment is needed, and what a proportionate next step looks like for your organisation.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
+            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what directors need to know</a></li>
+            <li><a href="/insights.html">All insights</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="back-link-section">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

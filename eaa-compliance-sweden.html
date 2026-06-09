@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Compliance in Sweden &mdash; PTS Enforcement | Usable Access</title>
+  <meta name="description" content="PTS launched systematic inspections in October 2025 naming H&amp;M, IKEA and Coop. Sweden has two distinct fine types and market ban authority.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .fine-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.fine-grid{grid-template-columns:repeat(2,1fr)}}
+    .fine-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .fine-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .fine-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-xs)}
+    .fine-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+    .fine-amount{font-family:var(--font-body);font-size:1.125rem;font-weight:600;color:var(--colour-heading);display:block;margin-bottom:var(--space-sm)}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:var(--colour-white);font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Guide
+          </nav>
+          <span class="section-label">Guide</span>
+          <h1>EAA compliance in Sweden &mdash; PTS enforcement</h1>
+          <p class="deck">PTS did not wait for complaints. It launched systematic inspections of e-commerce operators in October 2025, named H&amp;M, IKEA and Coop among its first investigations, and has two separate penalty mechanisms available. The enforcement risk and the accessibility work are two separate tracks.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>Sweden&rsquo;s implementation of the European Accessibility Act is enforced by PTS (Post- och telestyrelsen), the Swedish Post and Telecom Authority. PTS has taken a proactive approach to enforcement, actively inspecting organisations rather than waiting for complaints to be filed.</p>
+
+          <p>In October 2025, PTS launched a programme of systematic e-commerce inspections, testing online retailers against EN&nbsp;301&nbsp;549, the harmonised European technical standard for accessibility. As of early 2026, 28 supervisory investigations have been launched. Among the organisations named are H&amp;M, IKEA, and Coop &mdash; some of the largest consumer-facing brands operating in the Swedish market.</p>
+
+          <h2>What PTS can do</h2>
+          <p>PTS has broad enforcement powers under the Swedish EAA transposition legislation. It can investigate any organisation offering digital products or services to consumers in Sweden, issue remediation notices with binding deadlines, impose financial penalties, and prohibit the sale of non-compliant products and services within Sweden.</p>
+
+          <p>That last power &mdash; the market ban &mdash; is significant. For many organisations, being prohibited from selling into the Swedish market is a more severe consequence than any financial penalty. PTS can apply it independently of or alongside financial sanctions.</p>
+
+          <h2>Sweden&rsquo;s two penalty types</h2>
+          <p>Sweden operates two distinct fine types under its EAA enforcement framework. They address different failures and can apply independently of each other.</p>
+
+          <div class="fine-grid">
+            <div class="fine-card">
+              <span class="fine-label">Fine type 1</span>
+              <h3>Sanktionsavgift</h3>
+              <span class="fine-amount">SEK 10,000 &ndash; SEK 10,000,000</span>
+              <p>Applied for failing to report or cooperate with PTS. This penalty applies <strong>regardless of whether the underlying accessibility issues have been fixed.</strong> An organisation that has completed its remediation work but failed to respond to a PTS request can still face a Sanktionsavgift. The enforcement risk and the accessibility work are two separate tracks. Both need managing.</p>
+            </div>
+            <div class="fine-card">
+              <span class="fine-label">Fine type 2</span>
+              <h3>Vite</h3>
+              <span class="fine-amount">Variable</span>
+              <p>Applied for accessibility issues that remain unremediated after a grace period set by PTS. Where PTS has issued a remediation notice with a deadline, failure to meet that deadline triggers a Vite. The amount is set by PTS and tied to the specific failure. Unlike the Sanktionsavgift, the Vite is directly linked to the state of the accessibility work.</p>
+            </div>
+          </div>
+
+          <p>The maximum Sanktionsavgift of SEK&nbsp;10,000,000 is approximately &euro;900,000 at current exchange rates. Penalty decisions are expected throughout 2026 as the first wave of supervisory investigations concludes.</p>
+
+          <h2>Why Sweden enforces this way</h2>
+          <p>Sweden has a strong culture of disability rights and public accessibility expectations. Consumer complaints about inaccessible digital services tend to arrive quickly. PTS&rsquo;s proactive inspection approach reflects the expectation that compliance obligations are known and acted on, not discovered through enforcement.</p>
+
+          <p>Organisations that have not yet engaged with EAA requirements should not assume that the absence of a complaint means no exposure. PTS is selecting organisations for inspection independently. Receiving a supervisory notice without prior warning is the experience of the companies named in the first wave.</p>
+
+          <h2>The mandatory reporting obligation</h2>
+          <p>Like the Netherlands, Sweden requires organisations to engage with PTS on their compliance position. Failure to respond to a PTS request or to participate in a supervisory investigation triggers the Sanktionsavgift. This obligation is separate from and in addition to the accessibility work itself.</p>
+
+          <p>Organisations operating in Sweden need two things in place: an active accessibility programme, and a process for responding to PTS contact promptly. Neither alone is sufficient.</p>
+
+          <h2>What Swedish enforcement means in practice</h2>
+          <p>The companies named in the first 28 investigations were selected because PTS inspected their digital products against EN&nbsp;301&nbsp;549 and identified failures. They were not selected because complaints were filed. PTS chose them, tested them, and opened investigations.</p>
+
+          <div class="callout">
+            <p><strong>The key question for Sweden:</strong> if PTS tested your Swedish-facing digital product or service today, what would it find? The answer to that question &mdash; and whether you have a documented process to address it &mdash; is what determines your enforcement exposure.</p>
+          </div>
+
+          <p>Penalty decisions from the first wave of investigations are expected throughout 2026. When those decisions are published with named organisations and fine amounts, they will clarify the enforcement posture in practice. Organisations that have not yet assessed their position should do so before those decisions arrive.</p>
+
+          <h2>Acting now rather than responding later</h2>
+          <p>The pattern in Sweden, as in the Netherlands and Germany, is that enforcement moves faster than most organisations expect. PTS launched systematic inspections within months of the EAA taking effect. The organisations that started compliance work early are building a governance record. The organisations that have not yet started are not.</p>
+
+          <p>Acting now means setting your compliance position on your own timeline. Acting after a PTS notice means responding to theirs.</p>
+
+          <div class="article-cta">
+            <h2>Find out where you stand in Sweden</h2>
+            <p>Our free initial assessment covers your EAA position in the Swedish market, including what PTS would find if it inspected your product today and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-compliance-netherlands.html">EAA compliance in the Netherlands &mdash; what organisations need to know</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/insights.html">All insights</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="back-link-section">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
