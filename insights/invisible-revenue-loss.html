@@ -45,7 +45,8 @@
     .nav-links li:last-child{border-bottom:none}
     @media(min-width:640px){
       .nav-toggle{display:none}
-      .nav-links{display:flex;list-style:none;gap:var(--space-xl)}
+      .nav-links{display:flex;list-style:none;gap:var(--space-xl);position:static;border-bottom:none;padding:0;box-shadow:none;background:none}
+      .nav-links li{border-bottom:none}
       .nav-links a{font-family:var(--font-body);font-size:.875rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;letter-spacing:.01em}
       .nav-links a:hover{color:var(--colour-teal)}
       .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
