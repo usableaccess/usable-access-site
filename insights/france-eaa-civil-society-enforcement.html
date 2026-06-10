@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>France EAA Enforcement: Civil Society Takes the Lead | Usable Access</title>
+  <meta name="description" content="France's first EAA lawsuits were filed by disability organisations, not regulators. What the cases against four major retailers mean for European enforcement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .article-meta-line{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .timeline{margin:0 0 var(--space-xl) 0;list-style:none;border-left:3px solid var(--colour-teal);padding-left:var(--space-xl)}
+    .timeline li{position:relative;margin-bottom:var(--space-lg);padding-bottom:var(--space-md)}
+    .timeline li:last-child{margin-bottom:0;padding-bottom:0}
+    .timeline-date{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-xs)}
+    .timeline li p{font-family:var(--font-body);font-size:1rem;line-height:1.65;color:var(--colour-body);margin-bottom:0;max-width:34em}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:var(--colour-white);font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Intelligence
+          </nav>
+          <span class="section-label">Intelligence &mdash; France</span>
+          <p class="article-meta-line">Published 9 June 2026 &mdash; updated as cases develop</p>
+          <h1>France EAA enforcement: civil society takes the lead</h1>
+          <p class="deck">France&rsquo;s first EAA lawsuits were not filed by a regulator. They were filed by disability rights organisations. That distinction matters for every organisation operating in Europe.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>When the European Accessibility Act became enforceable on 28 June 2025, most organisations assumed enforcement would come from national regulators &mdash; government bodies auditing websites, issuing warnings, and eventually imposing fines. France demonstrated within weeks that enforcement does not work that way. Disability organisations, not regulators, filed the first EAA lawsuits in Europe. They moved faster, more directly, and with greater legal force than most compliance teams anticipated.</p>
+
+          <p>Understanding what happened in France &mdash; and what the cases still pending mean &mdash; is important for any organisation with digital products or services available to consumers in the EU.</p>
+
+          <h2>What happened and when</h2>
+
+          <ul class="timeline" aria-label="Timeline of French EAA enforcement">
+            <li>
+              <span class="timeline-date">28 June 2025</span>
+              <p>The EAA becomes enforceable across all 27 EU member states. France transposes the directive through its national Consumer Code.</p>
+            </li>
+            <li>
+              <span class="timeline-date">7 July 2025</span>
+              <p>Two French disability rights organisations &mdash; ApiDV (association for the visually impaired) and Droit Pluriel, supported by the legal collective Int&eacute;r&ecirc;t &agrave; Agir &mdash; send formal legal notices to four major grocery retailers: Auchan, Carrefour, E.Leclerc, and Picard Surgel&eacute;s. The notices identify specific accessibility failures on their websites and mobile applications that prevent visually impaired users from shopping independently. A response deadline is set for 1 September 2025.</p>
+            </li>
+            <li>
+              <span class="timeline-date">September 2025</span>
+              <p>The retailers&rsquo; responses are assessed as inadequate. E.Leclerc&rsquo;s compliance is reported to have improved from 32% to 50% &mdash; still well below the legal threshold. The organisations characterise the retailers&rsquo; response as showing &ldquo;a certain indifference regarding respect for the law and the rights of people with disabilities.&rdquo;</p>
+            </li>
+            <li>
+              <span class="timeline-date">12 November 2025</span>
+              <p>Emergency injunctions (assignation en r&eacute;f&eacute;r&eacute;) are filed before the Tribunal judiciaire de Paris against all four retailers. The legal basis is the French Consumer Code as amended to transpose the EAA. This marks the first EAA-related lawsuits filed in Europe. The injunctions target both websites and mobile applications and ask the court to order immediate remediation, not vague commitments.</p>
+            </li>
+            <li>
+              <span class="timeline-date">As of June 2026</span>
+              <p>The cases remain pending. No court ruling has been issued and no fines have been imposed. The proceedings continue.</p>
+            </li>
+          </ul>
+
+          <h2>Why civil society, not regulators</h2>
+
+          <p>France&rsquo;s enforcement structure gives disability organisations direct legal standing to bring proceedings under the EAA without waiting for a regulator to act. The emergency injunction procedure (r&eacute;f&eacute;r&eacute;) allows courts to demand immediate action when an ongoing situation is found to be discriminatory &mdash; it is faster and more direct than standard regulatory enforcement.</p>
+
+          <p>This is not unique to France. The EAA requires member states to ensure that enforcement mechanisms exist and are accessible. Across the EU, that means disability organisations, consumer groups, and in some cases individual users can initiate enforcement action independently. Regulatory enforcement is one route. Civil society enforcement is another, and in France it moved first.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>The French cases established a precedent:</strong> disability organisations with legal backing can file emergency injunctions targeting specific accessibility failures, ask courts to order immediate remediation, and do so within weeks of the compliance deadline. An organisation does not need to be audited by a regulator to face formal legal proceedings.</p>
+          </div>
+
+          <h2>The French penalty structure</h2>
+
+          <p>France&rsquo;s fine structure under the EAA is different from the Netherlands and Sweden. Rather than a single ceiling, France operates a per-offence model:</p>
+          <ul>
+            <li><strong>&euro;1,500 per offence</strong> for individuals; <strong>&euro;7,500 per offence</strong> for legal entities</li>
+            <li>Repeat offences double to &euro;3,000 and &euro;15,000 respectively</li>
+            <li>Systemic non-compliance can result in aggregate penalties reaching <strong>&euro;250,000</strong></li>
+          </ul>
+
+          <p>The per-offence structure means that an organisation with multiple inaccessible products, multiple user journeys that fail, or multiple applications could face separate assessments for each. A single website with twenty distinct accessibility failures across login, checkout, account management, and support could generate twenty separate offence calculations.</p>
+
+          <h2>What this means for organisations outside France</h2>
+
+          <p>The French cases matter beyond France for two reasons.</p>
+
+          <p>First, any organisation whose digital products or services are available to consumers in France is subject to French EAA enforcement, regardless of where the organisation is headquartered. An Irish SaaS company with French customers, a Dutch e-commerce retailer selling to French consumers, and a Swedish FinTech with French users are all in scope.</p>
+
+          <p>Second, the civil society enforcement model is replicable. Disability organisations in Ireland, the Netherlands, and Sweden have the same legal standing to bring proceedings under their national EAA implementations. The French cases have demonstrated that the mechanism works and that courts will hear them. Other organisations are watching.</p>
+
+          <div class="callout">
+            <p><strong>The enforcement risk is not only regulatory.</strong> Any organisation whose products exclude disabled users is a potential defendant &mdash; not only to a regulator&rsquo;s audit, but to a civil society organisation with legal backing and a specific list of accessibility failures. The two tracks are independent of each other.</p>
+          </div>
+
+          <h2>What the cases signal for 2026 and beyond</h2>
+
+          <p>The French cases remain pending as of June 2026. A ruling, when it comes, will set important precedent for how courts across the EU interpret EAA obligations and what remediation they can demand. The emergency injunction procedure means a ruling could require immediate changes, not a multi-year remediation timeline.</p>
+
+          <p>More broadly, the cases confirm that EAA enforcement in France is driven by civil society rather than a single regulatory authority. That is a different risk profile than Germany (where private Abmahnungen from law firms are the primary mechanism), the Netherlands (where ACM audits and mandatory reporting are the primary mechanism), or Sweden (where PTS inspections and market ban authority are the primary mechanism). In France, the disability community itself is the enforcement agent.</p>
+
+          <p>For organisations planning their EAA compliance approach, this means that the question is not only &ldquo;are we likely to be audited?&rdquo; It is also &ldquo;are our products accessible enough that a disability organisation with legal backing would not have grounds to act?&rdquo; Those are different questions with different answers.</p>
+
+          <div class="article-cta">
+            <h2>Understand your current exposure</h2>
+            <p>Our free initial assessment covers your accessibility position across your key user journeys &mdash; the same tasks that disability organisations assess when evaluating whether to bring proceedings. One conversation, no obligation.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related intelligence</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-compliance-netherlands.html">EAA compliance in the Netherlands &mdash; ACM enforcement</a></li>
+            <li><a href="/eaa-compliance-sweden.html">EAA compliance in Sweden &mdash; PTS enforcement</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/insights.html">All insights</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-link-section">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
