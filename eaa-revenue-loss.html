@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inaccessible Design Is Invisible Revenue Loss | Usable Access</title>
+  <meta name="description" content="Inaccessible websites lose revenue organisations cannot see. The data on blocking rates, the 15–20% customer base, and what fixing barriers is worth commercially.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .page-body a{color:var(--colour-teal);text-decoration:underline}
+    .page-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .stat-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+    .stat-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .stat-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .stat-figure{display:block;font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--colour-teal-deep);margin-bottom:var(--space-sm);line-height:1}
+    .stat-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:var(--colour-white);font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Guide
+          </nav>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+            <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">11 Jun 2026</span>
+          </div>
+          <h1>Inaccessible design is invisible revenue loss</h1>
+          <p class="deck">Inaccessible digital products lose revenue that organisations cannot see. The users who encountered a barrier and left do not appear in your analytics. They are simply absent.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>Most organisations approach digital accessibility through compliance: a regulator, a deadline, a fine ceiling. That framing is legitimate, but it misses the commercial argument entirely. Inaccessible digital products are not only a legal risk. They are losing revenue that organisations cannot measure, because the data they collect only captures the users who got through.</p>
+
+          <p>The users who hit a barrier and left never reached the point where your analytics could record them. They are absent from your conversion data, your cart abandonment reports, your session recordings. The revenue they represent is invisible — not because it is small, but because the measurement systems organisations rely on are blind to it.</p>
+
+          <h2>What the data shows</h2>
+
+          <p>The Barómetro de Accesibilidad Web 2025, a major post-EAA compliance study of 204 private-sector websites, provides the clearest sector-level picture available.</p>
+
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-figure">40%</span>
+              <h3>Travel sites</h3>
+              <p>Fail WCAG technical criteria at a level that prevents users from planning or booking independently. For a disabled traveller, this means they cannot search for accessible accommodation, compare flights, or complete a reservation without assistance.</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-figure">32%</span>
+              <h3>Financial services sites</h3>
+              <p>Fail to meet even basic WCAG requirements, meaning users cannot complete account actions, payments, or transactions. The worst technical performance of any sector in the study — in the most heavily regulated industry in Europe.</p>
+            </div>
+          </div>
+
+          <p>These figures measure technical failure rates, not conversion loss directly. But the commercial implication is direct: a site that fails WCAG criteria at the level described is one where a significant share of users with disabilities cannot complete the tasks your product is designed for. Those are lost transactions.</p>
+
+          <h2>The size of the market you are not measuring</h2>
+
+          <p>Estimates of the disabled population in Europe range from 15% to over 20% depending on how disability is defined and measured. That range reflects genuine complexity: disability includes visual, hearing, motor, and cognitive impairments, many permanent, some temporary or situational. A user with a broken arm, a user in a noisy environment, a user on a slow connection — all benefit from accessible design.</p>
+
+          <p>Whatever the precise figure, this is not a niche. It is a share of potential customers that most organisations are not reaching, not tracking, and not accounting for in their commercial planning.</p>
+
+          <div class="callout">
+            <p><strong>The gap in your data:</strong> your conversion analytics show the users who completed a task. They cannot show the users who tried and could not continue. If your product has accessibility barriers in core journeys &mdash; checkout, account creation, booking, onboarding &mdash; your conversion rate is systematically understating potential demand.</p>
+          </div>
+
+          <h2>Why the loss stays invisible</h2>
+
+          <p>A user who cannot complete a booking because a date picker is inaccessible to their screen reader does not generate an abandonment event in your analytics. They did not add to the cart and leave. They could not get that far. There is no record of the attempted journey, no signal in your data, no prompt to investigate.</p>
+
+          <p>This is different from ordinary conversion failure. Ordinary abandonment is measurable: you can see where users dropped off, run tests, make changes, and measure the effect. Accessibility abandonment is invisible at the point of failure. The only way to find it is to test with users who use assistive technology, or to audit the user journeys that matter most against accessibility standards.</p>
+
+          <h2>The compliance case and the commercial case are the same problem</h2>
+
+          <p>Accessibility barriers that exclude disabled users are also barriers that create friction for everyone. A form that is difficult to navigate by keyboard is difficult to navigate on a phone. An image without a text alternative fails a screen reader user and also fails a search engine crawler. A video without captions excludes a deaf user and also a user watching in a quiet office.</p>
+
+          <p>Organisations that fix accessibility barriers as part of a compliance programme tend to find that their conversion metrics improve across the board. The compliance work and the commercial improvement are not separate activities. They address the same underlying problems in the same user journeys.</p>
+
+          <p>For <a href="/eaa-compliance-fintech.html">financial services organisations</a> in particular, the stakes are high on both tracks. The 32% technical failure rate is the worst of any sector. Combined with active enforcement by the AFM in the Netherlands, ComReg in Ireland, and PTS in Sweden, the commercial and legal exposure sit in exactly the same place.</p>
+
+          <h2>What accessibility ROI actually looks like</h2>
+
+          <p>The return on accessibility investment is not primarily a cost saving — it is a revenue recovery. The question is not "how much does fixing this cost?" but "how much revenue is currently lost because users cannot complete this journey?"</p>
+
+          <p>For e-commerce, the calculation starts with the size of the disabled customer base and the blocking rate in your checkout flow. For financial services, it starts with account opening, payment initiation, and balance enquiry — the core transactions that 32% of financial services sites currently fail to support. For travel, it starts with the booking flow, where 40% of sites create hard stops for users with disabilities.</p>
+
+          <p>A free initial assessment identifies where your product has barriers in these journeys, what those barriers mean for your compliance position, and what a proportionate next step looks like commercially and legally.</p>
+
+          <div class="article-cta">
+            <h2>Find out what accessibility barriers are costing your organisation</h2>
+            <p>Our free initial assessment covers your accessibility position across the user journeys that matter most commercially, and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-compliance-fintech.html">EAA compliance for FinTech and financial services</a></li>
+            <li><a href="/eaa-compliance-ecommerce.html">EAA compliance for e-commerce &mdash; what online retailers need to know</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/insights.html">All insights</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="back-link-section">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-enabled', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
