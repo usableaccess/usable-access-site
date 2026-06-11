@@ -147,7 +147,8 @@
       color: var(--colour-secondary);
       background: var(--colour-white);
       border: 1.5px solid var(--colour-border);
-      padding: 0.375rem 0.875rem;
+      padding: 0.625rem 1rem;
+      min-height: 44px;
       cursor: pointer;
       letter-spacing: 0.01em;
       transition: all 0.15s ease;
@@ -176,6 +177,15 @@
       color: var(--colour-meta);
       margin-left: auto;
       align-self: center;
+    }
+    .filter-description {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--colour-body);
+      font-style: italic;
+      margin-top: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      min-height: 1.5em;
     }
     .article-card[hidden] {
       display: none;
@@ -218,8 +228,9 @@
     /* ── Footer ── */
     footer { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
     footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
-    footer a { color: var(--colour-teal); text-decoration: underline; }
+    footer a { color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.25rem 0; min-height: 44px; line-height: 44px; }
     footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    .article-tag--revenue { background: var(--colour-orange-tint); color: var(--colour-orange); }
 
 
     /* ── Enhanced focus styles ── */
@@ -292,11 +303,12 @@
         <div class="filters" role="group" aria-label="Filter insights by type">
           <span class="filters-label" aria-hidden="true">Filter:</span>
           <button class="filter-btn" aria-pressed="true" data-filter="all">All</button>
-          <button class="filter-btn" aria-pressed="false" data-filter="Intelligence">Intelligence</button>
           <button class="filter-btn" aria-pressed="false" data-filter="Guide">Guide</button>
-          <button class="filter-btn" aria-pressed="false" data-filter="Positioning">Positioning</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Intelligence">Intelligence</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Revenue">Revenue</button>
           <span class="filter-count" aria-live="polite" aria-atomic="true" id="filter-count">16 items</span>
         </div>
+        <p class="filter-description" id="filter-description" aria-live="polite"></p>
         <p class="no-results" role="status" id="no-results">No insights match this filter.</p>
         <div class="article-list" id="article-list">
 
@@ -312,9 +324,9 @@
           </a>
 
           <!-- Positioning — Invisible revenue loss -->
-          <a href="/insights/invisible-revenue-loss.html" class="article-card article-card--intelligence" data-type="Positioning">
+          <a href="/insights/invisible-revenue-loss.html" class="article-card article-card--intelligence" data-type="Revenue">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Positioning</span>
+              <span class="article-tag article-tag--revenue">Revenue</span>
               <span class="article-date">10 Jun 2026</span>
             </div>
             <h3 class="article-title">Inaccessible design is invisible revenue loss</h3>
@@ -528,6 +540,15 @@
           buttons.forEach(function(b) {
             b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
           });
+
+          var descriptions = {
+            'all': '',
+            'Guide': 'Step-by-step guides to EAA requirements, country obligations, and compliance processes.',
+            'Intelligence': 'Enforcement updates, regulatory developments, and compliance data across Ireland, Netherlands, Sweden and Germany.',
+            'Revenue': 'The commercial case for accessibility, what inaccessible design costs and what fixing it is worth.'
+          };
+          var descEl = document.getElementById('filter-description');
+          if (descEl) descEl.textContent = descriptions[filter] || '';
 
           applyFilter(filter);
         });
