@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inaccessible Design Is Invisible Revenue Loss | Usable Access</title>
-  <meta name="description" content="When users with disabilities hit a barrier, they don't complain — they leave. That lost revenue is invisible because organisations only track who completed the journey.">
+  <title>What EAA Compliance Actually Requires — Usable Access</title>
+  <meta name="description" content="EAA compliance has four requirements. Most organisations know about one. Technical conformance, accessibility statement, active governance, documentary evide...">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,16 +33,47 @@
     .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
     header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100}
     .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative}
-    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
-    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
-    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
-    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
-    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
-    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:99}
-    .nav-links.is-open{display:block}
-    .nav-links li{border-bottom:1px solid var(--colour-border)}
-    .nav-links li:last-child{border-bottom:none}
+
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .nav-toggle-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--colour-heading);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      transform-origin: center;
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--colour-white);
+      border-bottom: 2px solid var(--colour-teal);
+      padding: var(--space-md) var(--container-pad);
+      list-style: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      z-index: 99;
+    }
+    .nav-links.is-open { display: block; }
+    .nav-links li { border-bottom: 1px solid var(--colour-border); }
+    .nav-links li:last-child { border-bottom: none; }
     @media(min-width:640px){
       .nav-toggle{display:none}
       .nav-links{display:flex;list-style:none;gap:var(--space-xl);position:static;border-bottom:none;padding:0;box-shadow:none;background:none}
@@ -66,16 +97,12 @@
     .article-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
     .article-body p:last-child{margin-bottom:0}
     .article-body strong{font-weight:600;color:var(--colour-heading)}
-    .article-body a{color:var(--colour-teal);text-decoration:underline}
-    .article-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
-    .stat-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin:var(--space-xl) 0}
-    @media(min-width:640px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
-    .stat-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
-    .stat-card h2{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
-    .stat-figure{display:block;font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--colour-teal-deep);margin-bottom:var(--space-sm);line-height:1}
-    .stat-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
-    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin:var(--space-xl) 0}
-    .callout p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:0;max-width:none}
+    .requirement{background:var(--colour-bg-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-lg)}
+    .requirement--orange{border-left-color:var(--colour-orange)}
+    .requirement h2{font-family:var(--font-display);font-size:1.0625rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .requirement p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.7;margin-bottom:0;max-width:none}
+    .requirement-number{font-family:var(--font-body);font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);display:block;margin-bottom:var(--space-xs)}
+    .requirement--orange .requirement-number{color:var(--colour-orange)}
     .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
     .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md)}
     .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
@@ -89,21 +116,46 @@
     footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
     footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
-    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+    /* ── Enhanced focus styles ── */
+    :focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
+
   <a href="#main" class="skip-link">Skip to main content</a>
+
   <header>
     <div class="container">
       <nav aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
-          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+                    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -125,17 +177,17 @@
       <div class="container">
         <div class="article-container">
           <nav aria-label="Breadcrumb" class="breadcrumb">
-            <a href="/insights.html">Insights</a> &rsaquo; Revenue
+            <a href="/insights.html">Insights</a> &rsaquo; Positioning
           </nav>
           <div class="article-meta">
-            <span class="article-tag">Revenue</span>
+            <span class="article-tag">Positioning</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
-            <span class="article-date">10 Jun 2026</span>
+            <span class="article-date">29 May 2026</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
             <span class="article-market">All markets</span>
           </div>
-          <h1 class="article-title">Inaccessible design is invisible revenue loss</h1>
-          <p class="article-deck">When users with disabilities encounter a barrier they cannot overcome, they don&rsquo;t complain. They leave. That lost revenue is largely invisible because organisations track who completed the journey, not who couldn&rsquo;t continue it.</p>
+          <h1 class="article-title">What EAA compliance actually requires</h1>
+          <p class="article-deck">Most organisations treating EAA compliance as a technical problem are solving the wrong problem. There are four requirements — and most organisations have addressed one.</p>
         </div>
       </div>
     </div>
@@ -144,54 +196,43 @@
       <div class="container">
         <div class="article-container">
 
-          <p>Most organisations come to EAA compliance through enforcement risk: a regulator, a fine ceiling, a deadline they&rsquo;ve missed. That&rsquo;s a legitimate concern. But it frames accessibility as a cost to be managed rather than a problem worth solving.</p>
+          <p>EAA compliance has four requirements. Most organisations know about one of them.</p>
 
-          <p>There is a second argument, and for some organisations it is the more compelling one: inaccessible digital products are losing revenue that organisations cannot see, because the data they collect only captures the users who got through.</p>
-
-          <p>The Barómetro de Accesibilidad Web 2025, a major post-EAA compliance study of 204 private-sector websites, makes the scale of this concrete.</p>
-
-          <div class="stat-grid">
-            <div class="stat-card">
-              <span class="stat-figure">40%</span>
-              <h2>Travel sites</h2>
-              <p>Fail WCAG technical criteria at a level that prevents users from planning or booking independently. Not friction &mdash; a hard stop. Source: Barómetro de Accesibilidad Web 2025.</p>
-            </div>
-            <div class="stat-card">
-              <span class="stat-figure">32%</span>
-              <h2>Financial services sites</h2>
-              <p>Fail to meet even basic WCAG requirements, meaning users cannot complete account actions, payments, or transactions. The worst technical performance of any sector in the study. Source: Barómetro de Accesibilidad Web 2025.</p>
-            </div>
+          <div class="requirement">
+            <span class="requirement-number">Requirement 1</span>
+            <h2>Technical conformance</h2>
+            <p>Your digital products must meet EN 301 549 — the harmonised European standard. In practice, that means WCAG 2.1 Level AA. This is the requirement most organisations are thinking about when they think about EAA compliance.</p>
           </div>
 
-          <p>These are not fringe cases. For a disabled user, the odds of hitting a barrier are substantial. And the revenue consequence is direct: a booking that does not happen, an account that is not opened, a transaction that does not complete.</p>
-
-          <h2 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)">The measurement gap</h2>
-
-          <p>Organisations measure conversion rates carefully. They track drop-off at checkout, cart abandonment, bounce rate. What those metrics cannot capture is the users who encountered a barrier before they reached any of those measurement points.</p>
-
-          <p>A user who cannot complete a booking because the date picker is inaccessible to their screen reader does not appear in the abandonment data. They are simply absent. There is no record of the attempted journey, no signal that the revenue was lost, no prompt to investigate. The data shows only the people who got through.</p>
-
-          <div class="callout">
-            <p><strong>The practical implication:</strong> if your product has accessibility barriers in core user journeys &mdash; checkout, account creation, search, booking &mdash; your conversion analytics are systematically undercounting the potential addressable market. The gap between actual and potential conversion is invisible in your current data.</p>
+          <div class="requirement requirement--orange">
+            <span class="requirement-number requirement--orange">Requirement 2</span>
+            <h2>A published accessibility statement</h2>
+            <p>A mandatory public declaration of your current compliance position, what is not yet accessible, and your remediation plan. Not optional. Most organisations we speak with don't have one. The absence of a statement is itself a compliance failure — and Irish regulators request it first in any complaint investigation.</p>
           </div>
 
-          <h2 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)">The size of the market</h2>
+          <div class="requirement">
+            <span class="requirement-number">Requirement 3</span>
+            <h2>Active governance</h2>
+            <p>A named owner for accessibility, a regular testing rhythm, and a process that survives a team change. Without governance, technical compliance regresses. A passing audit today doesn't mean a compliant product next quarter — the next sprint, the next team restructure, the next product release can all undo it.</p>
+          </div>
 
-          <p>Disabled users represent a significant share of the potential customer base. Estimates range from 15% to over 20% of the population depending on how disability is defined and measured. That range reflects genuine complexity: disability includes people with visual, hearing, motor, and cognitive impairments, many of whom use assistive technology to interact with digital products. It also includes situational impairments &mdash; a broken arm, bright sunlight, a noisy environment &mdash; that affect any user temporarily.</p>
+          <div class="requirement requirement--orange">
+            <span class="requirement-number requirement--orange">Requirement 4</span>
+            <h2>Documentary evidence</h2>
+            <p>Enforcement bodies don't just look for compliant products — they look for evidence of active management. Remediation records. Decision trails. Dated assessments. The documentation that shows the organisation was not simply ignoring the obligation.</p>
+          </div>
 
-          <p>Whatever the precise figure, this is not a niche. It is a share of potential revenue that most organisations are not measuring because they cannot see the people who did not complete the journey.</p>
+          <p>The four requirements are related but they don't reinforce each other automatically. An organisation can have strong technical conformance and no governance to maintain it. It can have governance and no published statement. It can have all three and no documentary evidence trail — which is precisely what an enforcement body asks for first. Each one is necessary. None is sufficient on its own.</p>
 
-          <h2 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)">The compliance case and the commercial case are the same problem</h2>
+          <p>Most organisations we speak with have made progress on the first. Very few have addressed all four. That gap is where enforcement exposure lives.</p>
 
-          <p>Organisations that approach EAA compliance as a legal obligation tend to do the minimum required. They fix the most visible barriers, produce a statement, and move on. The accessibility work is treated as a project with an end date.</p>
+          <p>The assessment method used across Europe to measure compliance — the Solid Foundations Method — checks whether the core elements users need to complete essential tasks are in place. Not every WCAG criterion, but the ones that matter most for logging in, making purchases, contacting support, making payments. It is an expert evaluation, but not a replacement for a full audit or user testing with disabled people. The two are related but not the same — and both matter.</p>
 
-          <p>Organisations that approach accessibility as a commercial problem tend to build differently. They test user journeys with real users, including people with disabilities. They identify where transactions fail. They measure what changes when barriers are removed. The compliance work and the commercial improvement are the same activity, because the barriers that exclude disabled users are the same barriers that create friction for everyone.</p>
-
-          <p>For <a href="/eaa-compliance-fintech.html">financial services organisations</a>, the stakes are particularly acute. The Barómetro data shows 32% of financial services sites failing at the technical level &mdash; in the most heavily regulated sector in Europe. The gap between regulatory sophistication and accessibility performance in that sector is where enforcement exposure and revenue loss intersect.</p>
+          <p>The difference is process, not effort.</p>
 
           <div class="article-cta">
-            <h2>Find out what accessibility barriers are costing your organisation</h2>
-            <p>Our free initial assessment covers where your product may have barriers, what they mean for your compliance position, and what a proportionate next step looks like.</p>
+            <h2>Find out where you stand across all four</h2>
+            <p>Our free initial assessment covers whether EAA applies to your organisation, which of the four requirements you've addressed, and what a proportionate next step looks like.</p>
             <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
           </div>
 
