@@ -42,12 +42,7 @@
   </url>
   <url>
     <loc>https://usableaccess.io/bfsg-germany-accessibility-compliance.html</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Insight articles -->
+    <lastmod>2026-06-15</lastmod>
   <url>
     <loc>https://usableaccess.io/insights/what-eaa-compliance-actually-requires.html</loc>
     <lastmod>2026-05-29</lastmod>
@@ -83,7 +78,7 @@
   </url>
   <url>
     <loc>https://usableaccess.io/eaa-compliance-netherlands.html</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -115,7 +110,13 @@
   </url>
   <url>
     <loc>https://usableaccess.io/insights/france-eaa-civil-society-enforcement.html</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usableaccess.io/eaa-compliance-france.html</loc>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
