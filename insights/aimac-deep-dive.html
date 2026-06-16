@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Code and EAA Accessibility &mdash; The AIMAC Findings | Usable Access</title>
+  <meta name="description" content="36 AI coding models tested for EAA accessibility output. Most produce non-compliant HTML by default. Here is what the AIMAC benchmark means for your product.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:99}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .article-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-meta{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-lg);flex-wrap:wrap}
+    .article-tag{display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)}
+    .article-date,.article-market{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)}
+    .article-meta-sep{color:var(--colour-border)}
+    .article-title{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    @media(min-width:640px){.article-title{font-size:2.25rem}}
+    .article-deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5}
+    .article-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .article-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .article-body p:last-child{margin-bottom:0}
+    .article-body strong{font-weight:600;color:var(--colour-heading)}
+    .article-body a{color:var(--colour-teal);text-decoration:underline}
+    .article-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md)}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .article-nav{padding:var(--space-xl) 0}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="article-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Intelligence
+          </nav>
+          <div class="article-meta">
+            <span class="article-tag">Intelligence</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-date">16 Jun 2026</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-market">All markets</span>
+          </div>
+          <h1 class="article-title">AI code and EAA accessibility &mdash; what the AIMAC data shows</h1>
+          <p class="article-deck">Most development teams now use AI coding tools as a standard part of their workflow. The AIMAC benchmark tests what those tools produce by default. The results matter for anyone whose product is built with AI-assisted code.</p>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>AI coding tools have become a standard part of front-end development. GitHub Copilot, Claude, ChatGPT, Gemini &mdash; these tools generate significant portions of the HTML that ends up in production. The assumption among most teams is that the output is broadly correct. For accessibility, that assumption needs examining.</p>
+
+          <p>The AIMAC (AI Model Accessibility Checker) benchmark is a systematic evaluation of 36 AI coding models, developed by the <a href="https://gaad.foundation" rel="noopener noreferrer">GAAD Foundation</a> in partnership with <a href="https://www.servicenow.com" rel="noopener noreferrer">ServiceNow</a>. It tests what each model produces by default &mdash; without explicit accessibility prompting &mdash; when asked to generate HTML. The benchmark measures whether the output meets accessibility criteria including WCAG conformance. It is an expert evaluation of model defaults, not a replacement for a full accessibility audit or user testing with disabled people.</p>
+
+          <p>The headline finding: most models produce non-compliant HTML by default.</p>
+
+          <h2>What AIMAC measures and what it does not</h2>
+
+          <p>The test is specifically about default output. What does the model produce when a developer asks it to write a form, a navigation component, a modal, a data table &mdash; without saying &ldquo;make it accessible&rdquo;? The benchmark captures the baseline behaviour of the tool as most developers use it most of the time.</p>
+
+          <p>AIMAC does not measure overall code quality. A model that scores poorly on the AIMAC accessibility benchmark may produce excellent code in other respects. The benchmark is narrow and specific: accessibility output by default. That narrowness is what makes it useful. It isolates exactly the question that matters for EAA compliance: what does AI-generated code look like before anyone has thought about accessibility?</p>
+
+          <p>These findings are reinforced by research presented at Microsoft Build in June 2026 by Aaron Gustafson (Microsoft), which found that out of the box, most AI coding agents pass only around 8&ndash;25% of automatable accessibility checks. Even with instruction files, the pass rate climbs only to 37&ndash;60%. It is not until models are given deterministic accessibility tests to run against their own output that results improve significantly &mdash; and even then, automated checks only cover around half of what genuine accessibility requires. The AIMAC benchmark and the Microsoft Build research are measuring different things, but they point to the same conclusion.</p>
+
+          <p>The current rankings (updated June 2026) show OpenAI at the top, with GPT 5.4 Mini ranking first with a median accessibility debt score of zero across all 28 categories. OpenAI holds all five top positions. At the other end of the 36-model leaderboard, the worst performers produce significantly more accessibility violations by default. The full rankings are at <a href="https://aimac.ai" rel="noopener noreferrer">aimac.ai</a> and updated as models change &mdash; worth checking which tools your team uses.</p>
+
+          <h2>What the data shows</h2>
+
+          <p>Across the 36 models tested, the majority produce HTML that fails accessibility requirements without specific prompting. The range is wide &mdash; some models perform significantly better than others &mdash; but the central finding holds: default output from most AI coding tools is not EAA-compliant.</p>
+
+          <div class="callout">
+            <p><strong>The default problem:</strong> a developer who does not know to prompt for accessibility gets non-compliant code by default. Most developers are not accessibility specialists. Most AI coding prompts do not include accessibility requirements. The result is a systematic gap between what is generated and what EAA compliance requires &mdash; at scale, across every team using AI-assisted development.</p>
+          </div>
+
+          <h2>Why this matters for EAA compliance</h2>
+
+          <p>The EAA does not distinguish between how code was written. An organisation is legally responsible for the accessibility of its digital products regardless of whether those products were built by hand, generated by AI, or assembled from third-party components. &ldquo;Our AI wrote it&rdquo; is not a compliance defence. The obligation attaches to the output, not the process.</p>
+
+          <p>This has direct implications for organisations using AI-assisted development in <a href="/eaa-compliance-ecommerce.html">e-commerce</a>, <a href="/eaa-compliance-fintech.html">financial services</a>, and any other sector covered by the EAA. If AI tools are generating front-end code and accessibility is not being reviewed before that code goes into production, non-compliant features are being shipped continuously. Each release is a potential regression.</p>
+
+          <p>The <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">enforcement consequences</a> are real. Regulators are not currently asking whether AI was involved in building a product. They are asking whether the product is accessible. The mechanism of non-compliance is irrelevant to the penalty.</p>
+
+          <h2>What prompting can do and what it cannot</h2>
+
+          <p>Prompting AI tools to produce accessible output improves results. Asking for ARIA labels, semantic HTML, sufficient colour contrast, keyboard navigability &mdash; these prompts produce better output than the default. The AIMAC data supports this: models respond to accessibility-specific prompting.</p>
+
+          <p>But prompting is not sufficient on its own for two reasons. First, it requires developers to know what to ask for &mdash; which requires accessibility knowledge that most developers do not have. Second, even accessibility-prompted output needs review. AI tools can produce output that appears accessible but fails in specific contexts, for specific assistive technologies, or under conditions the prompt did not anticipate.</p>
+
+          <p>Prompting is a useful first step. It is not the same as a compliance process.</p>
+
+          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The same research found that the assumption automation improves accessibility is not evidenced &mdash; and that ableist bias in AI is structural, rooted in training data, and resistant to technical fix. These findings reinforce why prompting is a starting point, not a solution: the tools can be guided toward better output, but the underlying defaults reflect training choices that accessibility prompts do not fundamentally alter.</p>
+
+          <h2>The governance argument</h2>
+
+          <p>This is why <a href="/eaa-governance.html">governance matters beyond the one-off audit</a>. A product that passes an accessibility check today can regress with the next feature release if no accessibility review is built into the development process. AI-assisted development accelerates the pace of that regression risk &mdash; more code is being generated more quickly, and if accessibility is not part of the review process, non-compliant features accumulate between audits.</p>
+
+          <p>The organisations that will maintain EAA compliance over time are the ones that treat accessibility as part of their release process, not as a periodic exercise. That means accessibility criteria in acceptance testing, a named owner who reviews AI-generated components, and a documented process that survives team changes. Not because the regulator will ask for it &mdash; though they will &mdash; but because it is the only way the work holds.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>The practical question:</strong> does your development process include an accessibility review before AI-generated front-end code goes into production? If not, the AIMAC data suggests that non-compliant features are being shipped in every release cycle. That is the gap a governance process closes.</p>
+          </div>
+
+          <div class="article-cta">
+            <h2>Find out where your product stands</h2>
+            <p>Our free initial assessment covers your current accessibility position, including whether AI-assisted development is creating ongoing compliance risk and what a proportionate governance process looks like for your team.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related intelligence</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/insights/ai-paradox.html">The AI paradox &mdash; why overlay tools make EAA compliance harder, not easier</a></li>
+            <li><a href="/eaa-compliance-ecommerce.html">EAA compliance for e-commerce &mdash; what online retailers need to know</a></li>
+            <li><a href="/eaa-compliance-fintech.html">EAA compliance for FinTech and financial services</a></li>
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines, penalties and sanctions &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/insights/invisible-revenue-loss.html">Inaccessible design is invisible revenue loss</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
