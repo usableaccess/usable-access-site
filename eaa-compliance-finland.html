@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Compliance in Finland — Traficom Enforcement | Usable Access</title>
+  <meta name="description" content="Finland's EAA enforcement is complaint-driven from the outset. Traficom imposes daily accruing fines. What organisations need to know.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal: #0F6B6B; --colour-teal-deep: #0A5252; --colour-teal-subtle: #F4FAFA;
+      --colour-teal-badge: #E0F2F2; --colour-orange: #B05000; --colour-orange-dark: #8B3D00;
+      --colour-orange-tint: #FEF6EE; --colour-heading: #1A1A1A; --colour-body: #2C2C2C;
+      --colour-secondary: #555555; --colour-meta: #595959; --colour-border: #DDDDDD;
+      --colour-bg-subtle: #F9F9F9; --colour-white: #ffffff;
+      --font-display: 'Lora', Georgia, serif; --font-body: 'Inter', Arial, sans-serif;
+      --space-xs: 0.25rem; --space-sm: 0.5rem; --space-md: 1rem; --space-lg: 1.5rem;
+      --space-xl: 2rem; --space-2xl: 3rem; --space-3xl: 4rem;
+      --container-max: 960px; --container-pad: 1.25rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--colour-body); background: var(--colour-white); }
+    .skip-link { position: absolute; top: -100%; left: 0; background: var(--colour-teal); color: var(--colour-white); padding: 0.75rem 1.25rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; z-index: 200; }
+    .skip-link:focus { top: 0; }
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+    .article-container { max-width: 680px; }
+    .site-logo { display: flex; flex-direction: column; gap: 3px; line-height: 1; text-decoration: none; margin-right: var(--space-xl); }
+    .site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
+    .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
+    header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+    .nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .nav-toggle-bar { display: block; width: 100%; height: 2px; background-color: var(--colour-heading); transition: transform 0.2s ease, opacity 0.2s ease; transform-origin: center; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) var(--container-pad); list-style: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 99; }
+    .nav-links.is-open { display: block; }
+    .nav-links li { border-bottom: 1px solid var(--colour-border); }
+    .nav-links li:last-child { border-bottom: none; }
+    @media (min-width: 640px) {
+      .nav-toggle { display: none; }
+      .nav-links { display: flex !important; position: static; border-bottom: none; padding: 0; box-shadow: none; background: none; list-style: none; gap: var(--space-xl); }
+      .nav-links li { border-bottom: none; }
+      .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; letter-spacing: 0.01em; }
+      .nav-links a:hover { color: var(--colour-teal); }
+      .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    }
+    .page-header { padding: var(--space-2xl) 0 var(--space-xl); border-bottom: 1px solid var(--colour-border); }
+    .page-header h1 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
+    .page-header .deck { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 400; font-style: italic; color: var(--colour-secondary); line-height: 1.5; max-width: 36em; }
+    @media (min-width: 640px) { .page-header h1 { font-size: 2.25rem; } }
+    .breadcrumb { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); margin-bottom: var(--space-lg); }
+    .breadcrumb a { color: var(--colour-teal); text-decoration: underline; }
+    .breadcrumb a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    .page-body { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--colour-border); }
+    .page-body h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-md); margin-top: var(--space-2xl); }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-lg); max-width: 36em; }
+    .page-body ul { margin: 0 0 var(--space-lg) var(--space-xl); }
+    .page-body ul li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
+    .page-body strong { font-weight: 600; color: var(--colour-heading); }
+    .callout { background: var(--colour-teal-subtle); border-left: 4px solid var(--colour-teal); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
+    .callout p { margin-bottom: 0; max-width: none; }
+    .callout--orange { background: var(--colour-orange-tint); border-left-color: var(--colour-orange); }
+    .article-cta { background: var(--colour-teal); padding: var(--space-2xl); margin: var(--space-2xl) 0; }
+    .article-cta h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--colour-white); margin-bottom: var(--space-md); margin-top: 0; }
+    .article-cta p { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-white); line-height: 1.65; margin-bottom: var(--space-lg); max-width: 36em; }
+    .cta-button { display: inline-block; background: var(--colour-orange); color: #ffffff !important; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.875rem 1.75rem; text-decoration: none !important; }
+    .cta-button:hover { background: var(--colour-orange-dark); }
+    .cta-button:focus { outline: 3px solid var(--colour-white); outline-offset: 3px; }
+    .related-links { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    .related-links h2 { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--colour-meta); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: var(--space-md); }
+    .related-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .related-list a { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
+    .related-list a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    .back-link-section { padding: var(--space-xl) 0; }
+    .back-link { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-teal); text-decoration: underline; }
+    .back-link:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    footer { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
+    footer a { color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.25rem 0; min-height: 44px; line-height: 44px; }
+    footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Finland
+          </nav>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+            <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide &mdash; Finland</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">15 Jun 2026</span>
+          </div>
+          <h1>EAA compliance in Finland &mdash; what businesses need to know</h1>
+          <p class="deck">Finland has one of the strongest traditions of digital inclusion in Europe and a public that is aware of accessibility rights. Enforcement through Traficom was active from day one. Any organisation with Finnish consumer exposure should treat a complaint as possible, not theoretical.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>The European Accessibility Act became enforceable in Finland on 28 June 2025 under the Act on Accessibility Requirements for Products and Services (568/2023). Finland&rsquo;s EAA enforcement environment is shaped by two factors that make it distinctive among the markets we track: a strong institutional and cultural tradition of digital inclusion, and an enforcement mechanism that is complaint-driven from the outset rather than waiting for regulator-initiated audits.</p>
+
+          <p>Any organisation providing covered digital products or services to consumers in Finland is in scope &mdash; regardless of where the organisation is headquartered.</p>
+
+          <h2>The enforcement authority: Traficom</h2>
+
+          <p><strong>Traficom</strong> (the Finnish Transport and Communications Agency, known in Finnish as Liikenne- ja viestintävirasto) is the designated supervisory authority for EAA compliance in Finland. Traficom receives complaints from users, investigates them, and has the authority to impose penalties where an organisation is found to be non-compliant.</p>
+
+          <p>Traficom also conducts its own market surveillance independently of complaints. An organisation does not need to have received a complaint to be subject to a Traficom investigation. However, given Finland&rsquo;s high levels of public awareness of accessibility rights, the complaint pathway is likely to be the primary route by which most enforcement actions begin.</p>
+
+          <h2>The distinctive penalty mechanism: conditional fines</h2>
+
+          <p>Finland&rsquo;s most significant enforcement feature is not a headline fine ceiling &mdash; it is the mechanism through which fines are structured. Traficom can impose <strong>conditional fines</strong>: financial penalties that accrue on a daily basis until the accessibility issue is fully resolved.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>This is not a one-time fine.</strong> A conditional fine accrues every day the accessibility problem remains unresolved. An organisation that delays remediation faces a growing financial liability, not a fixed one. The total exposure depends entirely on how long the organisation takes to act.</p>
+          </div>
+
+          <p>This mechanism creates a fundamentally different risk profile from markets where penalties are assessed as a single fixed sum. In Finland, delay has a direct and compounding cost. An organisation that remediates promptly limits its liability; one that contests, ignores, or delays remediation sees that liability grow with each passing day.</p>
+
+          <p>The practical reality of this mechanism is already visible in the Nordic region. In December 2025, Norway&rsquo;s equivalent digital accessibility regulator issued daily fines of NOK&nbsp;50,000 against the operator of HelsaMi &mdash; a patient portal used by 425,000 residents &mdash; after 64 of 119 identified accessibility issues remained unresolved past the remediation deadline. Norway operates under equivalent EEA obligations rather than the EAA directly, but the enforcement mechanism and its consequences are identical. Daily accruing fines compound quickly.</p>
+
+          <h2>How the complaint pathway works</h2>
+
+          <p>A user who encounters an accessibility barrier on a digital product or service in scope can file a complaint directly with Traficom. Finland&rsquo;s public is active in exercising digital rights &mdash; this is not a passive enforcement environment. Complaints are expected to arrive from day one of enforcement rather than following a period of regulator-led outreach.</p>
+
+          <p>Once a complaint is received, Traficom investigates. If it finds non-compliance, it can require the organisation to remediate and impose a conditional fine for each day that remediation is not completed. The organisation has the opportunity to respond and provide evidence of its compliance position &mdash; which is precisely why having documented compliance activity matters.</p>
+
+          <p>Traficom can also initiate an investigation without a user complaint, based on its own market surveillance programme.</p>
+
+          <h2>What compliance requires</h2>
+
+          <p>EAA compliance in Finland has four mandatory elements:</p>
+
+          <ul>
+            <li><strong>Technical conformance.</strong> Digital products and services must meet EN 301 549 &mdash; the harmonised European technical standard. In practice that means WCAG 2.1 Level AA for web and mobile content. EN 301 549 V3.2.1 is the current harmonised standard; V4.1.1, which incorporates WCAG 2.2, is expected to be referenced in the Official Journal in late 2026.</li>
+            <li><strong>A published accessibility statement.</strong> A mandatory public declaration of your current conformance level, what is not yet accessible, and your remediation plan. In Finland, as across the EU, this statement is typically the first document a supervisory authority requests when investigating a complaint.</li>
+            <li><strong>Active governance.</strong> A named owner for accessibility within the organisation, a regular testing rhythm, and a process that continues to function regardless of team changes. Governance is what turns a one-time audit into ongoing compliance.</li>
+            <li><strong>Documentary evidence.</strong> Dated assessments, remediation records, and a compliance process that demonstrates the organisation has been actively managing its obligations &mdash; not simply asserting them.</li>
+          </ul>
+
+          <p>Documentary evidence is particularly important in Finland&rsquo;s enforcement environment. Because complaints can arrive promptly, organisations need to be in a position to respond quickly and substantively. Evidence of active compliance management is what distinguishes a defensible position from one that is not.</p>
+
+          <h2>Which organisations are covered</h2>
+
+          <p>The standard EAA scope applies in Finland: e-commerce, banking and financial services, electronic communications, audiovisual media services, and transport services provided to consumers. Organisations based outside Finland that offer covered services to Finnish consumers are in scope on the same basis as Finnish-based organisations.</p>
+
+          <p>The microenterprise exemption applies where an organisation has fewer than 10 employees <strong>and</strong> annual turnover or balance sheet total not exceeding &euro;2 million. Both conditions are required simultaneously &mdash; meeting one but not the other does not qualify an organisation for the exemption. Organisations that believe they may qualify should verify this position before relying on it.</p>
+
+          <div class="article-cta">
+            <h2>Find out where your organisation stands</h2>
+            <p>Our free initial assessment covers your current compliance position, where gaps may exist relative to EAA requirements, and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-sanctions.html">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines, penalties and sanctions &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-disproportionate-burden.html">The EAA disproportionate burden exemption &mdash; what it actually requires</a></li>
+            <li><a href="/eaa-compliance-france.html">EAA compliance in France &mdash; civil society enforcement and the Carrefour ruling</a></li>
+            <li><a href="/eaa-revenue-loss.html">Inaccessible design is invisible revenue loss</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-link-section">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
