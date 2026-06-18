@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Accessibility Paradox — Overlays vs Compliance | Usable Access</title>
+  <meta name="description" content="AI overlay tools promise instant EAA compliance. The evidence shows they don't deliver it. Here is what the research says and what genuine compliance requires.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;--colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;--colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;--colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;--colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;--font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;--container-max:960px;--container-pad:1.25rem}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:99}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){.nav-toggle{display:none}.nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}.nav-links li{border-bottom:none}.nav-links a{font-size:.875rem;padding:0}}
+    .article-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-meta{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-lg);flex-wrap:wrap}
+    .article-tag{display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)}
+    .article-date,.article-market{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)}
+    .article-meta-sep{color:var(--colour-border)}
+    .article-title{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    @media(min-width:640px){.article-title{font-size:2.25rem}}
+    .article-deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5}
+    .article-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .article-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .article-body p:last-child{margin-bottom:0}
+    .article-body strong{font-weight:600;color:var(--colour-heading)}
+    .article-body a{color:var(--colour-teal);text-decoration:underline}
+    .article-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md)}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-nav{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="article-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Guide
+          </nav>
+          <div class="article-meta">
+            <span class="article-tag">Guide</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-date">18 Jun 2026</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-market">All markets</span>
+          </div>
+          <h1 class="article-title">The AI accessibility paradox &mdash; overlays vs genuine compliance</h1>
+          <p class="article-deck">The same AI boom creating accessibility debt through non-compliant code is also selling the solution: overlay tools that claim to fix accessibility automatically. The paradox is that the fix does not work.</p>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>Two things are happening simultaneously in the AI and accessibility space. <a href="/insights/aimac-deep-dive.html">AI coding tools are generating non-compliant HTML by default</a>, creating a continuous stream of accessibility failures in products built with AI assistance. And a separate category of AI-powered tools &mdash; overlay products &mdash; is being sold as the solution to exactly that problem.</p>
+
+          <p>Aaron Gustafson, presenting at Microsoft Build in June 2026 alongside blind PM Jessie Lorenz and GitHub&rsquo;s Carie Fisher, framed the underlying dynamic precisely: AI does not fix a broken process. It accelerates whatever process you already have. If accessibility is part of the workflow, AI can help scale inclusion. If it is not, AI will accelerate and scale the barriers being shipped. That is the paradox &mdash; and overlay tools sit squarely on the wrong side of it.</p>
+
+          <p>One line of JavaScript. Instant compliance. No development work required. That is the claim. It is worth examining carefully.</p>
+
+          <h2>What overlay tools claim to do</h2>
+
+          <p>Accessibility overlay tools are JavaScript libraries that load on top of a website or application and apply automated modifications to the underlying page. They typically include features such as contrast adjustment, text resizing, keyboard navigation aids, and screen reader compatibility fixes &mdash; all delivered without changes to the underlying HTML.</p>
+
+          <p>The marketing for these tools routinely promises EAA compliance, WCAG conformance, or immediate accessibility for all users. Some overlay vendors claim that a single line of code is sufficient to meet legal accessibility obligations. The price point is attractive. The promise is significant.</p>
+
+          <h2>What the evidence shows</h2>
+
+          <p>The evidence does not support the claims. Screen reader users and keyboard users &mdash; the people these tools most directly claim to help &mdash; consistently report that overlay tools make their experience worse, not better. The automated modifications interfere with the assistive technology the user is already using. The result is more barriers, not fewer.</p>
+
+          <p>This is not a fringe view. The National Federation of the Blind and the American Council of the Blind have both formally opposed overlay tools. Hundreds of accessibility practitioners and researchers have signed the <a href="https://overlayfactsheet.com" rel="noopener noreferrer">Overlay Fact Sheet</a>, a public statement of opposition based on evidence from disabled users and technical analysis. The practitioner consensus on overlay tools is clear.</p>
+
+          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The same research found that the assumption automation improves accessibility is not evidenced &mdash; and that ableist bias in AI is structural, rooted in training data, and resistant to technical fix. Overlay tools represent precisely the kind of automated response this research identifies as insufficient: a technical layer applied on top of a structural problem.</p>
+
+          <p>Research presented at Microsoft Build in June 2026 found that out of the box, most AI coding agents only pass around 8&ndash;25% of automatable accessibility checks. Even with instruction files guiding the model, the pass rate only reaches 37&ndash;60%. The implication is direct: AI tools are generating inaccessible code at scale, and overlays applied on top of that code do not resolve the underlying failures.</p>
+
+          <p>The technical reason is straightforward. Overlay tools add a layer on top of inaccessible code rather than fixing the underlying HTML. A form label that is missing from the source code cannot be reliably inferred and inserted by a JavaScript overlay. A keyboard trap in the underlying navigation cannot be resolved by a script running on top of it. The source of the problem and the proposed fix are operating at different levels.</p>
+
+          <div class="callout">
+            <p><strong>The core problem:</strong> overlays do not fix the underlying HTML. They apply modifications on top of it. For assistive technology users who interact directly with the page structure, those modifications frequently conflict with the tools they are already using. The people overlays claim to help are often the people most harmed by them.</p>
+          </div>
+
+          <h2>The EAA position</h2>
+
+          <p>An overlay tool does not constitute EAA compliance. EN&nbsp;301&nbsp;549 &mdash; the harmonised European accessibility standard referenced by the EAA &mdash; requires conformance with WCAG 2.1 Level AA. Conformance is measured against the underlying HTML, not against a JavaScript layer applied on top of it.</p>
+
+          <p>Enforcement bodies assess the product as a user experiences it, particularly as a disabled user with assistive technology experiences it. An overlay that makes that experience worse does not bring the product closer to conformance. It moves it further away.</p>
+
+          <p>&ldquo;Our AI wrote it&rdquo; is not a compliance defence. Neither is &ldquo;we installed an overlay.&rdquo; The obligation attaches to the output &mdash; to what a disabled user encounters when they try to use the product.</p>
+
+          <h2>The commercial risk of documented non-compliance</h2>
+
+          <p>There is a specific risk attached to purchasing an overlay tool in the belief that it provides compliance. The purchase creates a documentary record: the organisation was aware of its EAA accessibility obligations, and it chose a response. If that response is subsequently found to be insufficient &mdash; which the evidence strongly suggests it will be &mdash; the organisation has documented its awareness without having addressed the problem.</p>
+
+          <p>In <a href="/eaa-compliance-ireland.html">Ireland</a>, where directors face personal criminal liability for EAA non-compliance, the due diligence defence requires evidence of active, genuine compliance management. A documented decision to install an overlay rather than undertake technical remediation is unlikely to constitute due diligence.</p>
+
+          <p>No EAA fines have been issued in any market as of June 2026. But enforcement is active. When penalty decisions arrive, the organisations with documented awareness and insufficient responses will be in a weaker position than those that took no action at all &mdash; because they have already demonstrated they knew.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>The documented awareness problem:</strong> buying an overlay creates a record that your organisation knew about its accessibility obligations. If the overlay proves insufficient &mdash; and the evidence strongly suggests it will &mdash; you have documented your awareness without having addressed the problem. That is a more exposed position than not having acted at all.</p>
+          </div>
+
+          <h2>What genuine compliance requires</h2>
+
+          <p>There is no shortcut. Genuine EAA compliance requires the same things it always has.</p>
+
+          <p><strong>Technical remediation</strong> of the underlying code: fixing the HTML, the ARIA, the keyboard interactions, the colour contrast, the form labels &mdash; in the source, not in a layer on top of it. This is the work that overlays claim to replace. It cannot be replaced.</p>
+
+          <p><strong>A published <a href="/eaa-accessibility-statement.html">accessibility statement</a></strong> that accurately reflects the current state of the product, identifies what is not yet accessible, and includes a remediation plan. A statement that claims full compliance through an overlay does not meet this requirement.</p>
+
+          <p><strong>Active <a href="/eaa-governance.html">governance</a></strong>: a named owner for accessibility, a testing process, and a mechanism for catching regressions before they reach production. <a href="/insights/aimac-deep-dive.html">AI-assisted development</a> makes this more important, not less &mdash; the pace of code generation means accessibility failures can accumulate between review cycles if there is no process to catch them.</p>
+
+          <p><strong>Documentary evidence</strong> of active management: dated assessments, remediation records, and a process trail that demonstrates ongoing attention, not a one-off exercise.</p>
+
+          <p>None of these can be purchased as a one-line JavaScript include. <a href="/what-is-digital-accessibility.html">Digital accessibility</a> is a property of the product, not a feature added on top of it.</p>
+
+          <div class="article-cta">
+            <h2>Find out where your product actually stands</h2>
+            <p>Our free initial assessment covers your current accessibility position, where the gaps are relative to EAA requirements, and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related intelligence</h2>
+          <ul class="related-list">
+            <li><a href="/insights/aimac-deep-dive.html">AI coding models and accessibility &mdash; what the AIMAC benchmark reveals</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what directors need to know</a></li>
+            <li><a href="/eaa-compliance-ecommerce.html">EAA compliance for e-commerce &mdash; what online retailers need to know</a></li>
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines, penalties and sanctions &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-revenue-loss.html">Inaccessible design is invisible revenue loss</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
