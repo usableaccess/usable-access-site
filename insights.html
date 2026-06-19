@@ -311,14 +311,26 @@
         <div class="filters" role="group" aria-label="Filter insights by type">
           <span class="filters-label" aria-hidden="true">Filter:</span>
           <button class="filter-btn" aria-pressed="true" data-filter="all">All</button>
-          <button class="filter-btn" aria-pressed="false" data-filter="Guide">Guide</button>
           <button class="filter-btn" aria-pressed="false" data-filter="Intelligence">Intelligence</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Country">Country guides</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Guide">Guide</button>
           <button class="filter-btn" aria-pressed="false" data-filter="Revenue">Revenue</button>
-          <span class="filter-count" aria-live="polite" aria-atomic="true" id="filter-count">21 items</span>
+          <span class="filter-count" aria-live="polite" aria-atomic="true" id="filter-count">22 items</span>
         </div>
         <p class="filter-description" id="filter-description" aria-live="polite"></p>
         <p class="no-results" role="status" id="no-results">No insights match this filter.</p>
         <div class="article-list" id="article-list">
+
+          <!-- Guide — Italy -->
+          <a href="/eaa-compliance-italy.html" class="article-card article-card--guide" data-type="Country">
+            <div class="article-meta">
+              <span class="article-tag article-tag--guide">Guide &mdash; Italy</span>
+              <span class="article-date">19 Jun 2026</span>
+            </div>
+            <h3 class="article-title">EAA compliance in Italy &mdash; what organisations need to know</h3>
+            <p class="article-excerpt">Italy gives organisations 90 days to fix identified accessibility failures before any financial penalty applies &mdash; the most generous cure period in the EU. AgID enforces. Maximum fines reach &euro;1,000,000 for very serious violations.</p>
+            <span class="article-market">Italy</span>
+          </a>
 
           <!-- Intelligence — AI paradox -->
           <a href="/insights/ai-paradox.html" class="article-card article-card--intelligence" data-type="Intelligence">
@@ -354,7 +366,7 @@
           </a>
 
           <!-- Guide — EAA compliance Ireland -->
-          <a href="/eaa-compliance-ireland.html" class="article-card article-card--intelligence" data-type="Guide">
+          <a href="/eaa-compliance-ireland.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Guide</span>
               <span class="article-date">Updated 18 Jun 2026</span>
@@ -365,7 +377,7 @@
           </a>
 
           <!-- Guide — Finland country compliance -->
-          <a href="/eaa-compliance-finland.html" class="article-card article-card--intelligence" data-type="Guide">
+          <a href="/eaa-compliance-finland.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Guide &mdash; Finland</span>
               <span class="article-date">16 Jun 2026</span>
@@ -376,7 +388,7 @@
           </a>
 
           <!-- Guide — France country compliance -->
-          <a href="/eaa-compliance-france.html" class="article-card article-card--intelligence" data-type="Guide">
+          <a href="/eaa-compliance-france.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Guide &mdash; France</span>
               <span class="article-date">15 Jun 2026</span>
@@ -387,7 +399,7 @@
           </a>
 
           <!-- Guide — Netherlands -->
-          <a href="/eaa-compliance-netherlands.html" class="article-card article-card--intelligence" data-type="Guide">
+          <a href="/eaa-compliance-netherlands.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Guide</span>
               <span class="article-date">Updated 15 Jun 2026</span>
@@ -398,7 +410,7 @@
           </a>
 
           <!-- Guide — BFSG Germany -->
-          <a href="/bfsg-germany-accessibility-compliance.html" class="article-card article-card--intelligence" data-type="Guide">
+          <a href="/bfsg-germany-accessibility-compliance.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Guide</span>
               <span class="article-date">Updated 15 Jun 2026</span>
@@ -441,7 +453,7 @@
           </a>
 
           <!-- Guide — Sweden -->
-          <a href="/eaa-compliance-sweden.html" class="article-card article-card--intelligence" data-type="Guide">
+          <a href="/eaa-compliance-sweden.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Guide</span>
               <span class="article-date">9 Jun 2026</span>
@@ -608,7 +620,8 @@
             'all': '',
             'Guide': 'Step-by-step guides to EAA requirements, country obligations, and compliance processes.',
             'Intelligence': 'Enforcement updates, regulatory developments, and compliance data across Ireland, Netherlands, Sweden and Germany.',
-            'Revenue': 'The commercial case for accessibility, what inaccessible design costs and what fixing it is worth.'
+            'Revenue': 'The commercial case for accessibility, what inaccessible design costs and what fixing it is worth.',
+            'Country': 'Country-specific EAA compliance guides covering enforcement authorities, penalty structures, and national implementation details.'
           };
           var descEl = document.getElementById('filter-description');
           if (descEl) descEl.textContent = descriptions[filter] || '';

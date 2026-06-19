@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Compliance in Italy &mdash; AgID Enforcement | Usable Access</title>
+  <meta name="description" content="Italy&rsquo;s EAA enforcement includes a 90-day cure period before fines apply. AgID enforces. Fines reach &euro;1,000,000 for very serious violations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;--colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;--colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;--colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;--colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;--font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;--container-max:960px;--container-pad:1.25rem}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:99}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){.nav-toggle{display:none}.nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}.nav-links li{border-bottom:none}.nav-links a{font-size:.875rem;padding:0}}
+    .article-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-meta{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-lg);flex-wrap:wrap}
+    .article-tag{display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)}
+    .article-date,.article-market{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)}
+    .article-meta-sep{color:var(--colour-border)}
+    .article-title{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    @media(min-width:640px){.article-title{font-size:2.25rem}}
+    .article-deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5}
+    .article-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .article-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .article-body p:last-child{margin-bottom:0}
+    .article-body strong{font-weight:600;color:var(--colour-heading)}
+    .article-body a{color:var(--colour-teal);text-decoration:underline}
+    .article-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .fine-table{width:100%;border-collapse:collapse;margin-bottom:var(--space-xl);font-family:var(--font-body);font-size:.9375rem}
+    .fine-table th{background:var(--colour-teal);color:var(--colour-white);font-weight:600;padding:.625rem var(--space-md);text-align:left;font-size:.8125rem;letter-spacing:.03em}
+    .fine-table td{padding:.625rem var(--space-md);border-bottom:1px solid var(--colour-border);color:var(--colour-body);vertical-align:top}
+    .fine-table tr:last-child td{border-bottom:none}
+    .fine-table tr:nth-child(even) td{background:var(--colour-bg-subtle)}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md)}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-nav{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="article-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Country guide
+          </nav>
+          <div class="article-meta">
+            <span class="article-tag">Guide &mdash; Italy</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-date">19 Jun 2026</span>
+          </div>
+          <h1 class="article-title">EAA compliance in Italy &mdash; what organisations need to know</h1>
+          <p class="article-deck">Italy gives organisations 90 days to fix identified accessibility failures before any financial penalty applies. That cure period is the most generous in the EU &mdash; and it sits alongside one of the highest maximum fine ceilings. AgID has been enforcing digital accessibility since 2004.</p>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>Italy transposed the European Accessibility Act through Decreto Legislativo n.&thinsp;82/2022, building on two decades of existing domestic accessibility law. The Stanca Law (Legge 9 gennaio 2004, n.&thinsp;4) brought digital accessibility requirements to Italian public bodies from 2004, and was subsequently extended to private companies. Italy is one of the few EU member states entering EAA enforcement with substantial institutional experience rather than building enforcement capacity from scratch.</p>
+
+          <p>The enforcement authority is AgID &mdash; the Agenzia per l&rsquo;Italia Digitale, the national digital agency operating under the Ministry for Technological Innovation. AgID has published detailed technical guidelines for EAA compliance, including specific test procedures mapped to EN&nbsp;301&nbsp;549. Italy&rsquo;s enforcement approach is expected to be technically competent and methodical, informed by that two-decade baseline.</p>
+
+          <h2>The 90-day cure period</h2>
+
+          <p>Italy&rsquo;s most distinctive enforcement feature is its cure period. When AgID formally notifies an organisation of EAA non-compliance, that organisation has 90 calendar days to remediate all identified issues. If remediation is complete and verified within the 90-day window, no financial penalty is imposed.</p>
+
+          <p>This is the most generous cure period in the EU. Most member states allow 30 days from formal notification. Italy&rsquo;s 90-day provision reflects its longer history of working with organisations through accessibility remediation rather than moving immediately to financial sanction.</p>
+
+          <div class="callout">
+            <p><strong>The cure period applies from formal AgID notification &mdash; not from the EAA enforcement date.</strong> An organisation that has not yet received a formal notice is not in a cure period. The 90 days begin when AgID issues its formal finding of non-compliance, following investigation of a complaint or its own audit activity.</p>
+          </div>
+
+          <p>The practical implication is that organisations which respond quickly and completely to an AgID finding can avoid financial penalties entirely. This makes the quality of the remediation response &mdash; and the organisation&rsquo;s ability to demonstrate genuine progress within 90 days &mdash; as important as the original compliance position.</p>
+
+          <h2>Financial penalties</h2>
+
+          <p>If non-compliance is not remediated within the 90-day cure period, AgID may impose financial penalties. Penalties are graduated by severity and are expressed as maximum amounts &mdash; actual penalties depend on the severity of the violation, its duration, the size of the organisation, and whether the failure was intentional.</p>
+
+          <table class="fine-table" aria-label="Italy EAA penalty structure">
+            <thead>
+              <tr>
+                <th scope="col">Violation category</th>
+                <th scope="col">Maximum penalty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Minor violations</td>
+                <td>&euro;30,000 &ndash; &euro;90,000</td>
+              </tr>
+              <tr>
+                <td>Serious violations</td>
+                <td>&euro;90,001 &ndash; &euro;300,000</td>
+              </tr>
+              <tr>
+                <td>Very serious violations</td>
+                <td>&euro;300,001 &ndash; &euro;1,000,000</td>
+              </tr>
+              <tr>
+                <td>Large companies (&euro;500m+ annual turnover)</td>
+                <td>Up to 5% of annual global turnover under the Stanca Law framework &mdash; may exceed &euro;1,000,000</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>No named penalty decisions under the EAA framework have been published in Italy as of June 2026. Italy has, however, issued penalties under the Stanca Law in the public sector context, which gives some indication of how AgID approaches graduated enforcement.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>The fine ceiling is among the highest in the EU.</strong> Ireland&rsquo;s maximum on indictment is &euro;60,000. The Netherlands&rsquo; standard ceiling is &euro;300,000. Italy&rsquo;s very serious violation ceiling of &euro;1,000,000 &mdash; and the 5% turnover exposure for large companies &mdash; places it alongside Spain at the upper end of EU EAA enforcement. The cure period is the most generous; the penalties are among the most significant.</p>
+          </div>
+
+          <h2>How enforcement works in practice</h2>
+
+          <p>Italy&rsquo;s enforcement pathway follows a structured sequence. A user who encounters an accessibility barrier contacts the organisation directly. If the organisation does not respond or does not resolve the issue, the user submits a formal complaint to AgID through its official complaint form. The organisation must respond within 30 days and must update its <em>dichiarazione di accessibilit&agrave;</em> (accessibility statement) to reflect the complaint and any remediation steps taken.</p>
+
+          <p>AgID investigates the complaint and, where it finds substantive non-compliance, issues a formal notification. That notification triggers the 90-day cure period. If remediation is complete and verifiable within 90 days, no further action is taken. If it is not, AgID may refer the matter to the Ministry of Disability in severe cases and impose financial penalties.</p>
+
+          <p>The accessibility statement plays a formal role in the Italian process. An organisation that maintains an accurate, current statement &mdash; identifying what is not yet accessible, documenting remediation progress, and providing a working complaint mechanism &mdash; is in a stronger position throughout this sequence than one that does not. The statement is both a legal requirement and an evidential document.</p>
+
+          <h2>Which organisations are in scope</h2>
+
+          <p>Italy applies the standard EAA scope: e-commerce, banking and financial services, electronic communications, audiovisual media services, transport, and e-books. Any organisation offering these services to Italian consumers &mdash; regardless of where the organisation is headquartered &mdash; is subject to Italian EAA enforcement.</p>
+
+          <p>The microenterprise exemption requires both conditions to be met: fewer than 10 employees <em>and</em> annual turnover or balance sheet below &euro;2 million. Meeting one condition alone is not sufficient for exemption. The <a href="/eaa-disproportionate-burden.html">disproportionate burden</a> exemption is also available, but requires documented assessment &mdash; it cannot be claimed without evidence.</p>
+
+          <h2>What genuine compliance requires</h2>
+
+          <p>Italy&rsquo;s enforcement framework rewards organisations that treat the 90-day cure period as a genuine remediation opportunity. An organisation that responds to an AgID notification with a credible, complete remediation plan &mdash; and executes it within 90 days &mdash; avoids financial penalty entirely. An organisation that treats it as a delay mechanism does not.</p>
+
+          <p>Genuine compliance under the EAA has four requirements regardless of jurisdiction: technical conformance with EN&nbsp;301&nbsp;549 (WCAG 2.1 Level AA); a published accessibility statement that accurately reflects the current state of the product; active <a href="/eaa-governance.html">governance</a> with a named owner, a testing process, and a mechanism for catching regressions; and documentary evidence of ongoing management.</p>
+
+          <p>Italy&rsquo;s cure period does not change what compliance requires. It changes the consequences of non-compliance for organisations that respond well when notified. The underlying standard is the same.</p>
+
+          <div class="article-cta">
+            <h2>Find out where your organisation stands</h2>
+            <p>Our free initial assessment covers your current accessibility position, where gaps may exist relative to EAA requirements, and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-sanctions.html">EAA sanctions and enforcement powers across Europe</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-disproportionate-burden.html">The disproportionate burden exemption &mdash; what it covers and what it does not</a></li>
+            <li><a href="/insights/france-eaa-civil-society-enforcement.html">France: civil society EAA enforcement and the Carrefour ruling</a></li>
+            <li><a href="/eaa-revenue-loss.html">Inaccessible design is invisible revenue loss</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
