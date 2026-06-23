@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The EU AI Act and EAA &mdash; What the Intersection Means | Usable Access</title>
+  <meta name="description" content="The EU AI Act and EAA apply simultaneously to AI-assisted products. Most product teams haven't modelled the intersection. Here is what it means in practice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;--colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;--colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;--colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;--colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;--font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;--container-max:960px;--container-pad:1.25rem}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:99}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){.nav-toggle{display:none}.nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}.nav-links li{border-bottom:none}.nav-links a{font-size:.875rem;padding:0}}
+    .article-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-meta{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-lg);flex-wrap:wrap}
+    .article-tag{display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)}
+    .article-date,.article-market{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)}
+    .article-meta-sep{color:var(--colour-border)}
+    .article-title{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    @media(min-width:640px){.article-title{font-size:2.25rem}}
+    .article-deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5}
+    .article-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .article-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .article-body p:last-child{margin-bottom:0}
+    .article-body strong{font-weight:600;color:var(--colour-heading)}
+    .article-body a{color:var(--colour-teal);text-decoration:underline}
+    .article-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md)}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .article-nav{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="article-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Intelligence
+          </nav>
+          <div class="article-meta">
+            <span class="article-tag">Intelligence</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-date">23 Jun 2026</span>
+            <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+            <span class="article-market">All markets</span>
+          </div>
+          <h1 class="article-title">The EU AI Act and EAA &mdash; what the intersection means</h1>
+          <p class="article-deck">AI systems used in EAA-covered products are subject to both frameworks simultaneously. Being EAA-compliant does not automatically satisfy AI Act obligations, and vice versa. Most product teams have not modelled the gap.</p>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>The 2026 WebAIM Million report &mdash; the largest annual study of web accessibility &mdash; found that errors per page jumped 10.1% this year to an average of 56.1 errors per page, reversing six years of gradual improvement. Page complexity increased 22.5% in the same period. 95.9% of sites now fail basic accessibility checks. WebAIM linked the reversal directly to increased home page complexity and AI-assisted coding practices.</p>
+
+          <p>This is not a peripheral finding. WebAIM explicitly named AI-assisted development &mdash; what practitioners are calling &lsquo;vibe coding&rsquo; &mdash; as a contributing factor in the degradation of accessibility across the web. The same tools being adopted at scale to accelerate development are, by default, shipping code that fails disabled users.</p>
+
+          <h2>The AIMAC evidence base</h2>
+
+          <p>The <a href="/insights/aimac-deep-dive.html">AIMAC benchmark</a> (developed by the GAAD Foundation in partnership with ServiceNow) tested 36 AI coding models on their default accessibility output across 28 categories. The results are public at <a href="https://aimac.ai" rel="noopener noreferrer">aimac.ai</a> and updated as models change.</p>
+
+          <p>Most models produce non-compliant HTML by default. Not through negligence &mdash; accessibility has not been a primary training objective for any of them. The gap between the best and worst performing models is significant. Aaron Gustafson, presenting at Microsoft Build in June 2026, put the dynamic precisely: AI does not fix a broken process. It accelerates whatever process you already have. If accessibility is part of the workflow, AI can help scale inclusion. If it is not, AI will scale the barriers being shipped.</p>
+
+          <p>Anna E. Cook, in writing accompanying her FLUPA UX Days Paris keynote (June 2026), put the structural argument plainly: AI doesn&rsquo;t fix accessible systems. It depends on them. Elsewhere in the same body of work she sharpened it further: a poorly designed system doesn&rsquo;t get fixed by AI. It gets multiplied.</p>
+
+          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The assumption that automation improves accessibility is not evidenced. Ableist bias in AI is structural, rooted in training data, and resistant to technical fix.</p>
+
+          <div class="callout">
+            <p><strong>The WebAIM pattern at scale:</strong> the web got measurably less accessible in the year AI coding tools became mainstream. The AIMAC benchmark shows why &mdash; most models produce non-compliant code by default. The WebAIM Million shows what happens when those defaults are deployed at pace and at scale.</p>
+          </div>
+
+          <h2>What the EU AI Act requires</h2>
+
+          <p>The EU AI Act applies to AI systems, not to all use of AI tools. The distinction matters. An organisation using an AI coding assistant to generate HTML is not automatically subject to the AI Act &mdash; the Act applies to AI systems that are placed on the market or put into service in the EU, where those systems meet the Act&rsquo;s definition and risk classification.</p>
+
+          <p>Where the intersection with the EAA becomes significant is in two scenarios. First, where an organisation&rsquo;s product includes an AI system within its scope &mdash; a recommendation engine, a chatbot, an automated decision system &mdash; and that product is covered by the EAA. Second, where AI coding tools are used in the development of EAA-covered products and their output is not reviewed against WCAG 2.1 Level AA before deployment.</p>
+
+          <p>For AI systems that fall within the Act&rsquo;s scope and are embedded in EAA-covered products, the requirements include transparency obligations, human oversight mechanisms, and risk management processes. These do not substitute for EAA compliance &mdash; they apply in addition to it.</p>
+
+          <div class="callout callout--orange">
+            <p><strong>The compliance gap runs in both directions.</strong> EAA compliance does not satisfy AI Act obligations. AI Act compliance does not satisfy EAA obligations. An organisation with an AI system embedded in an EAA-covered product needs to address both frameworks. Neither satisfies the other.</p>
+          </div>
+
+          <h2>What EAA compliance requires</h2>
+
+          <p>EAA compliance has four mandatory elements, regardless of how the product was built. Technical conformance with EN&nbsp;301&nbsp;549 (WCAG 2.1 Level AA). A published accessibility statement. Active <a href="/eaa-governance.html">governance</a> &mdash; a named owner, a testing process, a mechanism for catching regressions. And documentary evidence of ongoing compliance management, not a one-off exercise.</p>
+
+          <p>&ldquo;AI-generated&rdquo; is not a defence. EN&nbsp;301&nbsp;549 does not distinguish between human-written and AI-generated code. It assesses the output. If the output is non-compliant, the product is non-compliant regardless of how the code was produced.</p>
+
+          <p>The AIMAC leaderboard provides a starting point: it identifies which models produce the least non-compliant code by default, and which require the most intensive review. That is not a compliance process &mdash; it is a starting point for knowing where to focus review effort.</p>
+
+          <h2>The practical risk picture</h2>
+
+          <p>For organisations building consumer-facing digital products with AI coding tools, the risk picture has three dimensions.</p>
+
+          <p>The <a href="/insights/ai-paradox.html">overlay risk</a>: AI-powered overlay tools are frequently marketed as accessibility solutions. They do not produce EAA compliance. Purchasing one creates a documented awareness record without addressing the underlying problem.</p>
+
+          <p>The development risk: if AI coding tools are generating non-compliant HTML by default and that code is reviewed against accessibility requirements before deployment, the process can work. If it is not reviewed, the accessibility debt accumulates silently &mdash; across every sprint, every release, every feature.</p>
+
+          <p>The intersecting framework risk: where an AI system is embedded in an EAA-covered product, both the EAA and the AI Act apply. The compliance requirements are different. Neither satisfies the other. The gap between them is not yet well mapped by most product teams &mdash; which is where the risk lives.</p>
+
+          <p>Enforcement in Ireland, the Netherlands, and Sweden is active. The <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">penalty structures</a> are material. The window for getting ahead of enforcement is narrowing.</p>
+
+          <div class="article-cta">
+            <h2>Find out where your organisation stands</h2>
+            <p>Our free initial assessment covers your current compliance position, where gaps may exist relative to EAA requirements, and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related intelligence</h2>
+          <ul class="related-list">
+            <li><a href="/insights/aimac-deep-dive.html">AI coding models and accessibility &mdash; what the AIMAC benchmark reveals</a></li>
+            <li><a href="/insights/ai-paradox.html">The AI accessibility paradox &mdash; overlay tools and EAA compliance</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-compliance-ecommerce.html">EAA compliance for e-commerce &mdash; what online retailers need to know</a></li>
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines, penalties and sanctions &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-revenue-loss.html">Inaccessible design is invisible revenue loss</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
