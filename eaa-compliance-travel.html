@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Compliance for Travel &mdash; Booking Accessibility | Usable Access</title>
+  <meta name="description" content="40% of travel websites block disabled users from completing a booking. Travel is in EAA scope. Here is what compliance requires and what enforcement looks like.">
+  <link rel="canonical" href="https://usableaccess.io/eaa-compliance-travel.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{margin-bottom:0;max-width:none}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .four-elements{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.four-elements{grid-template-columns:repeat(2,1fr)}}
+    .element-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .element-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .element-number{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-xs)}
+    .element-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Guide
+          </nav>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+            <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide &mdash; Travel</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">25 Jun 2026</span>
+          </div>
+          <h1>EAA compliance for travel &mdash; what the sector needs to know</h1>
+          <p class="deck">40% of travel websites have barriers severe enough to prevent users from completing a booking. Travel is in EAA scope. Here is what compliance requires and what enforcement looks like.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <p>40% of travel websites have a technical adequacy rating of &lsquo;not valid&rsquo; under WCAG criteria &mdash; meaning they cannot meet the minimum requirements for accessible use. A user who cannot complete a booking search, compare options, or reach the checkout does not appear in your analytics as a lost conversion. They simply do not appear at all. The Bar&oacute;metro de Accesibilidad Web 2025, the first major post-EAA compliance study of European private-sector websites, found that the travel sector has one of the worst accessibility records of any sector in the study.</p>
+
+          <p>Travel represents independence. A disabled user who cannot complete a booking online cannot plan or travel independently. The EAA was designed specifically to remove that dependency. Under the Act, travel booking platforms, accommodation sites, and transport services with digital customer journeys are in scope &mdash; and the enforcement window is open.</p>
+
+          <h2>What EAA covers in the travel sector</h2>
+
+          <p>The EAA applies to the digital journey, not the physical one. Physical airport accessibility, in-flight service, and ground handling are not in EAA scope. The following digital touchpoints are:</p>
+
+          <ul class="content-list">
+            <li>Online booking engines &mdash; flights, accommodation, car hire, tours, packages</li>
+            <li>Mobile applications used for booking and trip management</li>
+            <li>Seat selection and add-on interfaces</li>
+            <li>Payment flows and checkout</li>
+            <li>Online and mobile check-in interfaces</li>
+            <li>Customer account and booking management portals</li>
+            <li>E-tickets, boarding passes, and travel confirmation documents (digital)</li>
+          </ul>
+
+          <p>Each stage of a booking journey is a potential accessibility barrier and each is in EAA scope. More touchpoints means more failure points. A platform that passes a homepage audit may still block users at seat selection, checkout, or mobile check-in.</p>
+
+          <h2>What the data shows</h2>
+
+          <p>The Bar&oacute;metro de Accesibilidad Web 2025 assessed 204 private-sector websites post-EAA. The travel sector results:</p>
+
+          <ul class="content-list">
+            <li><strong>40% of travel websites are &lsquo;not valid&rsquo;</strong> &mdash; they fail minimum WCAG technical adequacy criteria. These sites prevent users with assistive technology from completing core tasks.</li>
+            <li><strong>20% are directly &lsquo;not compliant&rsquo;</strong> with EAA legal requirements. These are organisations with active legal exposure now.</li>
+            <li><strong>Only 4% are fully compliant</strong> with the EAA.</li>
+          </ul>
+
+          <p>The distinction between &lsquo;not valid&rsquo; and &lsquo;not compliant&rsquo; matters. &lsquo;Not valid&rsquo; means the site fails WCAG technical adequacy criteria &mdash; a technical condition. &lsquo;Not compliant&rsquo; means the site fails the legal standard the EAA requires. An organisation can be technically partial and legally non-compliant simultaneously.</p>
+
+          <h2>Why travel is especially exposed</h2>
+
+          <p>Travel booking flows are among the most complex digital journeys in any sector. Flight search, accommodation comparison, seat selection, loyalty integration, add-ons, and payment each represent a distinct interaction point &mdash; and each must be accessible. Organisations that have addressed one stage often have significant barriers at another.</p>
+
+          <p>The revenue case is equally concrete. A user who cannot complete a booking does not leave a trace. They do not appear as an abandoned basket or a failed checkout. They simply never enter the funnel. The 40% blocking rate, applied to a disabled population of 15&ndash;20% of EU adults, represents a significant and unmeasured share of potential revenue that is not landing.</p>
+
+          <h2>Enforcement context</h2>
+
+          <p><strong>Ireland</strong> &mdash; ComReg enforces the EAA for digital travel services. Ireland is the only EU member state with criminal liability for company directors under the EAA: fines up to &euro;60,000 and imprisonment up to 18 months on indictment. ComReg is already processing formal complaints.</p>
+
+          <p><strong>Netherlands</strong> &mdash; The ACM enforces across e-commerce and digital services, including travel platforms. Its review of approximately 100 major webshops found that in 61% of cases, ordering was entirely impossible for users with assistive technology. As of mid-2026, the ACM has shifted from information-gathering to formal sanctions. Fines reach &euro;900,000 or 10% of annual turnover.</p>
+
+          <p><strong>Sweden</strong> &mdash; PTS has launched 28 supervisory investigations covering e-commerce and digital services broadly. Travel platforms with Swedish consumer exposure are in scope. Sanktionsavgift fines range from SEK 10,000 to SEK 10,000,000.</p>
+
+          <p><strong>France</strong> &mdash; The civil society enforcement model confirmed in the Carrefour and Auchan cases applies equally to travel. Disability organisations have the same legal standing to bring proceedings against travel platforms as they do against retailers. Two French EAA cases have already produced court rulings.</p>
+
+          <p>No named EAA enforcement decisions have been issued specifically against travel platforms as of June 2026. The enforcement framework is in place and active across all markets.</p>
+
+          <p>In June 2026, the EU also reached agreement on new air passenger rights guaranteeing adjacent seating for disabled passengers at no extra cost &mdash; a signal that accessibility obligations in the travel sector are expanding, not contracting.</p>
+
+          <h2>What EAA compliance requires</h2>
+
+          <p>EAA compliance for travel platforms rests on four requirements that apply regardless of market or company size.</p>
+
+          <p><strong>Technical conformance</strong> with EN&nbsp;301&nbsp;549, the European standard for digital accessibility (based on WCAG 2.1 Level AA). A draft update incorporating WCAG 2.2 is in progress; organisations should target WCAG 2.2 now to prepare.</p>
+
+          <p><strong>Published accessibility statement</strong> &mdash; a public document describing what is and is not accessible on your platform, the standard you are working to, and how users can report barriers. Most travel platforms do not have one.</p>
+
+          <p><strong>Active governance</strong> &mdash; a named owner for accessibility, a documented testing process, and a remediation workflow. Compliance is not a one-off audit. It is a continuous process.</p>
+
+          <p><strong>Documentary evidence</strong> &mdash; records of testing, decisions, and remediation activity. In any enforcement contact, what you can demonstrate matters as much as what you have done.</p>
+
+          <div class="article-cta">
+            <h2>Find out where your organisation stands</h2>
+            <p>Our free initial assessment covers your current accessibility position, where gaps may exist relative to EAA requirements, and what a proportionate next step looks like.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-sanctions.html">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
+            <li><a href="/eaa-disproportionate-burden.html">The disproportionate burden exemption &mdash; what it is and what it requires</a></li>
+            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what organisations need to know</a></li>
+            <li><a href="/eaa-compliance-netherlands.html">EAA compliance in the Netherlands &mdash; what organisations need to know</a></li>
+            <li><a href="/eaa-compliance-sweden.html">EAA compliance in Sweden &mdash; what organisations need to know</a></li>
+            <li><a href="/eaa-compliance-france.html">EAA compliance in France &mdash; civil society enforcement and the Carrefour ruling</a></li>
+            <li><a href="/eaa-revenue-loss.html">Inaccessible design is invisible revenue loss</a></li>
+            <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <div class="container">
+        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+      </div>
+    </div>
+  </main>
+
+<footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
