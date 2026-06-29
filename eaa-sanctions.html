@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EAA Sanctions — Criminal Liability, Market Bans and Non-Financial Consequences | Usable Access</title>
+  <link rel="canonical" href="https://usableaccess.io/eaa-sanctions.html">
   <meta name="description" content="EAA sanctions go beyond financial penalties. Criminal prosecution in Ireland, market bans in Sweden, multiple enforcement tracks in the Netherlands. All active.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -162,35 +163,9 @@
 
           <h2>Administrative financial penalties</h2>
 
-          <p>Financial penalties are the most widely known EAA sanction type. Each market sets its own ceiling, and enforcement authorities use their own criteria for the amount applied within that range. Ceilings are maximums, not typical amounts. First-instance violations in practice tend to attract significantly lower figures.</p>
+          <p>EAA financial penalties vary significantly by market. The Netherlands ceiling is &euro;900,000 or 10% of annual turnover. Sweden operates two separate fine mechanisms &mdash; the Sanktionsavgift and the Vite &mdash; which apply independently and can run simultaneously. Germany combines regulatory fines up to &euro;100,000 with private Abmahnungen. France operates a per-offence model with a &euro;250,000 systemic ceiling.</p>
 
-          <div class="sanction-grid">
-            <div class="sanction-card">
-              <span class="sanction-label">Netherlands</span>
-              <h3>ACM and AFM</h3>
-              <p>Up to 10% of annual turnover, with a ceiling of &euro;900,000. In practice, administrative fines for first-instance violations typically fall in the range of &euro;5,000&ndash;&euro;100,000. The ACM is conducting active audits. For financial services organisations, the relevant authority is the AFM, not the ACM, with the same enforcement mandate and the same ceiling.</p>
-            </div>
-            <div class="sanction-card">
-              <span class="sanction-label">Sweden &mdash; Sanktionsavgift</span>
-              <h3>PTS</h3>
-              <p>SEK 10,000&ndash;SEK 10,000,000 per occurrence for failing to report or cooperate with PTS. This is a range, not just a ceiling. It applies regardless of whether the underlying accessibility issues have been fixed. An organisation that has completed its remediation work but failed to respond to a PTS request can still face a Sanktionsavgift.</p>
-            </div>
-            <div class="sanction-card">
-              <span class="sanction-label">Sweden &mdash; Vite</span>
-              <h3>PTS</h3>
-              <p>A separate fine for accessibility issues that remain unremediated after a grace period set by PTS. The Vite has a different trigger and different calculation from the Sanktionsavgift. An organisation can face both simultaneously, and both are independent of any market ban decision.</p>
-            </div>
-            <div class="sanction-card">
-              <span class="sanction-label">Germany</span>
-              <h3>Bundesnetzagentur and private litigation</h3>
-              <p>The Bundesnetzagentur can impose fines of up to &euro;100,000 per violation. Separately, law firms and competitors can send private warning letters (Abmahnungen) under German competition law (UWG) &mdash; typically demanding &euro;1,000&ndash;&euro;3,000 plus a signed compliance declaration. Abmahnungen are not regulatory fines. They are a private litigation mechanism that operates independently of any regulator.</p>
-            </div>
-            <div class="sanction-card">
-              <span class="sanction-label">France</span>
-              <h3>ARCOM and civil courts</h3>
-              <p>Fines of &euro;1,500 per offence for individuals and &euro;7,500 per offence for legal entities. Repeat offences double these amounts. Systemic non-compliance can attract an aggregate ceiling of &euro;250,000. As of June 2026, cases are pending but no fines have been issued. France&rsquo;s first EAA enforcement actions were brought by disability organisations before the civil courts, not by a regulator.</p>
-            </div>
-          </div>
+          <p>No financial penalty decisions have been published in any market as of June 2026. For the full country-by-country breakdown of penalty ceilings, enforcement authorities, and how each market calculates fines, see the <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties guide</a>.</p>
 
           <h2>Criminal sanctions &mdash; Ireland only</h2>
 
@@ -305,6 +280,18 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+    })();
+
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
+      }, { passive: true });
     })();
   </script>
 </body>
