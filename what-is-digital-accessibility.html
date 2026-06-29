@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What Is Digital Accessibility — And Why It Matters | Usable Access</title>
   <meta name="description" content="Disabled users can use your digital product independently. Under the EAA, digital accessibility is a legal requirement. Here is what it means in practice.">
+  <link rel="canonical" href="https://usableaccess.io/what-is-digital-accessibility.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -98,6 +99,47 @@
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  
+    /* ── Back to top ── */
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-xl);
+      right: var(--space-xl);
+      background: var(--colour-teal);
+      color: var(--colour-white);
+      border: none;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease, background 0.15s ease;
+      z-index: 50;
+      text-decoration: none;
+    }
+    .back-to-top:hover { background: var(--colour-teal-deep); }
+    .back-to-top:focus {
+      outline: 3px solid var(--colour-heading);
+      outline-offset: 3px;
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top.is-visible { opacity: 1; visibility: visible; }
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: var(--colour-white);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .back-to-top { transition: none; }
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -111,6 +153,12 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </a>
 
   <header>
     <div class="container">
@@ -136,7 +184,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <div class="page-header">
       <div class="container">
@@ -305,6 +353,16 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+    
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+
     })();
   </script>
 

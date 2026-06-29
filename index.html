@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Usable Access — Clarity-first EAA Compliance</title>
   <meta name="description" content="EAA compliance consultancy for Ireland, Netherlands and Sweden. We help European SMBs understand what the EAA requires and build accessibility that works.">
+  <link rel="canonical" href="https://usableaccess.io/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -877,6 +878,47 @@
         scroll-behavior: auto !important;
       }
     }
+  
+    /* ── Back to top ── */
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-xl);
+      right: var(--space-xl);
+      background: var(--colour-teal);
+      color: var(--colour-white);
+      border: none;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease, background 0.15s ease;
+      z-index: 50;
+      text-decoration: none;
+    }
+    .back-to-top:hover { background: var(--colour-teal-deep); }
+    .back-to-top:focus {
+      outline: 3px solid var(--colour-heading);
+      outline-offset: 3px;
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top.is-visible { opacity: 1; visibility: visible; }
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: var(--colour-white);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .back-to-top { transition: none; }
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -890,6 +932,12 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </a>
 
   <header>
     <div class="container">
@@ -915,7 +963,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
@@ -1011,6 +1059,15 @@
         <p class="section-intro">We publish weekly analysis of EAA enforcement developments across Ireland, the Netherlands, Sweden, Italy, and France — so your organisation understands the regulatory picture before it becomes a problem.</p>
         <div class="insights-grid-home">
 
+          <a href="/eaa-compliance-checklist.html" class="insight-card">
+            <div class="insight-card-meta">
+              <span class="insight-tag">Guide</span>
+              <span class="insight-date">30 Jun 2026</span>
+            </div>
+            <h3 class="insight-title">EAA compliance checklist — four requirements, what each one means in practice</h3>
+            <p class="insight-excerpt">Most organisations have addressed one of the four EAA compliance requirements. This checklist covers what each one means and what evidence you need to demonstrate it.</p>
+          </a>
+
           <a href="/insights/how-to-audit-eaa-compliance.html" class="insight-card">
             <div class="insight-card-meta">
               <span class="insight-tag">Guide</span>
@@ -1020,6 +1077,15 @@
             <p class="insight-excerpt">Automated scans find 30&ndash;40% of EAA accessibility barriers. Here is what a genuine compliance audit covers across five components &mdash; and what the Quick Compliance Audit delivers.</p>
           </a>
 
+          <a href="/insights/aimac-deep-dive.html" class="insight-card">
+            <div class="insight-card-meta">
+              <span class="insight-tag">Intelligence</span>
+              <span class="insight-date">Updated 30 Jun 2026</span>
+            </div>
+            <h3 class="insight-title">AI coding models and accessibility — what the AIMAC benchmark reveals</h3>
+            <p class="insight-excerpt">36 AI models tested across 28 accessibility categories. OpenAI holds all five top spots. Most models produce non-compliant code by default &mdash; not because they can&rsquo;t, but because accessibility isn&rsquo;t in the prompt.</p>
+          </a>
+
           <a href="/eaa-enforcement.html" class="insight-card">
             <div class="insight-card-meta">
               <span class="insight-tag">Guide</span>
@@ -1027,24 +1093,6 @@
             </div>
             <h3 class="insight-title">EAA enforcement — who enforces the Act and what happens when they do</h3>
             <p class="insight-excerpt">EAA enforcement is already active across Ireland, Netherlands, Sweden, France, Germany, Finland, and Italy. It operates through two independent tracks simultaneously. Here is how it works.</p>
-          </a>
-
-          <a href="/eaa-compliance-italy.html" class="insight-card">
-            <div class="insight-card-meta">
-              <span class="insight-tag">Guide</span>
-              <span class="insight-date">Updated 26 Jun 2026</span>
-            </div>
-            <h3 class="insight-title">EAA compliance in Italy — what organisations need to know</h3>
-            <p class="insight-excerpt">Italy gives organisations 90 days to fix identified accessibility failures before any financial penalty applies &mdash; the most generous cure period in the EU. AgID enforces.</p>
-          </a>
-
-          <a href="/eaa-compliance-travel.html" class="insight-card">
-            <div class="insight-card-meta">
-              <span class="insight-tag">Guide</span>
-              <span class="insight-date">25 Jun 2026</span>
-            </div>
-            <h3 class="insight-title">EAA compliance for travel — booking accessibility</h3>
-            <p class="insight-excerpt">40% of travel websites have barriers severe enough to prevent disabled users from completing a booking. Travel is in EAA scope. Here is what compliance requires.</p>
           </a>
 
         </div>
@@ -1124,6 +1172,16 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+    
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+
     })();
   </script>
 </body>

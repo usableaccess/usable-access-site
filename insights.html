@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Insights — Usable Access</title>
   <meta name="description" content="EAA enforcement intelligence, country guides, and compliance resources. Updated weekly across all seven markets.">
+  <link rel="canonical" href="https://usableaccess.io/insights.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -257,6 +258,13 @@
         scroll-behavior: auto !important;
       }
     }
+    /* ── Back to top ── */
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -270,6 +278,10 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
 
   <header>
     <div class="container">
@@ -295,7 +307,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <section class="insights-hero" aria-labelledby="insights-heading">
       <div class="container">
@@ -320,6 +332,16 @@
         <p class="filter-description" id="filter-description" aria-live="polite"></p>
         <p class="no-results" role="status" id="no-results">No insights match this filter.</p>
         <div class="article-list" id="article-list">
+          <!-- Guide — EAA Compliance Checklist -->
+          <a href="/eaa-compliance-checklist.html" class="article-card article-card--guide" data-type="Guide">
+            <div class="article-meta">
+              <span class="article-tag article-tag--guide">Guide</span>
+              <span class="article-date">30 Jun 2026</span>
+            </div>
+            <h3 class="article-title">EAA compliance checklist — four requirements, what each one means in practice</h3>
+            <p class="article-excerpt">Most organisations have addressed one of the four EAA compliance requirements. This checklist covers what each one means and what evidence you need to demonstrate it.</p>
+            <span class="article-market">All markets</span>
+          </a>
           <!-- Guide — EAA Compliance Audit -->
           <a href="/insights/how-to-audit-eaa-compliance.html" class="article-card article-card--guide" data-type="Guide">
             <div class="article-meta">
@@ -328,6 +350,16 @@
             </div>
             <h3 class="article-title">How to audit your digital product for EAA compliance</h3>
             <p class="article-excerpt">Automated scans find 30&ndash;40% of EAA accessibility barriers. Here is what a genuine compliance audit covers across five components &mdash; and what the Quick Compliance Audit delivers.</p>
+            <span class="article-market">All markets</span>
+          </a>
+          <!-- Intelligence — AIMAC deep dive -->
+          <a href="/insights/aimac-deep-dive.html" class="article-card article-card--intelligence" data-type="Intelligence">
+            <div class="article-meta">
+              <span class="article-tag article-tag--intelligence">Intelligence</span>
+              <span class="article-date">Updated 30 Jun 2026</span>
+            </div>
+            <h3 class="article-title">AI coding models and accessibility &mdash; what the AIMAC benchmark reveals</h3>
+            <p class="article-excerpt">36 AI models tested across 28 accessibility categories. OpenAI holds all five top spots. Most models produce non-compliant code by default &mdash; not because they can&rsquo;t, but because accessibility isn&rsquo;t in the prompt.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Guide — EAA Enforcement -->
@@ -470,17 +502,6 @@
             <h3 class="article-title">EAA compliance in Finland &mdash; what businesses need to know</h3>
             <p class="article-excerpt">Finland&rsquo;s enforcement is complaint-driven from the outset and Traficom imposes conditional fines that accrue daily until resolved &mdash; a different mechanism from a one-time penalty. High public awareness means complaints are possible from day one.</p>
             <span class="article-market">Finland</span>
-          </a>
-
-          <!-- Intelligence — AIMAC deep dive -->
-          <a href="/insights/aimac-deep-dive.html" class="article-card article-card--intelligence" data-type="Intelligence">
-            <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">Updated 18 Jun 2026</span>
-            </div>
-            <h3 class="article-title">AI coding models and accessibility &mdash; what the AIMAC benchmark reveals</h3>
-            <p class="article-excerpt">36 AI models tested across 28 accessibility categories. OpenAI holds all five top spots. Most models produce non-compliant code by default &mdash; not because they can&rsquo;t, but because accessibility isn&rsquo;t in the prompt. What this means for organisations relying on AI-assisted development.</p>
-            <span class="article-market">All markets</span>
           </a>
 
           <!-- Guide — EAA compliance Ireland -->

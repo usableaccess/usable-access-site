@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAA Compliance Checklist — Four Requirements, Practical Steps | Usable Access</title>
+<meta name="description" content="EAA compliance has four requirements. This checklist covers what each one means in practice — and what most organisations are missing.">
+<link rel="canonical" href="https://usableaccess.io/eaa-compliance-checklist.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+    --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+    --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+    --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+    --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+    --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+    --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+    --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+    --container-max:960px;--container-pad:1.25rem;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+  body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+  .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+  .skip-link:focus{top:0}
+  .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+  .article-container{max-width:680px}
+  .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+  .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+  .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+  .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+  nav{width:100%}
+  header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+  .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+  .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+  .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+  .nav-links.is-open{display:block}
+  .nav-links li{border-bottom:1px solid var(--colour-border)}
+  .nav-links li:last-child{border-bottom:none}
+  .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+  .nav-links a:hover{color:var(--colour-teal)}
+  .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:640px){
+    .nav-toggle{display:none}
+    .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+    .nav-links li{border-bottom:none}
+    .nav-links a{font-size:.875rem;padding:0}
+  }
+  .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+  .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+  .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+  @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+  .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+  .breadcrumb a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+  .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+  .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+  .page-body h2:first-child{margin-top:0}
+  .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+  .page-body a{color:var(--colour-teal);text-decoration:underline}
+  .page-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  .page-body strong{font-weight:600;color:var(--colour-heading)}
+  .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+  .callout p{margin-bottom:0;max-width:none}
+  .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+
+  /* Checklist items */
+  .checklist{list-style:none;margin:0 0 var(--space-xl) 0;display:flex;flex-direction:column;gap:var(--space-sm)}
+  .checklist-item{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-left:4px solid var(--colour-teal);padding:var(--space-md) var(--space-lg) var(--space-md) var(--space-xl);display:flex;flex-direction:column;gap:var(--space-xs)}
+  .checklist-item--warn{border-left-color:var(--colour-orange);background:var(--colour-orange-tint)}
+  .checklist-label{font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);display:block}
+  .checklist-item--warn .checklist-label{color:var(--colour-orange)}
+  .checklist-item p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+
+  /* Requirement blocks */
+  .requirement{background:var(--colour-white);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg);margin-bottom:var(--space-xl)}
+  .requirement-number{font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--colour-teal);display:block;margin-bottom:var(--space-xs)}
+  .requirement h3{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-md);line-height:1.3}
+  .requirement p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:var(--space-md);max-width:none}
+  .requirement p:last-child{margin-bottom:0}
+
+  .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+  .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+  .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+  .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+  .cta-button:hover{background:var(--colour-orange-dark)}
+  .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+  .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+  .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+  .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+  .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+  .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  .back-link-section{padding:var(--space-xl) 0}
+  .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+  .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+  footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+  footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+  footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+  /* ── Back to top ── */
+  .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+  .back-to-top:hover{background:var(--colour-teal-deep)}
+  .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+  .back-to-top.is-visible{opacity:1;visibility:visible}
+  .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.back-to-top{transition:none}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CWF8FPK9T7');
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</a>
+
+<header>
+<div class="container">
+<nav aria-label="Main navigation">
+<div class="nav-inner">
+<a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+<span class="logo-usable">Usable</span>
+<span class="logo-access">Access</span>
+</a>
+<button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+</button>
+<ul class="nav-links" id="nav-menu" role="list">
+<li><a href="/#what-we-do">What we do</a></li>
+<li><a href="/#services">Services</a></li>
+<li><a href="/insights.html">Insights</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<div class="page-header">
+<div class="container">
+<div class="article-container">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/insights.html">Insights</a> &rsaquo; Guide
+</nav>
+<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+<span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide</span>
+<span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+<span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">30 Jun 2026</span>
+</div>
+<h1>EAA compliance checklist &mdash; four requirements, what each one means in practice</h1>
+<p class="deck">Most organisations have addressed one of the four EAA compliance requirements. The other three are where the gap lives. This checklist covers what each requirement means and what evidence you need to demonstrate it.</p>
+</div>
+</div>
+</div>
+
+<div class="page-body">
+<div class="container">
+<div class="article-container">
+
+<p>EAA compliance is not a single task. It has four distinct requirements, each of which must be met independently. Meeting one does not contribute to meeting the others. An organisation that has run an accessibility audit but has no governance process, no accessibility statement, and no documentary evidence of ongoing management has met approximately one quarter of what the EAA requires.</p>
+
+<p>This checklist is structured around the four requirements. Use it to identify which you have addressed, which you have partially addressed, and which have not been started. The free assessment covers all four in detail.</p>
+
+<div class="callout--orange callout">
+<p><strong>Before using this checklist:</strong> EAA compliance applies to organisations that provide products or services to EU consumers. If you are not certain whether the EAA applies to your organisation, the free assessment is the right starting point. Applying the checklist to an organisation that is out of scope wastes resource. Assuming an organisation is out of scope without checking is a more common and more significant error.</p>
+</div>
+
+<h2>Requirement 1 &mdash; Technical conformance with EN&nbsp;301&nbsp;549</h2>
+
+<p>EN&nbsp;301&nbsp;549 is the harmonised European accessibility standard. In practice it requires conformance with WCAG 2.1 at Level AA across your digital products and services. This is the requirement most organisations have at least begun to address.</p>
+
+<div class="requirement">
+<span class="requirement-number">Checklist &mdash; Technical conformance</span>
+<h3>What you need to be able to demonstrate</h3>
+<p>Your primary digital product has been assessed against WCAG 2.1 Level AA. The assessment was conducted by a qualified assessor, not an automated tool alone. Automated tools identify approximately 30&ndash;40% of accessibility barriers. A genuine conformance assessment includes manual review and assistive technology testing.</p>
+<p>The assessment covered your most commercially critical user journeys: checkout, account creation, booking, payment, onboarding &mdash; whichever applies to your product. A homepage that passes technical testing is not a compliant product if the checkout is broken.</p>
+<p>Known barriers have been documented. Either they have been remediated, or they are recorded as known barriers with a timeline for remediation. Ignoring findings is not an option. Documenting them with a remediation plan is.</p>
+<p>The assessment has a date. Compliance is not a permanent state &mdash; it needs to be maintained. An assessment from two years ago is not evidence of current compliance.</p>
+</div>
+
+<ul class="checklist" aria-label="Technical conformance checklist">
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Has your primary digital product been assessed against WCAG 2.1 Level AA by a qualified assessor?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Did the assessment include manual review and assistive technology testing, not only an automated scan?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Were your most critical user journeys tested &mdash; not only the homepage or marketing pages?</p>
+</li>
+<li class="checklist-item checklist-item--warn">
+<span class="checklist-label">Common gap</span>
+<p>Most organisations have run an automated scan and consider this an EAA compliance audit. Automated tools find approximately 30&ndash;40% of accessibility barriers. The remaining 60&ndash;70% require human testing. An automated scan result is not a compliance position.</p>
+</li>
+<li class="checklist-item checklist-item--warn">
+<span class="checklist-label">Common gap</span>
+<p>AI-assisted development tools produce non-compliant code by default. If your development team uses AI coding tools without an accessibility review step in the workflow, non-compliant features accumulate with every release. See the <a href="/insights/aimac-deep-dive.html">AIMAC benchmark findings</a>.</p>
+</li>
+</ul>
+
+<h2>Requirement 2 &mdash; A published accessibility statement</h2>
+
+<p>A published accessibility statement is a mandatory EAA requirement. It is not optional and it is not satisfied by a generic privacy-style statement. The EAA specifies what it must contain.</p>
+
+<div class="requirement">
+<span class="requirement-number">Checklist &mdash; Accessibility statement</span>
+<h3>What your statement must contain</h3>
+<p>A clear statement of conformance &mdash; whether your product is fully conformant, partially conformant, or non-conformant with EN&nbsp;301&nbsp;549. Most organisations are partially conformant. Claiming full conformance without evidence is a greater risk than accurately stating partial conformance with known exceptions documented.</p>
+<p>A list of known exceptions &mdash; specific barriers that have not yet been remediated, with the reason and a timeline. "We are working on it" is not sufficient. Named barriers with named timelines are what the standard requires.</p>
+<p>A feedback mechanism &mdash; a way for users to report accessibility barriers and request accessible alternatives. This must be a real mechanism that receives and responds to reports, not a form that disappears into a void.</p>
+<p>Contact details for the responsible body &mdash; who is responsible for accessibility within the organisation, and how to reach them.</p>
+<p>The date the statement was last reviewed. Statements that have not been reviewed since they were first published are a compliance risk &mdash; they claim a conformance position that may no longer be accurate.</p>
+</div>
+
+<ul class="checklist" aria-label="Accessibility statement checklist">
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Does your organisation have a published accessibility statement?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Does it reference EN&nbsp;301&nbsp;549 (not only WCAG or the old EU Web Accessibility Directive)?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Does it include a dated list of known exceptions with remediation timelines?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Does it include a working feedback mechanism?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Has it been reviewed within the last twelve months?</p>
+</li>
+<li class="checklist-item checklist-item--warn">
+<span class="checklist-label">Common gap</span>
+<p>ComReg in Ireland requests the accessibility statement first in any complaint investigation. An absent or inadequate statement is the first signal that an organisation is not managing compliance actively. Most accessibility statements on Irish and European consumer websites were written for WCAG or the old Web Accessibility Directive &mdash; not the EAA.</p>
+</li>
+</ul>
+
+<h2>Requirement 3 &mdash; Active governance</h2>
+
+<p>Technical conformance without governance regresses. Every product release, every new feature, every AI-assisted development cycle can introduce new accessibility barriers. The EAA requires active management of the compliance position &mdash; not a one-off audit.</p>
+
+<div class="requirement">
+<span class="requirement-number">Checklist &mdash; Governance</span>
+<h3>What active governance requires</h3>
+<p>A named owner for accessibility within the organisation. Someone whose role includes responsibility for maintaining the compliance position, reviewing the accessibility statement, and ensuring accessibility is considered in the product development process. This does not need to be a full-time role &mdash; but it needs to be a named responsibility, not a collective assumption.</p>
+<p>A testing cadence. Accessibility is assessed on a schedule, not only when a complaint arrives or a new product launches. How frequently depends on how often the product changes. A product that releases weekly needs weekly accessibility review. A product that releases quarterly needs quarterly review.</p>
+<p>A remediation workflow. When barriers are identified &mdash; whether through an audit, a user complaint, or a development review &mdash; there is a process for triaging, prioritising, and addressing them. Findings do not sit in a spreadsheet indefinitely.</p>
+<p>Accessibility in the product development process. New features are reviewed for accessibility before release, not after. This is the only way to prevent the compliance position from degrading with every release cycle.</p>
+</div>
+
+<ul class="checklist" aria-label="Governance checklist">
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Is there a named owner for accessibility within your organisation?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Is there a defined testing cadence &mdash; scheduled accessibility review, not only reactive assessment?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Is there a remediation workflow &mdash; a process for triaging and addressing identified barriers?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Is accessibility reviewed before new features go to production?</p>
+</li>
+<li class="checklist-item checklist-item--warn">
+<span class="checklist-label">Common gap</span>
+<p>Most EAA non-compliance is a governance failure, not a technical one. Organisations that have done accessibility work but have no named owner and no testing cadence are not in a compliant position. The technical work regresses without governance to maintain it. See the <a href="/eaa-governance.html">EAA governance guide</a>.</p>
+</li>
+</ul>
+
+<h2>Requirement 4 &mdash; Documentary evidence</h2>
+
+<p>The fourth requirement is the one most organisations have not considered at all. EAA compliance is not only about what you have done &mdash; it is about what you can demonstrate. If enforcement contact arrives, the question is not "are you compliant?" It is "what can you show?"</p>
+
+<div class="requirement">
+<span class="requirement-number">Checklist &mdash; Documentary evidence</span>
+<h3>What you need to be able to produce</h3>
+<p>Dated records of accessibility assessments. Who conducted them, when, what methodology was used, what was found. Internal assessments and external audits both count, but an external audit from a qualified assessor is stronger evidence of due diligence.</p>
+<p>Remediation records. What barriers were identified, what actions were taken, when they were resolved. This does not need to be elaborate &mdash; a structured log in a shared document is sufficient. What it cannot be is absent.</p>
+<p>Evidence of governance activity. Meeting notes where accessibility was discussed. Review records. Sign-off records showing accessibility was considered before a release. Named ownership. These documents demonstrate that compliance is being actively managed, not assumed.</p>
+<p>In Ireland specifically, the due diligence defence under S.I. No. 636/2023 requires demonstrating that the organisation exercised due diligence to prevent the offence. This defence is only available to organisations that can produce evidence of active management. The evidence cannot be created retrospectively.</p>
+</div>
+
+<ul class="checklist" aria-label="Documentary evidence checklist">
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Do you have dated records of your most recent accessibility assessment?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Do you have records of what was found and what actions were taken?</p>
+</li>
+<li class="checklist-item">
+<span class="checklist-label">Check</span>
+<p>Do you have evidence of governance activity &mdash; named ownership, review records, sign-off processes?</p>
+</li>
+<li class="checklist-item checklist-item--warn">
+<span class="checklist-label">Common gap</span>
+<p>In Ireland, the due diligence defence against criminal prosecution requires evidence that cannot be created after the fact. An organisation that has done genuine accessibility work but has kept no records of it has no defence available to it. The records are as important as the work.</p>
+</li>
+<li class="checklist-item checklist-item--warn">
+<span class="checklist-label">Common gap</span>
+<p>A documented compliance position is what the Complete Compliance Framework delivers. For organisations with significant compliance risk &mdash; particularly those in Ireland &mdash; having a dated, documented record of active management is the thing enforcement bodies actually look for.</p>
+</li>
+</ul>
+
+<h2>What most organisations find when they use this checklist</h2>
+
+<p>Most organisations that go through this checklist find they have partially addressed Requirement 1 (technical conformance), have not adequately addressed Requirement 2 (accessibility statement), have not addressed Requirement 3 (governance) at all, and have not considered Requirement 4 (documentary evidence).</p>
+
+<p>That is not a reason for alarm. It is a reason for a clear next step. The free assessment covers all four requirements in twenty minutes and identifies which of these gaps is most urgent for your specific organisation, market, and product.</p>
+
+<div class="callout">
+<p><strong>A note on disproportionate burden.</strong> The EAA provides an exemption where compliance would impose a disproportionate burden on the organisation. This exemption is a safeguard with conditions, not an opt-out. Assuming it applies without conducting the required assessment is a compliance failure in itself. See the <a href="/eaa-disproportionate-burden.html">disproportionate burden guide</a> for what qualifying actually requires.</p>
+</div>
+
+<div class="article-cta">
+<h2>Find out where your organisation stands</h2>
+<p>Our free initial assessment covers your current accessibility position, which of the four EAA compliance requirements you have addressed, and what a proportionate next step looks like.</p>
+<a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="related-links">
+<div class="container">
+<div class="article-container">
+<h2>Related guides</h2>
+<ul class="related-list">
+<li><a href="/eaa-enforcement.html">EAA enforcement &mdash; who enforces the Act and what happens when they do</a></li>
+<li><a href="/insights/what-eaa-compliance-actually-requires.html">What EAA compliance actually requires &mdash; the four elements in full</a></li>
+<li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+<li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it must contain</a></li>
+<li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit your digital product for EAA compliance</a></li>
+<li><a href="/eaa-disproportionate-burden.html">The EAA disproportionate burden exemption &mdash; what it actually requires</a></li>
+<li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; criminal sanctions and director liability</a></li>
+<li><a href="/eaa-sanctions.html">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="back-link-section">
+<div class="container">
+<a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+</div>
+</div>
+
+</main>
+
+<footer>
+<div class="container">
+<p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+</div>
+</footer>
+
+<script>
+  (function() {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      menu.classList.toggle('is-open', !expanded);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+    menu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      }
+    });
+  })();
+
+  (function() {
+    var btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('is-visible', window.scrollY > 400);
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
