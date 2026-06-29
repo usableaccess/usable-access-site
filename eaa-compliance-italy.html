@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EAA Compliance in Italy &mdash; AgID Enforcement | Usable Access</title>
-  <meta name="description" content="Italy&rsquo;s EAA enforcement includes a 90-day cure period before fines apply. AgID enforces. Fines reach &euro;1,000,000 for very serious violations.">
+  <meta name="description" content="Italy&rsquo;s EAA enforcement includes a proportionate cure period before fines apply. AgID enforces. Fines reach &euro;1,000,000 for very serious violations.">
+  <link rel="canonical" href="https://usableaccess.io/eaa-compliance-italy.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -83,6 +84,14 @@
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  
+    /* ── Back to top ── */
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -95,6 +104,10 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
   <header>
     <div class="container">
       <nav aria-label="Main navigation">
@@ -119,7 +132,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <div class="article-header">
       <div class="container">
@@ -130,10 +143,10 @@
           <div class="article-meta">
             <span class="article-tag">Guide &mdash; Italy</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
-            <span class="article-date">Updated 26 Jun 2026</span>
+            <span class="article-date">Updated 1 Jul 2026</span>
           </div>
           <h1 class="article-title">EAA compliance in Italy &mdash; what organisations need to know</h1>
-          <p class="article-deck">Italy gives organisations 90 days to fix identified accessibility failures before any financial penalty applies. That cure period is the most generous in the EU &mdash; and it sits alongside one of the highest maximum fine ceilings. AgID has been enforcing digital accessibility since 2004.</p>
+          <p class="article-deck">Italy gives organisations a proportionate cure period to fix identified accessibility failures before any financial penalty applies. That cure period is the most generous in the EU &mdash; and it sits alongside one of the highest maximum fine ceilings. AgID has been enforcing digital accessibility since 2004.</p>
         </div>
       </div>
     </div>
@@ -148,21 +161,21 @@
 
           <p>The enforcement authority is AgID &mdash; the Agenzia per l&rsquo;Italia Digitale, the national digital agency operating under the Ministry for Technological Innovation. AgID has published detailed technical guidelines for EAA compliance, including specific test procedures mapped to EN&nbsp;301&nbsp;549. Italy&rsquo;s enforcement approach is expected to be technically competent and methodical, informed by that two-decade baseline.</p>
 
-          <h2>The 90-day cure period</h2>
+          <h2>The cure period</h2>
 
-          <p>Italy&rsquo;s most distinctive enforcement feature is its cure period. When AgID formally notifies an organisation of EAA non-compliance, that organisation has 90 calendar days to remediate all identified issues. If remediation is complete and verified within the 90-day window, no financial penalty is imposed.</p>
+          <p>Italy&rsquo;s most distinctive enforcement feature is its cure period. When AgID formally notifies an organisation of EAA non-compliance, that organisation has time to remediate all identified issues. The cure period is proportionate to the nature of the non-conformity &mdash; organisations propose their own remediation schedule, which AgID monitors. If remediation is complete and verified within the agreed timeframe, no financial penalty is imposed.</p>
 
-          <p>This is the most generous cure period in the EU. Most member states allow 30 days from formal notification. Italy&rsquo;s 90-day provision reflects its longer history of working with organisations through accessibility remediation rather than moving immediately to financial sanction.</p>
+          <p>This is the most generous cure period in the EU. Italy&rsquo;s approach reflects its longer history of working with organisations through accessibility remediation rather than moving immediately to financial sanction.</p>
 
           <div class="callout">
-            <p><strong>The cure period applies from formal AgID notification &mdash; not from the EAA enforcement date.</strong> An organisation that has not yet received a formal notice is not in a cure period. The 90 days begin when AgID issues its formal finding of non-compliance, following investigation of a complaint or its own audit activity.</p>
+            <p><strong>The cure period applies from formal AgID notification &mdash; not from the EAA enforcement date.</strong> An organisation that has not yet received a formal notice is not in a cure period. The clock begins when AgID issues its formal finding of non-compliance, following investigation of a complaint or its own audit activity.</p>
           </div>
 
-          <p>The practical implication is that organisations which respond quickly and completely to an AgID finding can avoid financial penalties entirely. This makes the quality of the remediation response &mdash; and the organisation&rsquo;s ability to demonstrate genuine progress within 90 days &mdash; as important as the original compliance position.</p>
+          <p>The practical implication is that organisations which respond quickly and completely to an AgID finding can avoid financial penalties entirely. This makes the quality of the remediation response &mdash; and the organisation&rsquo;s ability to demonstrate genuine progress within the agreed timeframe &mdash; as important as the original compliance position.</p>
 
           <h2>Financial penalties</h2>
 
-          <p>If non-compliance is not remediated within the 90-day cure period, AgID may impose financial penalties. Penalties are graduated by severity and are expressed as maximum amounts &mdash; actual penalties depend on the severity of the violation, its duration, the size of the organisation, and whether the failure was intentional.</p>
+          <p>If non-compliance is not remediated within the cure period, AgID may impose financial penalties. Penalties are graduated by severity and are expressed as maximum amounts &mdash; actual penalties depend on the severity of the violation, its duration, the size of the organisation, and whether the failure was intentional.</p>
 
           <table class="fine-table" aria-label="Italy EAA penalty structure">
             <thead>
@@ -201,7 +214,7 @@
 
           <p>Italy&rsquo;s enforcement pathway follows a structured sequence. A user who encounters an accessibility barrier contacts the organisation directly. If the organisation does not respond or does not resolve the issue, the user submits a formal complaint to AgID through its official complaint form. The organisation must respond within 30 days and must update its <em>dichiarazione di accessibilit&agrave;</em> (accessibility statement) to reflect the complaint and any remediation steps taken.</p>
 
-          <p>AgID investigates the complaint and, where it finds substantive non-compliance, issues a formal notification. That notification triggers the 90-day cure period. If remediation is complete and verifiable within 90 days, no further action is taken. If it is not, AgID may refer the matter to the Ministry of Disability in severe cases and impose financial penalties.</p>
+          <p>AgID investigates the complaint and, where it finds substantive non-compliance, issues a formal notification. That notification triggers the cure period. If remediation is complete and verifiable within the agreed timeframe, no further action is taken. If it is not, AgID may refer the matter to the Ministry of Disability in severe cases and impose financial penalties.</p>
 
           <p>The accessibility statement plays a formal role in the Italian process. An organisation that maintains an accurate, current statement &mdash; identifying what is not yet accessible, documenting remediation progress, and providing a working complaint mechanism &mdash; is in a stronger position throughout this sequence than one that does not. The statement is both a legal requirement and an evidential document.</p>
 
@@ -213,7 +226,7 @@
 
           <h2>What genuine compliance requires</h2>
 
-          <p>Italy&rsquo;s enforcement framework rewards organisations that treat the 90-day cure period as a genuine remediation opportunity. An organisation that responds to an AgID notification with a credible, complete remediation plan &mdash; and executes it within 90 days &mdash; avoids financial penalty entirely. An organisation that treats it as a delay mechanism does not.</p>
+          <p>Italy&rsquo;s enforcement framework rewards organisations that treat the cure period as a genuine remediation opportunity. An organisation that responds to an AgID notification with a credible, complete remediation plan &mdash; and executes it within the agreed timeframe &mdash; avoids financial penalty entirely. An organisation that treats it as a delay mechanism does not.</p>
 
           <p>Genuine compliance under the EAA has four requirements regardless of jurisdiction: technical conformance with EN&nbsp;301&nbsp;549 (WCAG 2.1 Level AA); a published accessibility statement that accurately reflects the current state of the product; active <a href="/eaa-governance.html">governance</a> with a named owner, a testing process, and a mechanism for catching regressions; and documentary evidence of ongoing management.</p>
 
@@ -292,6 +305,15 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+        // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+
     })();
   </script>
 </body>
