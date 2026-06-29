@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What Is Digital Accessibility — And Why It Matters | Usable Access</title>
-  <meta name="description" content="Disabled users can use your digital product independently. Under the EAA, digital accessibility is a legal requirement. Here is what it means in practice.">
+  <title>Inaccessible Design Is Invisible Revenue Loss | Usable Access</title>
+  <meta name="description" content="Inaccessible products lose revenue you cannot measure. Users who hit a barrier and left never appear in your analytics. Here is what that means commercially.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -54,7 +54,6 @@
       .nav-links a{font-size:.875rem;padding:0}
     }
     .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
-    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
     .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
     .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
     @media(min-width:640px){.page-header h1{font-size:2.25rem}}
@@ -68,16 +67,17 @@
     .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
     .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
     .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .page-body a{color:var(--colour-teal);text-decoration:underline}
+    .page-body a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
     .callout p{margin-bottom:0;max-width:none}
-    .stat-row{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
-    @media(min-width:640px){.stat-row{grid-template-columns:repeat(3,1fr)}}
-    .stat-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg);text-align:center}
-    .stat-number{font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--colour-teal);display:block;margin-bottom:var(--space-xs)}
-    .stat-label{font-family:var(--font-body);font-size:.875rem;color:var(--colour-secondary);line-height:1.5}
-    .barrier-list{margin:0 0 var(--space-xl) 0;list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
-    .barrier-item{font-family:var(--font-body);font-size:1rem;color:var(--colour-body);padding:var(--space-md) var(--space-lg);background:var(--colour-bg-subtle);border-left:3px solid var(--colour-border);display:flex;justify-content:space-between;align-items:center;gap:var(--space-md);max-width:36em}
-    .barrier-pct{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-teal);white-space:nowrap}
+    .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .stat-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+    .stat-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .stat-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .stat-figure{display:block;font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--colour-teal-deep);margin-bottom:var(--space-sm);line-height:1}
+    .stat-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
     .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
     .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
     .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
@@ -87,7 +87,7 @@
     .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
     .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
     .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
-    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
     .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     .back-link-section{padding:var(--space-xl) 0}
     .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
@@ -109,14 +109,12 @@
   </script>
 </head>
 <body>
-
   <a href="#main" class="skip-link">Skip to main content</a>
-
   <header>
     <div class="container">
       <nav aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="/" class="site-logo" aria-label="Usable Access — home">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
@@ -128,16 +126,14 @@
           <ul class="nav-links" id="nav-menu" role="list">
             <li><a href="/#what-we-do">What we do</a></li>
             <li><a href="/#services">Services</a></li>
-            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/insights.html">Insights</a></li>
             <li><a href="/#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
     </div>
   </header>
-
   <main id="main">
-
     <div class="page-header">
       <div class="container">
         <div class="article-container">
@@ -147,131 +143,116 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">5 Jun 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 23 Jun 2026</span>
           </div>
-          <h1>What is digital accessibility &mdash; and why does it matter for your business?</h1>
-          <p class="deck">Digital accessibility means that people with disabilities can use your website or app to do what everyone else can. Around one in four European adults has some form of disability. That is not a niche audience.</p>
+          <h1>Inaccessible design is invisible revenue loss</h1>
+          <p class="deck">Inaccessible digital products lose revenue that organisations cannot see. The users who encountered a barrier and left do not appear in your analytics. They are simply absent.</p>
         </div>
       </div>
     </div>
-
     <div class="page-body">
       <div class="container">
         <div class="article-container">
 
-          <p>Most people, when they hear "digital accessibility," think of blind users and screen readers. That is part of it &mdash; but only a small part. Digital accessibility covers the full range of ways people interact with digital products: motor impairments that make a mouse difficult to use, cognitive differences that affect how information is processed, hearing loss, colour blindness, age-related changes in vision, and conditions that are temporary or situational &mdash; a broken arm, bright sunlight on a phone screen, a noisy environment where audio is not an option. The EAA &mdash; European Accessibility Act &mdash; is the EU directive that requires digital products and services to be accessible to disabled users.</p>
+          <p>Most organisations approach digital accessibility through compliance: a regulator, a deadline, a fine ceiling. That framing is legitimate, but it misses the commercial argument entirely. Inaccessible digital products are not only a legal risk. They are losing revenue that organisations cannot measure, because the data they collect only captures the users who got through.</p>
 
-          <p>A website or app is digitally accessible when a person with any of these differences can use it to complete the same tasks as anyone else: log in, make a purchase, read important information, contact support, book an appointment, submit a form. When a product is not accessible, those tasks become difficult or impossible. The user does not get what they need. Your organisation loses a customer, a lead, or a user &mdash; without ever knowing they were there.</p>
+          <p>The users who hit a barrier and left never reached the point where your analytics could record them. They are absent from your conversion data, your cart abandonment reports, your session recordings. The revenue they represent is invisible — not because it is small, but because the measurement systems organisations rely on are blind to it.</p>
 
-          <div style="background:var(--colour-orange-tint);border-left:4px solid var(--colour-orange);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)">
-            <p style="font-family:var(--font-body);font-size:.9375rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm);max-width:none">Asking this because of the EAA?</p>
-            <p style="font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);margin-bottom:var(--space-md);max-width:none">The European Accessibility Act has been enforceable since June 2025. If your organisation provides digital products or services to EU consumers, compliance is now a legal obligation. Enforcement has started in Ireland, Germany, Sweden, and the Netherlands.</p>
-            <a href="/eaa-enforcement.html" style="font-family:var(--font-body);font-size:.9375rem;font-weight:600;color:var(--colour-orange);text-decoration:underline">See how EAA enforcement works &rarr;</a>
-          </div>
+          <h2>What the data shows</h2>
 
-          <h2>Who we are talking about</h2>
+          <p>The Barómetro de Accesibilidad Web 2025, a major post-EAA compliance study of 204 private-sector websites, provides the clearest sector-level picture available.</p>
 
-          <div class="stat-row">
+          <div class="stat-grid">
             <div class="stat-card">
-              <span class="stat-number">1 in 4</span>
-              <span class="stat-label">European adults has some form of disability</span>
+              <span class="stat-figure">40%</span>
+              <h3>Travel sites</h3>
+              <p>Fail WCAG technical criteria at a level that prevents users from planning or booking independently. For a disabled traveller, this means they cannot search for accessible accommodation, compare flights, or complete a reservation without assistance.</p>
             </div>
             <div class="stat-card">
-              <span class="stat-number">87m</span>
-              <span class="stat-label">People with disabilities in the European Union</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number">98%</span>
-              <span class="stat-label">Of private-sector websites fail to meet core accessibility requirements (Barómetro 2025)</span>
+              <span class="stat-figure">32%</span>
+              <h3>Financial services sites</h3>
+              <p>Fail to meet even basic WCAG requirements, meaning users cannot complete account actions, payments, or transactions. The worst technical performance of any sector in the study — in the most heavily regulated industry in Europe.</p>
             </div>
           </div>
 
-          <p>These are not edge cases. In many EU countries, older people already outnumber those under 25. As EIDD &mdash; Design for All Europe has noted, accessibility is not about minority groups: it is about ignored majorities. And disability is rarely permanent or visible. A customer carrying a child, using a phone in sunlight, or recovering from surgery faces the same barriers as someone with a long-term condition. The audience for accessible design is considerably larger than most organisations realise.</p>
+          <p>These figures measure technical failure rates, not conversion loss directly. But the commercial implication is direct: a site that fails WCAG criteria at the level described is one where a significant share of users with disabilities cannot complete the tasks your product is designed for. Those are lost transactions.</p>
 
-          <h2>What makes a digital product inaccessible</h2>
-          <p>The most common barriers are not the result of deliberate exclusion. They are the result of design and development processes that do not test with assistive technology or consider diverse user needs. The Barómetro de Accesibilidad Web 2025, a study of 204 private-sector websites across seven sectors using ISO 17020-accredited methodology, identified five barriers that appear consistently across all industries:</p>
+          <h2>The size of the market you are not measuring</h2>
 
-          <ul class="barrier-list" aria-label="Most common accessibility barriers">
-            <li class="barrier-item">
-              <span>Interface components without name, role, or value &mdash; buttons and controls that screen readers cannot interpret</span>
-              <span class="barrier-pct">97%</span>
-            </li>
-            <li class="barrier-item">
-              <span>Insufficient colour contrast &mdash; text that cannot be read by people with low vision</span>
-              <span class="barrier-pct">95%</span>
-            </li>
-            <li class="barrier-item">
-              <span>Links without a clear or meaningful purpose &mdash; "click here" tells a screen reader nothing</span>
-              <span class="barrier-pct">85%</span>
-            </li>
-            <li class="barrier-item">
-              <span>Missing alt text &mdash; images with no description for users who cannot see them</span>
-              <span class="barrier-pct">77%</span>
-            </li>
-            <li class="barrier-item">
-              <span>Form fields without proper labels &mdash; inputs that cannot be identified by assistive technology</span>
-              <span class="barrier-pct">68%</span>
-            </li>
-          </ul>
+          <p>Estimates of the disabled population in Europe range from 15% to over 20% depending on how disability is defined and measured. That range reflects genuine complexity: disability includes visual, hearing, motor, and cognitive impairments, many permanent, some temporary or situational. A user with a broken arm, a user in a noisy environment, a user on a slow connection — all benefit from accessible design.</p>
 
-          <p>Each of these barriers blocks a user from completing a task. A checkout process with an unlabelled form field is simply unavailable to someone using a screen reader. A button that cannot be activated by keyboard alone excludes users with motor impairments. A page with insufficient contrast is difficult or impossible to read for a significant portion of your audience.</p>
+          <p>Whatever the precise figure, this is not a niche. It is a share of potential customers that most organisations are not reaching, not tracking, and not accounting for in their commercial planning.</p>
 
-          <h2>Accessibility is not the same as compliance</h2>
-          <p>Meeting a legal standard and being genuinely usable are related but different things. Research consistently shows that technically compliant products can still fail real users, because compliance is measured against criteria, not against actual experience. As AbilityNet's Robin Christopherson has observed, the gap between technical compliance and practical usability can be wide &mdash; a product may pass an automated audit and still be unusable for someone relying on assistive technology in a real-world task.</p>
-          <p>This is why user testing with disabled people matters alongside technical assessment. Standards tell you what to aim for. Users tell you whether you got there.</p>
+          <p>Research in the United States by the American Institutes for Research and Disability:IN (April 2026) confirms that working-age adults with disabilities represent a significant and growing consumer market &mdash; a pattern consistent with European disability population data.</p>
 
           <div class="callout">
-            <p><strong>Accessibility benefits everyone.</strong> Subtitles were created for people with hearing loss. Today, the majority of people watching video with subtitles do not have a hearing impairment &mdash; they are in a noisy environment, or learning a language, or simply prefer to read. Accessible design consistently produces products that are easier to use for everyone.</p>
+            <p><strong>The gap in your data:</strong> your conversion analytics show the users who completed a task. They cannot show the users who tried and could not continue. If your product has accessibility barriers in core journeys &mdash; checkout, account creation, booking, onboarding &mdash; your conversion rate is systematically understating potential demand.</p>
           </div>
 
-          <h2>The commercial case</h2>
-          <p>Inaccessible products have a direct commercial cost that rarely appears in any report. When a disabled user cannot complete a purchase, the abandoned transaction is invisible &mdash; they never made it to the analytics event that would have recorded the attempt. Research into e-commerce accessibility found that four in ten disabled users cannot complete an online booking task. Those are real transactions, not made.</p>
-          <p>Organisations that have addressed accessibility report reduced customer support costs, higher completion rates, and stronger customer loyalty among assistive technology users. Accessibility improvements also tend to improve search engine performance as a secondary effect, because the structural changes required for accessibility &mdash; clear headings, meaningful link text, properly labelled forms &mdash; are the same changes search engines reward.</p>
+          <h2>Why the loss stays invisible</h2>
 
-          <h2>The regulatory context</h2>
-          <p>The European Accessibility Act (EAA) has been in force since June 2025. It requires organisations providing digital products or services to EU consumers to meet EN 301 549, the harmonised European accessibility standard. In practice, that means conforming to the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA &mdash; and demonstrating active management of that compliance position. Enforcement has started in several member states. In Ireland, Germany, Sweden and the Netherlands, organisations are already facing complaints, audits, and in some cases, legal demands.</p>
-          <p>The EAA is not the reason to care about accessibility. It is the reason that not caring now carries real consequences.</p>
+          <p>A user who cannot complete a booking because a date picker is inaccessible to their screen reader does not generate an abandonment event in your analytics. They did not add to the cart and leave. They could not get that far. There is no record of the attempted journey, no signal in your data, no prompt to investigate.</p>
+
+          <p>This is different from ordinary conversion failure. Ordinary abandonment is measurable: you can see where users dropped off, run tests, make changes, and measure the effect. Accessibility abandonment is invisible at the point of failure. The only way to find it is to test with users who use assistive technology, or to audit the user journeys that matter most against accessibility standards.</p>
+
+          <h2>The cost of finding accessibility barriers late</h2>
+
+          <p>Research presented at Microsoft Build in June 2026 by Jessie Lorenz, who describes herself as a blind PM at Microsoft, quantified what accessibility professionals have long understood: the later in the development process an accessibility barrier is found, the more expensive it is to fix. Addressing a barrier at the planning stage is essentially free &mdash; a conversation. At design, it costs ten times more. At development, one hundred times more. After a product has shipped, one thousand times more.</p>
+
+          <p>This framing matters commercially because it reframes accessibility as a cost-reduction question, not just a compliance question. Organisations that build accessibility in from the start spend less than those who fix it after the fact &mdash; and far less than those who face enforcement action for failing to fix it at all. Accessibility debt compounds the same way security debt does.</p>
+
+          <p>Lorenz put the human dimension plainly: she experiences the barriers that get shipped, not as a researcher observing them, but as someone who encounters them in daily life. The cost escalation data and the lived experience are describing the same thing from different angles.</p>
+
+          <h2>The compliance case and the commercial case are the same problem</h2>
+
+          <p>Accessibility barriers that exclude disabled users are also barriers that create friction for everyone. A form that is difficult to navigate by keyboard is difficult to navigate on a phone. An image without a text alternative fails a screen reader user and also fails a search engine crawler. A video without captions excludes a deaf user and also a user watching in a quiet office.</p>
+
+          <p>Organisations that fix accessibility barriers as part of a compliance programme tend to find that their conversion metrics improve across the board. The compliance work and the commercial improvement are not separate activities. They address the same underlying problems in the same user journeys.</p>
+
+          <p>For <a href="/eaa-compliance-fintech.html">financial services organisations</a> in particular, the stakes are high on both tracks. The 32% technical failure rate is the worst of any sector. Combined with active enforcement by the AFM in the Netherlands, ComReg in Ireland, and PTS in Sweden, the commercial and legal exposure sit in exactly the same place.</p>
+
+          <h2>What accessibility ROI actually looks like</h2>
+
+          <p>The return on accessibility investment is not primarily a cost saving — it is a revenue recovery. The question is not "how much does fixing this cost?" but "how much revenue is currently lost because users cannot complete this journey?"</p>
+
+          <p>For e-commerce, the calculation starts with the size of the disabled customer base and the blocking rate in your checkout flow. For financial services, it starts with account opening, payment initiation, and balance enquiry — the core transactions that 32% of financial services sites currently fail to support. For travel, it starts with the booking flow, where 40% of sites create hard stops for users with disabilities.</p>
+
+          <p>A free initial assessment covers where your product may have barriers in these journeys, what those barriers mean for your compliance position, and what a proportionate next step looks like.</p>
 
           <div class="article-cta">
-            <h2>Where does your organisation stand?</h2>
-            <p>Our free initial assessment covers your current accessibility position, which of the four EAA compliance requirements you have addressed, and what a proportionate next step looks like.</p>
+            <h2>Find out what accessibility barriers are costing your organisation</h2>
+            <p>Our free initial assessment covers your accessibility position across the user journeys that matter most commercially, and what a proportionate next step looks like.</p>
             <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
           </div>
 
         </div>
       </div>
     </div>
-
     <div class="related-links">
       <div class="container">
         <div class="article-container">
           <h2>Related guides</h2>
           <ul class="related-list">
+            <li><a href="/eaa-compliance-fintech.html">EAA compliance for FinTech and financial services</a></li>
+            <li><a href="/eaa-compliance-ecommerce.html">EAA compliance for e-commerce &mdash; what online retailers need to know</a></li>
+            <li><a href="/eaa-compliance-france.html">EAA compliance in France &mdash; civil society enforcement and the Carrefour ruling</a></li>
             <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
-            <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
-            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what directors need to know</a></li>
             <li><a href="/insights.html">All insights</a></li>
-          
-            <li><a href="/eaa-revenue-loss.html">Inaccessible design is invisible revenue loss &mdash; what the data shows</a></li>
           </ul>
         </div>
       </div>
     </div>
-
     <div class="back-link-section">
       <div class="container">
         <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
       </div>
     </div>
-
   </main>
-
   <footer>
     <div class="container">
       <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
     </div>
   </footer>
-
   <script>
     (function() {
       var toggle = document.querySelector('.nav-toggle');
@@ -294,7 +275,7 @@
       menu.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
           menu.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-enabled', 'false');
           toggle.setAttribute('aria-label', 'Open navigation menu');
         });
       });
@@ -307,6 +288,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
