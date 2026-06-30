@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EAA Compliance in France — What Businesses Need to Know | Usable Access</title>
   <meta name="description" content="France’s first EAA compliance order was issued against Carrefour in June 2026. Civil society organisations brought the cases — not regulators. Here is what happened.">
+  <link rel="canonical" href="https://usableaccess.io/eaa-compliance-france.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -95,6 +96,14 @@
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  
+    /* ── Back to top ── */
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -108,6 +117,10 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
 
   <header>
     <div class="container">
@@ -133,7 +146,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <div class="page-header">
       <div class="container">
@@ -144,7 +157,7 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide &mdash; France</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">15 Jun 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 30 Jun 2026</span>
           </div>
           <h1>EAA compliance in France &mdash; what businesses need to know</h1>
           <p class="deck">France was the first EU country to see a court order an organisation to comply with EAA requirements. Civil society enforcement was active before any regulator moved. Here is what the French framework means for your business.</p>
@@ -215,7 +228,7 @@
 
           <p><strong>5 May 2026 &mdash; Auchan wins at Tribunal judiciaire de Lille.</strong> This is the first EAA court ruling in the EU, and the defendant won &mdash; but not on accessibility grounds. The court dismissed the case against Auchan E-Commerce because of a conflict between France&rsquo;s 2005 domestic accessibility law (which has a &euro;250 million revenue threshold) and the EAA transposition. Auchan E-Commerce reported &euro;144 million revenue in 2024 and fell below the domestic threshold. Critically, the court explicitly found the site had &ldquo;strong or major failures across 13 of 19 audited sections.&rdquo; The ruling is being appealed. The threshold argument has no application to larger organisations: Carrefour reports roughly &euro;90 billion globally; E.Leclerc roughly &euro;60 billion.</p>
 
-          <p><strong>4 June 2026 &mdash; Carrefour ordered to comply at Tribunal judiciaire de Caen.</strong> This is the first EAA ruling ordering an organisation to make its digital services accessible. Carrefour France has six months to comply. Fines accrue for each day of non-compliance after that deadline. Carrefour did not dispute being subject to the obligation and estimated it had met 71% of accessibility criteria. The court found that was not sufficient.</p>
+          <p><strong>4 June 2026 &mdash; Carrefour ordered to comply at Tribunal judiciaire de Caen.</strong> This is the first EAA ruling ordering an organisation to make its digital services accessible. Carrefour France has six months to comply. Fines of &euro;500 per day accrue for each day of non-compliance after that deadline. Carrefour did not dispute being subject to the obligation and estimated it had met 71% of accessibility criteria. The court found that was not sufficient &mdash; explicitly rejecting partial conformance and holding that accessibility is an obligation of result: the site cannot be only a little accessible, it must be totally accessible.</p>
 
           <div class="callout callout--orange">
             <p><strong>The Carrefour ruling is not an immediate fine.</strong> It is a court order requiring compliance, with financial consequences for failing to comply after six months. That is a different legal instrument than an administrative penalty &mdash; and in some respects a more powerful one. The clock is running from 4 June 2026.</p>
@@ -311,6 +324,15 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+        // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+
     })();
   </script>
 
