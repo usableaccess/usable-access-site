@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>France EAA Enforcement: Civil Society Takes the Lead | Usable Access</title>
   <meta name="description" content="Two French disability organisations brought the first EAA lawsuits in Europe. Carrefour was ordered to comply. Auchan won on a procedural threshold. Here is the full story.">
+  <link rel="canonical" href="https://usableaccess.io/insights/france-eaa-civil-society-enforcement.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -97,6 +98,14 @@
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  
+    /* ── Back to top ── */
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -110,6 +119,10 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
 
   <header>
     <div class="container">
@@ -135,7 +148,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <div class="page-header">
       <div class="container">
@@ -144,7 +157,7 @@
             <a href="/insights.html">Insights</a> &rsaquo; Intelligence
           </nav>
           <span class="section-label">Intelligence &mdash; France</span>
-          <p class="article-meta-line">Published Updated 24 Jun 2026 &mdash; Updated 24 Jun 2026</p>
+          <p class="article-meta-line">Published 11 Jun 2026 &mdash; Updated 30 Jun 2026</p>
           <h1>France EAA enforcement: civil society takes the lead</h1>
           <p class="deck">France&rsquo;s first EAA lawsuits were not filed by a regulator. They were filed by disability rights organisations. That distinction matters for every organisation operating in Europe.</p>
         </div>
@@ -184,7 +197,7 @@
             </li>
             <li>
               <span class="timeline-date">4 June 2026</span>
-              <p>The Tribunal judiciaire de Caen orders Carrefour France to make its online commerce services fully accessible to people with disabilities &mdash; the first EAA ruling ordering compliance in Europe. The court gives Carrefour six months to comply. Fines accrue for each day of non-compliance after that deadline. Carrefour did not dispute being subject to the obligation and estimated it had already met 71% of the accessibility criteria. The court found that was not enough.</p>
+              <p>The Tribunal judiciaire de Caen orders Carrefour France to make its online commerce services fully accessible to people with disabilities &mdash; the first EAA ruling ordering compliance in Europe. The court gives Carrefour six months to comply, under penalty of &euro;500 per day of delay after that deadline. Carrefour did not dispute being subject to the obligation and estimated it had already met 71% of the accessibility criteria. The court rejected that argument explicitly: accessibility is an obligation of result, requiring compliance with 100% of RGAA criteria. In the court&rsquo;s own words: &ldquo;Le site de e-commerce concern&eacute; ne peut pas &ecirc;tre seulement un peu accessible, il doit l&rsquo;&ecirc;tre totalement.&rdquo; A site cannot be only a little accessible &mdash; it must be totally accessible.</p>
             </li>
             <li>
               <span class="timeline-date">As of June 2026</span>
@@ -227,7 +240,7 @@
 
           <h2>What the two rulings mean for 2026 and beyond</h2>
 
-          <p>France has now produced two EAA court rulings, and together they tell a more complete story than either does alone. The first ruling, issued 5 May 2026 by the Tribunal judiciaire de Lille, went to the defendant &mdash; but on a procedural ground (a revenue threshold specific to the entity sued) that the court was explicit has nothing to do with whether the site was accessible. The second ruling, issued 4 June 2026 by the Tribunal judiciaire de Caen, ordered compliance. The 4 June ruling is not an administrative fine. It is a court order requiring Carrefour to achieve compliance within six months, with fines accruing for each day of delay after that deadline. That distinction matters: it is a different kind of legal instrument from what most EAA compliance teams had modelled. The court did not set a symbolic deadline &mdash; it attached a financial consequence to every day of continued non-compliance.</p>
+          <p>France has now produced two EAA court rulings, and together they tell a more complete story than either does alone. The first ruling, issued 5 May 2026 by the Tribunal judiciaire de Lille, went to the defendant &mdash; but on a procedural ground (a revenue threshold specific to the entity sued) that the court was explicit has nothing to do with whether the site was accessible. The second ruling, issued 4 June 2026 by the Tribunal judiciaire de Caen, ordered compliance. The court attached a financial consequence of &euro;500 per day to every day of continued non-compliance after the six-month deadline. And it was explicit on the standard: accessibility is an obligation of result. 71% conformance is not compliance. 100% of RGAA criteria must be met. The 4 June ruling is not an administrative fine &mdash; it is a court order with a daily penalty attached, and a judicial statement that partial conformance is not a defence.</p>
 
           <p>The ruling is also the first of its kind in Europe. No EAA court order had been issued in any member state before this. It demonstrates that civil society organisations with legal backing can bring proceedings, that courts will hear them, and that the remedy available &mdash; an order requiring compliance, not merely a fine &mdash; can be immediate in its legal effect. The emergency injunction procedure the organisations used is designed for exactly this: situations where an ongoing practice is discriminatory and requires urgent correction.</p>
 
@@ -309,6 +322,15 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+        // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+
     })();
   </script>
 
