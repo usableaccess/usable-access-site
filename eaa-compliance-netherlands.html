@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://usableaccess.io/eaa-compliance-netherlands.html">
   <title>EAA Compliance in the Netherlands — ACM Enforcement | Usable Access</title>
-  <meta name="description" content="ACM enforcement in the Netherlands is shifting from monitoring to formal sanctions in mid-2026. Fines reach €900,000. 61% of webshops found entirely inaccessible. Here is what Dutch EAA compliance requires.">
+  <meta name="description" content="ACM enforcement is active. 61% of Dutch webshops blocked disabled users entirely. Non-reporters are first in the audit queue. Fines reach €900,000.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -97,6 +98,12 @@
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -108,6 +115,9 @@
   </script>
 </head><body>
   <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
   <header>
     <div class="container">
       <nav aria-label="Main navigation">
@@ -131,7 +141,7 @@
       </nav>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
     <div class="page-header">
       <div class="container">
         <div class="article-container">
@@ -141,7 +151,7 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide &mdash; Netherlands</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 23 Jun 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 7 Jul 2026</span>
           </div>
           <h1>EAA compliance in the Netherlands: what organisations need to know</h1>
           <p class="deck">The ACM is actively auditing Dutch businesses. There is a mandatory reporting requirement most organisations have missed. Fines can reach 10% of annual turnover.</p>
@@ -159,6 +169,7 @@
           <h2>The mandatory reporting requirement</h2>
           <p>The Netherlands has a requirement that most organisations operating there have either missed or misunderstood. Under Dutch implementation of the EAA, organisations must proactively report their accessibility compliance status to the ACM. This is not a passive obligation: it requires submitting documentation of your compliance position, with a compliance declaration available on request.</p>
           <p>Organisations that failed to report by the October 2025 deadline, or submitted incomplete documentation, have moved to the front of the ACM audit queue. If you have not already reported, this is the most urgent action to take.</p>
+          <p>The ACM's own audit data makes the scale of the problem clear: in 61% of the approximately 100 major webshops it tested, ordering was entirely impossible for users with disabilities. Not difficult — entirely impossible. Those organisations are now in the enforcement queue.</p>
 
           <div class="callout callout--orange">
             <p><strong>If you have not yet reported to the ACM, this is urgent.</strong> Failure to report does not make an organisation invisible to enforcement. It makes it a priority target. The ACM has been explicit that non-reporting organisations will be audited first.</p>
@@ -198,7 +209,7 @@
           <div class="article-cta">
             <h2>Find out where your organisation stands</h2>
             <p>Our free initial assessment covers your Netherlands compliance position, which of the four EAA requirements you have addressed, and what a proportionate next step looks like.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
           </div>
 
         </div>
@@ -209,6 +220,8 @@
         <div class="article-container">
           <h2>Related guides</h2>
           <ul class="related-list">
+            <li><a href="/eaa-enforcement.html">How EAA enforcement works across all markets</a></li>
+            <li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit your digital product for EAA compliance</a></li>
             <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
             <li><a href="/eaa-compliance-fintech.html">EAA compliance for FinTech and financial services</a></li>
             <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
@@ -263,6 +276,14 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+    })();
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
     })();
   </script>
 </body>
