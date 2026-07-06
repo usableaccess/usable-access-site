@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EAA Ireland — Criminal Sanctions and Director Liability | Usable Access</title>
-  <meta name="description" content="Ireland is the only EU country where EAA non-compliance carries criminal sanctions. Directors face personal liability: fines up to €60,000 and imprisonment.">
-  <link rel="canonical" href="https://usableaccess.io/eaa-compliance-ireland.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAA Ireland — Criminal Sanctions and Director Liability | Usable Access</title>
+<meta name="description" content="Ireland is the only EU country where EAA non-compliance carries criminal sanctions. Directors face personal liability: fines up to €60,000 and imprisonment.">
+<link rel="canonical" href="https://usableaccess.io/eaa-compliance-ireland.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
     :root {
       --colour-teal: #0F6B6B; --colour-teal-deep: #0A5252; --colour-teal-subtle: #F4FAFA;
       --colour-teal-badge: #E0F2F2; --colour-orange: #B05000; --colour-orange-dark: #8B3D00;
@@ -33,54 +33,26 @@
     .site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
     .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
     .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
-    header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-
-    .nav-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px;
-      height: 18px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      flex-shrink: 0;
-    }
+    header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; overflow: visible; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; position: relative; width: 100%; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
     .nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
-    .nav-toggle-bar {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background-color: var(--colour-heading);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      transform-origin: center;
-    }
+    .nav-toggle-bar { display: block; width: 100%; height: 2px; background-color: var(--colour-heading); transition: transform 0.2s ease, opacity 0.2s ease; transform-origin: center; }
     .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
     .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--colour-white);
-      border-bottom: 2px solid var(--colour-teal);
-      padding: var(--space-md) var(--container-pad);
-      list-style: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      z-index: 99;
-    }
+    .nav-links { display: none; position: absolute; top: 100%; left: calc(-1 * var(--container-pad)); right: calc(-1 * var(--container-pad)); background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) var(--container-pad); list-style: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 200; }
     .nav-links.is-open { display: block; }
     .nav-links li { border-bottom: 1px solid var(--colour-border); }
     .nav-links li:last-child { border-bottom: none; }
+    .nav-links a { display: block; font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; padding: var(--space-md) 0; letter-spacing: 0.01em; }
+    .nav-links a:hover { color: var(--colour-teal); }
+    .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
     @media (min-width: 640px) {
       .nav-toggle { display: none; }
       .nav-links { display: flex !important; position: static; border-bottom: none; padding: 0; box-shadow: none; background: none; list-style: none; gap: var(--space-xl); }
       .nav-links li { border-bottom: none; }
-      .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; letter-spacing: 0.01em; }
+      .nav-links a { font-size: 0.875rem; padding: 0; }
       .nav-links a:hover { color: var(--colour-teal); }
       .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
       .nav-links a[aria-current="page"] { color: var(--colour-teal); border-bottom: 2px solid var(--colour-teal); padding-bottom: 2px; }
@@ -96,12 +68,13 @@
     .page-body { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--colour-border); }
     .page-body h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-md); margin-top: var(--space-2xl); }
     .page-body h2:first-child { margin-top: 0; }
+    .page-body h3 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-sm); margin-top: var(--space-xl); }
     .page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-lg); max-width: 36em; }
     .page-body ul { margin: 0 0 var(--space-lg) var(--space-xl); }
     .page-body ul li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
     .page-body strong { font-weight: 600; color: var(--colour-heading); }
     .callout { background: var(--colour-teal-subtle); border-left: 4px solid var(--colour-teal); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
-    .callout p { margin-bottom: 0; }
+    .callout p { margin-bottom: 0; max-width: none; }
     .callout--orange { background: var(--colour-orange-tint); border-left-color: var(--colour-orange); }
     .penalty-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-xl); font-family: var(--font-body); font-size: 0.9375rem; }
     .penalty-table th { background: var(--colour-teal); color: var(--colour-white); padding: var(--space-sm) var(--space-md); text-align: left; font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.02em; }
@@ -114,6 +87,11 @@
     .cta-button { display: inline-block; background: var(--colour-orange); color: #ffffff !important; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.875rem 1.75rem; text-decoration: none !important; border-radius: 0; }
     .cta-button:hover { background: var(--colour-orange-dark); }
     .cta-button:focus { outline: 3px solid var(--colour-white); outline-offset: 3px; }
+    .related-links { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    .related-links h2 { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--colour-meta); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: var(--space-md); }
+    .related-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .related-list a { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
+    .related-list a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
     .back-link-section { padding: var(--space-xl) 0; }
     .back-link { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-teal); text-decoration: underline; }
     .back-link:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
@@ -121,205 +99,201 @@
     footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
     footer a { color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
     footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
-
-    /* ── Enhanced focus styles ── */
-    :focus-visible {
-      outline: 3px solid var(--colour-teal);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
-    }
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--colour-teal);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
-    }
-
-    /* ── Reduced motion ── */
+    :focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal); }
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
     }
-  
-    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
-    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
-    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
-    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
-    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
-  
-    /* ── Back to top ── */
-    .back-to-top {
-      position: fixed;
-      bottom: var(--space-xl);
-      right: var(--space-xl);
-      background: var(--colour-teal);
-      color: var(--colour-white);
-      border: none;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease, background 0.15s ease;
-      z-index: 50;
-      text-decoration: none;
-    }
+    .back-to-top { position: fixed; bottom: var(--space-xl); right: var(--space-xl); background: var(--colour-teal); color: var(--colour-white); border: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease, background 0.15s ease; z-index: 50; text-decoration: none; }
     .back-to-top:hover { background: var(--colour-teal-deep); }
-    .back-to-top:focus {
-      outline: 3px solid var(--colour-heading);
-      outline-offset: 3px;
-      opacity: 1;
-      visibility: visible;
-    }
+    .back-to-top:focus { outline: 3px solid var(--colour-heading); outline-offset: 3px; opacity: 1; visibility: visible; }
     .back-to-top.is-visible { opacity: 1; visibility: visible; }
-    .back-to-top svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: var(--colour-white);
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .back-to-top { transition: none; }
-    }
-  </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
-  <script>
+    .back-to-top svg { width: 20px; height: 20px; fill: none; stroke: var(--colour-white); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    @media (prefers-reduced-motion: reduce) { .back-to-top { transition: none; } }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CWF8FPK9T7');
-  </script>
+</script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </a>
-  <header>
-    <div class="container">
-      <nav aria-label="Main navigation">
-        <div class="nav-inner">
-          <a href="/" class="site-logo" aria-label="Usable Access — home">
-            <span class="logo-usable">Usable</span>
-            <span class="logo-access">Access</span>
-          </a>
-                    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
-            <span class="nav-toggle-bar" aria-hidden="true"></span>
-            <span class="nav-toggle-bar" aria-hidden="true"></span>
-            <span class="nav-toggle-bar" aria-hidden="true"></span>
-          </button>
-          <ul class="nav-links" id="nav-menu" role="list">
-            <li><a href="/#what-we-do">What we do</a></li>
-            <li><a href="/#services">Services</a></li>
-            <li><a href="/insights.html">Insights</a></li>
-            <li><a href="/#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
-  <main id="main" tabindex="-1">
-    <div class="page-header">
-      <div class="container">
-        <div class="article-container">
-          <nav aria-label="Breadcrumb" class="breadcrumb">
-            <a href="/insights.html">Insights</a> &rsaquo; Ireland
-          </nav>
-          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
-            <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide &mdash; Ireland</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">4 Jun 2026</span>
-          </div>
-          <h1>EAA compliance in Ireland — what directors need to know</h1>
-          <p class="deck">Ireland is the only EU member state where EAA non-compliance can result in a criminal conviction. This guide explains what that means in practice.</p>
-        </div>
-      </div>
-    </div>
-    <div class="page-body">
-      <div class="container">
-        <div class="article-container">
-          
-          <p>The European Accessibility Act (EAA) has been enforceable in Ireland since 28 June 2025 under S.I. No. 636/2023 — the European Union (Accessibility Requirements of Products and Services) Regulations 2023. Ireland's implementation goes further than most EU member states in one significant respect: it includes criminal penalties for serious or persistent non-compliance.</p>
+<a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<polyline points="18 15 12 9 6 15"></polyline>
+</svg>
+</a>
 
-          <h2>The four things EAA compliance requires</h2>
-          <p>EAA compliance is not a single checklist item. It requires four things, all of which are mandatory:</p>
-          <ul>
-            <li><strong>Technical conformance.</strong> Your digital products and services must meet EN 301 549 — the harmonised European standard. In practice, that means WCAG 2.1 Level AA.</li>
-            <li><strong>A published accessibility statement.</strong> A mandatory public declaration of your current compliance position, what is not yet accessible, and your remediation plan. Irish regulators request this first in any complaint process.</li>
-            <li><strong>Active governance.</strong> A named owner for accessibility, a regular testing rhythm, and a process that survives a team change.</li>
-            <li><strong>Documentary evidence.</strong> Dated assessments, remediation records, and a compliance process that demonstrates the organisation was actively managing its obligations.</li>
-          </ul>
+<header>
+<div class="container">
+<nav aria-label="Main navigation">
+<div class="nav-inner">
+<a href="/" class="site-logo" aria-label="Usable Access — home">
+<span class="logo-usable">Usable</span>
+<span class="logo-access">Access</span>
+</a>
+<button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+</button>
+<ul class="nav-links" id="nav-menu" role="list">
+<li><a href="/#what-we-do">What we do</a></li>
+<li><a href="/#services">Services</a></li>
+<li><a href="/insights.html">Insights</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</header>
 
-          <h2>Criminal liability — who is at risk</h2>
-          <p>Serious or persistent non-compliance — meaning organisations that knew and didn't act — can be prosecuted as a criminal offence under the Regulations. For the most serious cases, prosecuted in the higher courts, the penalty is a fine of up to €60,000, imprisonment of up to 18 months, or both.</p>
-          <p>What makes this unusual is who is at risk. Where a company commits an offence under the Regulations, directors, managers, secretaries, and other officers of that company can be held personally liable. The liability does not stop at the corporate level. It follows the individuals whose decisions, actions, or neglect contributed to the non-compliance.</p>
+<main id="main" tabindex="-1">
+<div class="page-header">
+<div class="container">
+<div class="article-container">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/insights.html">Insights</a> &rsaquo; Ireland
+</nav>
+<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+<span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide &mdash; Ireland</span>
+<span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+<span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 7 Jul 2026</span>
+</div>
+<h1>EAA compliance in Ireland — what directors need to know</h1>
+<p class="deck">Ireland is the only EU member state where EAA non-compliance can result in a criminal conviction. This guide explains what that means in practice.</p>
+</div>
+</div>
+</div>
 
-          <div class="callout">
-            <p><strong>Ireland is the only EU member state with criminal penalties for EAA non-compliance.</strong> Across Europe, enforcement means fines — significant ones in some markets, but fines nonetheless. Ireland goes further.</p>
-          </div>
+<div class="page-body">
+<div class="container">
+<div class="article-container">
 
-          <h2>ComReg enforcement in Ireland</h2>
-          <p>This is not a theoretical risk. ComReg — the Commission for Communications Regulation — is already processing formal complaints, including one against Ireland's largest mobile operator. Enforcement has started.</p>
-          <p>ComReg is the enforcement authority for electronic communications services. The CCPC (Competition and Consumer Protection Commission) handles products. Coimisiún na Meán covers audiovisual and media services.</p>
-          <p>Irish regulators review the accessibility statement early in any complaint process. It is typically the first document they request. An organisation without one starts any investigation at a disadvantage.</p>
+<p>The European Accessibility Act (EAA) has been enforceable in Ireland since 28 June 2025 under S.I. No. 636/2023 — the European Union (Accessibility Requirements of Products and Services) Regulations 2023. Ireland's implementation goes further than most EU member states in one significant respect: it includes criminal penalties for serious or persistent non-compliance.</p>
 
-          <h2>The due diligence defence</h2>
-          <p>Irish law allows that a defendant who can demonstrate they exercised due diligence may have a case against the charge. In practice, that means documented evidence of active accessibility management: assessments, remediation records, and a compliance process that shows the organisation was not simply ignoring the obligation.</p>
-          <p>That evidence is exactly what a structured compliance programme produces. It is also, in most cases, the difference between a defensible position and a personal liability.</p>
+<h2>The four things EAA compliance requires</h2>
+<p>EAA compliance is not a single checklist item. It requires four things, all of which are mandatory:</p>
+<ul>
+<li><strong>Technical conformance.</strong> Your digital products and services must meet EN 301 549 — the harmonised European standard. In practice, that means WCAG 2.1 Level AA.</li>
+<li><strong>A published accessibility statement.</strong> A mandatory public declaration of your current compliance position, what is not yet accessible, and your remediation plan. Irish regulators request this first in any complaint process.</li>
+<li><strong>Active governance.</strong> A named owner for accessibility, a regular testing rhythm, and a process that survives a team change.</li>
+<li><strong>Documentary evidence.</strong> Dated assessments, remediation records, and a compliance process that demonstrates the organisation was actively managing its obligations.</li>
+</ul>
 
-          <h2>Which organisations are covered</h2>
-          <p>The EAA applies to any organisation providing covered products or services to consumers in Ireland — regardless of where the organisation is headquartered. A US-based SaaS company with Irish enterprise customers, a Dutch e-commerce retailer selling to Irish consumers, and an Irish-headquartered FinTech all face the same obligations.</p>
-          <p>Microenterprises (fewer than 10 employees and annual turnover or balance sheet total not exceeding €2 million) may be exempt for some obligations, but should verify this with a qualified adviser before assuming exemption applies.</p>
+<h2>Criminal liability — who is at risk</h2>
+<p>Serious or persistent non-compliance — meaning organisations that knew and did not act — can be prosecuted as a criminal offence under the Regulations. For the most serious cases, prosecuted in the higher courts, the penalty is a fine of up to &euro;60,000, imprisonment of up to 18 months, or both.</p>
+<p>What makes this unusual is who is at risk. Where a company commits an offence under the Regulations, directors, managers, secretaries, and other officers of that company can be held personally liable. The liability does not stop at the corporate level. It follows the individuals whose decisions, actions, or neglect contributed to the non-compliance.</p>
 
-          <div class="article-cta">
-            <h2>Find out where you stand</h2>
-            <p>A free 20-minute conversation to find out whether the EAA applies to your organisation and where to begin &mdash; or, if you already know you need an audit, to talk through what that typically involves and what questions to answer first. No obligation, no assumptions.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="related-links">
-      <div class="container">
-        <div class="article-container">
-          <h2>Related guides</h2>
-          <ul class="related-list">
-            <li><a href="/eaa-sanctions.html">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</a></li>
-            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
-            <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines, penalties and sanctions &mdash; Ireland, Netherlands, Sweden</a></li>
-            <li><a href="/eaa-disproportionate-burden.html">The EAA disproportionate burden exemption &mdash; what it actually requires</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="back-link-section">
-      <div class="container">
-        <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
-      </div>
-    </div>
-  </main>
-  <footer>
-    <div class="container">
-      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
-    </div>
-  </footer>
-  <script>
+<div class="callout">
+<p><strong>Ireland is the only EU member state with criminal penalties for EAA non-compliance.</strong> Across Europe, enforcement means fines — significant ones in some markets, but fines nonetheless. Ireland goes further.</p>
+</div>
+
+<h2>Penalties at a glance</h2>
+<table class="penalty-table" aria-label="Irish EAA penalty structure">
+<thead>
+<tr>
+<th scope="col">Conviction type</th>
+<th scope="col">Who</th>
+<th scope="col">Maximum penalty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Summary conviction</td>
+<td>Organisation or individual</td>
+<td>&euro;5,000 fine and/or 6 months imprisonment</td>
+</tr>
+<tr>
+<td>Conviction on indictment</td>
+<td>Organisation or individual</td>
+<td>&euro;60,000 fine and/or 18 months imprisonment</td>
+</tr>
+<tr>
+<td>Director or officer liability</td>
+<td>Named individuals personally</td>
+<td>Same as above — personal, not corporate</td>
+</tr>
+</tbody>
+</table>
+
+<h2>ComReg enforcement in Ireland</h2>
+<p>This is not a theoretical risk. ComReg — the Commission for Communications Regulation — is already processing formal complaints, including one against Ireland's largest mobile operator. Enforcement has started.</p>
+<p>ComReg is the enforcement authority for electronic communications services. The CCPC (Competition and Consumer Protection Commission) handles products. Coimisi&uacute;n na Me&aacute;n covers audiovisual and media services.</p>
+<p>Irish regulators review the accessibility statement early in any complaint process. It is typically the first document they request. An organisation without one starts any investigation at a disadvantage.</p>
+
+<h2>The due diligence defence</h2>
+<p>Irish law allows that a defendant who can demonstrate they exercised due diligence may have a case against the charge. In practice, that means documented evidence of active accessibility management: assessments, remediation records, and a compliance process that shows the organisation was not simply ignoring the obligation.</p>
+<p>That evidence is exactly what a structured compliance programme produces. It is also, in most cases, the difference between a defensible position and a personal liability. The defence cannot be constructed retrospectively — genuine accessibility work with no documentation cannot support it.</p>
+
+<h2>Which organisations are covered</h2>
+<p>The EAA applies to any organisation providing covered products or services to consumers in Ireland — regardless of where the organisation is headquartered. A US-based SaaS company with Irish enterprise customers, a Dutch e-commerce retailer selling to Irish consumers, and an Irish-headquartered FinTech all face the same obligations.</p>
+<p>Microenterprises (fewer than 10 employees and annual turnover or balance sheet total not exceeding &euro;2 million) may be exempt for some obligations, but should verify this with a qualified adviser before assuming exemption applies.</p>
+
+<h2>Common questions</h2>
+
+<h3>Does the EAA apply to my Irish company?</h3>
+<p>If your organisation provides covered digital products or services to consumers in Ireland, it is in scope regardless of where it is headquartered. A US-based SaaS company with Irish enterprise customers, a Dutch e-commerce retailer selling to Irish consumers, and an Irish-headquartered FinTech all face the same obligations under S.I. No. 636/2023.</p>
+
+<h3>Can a director actually go to prison for EAA non-compliance?</h3>
+<p>Yes. On conviction on indictment, the maximum penalty for an individual director or officer is a fine of &euro;60,000 and/or imprisonment of up to 18 months. Summary conviction carries a maximum of &euro;5,000 and/or 6 months. The personal liability provision is explicit in S.I. No. 636/2023, Regulations 32 and 33. Ireland is the only EU member state where EAA non-compliance carries criminal sanctions for individuals.</p>
+
+<h3>What does ComReg actually do?</h3>
+<p>ComReg is Ireland's Commission for Communications Regulation and the primary enforcement authority for EAA compliance in electronic communications and digital services. ComReg processes formal complaints, investigates organisations, and can refer cases for prosecution where non-compliance is serious or persistent. ComReg requests the accessibility statement first in any complaint investigation.</p>
+
+<h3>What is the due diligence defence?</h3>
+<p>The due diligence defence is available to organisations that can demonstrate they took all reasonable steps to prevent non-compliance. It requires documented evidence of active accessibility management: assessments, remediation records, and governance processes. The defence cannot be constructed retrospectively. Genuine accessibility work without documentation cannot support the defence.</p>
+
+<h3>What happens when ComReg receives a complaint?</h3>
+<p>A user who encounters an accessibility barrier contacts the organisation first through the mandatory feedback mechanism. If the response is inadequate, they can submit a formal complaint to ComReg. ComReg investigates, requests documentation starting with the accessibility statement, and can refer the matter for prosecution if non-compliance is found to be serious or persistent. One formal complaint is already being processed against a named Irish telecoms operator.</p>
+
+<div class="article-cta">
+<h2>Find out where you stand</h2>
+<p>If you'd like to understand what Ireland's criminal liability provisions mean for your specific organisation, our free assessment is the place to start.</p>
+<a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="related-links">
+<div class="container">
+<div class="article-container">
+<h2>Related guides</h2>
+<ul class="related-list">
+<li><a href="/eaa-enforcement.html">How EAA enforcement works across all markets</a></li>
+<li><a href="/eaa-sanctions.html">EAA sanctions — criminal liability, market bans and enforcement mechanisms</a></li>
+<li><a href="/eaa-governance.html">EAA governance — what it means and why most organisations are missing it</a></li>
+<li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines, penalties and sanctions — Ireland, Netherlands, Sweden</a></li>
+<li><a href="/eaa-disproportionate-burden.html">The EAA disproportionate burden exemption — what it actually requires</a></li>
+<li><a href="/eaa-compliance-netherlands.html">EAA compliance in the Netherlands — ACM enforcement</a></li>
+<li><a href="/eaa-compliance-sweden.html">EAA compliance in Sweden — PTS enforcement</a></li>
+<li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit your digital product for EAA compliance</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="back-link-section">
+<div class="container">
+<a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+</div>
+</footer>
+
+<script>
     (function() {
       var toggle = document.querySelector('.nav-toggle');
       var menu = document.getElementById('nav-menu');
@@ -352,7 +326,7 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
-    
+    })();
     // Back to top
     (function() {
       var btn = document.getElementById('back-to-top');
@@ -361,8 +335,6 @@
         btn.classList.toggle('is-visible', window.scrollY > 400);
       }, { passive: true });
     })();
-
-    })();
-  </script>
+</script>
 </body>
 </html>
