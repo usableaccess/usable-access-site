@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Compliance for SaaS — Software Platforms | Usable Access</title>
+  <meta name="description" content="Most SaaS companies assume the EAA does not apply to them. Most are wrong. Here is what compliance actually requires for software platforms.">
+  <link rel="canonical" href="https://usableaccess.io/eaa-compliance-saas.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.8125rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .breadcrumb{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-lg)}
+    .breadcrumb a{color:var(--colour-teal);text-decoration:underline}
+    .breadcrumb a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .page-body{padding:var(--space-2xl) 0;border-bottom:1px solid var(--colour-border)}
+    .page-body h2{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
+    .callout p{margin-bottom:0;max-width:none}
+    .market-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    @media(min-width:640px){.market-grid{grid-template-columns:repeat(2,1fr)}}
+    .market-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
+    .market-card h3{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-sm)}
+    .market-card p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-body);line-height:1.65;margin-bottom:0;max-width:none}
+    .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+    .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+    .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+    .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+    .cta-button:hover{background:var(--colour-orange-dark)}
+    .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .back-link-section{padding:var(--space-xl) 0}
+    .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
+    .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+
+    /* ── Enhanced focus styles ── */
+    :focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15);
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--colour-teal);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ── Back to top ── */
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+</head><body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html" aria-current="page">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="/insights.html">Insights</a> &rsaquo; Sector guide
+          </nav>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+            <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Sector guide &mdash; SaaS</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">2 Jul 2026</span>
+          </div>
+          <h1>EAA compliance for SaaS: the B2B assumption worth checking</h1>
+          <p class="deck">Most SaaS companies assume they are out of scope because they sell to businesses, not consumers. Most are wrong. Here is what actually determines whether the EAA applies to your platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <h2>The B2B argument does not hold for most SaaS platforms</h2>
+          <p>&ldquo;We are B2B, the EAA does not apply to us&rdquo; is the most common misunderstanding we encounter when talking to SaaS companies. It is also the most expensive one.</p>
+          <p>The EAA applies to digital services provided to consumers in the EU. It does not ask who signs the contract. It asks who uses the product. A SaaS platform sold to a business customer is still in scope if that business customer&rsquo;s own users, employees, or end customers who are EU consumers interact with it. A workforce scheduling tool sold to a retailer is used by that retailer&rsquo;s staff. An insurance quoting platform sold to a broker is used by that broker&rsquo;s customers. The contract is B2B; the usage is not.</p>
+          <p>The narrower true exemption is for platforms genuinely confined to internal, professional use with no consumer-facing surface at any point in the chain: a shrinking category as SaaS products increasingly serve customer-facing functions for their business clients.</p>
+
+          <div class="callout">
+            <p><strong>The question to ask is not &ldquo;who is our customer?&rdquo; but &ldquo;who ultimately uses this, and are any of them EU consumers?&rdquo;</strong> If the answer is yes at any point in the chain, EN 301 549 and WCAG 2.1 AA apply to your interface.</p>
+          </div>
+
+          <h2>Why governance is harder in SaaS than e-commerce</h2>
+          <p>An e-commerce site changes its interface in discrete releases. A SaaS platform ships continuously. Feature velocity that is a competitive advantage in product development becomes a compliance liability without a governance process attached to it. Every sprint is an opportunity for a new accessibility barrier to enter production, and without a review step, none of them get caught before they ship.</p>
+          <p>This is compounded by AI-assisted development. The AIMAC benchmark found that most AI coding models produce non-compliant HTML by default. Accessibility hasn&rsquo;t been a primary training objective for any major model tested. A SaaS team using AI tools to accelerate feature development is very likely accelerating the accumulation of accessibility debt at the same time, unless an explicit review step is built into the release process.</p>
+          <p>The technical fix for a single barrier is usually straightforward. The governance failure that let it ship unreviewed, and will let the next one ship the same way, is the actual risk.</p>
+
+          <h2>The four requirements in a SaaS context</h2>
+          <ul>
+            <li><strong>Technical conformance</strong> &mdash; EN 301 549 and WCAG 2.1 AA apply to the software interface itself, not just marketing pages. Desktop and web application interfaces are both in scope.</li>
+            <li><strong>Accessibility statement</strong> &mdash; published, current, and covering the actual product interface, not just the public-facing website.</li>
+            <li><strong>Active governance</strong> &mdash; the requirement that matters most for SaaS specifically. An accessibility review step in the release pipeline, not a one-off audit disconnected from ongoing development.</li>
+            <li><strong>Documentary evidence</strong> &mdash; a dated record that accessibility review is genuinely happening release over release, not a single certificate from a year ago.</li>
+          </ul>
+
+          <h2>Which markets are most active</h2>
+          <div class="market-grid">
+            <div class="market-card">
+              <h3>Netherlands</h3>
+              <p>ACM enforces electronic services broadly, including SaaS platforms serving Dutch consumers. The mandatory self-reporting requirement applies regardless of business model &mdash; B2B SaaS companies with EU consumer-facing functionality are not exempt from the reporting obligation.</p>
+            </div>
+            <div class="market-card">
+              <h3>Ireland</h3>
+              <p>ComReg enforcement and the criminal liability provision apply to SaaS companies incorporated or operating in Ireland in the same way they apply to any other sector. Director liability does not distinguish between B2B and B2C business models.</p>
+            </div>
+            <div class="market-card">
+              <h3>Sweden</h3>
+              <p>PTS has investigated a broad range of digital service providers, not limited to e-commerce. A SaaS platform with Swedish consumer-facing functionality falls within the same investigation scope as any other digital service.</p>
+            </div>
+          </div>
+
+          <h2>The demand signal</h2>
+          <p>This is not a theoretical risk. Search data shows organisations already looking for guidance on this exact question before this page existed, a clear sign that SaaS companies are starting to ask whether the EAA applies to them, often prompted by a customer, a board member, or a competitor's compliance statement raising the question first.</p>
+
+          <div class="article-cta">
+            <h2>Find out where your organisation stands</h2>
+            <p>A free 20-minute conversation to find out whether the EAA applies to your organisation and where to begin &mdash; or, if you already know you need an audit, to talk through what that typically involves and what questions to answer first. No obligation, no assumptions.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today.</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/insights/aimac-deep-dive.html">AI coding models and accessibility: what the AIMAC benchmark reveals</a></li>
+            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland: criminal sanctions and director liability</a></li>
+            <li><a href="/eaa-compliance-netherlands.html">EAA compliance in the Netherlands &mdash; ACM enforcement</a></li>
+            <li><a href="/eaa-compliance-sweden.html">EAA compliance in Sweden &mdash; PTS enforcement and market ban authority</a></li>
+            <li><a href="/eaa-compliance-checklist.html">EAA compliance checklist &mdash; four requirements in practice</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-link-section">
+      <div class="container">
+        <div class="article-container">
+          <a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

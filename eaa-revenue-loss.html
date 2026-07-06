@@ -73,6 +73,7 @@
     .callout{background:var(--colour-teal-subtle);border-left:4px solid var(--colour-teal);padding:var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);margin-bottom:var(--space-xl)}
     .callout p{margin-bottom:0;max-width:none}
     .callout--orange{background:var(--colour-orange-tint);border-left-color:var(--colour-orange)}
+    .callout--gain{background:#F0F7EE;border-left-color:#2D7A3A}
     .stat-grid{display:grid;grid-template-columns:1fr;gap:var(--space-lg);margin-bottom:var(--space-xl)}
     @media(min-width:640px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
     .stat-card{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);border-top:3px solid var(--colour-teal);padding:var(--space-lg)}
@@ -191,7 +192,7 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 30 Jun 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 6 Jul 2026</span>
           </div>
           <h1>Inaccessible design is invisible revenue loss</h1>
           <p class="deck">Inaccessible digital products lose revenue that organisations cannot see. The users who encountered a barrier and left do not appear in your analytics. They are simply absent.</p>
@@ -267,10 +268,14 @@
 
           <p>A free initial assessment covers where your product may have barriers in these journeys, what those barriers mean for your compliance position, and what a proportionate next step looks like.</p>
 
+          <div class="callout callout--gain">
+            <p><strong>When these barriers are removed, that segment converts.</strong> The customers are already there &mdash; they have simply been unable to complete the journey. Accessibility fixes are not remediation. They are customer acquisition for a segment that has been systematically excluded.</p>
+          </div>
+
           <div class="article-cta">
             <h2>Find out what accessibility barriers are costing your organisation</h2>
             <p>Our free initial assessment covers your accessibility position across the user journeys that matter most commercially, and what a proportionate next step looks like.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today.</a>
           </div>
 
         </div>
@@ -323,7 +328,7 @@
       menu.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
           menu.classList.remove('is-open');
-          toggle.setAttribute('aria-enabled', 'false');
+          toggle.setAttribute('aria-expanded', 'false');
           toggle.setAttribute('aria-label', 'Open navigation menu');
         });
       });
