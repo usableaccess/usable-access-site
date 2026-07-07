@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The EU AI Act and EAA &mdash; What the Intersection Means | Usable Access</title>
-  <meta name="description" content="The EU AI Act and EAA apply simultaneously to AI-assisted products. Most product teams haven't modelled the intersection. Here is what it means in practice.">
+  <meta name="description" content="The EU AI Act and EAA apply simultaneously to AI-assisted products. Most product teams have not modelled the intersection. What it means in practice.">
+  <link rel="canonical" href="https://usableaccess.io/insights/eu-ai-act-accessibility.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -78,6 +79,14 @@
     footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  
+    /* ── Back to top ── */
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -87,9 +96,21 @@
     gtag('js', new Date());
     gtag('config', 'G-CWF8FPK9T7');
   </script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiwyxbc3ze");
+</script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
   <header>
     <div class="container">
       <nav aria-label="Main navigation">
@@ -114,7 +135,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <div class="article-header">
       <div class="container">
@@ -125,7 +146,7 @@
           <div class="article-meta">
             <span class="article-tag">Intelligence</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
-            <span class="article-date">23 Jun 2026</span>
+            <span class="article-date">Updated 2 Jul 2026</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
             <span class="article-market">All markets</span>
           </div>
@@ -187,12 +208,14 @@
 
           <p>The intersecting framework risk: where an AI system is embedded in an EAA-covered product, both the EAA and the AI Act apply. The compliance requirements are different. Neither satisfies the other. The gap between them is not yet well mapped by most product teams &mdash; which is where the risk lives.</p>
 
+          <p>The EU AI Omnibus, agreed by the Council and European Parliament by late June 2026, delays the AI Act&rsquo;s high-risk system obligations, originally due 2 August 2026, pending formal publication. This changes the timeline for Article 16(1)(l), the requirement that high-risk AI systems comply with existing EU law including the EAA, but it does not change the EAA obligation itself. Organisations whose AI systems interact with EU consumers are subject to EAA enforcement now, regardless of when the AI Act&rsquo;s high-risk obligations formally take effect. The delay does not create a window; it removes an argument for urgency on one track while the other remains active.</p>
+
           <p>Enforcement in Ireland, the Netherlands, and Sweden is active. The <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">penalty structures</a> are material. The window for getting ahead of enforcement is narrowing.</p>
 
           <div class="article-cta">
             <h2>Find out where your organisation stands</h2>
             <p>Our free initial assessment covers your current compliance position, where gaps may exist relative to EAA requirements, and what a proportionate next step looks like.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
           </div>
 
         </div>
@@ -262,6 +285,15 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+        // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+
     })();
   </script>
 </body>
