@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://usableaccess.io/insights/what-eaa-compliance-actually-requires.html">
   <title>What EAA Compliance Actually Requires — Usable Access</title>
-  <meta name="description" content="EAA compliance has four requirements. Most organisations know about one. Technical conformance, accessibility statement, active governance, and documentary evidence. Here is what each requires.">
+  <meta name="description" content="EAA compliance has four requirements. Most organisations have addressed one. Here is what all four require and where enforcement bodies look first.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -109,6 +110,11 @@
     .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
     .cta-button:hover{background:var(--colour-orange-dark)}
     .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+    .related-links{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    .related-links h2{font-family:var(--font-body);font-size:.875rem;font-weight:600;color:var(--colour-meta);letter-spacing:.05em;text-transform:uppercase;margin-bottom:var(--space-md)}
+    .related-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-sm)}
+    .related-list a{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-teal);text-decoration:underline;display:inline-block;padding:.375rem 0;min-height:44px;line-height:1.6}
+    .related-list a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     .article-nav{padding:var(--space-xl) 0}
     .back-link{font-family:var(--font-body);font-size:.875rem;color:var(--colour-teal);text-decoration:underline}
     .back-link:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
@@ -141,6 +147,12 @@
         scroll-behavior: auto !important;
       }
     }
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -150,10 +162,21 @@
     gtag('js', new Date());
     gtag('config', 'G-CWF8FPK9T7');
   </script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiwyxbc3ze");
+</script>
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
 
   <header>
     <div class="container">
@@ -179,7 +202,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <div class="article-header">
       <div class="container">
@@ -209,44 +232,60 @@
           <div class="requirement">
             <span class="requirement-number">Requirement 1</span>
             <h2>Technical conformance</h2>
-            <p>Your digital products must meet EN 301 549 — the harmonised European standard. In practice, that means WCAG 2.1 Level AA. This is the requirement most organisations are thinking about when they think about EAA compliance.</p>
+            <p>Your digital products must meet EN 301 549, the harmonised European standard. In practice, that means WCAG 2.1 Level AA. This is the requirement most organisations are thinking about when they think about EAA compliance.</p>
           </div>
 
           <div class="requirement requirement--orange">
             <span class="requirement-number requirement--orange">Requirement 2</span>
             <h2>A published accessibility statement</h2>
-            <p>A mandatory public declaration of your current compliance position, what is not yet accessible, and your remediation plan. Not optional. Most organisations we speak with don't have one. The absence of a statement is itself a compliance failure — and Irish regulators request it first in any complaint investigation.</p>
+            <p>A mandatory public declaration of your current compliance position, what is not yet accessible, and your remediation plan. Not optional. Most organisations we speak with don't have one. The absence of a statement is itself a compliance failure. Irish regulators request it first in any complaint investigation.</p>
           </div>
 
           <div class="requirement">
             <span class="requirement-number">Requirement 3</span>
             <h2>Active governance</h2>
-            <p>A named owner for accessibility, a regular testing rhythm, and a process that survives a team change. Without governance, technical compliance regresses. A passing audit today doesn't mean a compliant product next quarter — the next sprint, the next team restructure, the next product release can all undo it.</p>
+            <p>A named owner for accessibility, a regular testing rhythm, and a process that survives a team change. Without governance, technical compliance regresses. A passing audit today doesn't mean a compliant product next quarter. The next sprint, the next team restructure, the next product release can all undo it.</p>
           </div>
 
           <div class="requirement requirement--orange">
             <span class="requirement-number requirement--orange">Requirement 4</span>
             <h2>Documentary evidence</h2>
-            <p>Enforcement bodies don't just look for compliant products — they look for evidence of active management. Remediation records. Decision trails. Dated assessments. The documentation that shows the organisation was not simply ignoring the obligation.</p>
+            <p>Enforcement bodies don't just look for compliant products. They look for evidence of active management. Remediation records. Decision trails. Dated assessments. The documentation that shows the organisation was not simply ignoring the obligation.</p>
           </div>
 
-          <p>The four requirements are related but they don't reinforce each other automatically. An organisation can have strong technical conformance and no governance to maintain it. It can have governance and no published statement. It can have all three and no documentary evidence trail — which is precisely what an enforcement body asks for first. Each one is necessary. None is sufficient on its own.</p>
+          <p>The four requirements are related but they don't reinforce each other automatically. An organisation can have strong technical conformance and no governance to maintain it. It can have governance and no published statement. It can have all three and no documentary evidence trail: which is precisely what an enforcement body asks for first. Each one is necessary. None is sufficient on its own.</p>
 
           <p>Most organisations we speak with have made progress on the first. Very few have addressed all four. That gap is where enforcement exposure lives.</p>
 
-          <p>The assessment method used across Europe to measure compliance — the Solid Foundations Method — checks whether the core elements users need to complete essential tasks are in place. Not every WCAG criterion, but the ones that matter most for logging in, making purchases, contacting support, making payments. It is an expert evaluation, but not a replacement for a full audit or user testing with disabled people. The two are related but not the same — and both matter.</p>
+          <p>The assessment method used across Europe to measure compliance is the Solid Foundations Method. It checks whether the core elements users need to complete essential tasks are in place. Not every WCAG criterion, but the ones that matter most for logging in, making purchases, contacting support, making payments. It is an expert evaluation, but not a replacement for a full audit or user testing with disabled people. The two are related but not the same, and both matter.</p>
 
           <p>The difference is process, not effort.</p>
 
           <div class="article-cta">
             <h2>Find out where you stand across all four</h2>
             <p>Our free initial assessment covers whether EAA applies to your organisation, which of the four requirements you've addressed, and what a proportionate next step looks like.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
           </div>
 
         </div>
       </div>
     </article>
+
+    <div class="related-links">
+      <div class="container">
+        <div class="article-container">
+          <h2>Related guides</h2>
+          <ul class="related-list">
+            <li><a href="/eaa-enforcement.html">How EAA enforcement works across all markets</a></li>
+            <li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit your digital product for EAA compliance</a></li>
+            <li><a href="/eaa-governance.html">EAA governance &mdash; what it means and why most organisations are missing it</a></li>
+            <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
+            <li><a href="/eaa-compliance-checklist.html">EAA compliance checklist &mdash; the four requirements, plainly explained</a></li>
+            <li><a href="/eaa-sanctions.html">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <div class="article-nav">
       <div class="container">
@@ -295,6 +334,14 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+    })();
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
     })();
   </script>
 </body>

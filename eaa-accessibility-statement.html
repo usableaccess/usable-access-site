@@ -146,6 +146,12 @@
         scroll-behavior: auto !important;
       }
     }
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -155,14 +161,25 @@
     gtag('js', new Date());
     gtag('config', 'G-CWF8FPK9T7');
   </script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiwyxbc3ze");
+</script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
   <header>
     <div class="container">
       <nav aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="/" class="site-logo" aria-label="Usable Access — home">
+          <a href="/" class="site-logo" aria-label="Usable Access , home">
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
@@ -181,7 +198,7 @@
       </nav>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
     <div class="page-header">
       <div class="container">
         <div class="article-container">
@@ -193,7 +210,7 @@
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">3 Jun 2026</span>
           </div>
-          <h1>The EAA accessibility statement — what it is and why most organisations don't have one</h1>
+          <h1>The EAA accessibility statement , what it is and why most organisations don't have one</h1>
           <p class="deck">A published accessibility statement is a mandatory EAA requirement. Irish regulators request it first in any complaint investigation. Most organisations we speak with don't have one.</p>
         </div>
       </div>
@@ -202,7 +219,7 @@
       <div class="container">
         <div class="article-container">
           
-          <p>One of the four mandatory requirements of EAA compliance is a published accessibility statement. It is not optional, it is not a best practice, and it is not the same as a privacy policy or cookie notice. The absence of an accessibility statement is itself a compliance failure — before any audit has even been run.</p>
+          <p>One of the four mandatory requirements of EAA compliance is a published accessibility statement. It is not optional, it is not a best practice, and it is not the same as a privacy policy or cookie notice. The absence of an accessibility statement is itself a compliance failure , before any audit has even been run.</p>
 
           <h2>What an accessibility statement is</h2>
           <p>An accessibility statement is a public declaration, published on your website or within your digital product, that sets out:</p>
@@ -215,16 +232,16 @@
           </ul>
 
           <h2>Why it matters beyond compliance</h2>
-          <p>Irish regulators review the accessibility statement at the very start of any complaint process — before looking at anything else. It is typically the first document they request. An organisation without one starts any investigation at a disadvantage, regardless of how much technical work they have done on their product.</p>
-          <p>The statement also creates a documented baseline and an evidentiary trail — which is exactly what enforcement bodies look for when assessing whether an organisation was actively managing its obligations or simply ignoring them.</p>
+          <p>Irish regulators review the accessibility statement at the very start of any complaint process , before looking at anything else. It is typically the first document they request. An organisation without one starts any investigation at a disadvantage, regardless of how much technical work they have done on their product.</p>
+          <p>The statement also creates a documented baseline and an evidentiary trail , which is exactly what enforcement bodies look for when assessing whether an organisation was actively managing its obligations or simply ignoring them.</p>
 
           <div class="callout callout--orange">
-            <p><strong>Most organisations we speak with don't have one.</strong> The accessibility statement is the most commonly missing EAA compliance requirement — and the easiest to address with structured support.</p>
+            <p><strong>Most organisations we speak with don't have one.</strong> The accessibility statement is the most commonly missing EAA compliance requirement , and the easiest to address with structured support.</p>
           </div>
 
           <h2>What makes a statement compliant</h2>
           <p>A compliant accessibility statement must be accurate, specific, and kept up to date. Generic statements that claim full WCAG 2.1 AA compliance without evidence, or that copy boilerplate from another organisation, are not compliant and can create additional legal exposure if the claims are inaccurate.</p>
-          <p>The statement must reflect your actual compliance position. If there are known barriers — and there almost always are — they must be documented along with a realistic timeline for remediation.</p>
+          <p>The statement must reflect your actual compliance position. If there are known barriers , and there almost always are , they must be documented along with a realistic timeline for remediation.</p>
 
           <h2>How frequently it needs updating</h2>
           <p>The accessibility statement should be reviewed and updated whenever significant changes are made to the product or service, and at least annually. If your compliance position improves, the statement should reflect that. If new issues are identified, they should be added.</p>
@@ -233,13 +250,13 @@
           <p>The statement must be easily findable. For websites, it should be accessible from the footer on every page, or at minimum from the main accessibility or legal information page. For apps, it should be accessible from within the app and from the app store listing.</p>
 
           <h2>Who needs an accessibility statement</h2>
-          <p>Any organisation providing covered digital products or services to consumers in the EU. This includes organisations headquartered outside the EU — if you serve EU consumers, you are subject to EAA obligations including the accessibility statement requirement.</p>
-          <p>Microenterprises may be exempt from some EAA obligations, but should verify this specifically — the exemption does not apply uniformly across all obligations or all member states.</p>
+          <p>Any organisation providing covered digital products or services to consumers in the EU. This includes organisations headquartered outside the EU , if you serve EU consumers, you are subject to EAA obligations including the accessibility statement requirement.</p>
+          <p>Microenterprises may be exempt from some EAA obligations, but should verify this specifically , the exemption does not apply uniformly across all obligations or all member states.</p>
 
           <div class="article-cta">
             <h2>Find out where you stand</h2>
             <p>One conversation gives you a clear picture of your legal position, your biggest risks, and what a proportionate first step looks like. No obligation.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
           </div>
         </div>
       </div>
@@ -288,6 +305,14 @@
           toggle.setAttribute('aria-label', 'Open navigation menu');
         }
       });
+    })();
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
     })();
   </script>
 </body>
