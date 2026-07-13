@@ -119,7 +119,9 @@
     /* ── Insights hero ── */
     .insights-hero { padding: var(--space-2xl) 0 var(--space-3xl); border-bottom: 1px solid var(--colour-border); }
     .insights-hero h1 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
-    .insights-hero p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-secondary); max-width: 36em; }
+    .insights-hero .hero-statement { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--colour-teal); line-height: 1.3; margin-bottom: var(--space-md); }
+    @media (min-width: 640px) { .insights-hero .hero-statement { font-size: 1.5rem; } }
+    @media (min-width: 960px) { .insights-hero .hero-statement { font-size: 1.75rem; } }
     @media (min-width: 640px) { .insights-hero h1 { font-size: 2.25rem; } }
     @media (min-width: 960px) { .insights-hero h1 { font-size: 2.5rem; } }
 
@@ -312,8 +314,8 @@
     <section class="insights-hero" aria-labelledby="insights-heading">
       <div class="container">
         <span class="section-label">Insights</span>
-        <h1 id="insights-heading">EAA enforcement intelligence<br>for European organisations.</h1>
-        <p>Practical analysis of European Accessibility Act enforcement across Europe, updated as the regulatory picture develops.</p>
+        <h1 id="insights-heading">EAA enforcement intelligence for European-facing organisations.</h1>
+        <p class="hero-statement">What it means for the customers you&rsquo;re not reaching.</p>
       </div>
     </section>
 
@@ -328,20 +330,20 @@
           <button class="filter-btn" aria-pressed="false" data-filter="Guide">Guide</button>
           <button class="filter-btn" aria-pressed="false" data-filter="Sector guide">Sector guides</button>
           <button class="filter-btn" aria-pressed="false" data-filter="Revenue">Revenue</button>
-          <span class="filter-count" aria-live="polite" aria-atomic="true" id="filter-count">28 items</span>
+          <span class="filter-count" aria-live="polite" aria-atomic="true" id="filter-count">29 items</span>
         </div>
         <p class="filter-description" id="filter-description" aria-live="polite"></p>
         <p class="no-results" role="status" id="no-results">No insights match this filter.</p>
         <div class="article-list" id="article-list">
-          <!-- Intelligence — RGAA and the obligation of result -->
-          <a href="/insights/rgaa-and-eaa-france.html" class="article-card article-card--intelligence" data-type="Intelligence">
+          <!-- Guide — Video accessibility -->
+          <a href="/eaa-video-accessibility.html" class="article-card article-card--guide" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">9 Jul 2026</span>
+              <span class="article-tag article-tag--guide">Guide</span>
+              <span class="article-date">13 Jul 2026</span>
             </div>
-            <h3 class="article-title">RGAA, the EAA, and the obligation of result &mdash; what the Carrefour ruling established</h3>
-            <p class="article-excerpt">France's court rejected Carrefour's argument that 71% RGAA conformance was sufficient. Accessibility is an obligation of result. 100% is required. What this means across the EU.</p>
-            <span class="article-market">France &middot; All markets</span>
+            <h3 class="article-title">EAA video compliance: audit, backlog and solutions</h3>
+            <p class="article-excerpt">EAA video requires captions, audio description and transcripts, but the case for fixing your backlog does not stop at compliance. Where to start, and which tools help.</p>
+            <span class="article-market">All markets</span>
           </a>
           <!-- Guide — EAA Compliance Audit -->
           <a href="/insights/how-to-audit-eaa-compliance.html" class="article-card article-card--guide" data-type="Guide">
@@ -412,6 +414,16 @@
             <h3 class="article-title">EAA enforcement &mdash; who enforces the Act and what happens when they do</h3>
             <p class="article-excerpt">EAA enforcement is already active across Ireland, Netherlands, Sweden, France, Germany, Finland, and Italy. It operates through two independent tracks simultaneously. Here is how it works.</p>
             <span class="article-market">All markets</span>
+          </a>
+          <!-- Intelligence — RGAA and the obligation of result -->
+          <a href="/insights/rgaa-and-eaa-france.html" class="article-card article-card--intelligence" data-type="Intelligence">
+            <div class="article-meta">
+              <span class="article-tag article-tag--intelligence">Intelligence</span>
+              <span class="article-date">9 Jul 2026</span>
+            </div>
+            <h3 class="article-title">RGAA, the EAA, and the obligation of result &mdash; what the Carrefour ruling established</h3>
+            <p class="article-excerpt">France's court rejected Carrefour's argument that 71% RGAA conformance was sufficient. Accessibility is an obligation of result. 100% is required. What this means across the EU.</p>
+            <span class="article-market">France &middot; All markets</span>
           </a>
           <!-- Intelligence — France civil society enforcement -->
           <a href="/insights/france-eaa-civil-society-enforcement.html" class="article-card article-card--intelligence" data-type="Intelligence">

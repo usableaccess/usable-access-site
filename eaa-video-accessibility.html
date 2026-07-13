@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://usableaccess.io/eaa-video-accessibility.html">
+  <title>EAA Video Compliance: Audit, Backlog & Solutions | UA</title>
+  <meta name="description" content="Most organisations don't have one inaccessible video, they have a backlog. EAA video compliance requires captions, audio description and transcripts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiwyxbc3ze");
+  </script>
+  <style>
+    :root {
+      --colour-teal:         #0F6B6B;
+      --colour-teal-deep:    #0A5252;
+      --colour-teal-subtle:  #F4FAFA;
+      --colour-teal-badge:   #E0F2F2;
+      --colour-orange:       #B05000;
+      --colour-orange-dark:  #8B3D00;
+      --colour-orange-tint:  #FEF6EE;
+      --colour-gain-bg:      #F0F7EE;
+      --colour-gain-border:  #2D7A3A;
+      --colour-heading:      #1A1A1A;
+      --colour-body:         #2C2C2C;
+      --colour-secondary:    #555555;
+      --colour-meta:         #595959;
+      --colour-border:       #DDDDDD;
+      --colour-bg-subtle:    #F9F9F9;
+      --colour-white:        #ffffff;
+      --font-display: 'Lora', Georgia, serif;
+      --font-body:    'Inter', Arial, sans-serif;
+      --space-xs:  0.25rem;
+      --space-sm:  0.5rem;
+      --space-md:  1rem;
+      --space-lg:  1.5rem;
+      --space-xl:  2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --container-max: 960px;
+      --container-pad: 1.25rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--colour-body); background-color: var(--colour-white); }
+
+    .skip-link { position: absolute; top: -100%; left: 0; background: var(--colour-teal); color: var(--colour-white); padding: 0.75rem 1.25rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; z-index: 200; }
+    .skip-link:focus { top: 0; }
+
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+
+    .site-logo { display: flex; flex-direction: column; gap: 3px; line-height: 1; text-decoration: none; margin-right: var(--space-xl); }
+    .site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
+    .logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
+
+    header { background-color: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; position: relative; }
+    .nav-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+    .nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+    .nav-toggle-bar { display: block; width: 100%; height: 2px; background-color: var(--colour-heading); border-radius: 1px; transition: transform 0.2s ease, opacity 0.2s ease; }
+    .nav-links { list-style: none; display: flex; gap: var(--space-lg); align-items: center; }
+    .nav-links a { font-family: var(--font-body); font-size: 0.9375rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; padding: var(--space-xs) 0; }
+    .nav-links a:hover { color: var(--colour-teal); }
+    .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 100%; left: calc(-1 * var(--container-pad)); right: calc(-1 * var(--container-pad)); background: var(--colour-white); border-top: 1px solid var(--colour-border); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) var(--container-pad); z-index: 99; }
+      .nav-links.is-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--colour-border); width: 100%; }
+      .nav-links li:last-child a { border-bottom: none; }
+    }
+    @media (min-width: 641px) { .nav-toggle { display: none; } }
+
+    .page-hero { background: var(--colour-teal-subtle); border-bottom: 1px solid var(--colour-border); padding: var(--space-2xl) 0; }
+    .article-meta-hero { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
+    .page-tag { display: inline-block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.25rem 0.625rem; border-radius: 3px; background: var(--colour-teal-badge); color: var(--colour-teal-deep); }
+    .page-date { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); }
+    h1 { font-family: var(--font-display); font-size: clamp(1.625rem, 4vw, 2.25rem); font-weight: 600; color: var(--colour-heading); line-height: 1.25; margin-bottom: var(--space-md); }
+    .deck { font-family: var(--font-body); font-size: 1.125rem; color: var(--colour-secondary); line-height: 1.7; max-width: 36em; }
+    .page-meta { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); margin-top: var(--space-md); }
+
+    .page-body { padding: var(--space-2xl) 0; }
+    .page-body h2 { font-family: var(--font-display); font-size: 1.375rem; font-weight: 600; color: var(--colour-heading); margin: var(--space-2xl) 0 var(--space-md); line-height: 1.3; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-md); max-width: 36em; }
+    .page-body p:last-child { margin-bottom: 0; }
+    .page-body a { color: var(--colour-teal); text-decoration: underline; }
+    .page-body a:focus { outline: 3px solid var(--colour-teal); outline-offset: 2px; }
+    .page-body ul { margin: var(--space-md) 0 var(--space-md) var(--space-xl); }
+    .page-body ul li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
+
+    .callout { padding: var(--space-lg); margin: var(--space-xl) 0; border-left: 4px solid; }
+    .callout p { margin-bottom: 0; max-width: 100%; }
+    .callout--orange { background: var(--colour-orange-tint); border-color: var(--colour-orange); }
+    .callout--teal { background: var(--colour-teal-subtle); border-color: var(--colour-teal); }
+
+    .requirements { margin: var(--space-xl) 0; border: 1px solid var(--colour-border); border-radius: 2px; overflow: hidden; }
+    .requirement { padding: var(--space-lg); border-bottom: 1px solid var(--colour-border); }
+    .requirement:last-child { border-bottom: none; }
+    .requirement-label { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--colour-teal-deep); margin-bottom: var(--space-xs); }
+    .requirement h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--colour-heading); margin-bottom: var(--space-xs); }
+    .requirement p { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-secondary); margin-bottom: 0; max-width: 100%; line-height: 1.6; }
+
+    .scope-table { width: 100%; border-collapse: collapse; margin: var(--space-xl) 0; font-family: var(--font-body); font-size: 0.9375rem; }
+    .scope-table th { background: var(--colour-teal-subtle); color: var(--colour-heading); font-weight: 600; padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 2px solid var(--colour-teal); }
+    .scope-table td { padding: var(--space-sm) var(--space-md); border-bottom: 1px solid var(--colour-border); vertical-align: top; }
+    .scope-table tr:last-child td { border-bottom: none; }
+    .in-scope { color: var(--colour-gain-border); font-weight: 600; }
+    .exempt { color: var(--colour-meta); }
+
+    .page-cta { background: var(--colour-bg-subtle); border: 1px solid var(--colour-border); padding: var(--space-xl); margin: var(--space-2xl) 0; }
+    .page-cta h2 { font-family: var(--font-body); font-size: 1.125rem; font-weight: 600; color: var(--colour-heading); margin-bottom: var(--space-sm); margin-top: 0; }
+    .page-cta p { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-secondary); margin-bottom: var(--space-lg); max-width: 100%; }
+    .cta-button { display: inline-block; background: var(--colour-orange); color: #ffffff!important; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.875rem 1.75rem; text-decoration: none!important; }
+    .cta-button:hover { background: var(--colour-orange-dark); }
+    .cta-button:focus { outline: 3px solid var(--colour-white); outline-offset: 3px; }
+
+    .related-links { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+    .related-links h2 { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--colour-meta); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: var(--space-md); }
+    .related-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .related-list a { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
+    .related-list a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+    footer { background: var(--colour-bg-subtle); border-top: 1px solid var(--colour-border); padding: var(--space-xl) 0; margin-top: var(--space-2xl); }
+    footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
+    footer a { color: var(--colour-teal); text-decoration: underline; min-height: 44px; display: inline-block; line-height: 44px; }
+    footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+    :focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 6px rgba(15,107,107,0.15); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms!important; animation-iteration-count: 1!important; transition-duration: 0.01ms!important; scroll-behavior: auto!important; } }
+
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access &mdash; home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <div class="page-hero">
+      <div class="container">
+        <div class="article-meta-hero">
+          <span class="page-tag">Guide</span>
+          <span class="page-date">13 Jul 2026</span>
+        </div>
+        <h1>EAA video accessibility &mdash; audit, backlog and compliance requirements</h1>
+        <p class="deck">Most organisations don't have a single video to fix. They have a backlog. Under EN 301 549, video content in scope of the EAA requires captions, audio description, and transcripts. Here is what that means in practice and where to start.</p>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+
+        <h2>What the EAA requires for video content</h2>
+
+        <p>The EAA requires digital products and services to meet EN 301 549, the harmonised European technical standard. For video content, EN 301 549 maps to WCAG 2.1 Level AA, which sets four specific requirements for pre-recorded video:</p>
+
+        <div class="requirements">
+          <div class="requirement">
+            <div class="requirement-label">Requirement 1</div>
+            <h3>Captions for pre-recorded audio content</h3>
+            <p>Accurate, synchronised captions covering spoken dialogue, relevant sound effects, and non-speech audio cues. Captions go beyond subtitles: they include everything a deaf or hard-of-hearing user needs to understand what is happening in the audio track, not just what is being said.</p>
+          </div>
+          <div class="requirement">
+            <div class="requirement-label">Requirement 2</div>
+            <h3>Audio description for pre-recorded video</h3>
+            <p>Narration describing visual information that is not conveyed in the existing audio. A product demo that shows a user clicking through a flow, a tutorial that relies on screen visuals, a training video where the presenter points to something on a slide: all of these require audio description for blind or visually impaired users to follow the content.</p>
+          </div>
+          <div class="requirement">
+            <div class="requirement-label">Requirement 3</div>
+            <h3>Transcript or text alternative</h3>
+            <p>A text version of the audio content, including spoken words and relevant non-speech audio. Transcripts serve users who cannot or prefer not to watch video at all, and also serve search engines and assistive technologies that read text.</p>
+          </div>
+          <div class="requirement">
+            <div class="requirement-label">Requirement 4</div>
+            <h3>Accessible video player</h3>
+            <p>The player itself must be keyboard-navigable and compatible with assistive technologies. A video with perfect captions published in a player that cannot be operated without a mouse fails the requirement. The player controls, caption toggle, and playback functions must all be reachable and operable without a mouse.</p>
+          </div>
+        </div>
+
+        <h2>Why this matters beyond the EAA</h2>
+
+        <p>Video accessibility is not only a compliance question. Independent of what any regulation requires, in whichever market you operate, inaccessible video content is closing the door on real viewers who want to watch it.</p>
+
+        <p>Audio description is the clearest example. Imagine a blind shopper close to buying a product from your site. The product page has a thirty-second video showing how it works, with background music but no narration explaining what is happening on screen. Sighted shoppers watch and immediately understand the size, the texture, how it fits together. The blind shopper hears music and nothing else. They cannot tell if this product actually does what they need. They close the tab and buy the same kind of product from a competitor whose listing includes a description they can actually use.</p>
+
+        <p>Captions serve a similarly broad audience for different reasons. They are the only way a deaf or hard-of-hearing viewer can access the audio track at all. They also serve the much larger group of viewers who watch video with the sound off, whether by preference, by platform default, or because sound is not an option in the environment they are in. Captioned video reaches viewers that uncaptioned video does not, for reasons that have nothing to do with any regulation.</p>
+
+        <p>Transcripts extend the same content to viewers who prefer reading to watching, and to the search engines that determine whether your video is found at all.</p>
+
+        <p>None of this depends on EAA applicability. An organisation with no EU consumer exposure whatsoever still has viewers who cannot access unlabelled, uncaptioned, undescribed video content, for the same reasons an EU-exposed organisation does. The compliance requirement and the audience-reach argument point in the same direction, whether or not the law is the reason you are reading this.</p>
+
+        <h2>Why video is a common gap even in otherwise-compliant products</h2>
+
+        <p>Video is often produced outside the core development and design workflow. It is created by marketing teams, filmed by external agencies, or pulled from product recordings. Unlike a button label or a form field, it does not go through a standard development review before publication. By the time a video is live on your site, it has typically passed through several teams, none of whom had accessibility in their checklist.</p>
+
+        <p>The result is that organisations which have made significant progress on their core product accessibility frequently have an entirely separate video accessibility problem sitting unaddressed on the same domain. A checkout flow that is keyboard-navigable, properly labelled, and screen-reader-friendly can exist on the same website as a product demo with no captions, no audio description, and a player that traps keyboard focus.</p>
+
+        <p>This is not negligence. It is a structural gap in how video content is typically commissioned, reviewed, and published. The fix requires bringing video into the same accessibility governance process as the rest of the product.</p>
+
+        <h2>The backlog problem: where to start</h2>
+
+        <p>Most organisations that have been publishing video content for any significant time are not dealing with one new video to make accessible. They are dealing with a library: product demos, onboarding videos, tutorial series, marketing explainers, recorded webinars, support content. The question is not "is this video accessible." It is "where do we even start."</p>
+
+        <p>The answer is prioritisation, not paralysis. A structured approach works as follows:</p>
+
+        <ul>
+          <li><strong>Highest-traffic video first.</strong> Start with the videos that appear on your most-visited pages. These reach the most users, generate the most revenue-relevant journeys, and represent the highest enforcement exposure.</li>
+          <li><strong>Journey-critical video second.</strong> Any video embedded in a core user journey, such as onboarding flows, checkout processes, account setup, or support escalation paths, carries higher risk than a background marketing video on a homepage. A user who cannot access an onboarding video may not be able to use the product at all.</li>
+          <li><strong>Legally prominent content third.</strong> Terms and conditions videos, safety information, product documentation: content where the information itself has legal or contractual significance.</li>
+          <li><strong>Long tail last.</strong> Archive content, seasonal campaigns, older tutorial series: address these after the high-priority content is resolved. A documented, in-progress remediation plan for the long tail is a defensible compliance position. An entirely unaddressed backlog is not.</li>
+        </ul>
+
+        <div class="callout callout--orange">
+          <p><strong>A documented, in-progress backlog is a defensible compliance position.</strong> An unaddressed one is not. The difference is not how many videos are captioned: it is whether there is a documented process for addressing them and evidence that it is active.</p>
+        </div>
+
+        <h2>Which videos are actually in scope</h2>
+
+        <p>The EAA's scope for video content is specific and worth understanding precisely before building a remediation plan:</p>
+
+        <table class="scope-table" aria-label="Video content scope under the EAA">
+          <thead>
+            <tr>
+              <th scope="col">Content type</th>
+              <th scope="col">Status</th>
+              <th scope="col">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Video published after 28 June 2025</td>
+              <td><span class="in-scope">In scope</span></td>
+              <td>Must comply. No exemption.</td>
+            </tr>
+            <tr>
+              <td>Pre-2025 video, unmodified since 28 June 2025</td>
+              <td><span class="exempt">Exempt</span></td>
+              <td>Exempt as pre-existing content under the EAA. No requirement to remediate unless the content is updated.</td>
+            </tr>
+            <tr>
+              <td>Pre-2025 video, modified or republished after 28 June 2025</td>
+              <td><span class="in-scope">In scope</span></td>
+              <td>The update triggers the compliance requirement. Any version published or updated after the deadline must comply.</td>
+            </tr>
+            <tr>
+              <td>Pre-2025 video on audiovisual media services (streaming, broadcasting)</td>
+              <td><span class="exempt">Transitional</span></td>
+              <td>Article 32 grants audiovisual media services until 2030 for pre-2025 backlog content. This applies to streaming platforms and broadcasters, not to general e-commerce or product websites.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The practical implication: for most organisations in scope of the EAA through e-commerce, FinTech, SaaS, travel, or telecoms, the backlog is everything published since 28 June 2025, plus any pre-2025 video that has been updated or republished since that date. If your team regularly refreshes or republishes older video content, that content is in scope the moment it is touched.</p>
+
+        <div class="callout callout--teal">
+          <p><strong>The first step is knowing what you have.</strong> Most organisations have not counted their in-scope video content. That count is the starting point for any prioritisation exercise, and most teams have not done it yet. The number is usually larger than expected.</p>
+        </div>
+
+        <h2>Tools and solutions for EAA video compliance</h2>
+
+        <p>Several categories of tool support video accessibility compliance. The right choice depends on the volume of content, the languages required, and whether new production or backlog remediation is the priority.</p>
+
+        <p><strong>Automated captioning.</strong> AI-generated captions (from tools such as Descript, Otter.ai, or platform-native tools on YouTube or Vimeo) provide a starting point but require human review. Accuracy varies significantly by accent, technical vocabulary, and audio quality. Automated captions that have not been reviewed should not be published as the compliance solution: errors in captions can be worse than no captions for users relying on them.</p>
+
+        <p><strong>Human captioning services.</strong> Professional captioning services (such as 3Play Media, Rev, or Verbit) produce higher-accuracy output, particularly for technical content, multiple speakers, and non-native English. For high-priority content, human-reviewed captions are the appropriate standard.</p>
+
+        <p><strong>Audio description services.</strong> Audio description requires scripting and often re-recording, which makes it more resource-intensive than captioning. For large backlogs, prioritise audio description for videos where visual information is essential to understanding the content. Background videos, animations without substantive visual information, and videos that are fully described in surrounding text may have a lower priority.</p>
+
+        <p><strong>Accessible video players.</strong> If your current video player is not keyboard-navigable or does not support caption toggling, player replacement is a prerequisite. Plyr, Video.js, and native HTML5 players with appropriate controls are common accessible alternatives. Test any player with keyboard-only navigation and with a screen reader before publishing.</p>
+
+        <p>For organisations with large backlogs, a phased approach is more realistic than attempting full compliance simultaneously. A documented phased plan is a valid compliance position; complete non-compliance with no plan in place is not.</p>
+
+        <h2>How video compliance fits into the broader audit</h2>
+
+        <p>The EAA compliance audit guide covers the general methodology for auditing your digital product against EAA requirements across all four compliance requirements: technical conformance, accessibility statement, governance, and documentary evidence. Video is one component of technical conformance, not a separate compliance track.</p>
+
+        <p>For the video-specific questions (how to audit existing video content, how to generate a captioning checklist for your library, how to test an accessible player), this page provides the video-specific guidance. For the broader audit question across your full product, the <a href="/insights/how-to-audit-eaa-compliance.html">audit guide</a> covers the complete methodology.</p>
+
+        <div class="page-cta">
+          <h2>Find out where your video content stands</h2>
+          <p>Our free initial assessment covers your current compliance position, including whether video content is likely creating exposure for your organisation, and what a proportionate next step looks like.</p>
+          <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="related-links">
+      <div class="container">
+        <h2>Related guides</h2>
+        <ul class="related-list">
+          <li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit your digital product for EAA compliance</a></li>
+          <li><a href="/eaa-enforcement.html">How EAA enforcement works across all markets</a></li>
+          <li><a href="/eaa-compliance-checklist.html">EAA compliance checklist: the four requirements, plainly explained</a></li>
+          <li><a href="/eaa-compliance-travel.html">EAA compliance for travel: what booking platforms and agencies need to know</a></li>
+          <li><a href="/eaa-compliance-fintech.html">EAA compliance for FinTech and financial services</a></li>
+          <li><a href="/eaa-governance.html">EAA governance: what it means and why most organisations are missing it</a></li>
+          <li><a href="/eaa-compliance-ecommerce.html">EAA compliance for e-commerce: what online retailers need to know</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+    })();
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
