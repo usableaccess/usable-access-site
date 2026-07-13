@@ -517,6 +517,15 @@
       margin-bottom: var(--space-lg);
     }
 
+    .service-list--three {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+    @media (min-width: 640px) { .service-list--three { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .service-list--three { grid-template-columns: repeat(3, 1fr); } }
+
     .service-item {
       background: var(--colour-white);
       border: 1.5px solid var(--colour-border);
@@ -1017,27 +1026,7 @@
       <div class="container">
         <span class="section-label">Services</span>
         <h2 id="services-heading">Find the right starting point.</h2>
-        <p class="section-intro">Two low-commitment ways in, and a service ladder once you're ready to scope real work.</p>
-
-        <dl class="service-list">
-
-          <div class="service-item">
-            <dt class="service-name">Rapid Exposure Check</dt>
-            <dd class="service-desc">Something specific prompted you to look into this &mdash; a complaint, a conversion drop you can't explain, a market launch you're unsure about. Three specific findings about where you actually stand, delivered in writing within 48 hours. No call required.</dd>
-            <dd class="service-outcome">So you know exactly what's happening, fast.</dd>
-            <dd class="service-price"><span class="price-amount">€250</span></dd>
-          </div>
-
-          <div class="service-item">
-            <dt class="service-name">Free Initial Assessment</dt>
-            <dd class="service-desc">A free 20-minute conversation to find out whether the EAA applies to your organisation and where to begin &mdash; or, if you already know you need an audit, to talk through what that typically involves and what questions to answer first. No obligation, no assumptions.</dd>
-            <dd class="service-outcome">So you know where to begin.</dd>
-            <dd class="service-price">No charge</dd>
-          </div>
-
-        </dl>
-
-        <p class="section-intro" style="margin-top:var(--space-2xl)">Once you're ready to scope real work:</p>
+        <p class="section-intro">Our two most comprehensive engagements, plus lighter ways to start.</p>
 
         <dl class="service-list">
 
@@ -1049,17 +1038,37 @@
           </div>
 
           <div class="service-item">
-            <dt class="service-name">Quick Compliance Audit</dt>
-            <dd class="service-desc">Your most commercially critical user journeys &mdash; checkout, account creation, booking, payment &mdash; tested against EN 301 549 (WCAG 2.1 Level AA). You receive a prioritised findings report, a remediation plan, and a documented compliance position. The right starting point for most organisations &mdash; not because it resolves compliance, but because it tells you what genuine compliance requires for your specific product.</dd>
-            <dd class="service-outcome">So you know where you stand legally.</dd>
-            <dd class="service-price"><span class="price-amount">€2,500</span> — €3,800</dd>
-          </div>
-
-          <div class="service-item">
             <dt class="service-name">Complete Compliance Framework</dt>
             <dd class="service-desc">For organisations that need to show a regulator, a board, or an enterprise procurement team that accessibility is actively managed. At the end you have a dated, documented record of active management — the thing enforcement bodies actually look for. For organisations with significant compliance risk, the framework costs less than a single enforcement action.</dd>
             <dd class="service-outcome">So you can demonstrate ongoing compliance.</dd>
             <dd class="service-price"><span class="price-amount">€12,000</span> — €15,000</dd>
+          </div>
+
+        </dl>
+
+        <p class="section-intro" style="margin-top:var(--space-2xl)">Or start smaller:</p>
+
+        <dl class="service-list--three">
+
+          <div class="service-item">
+            <dt class="service-name">Free Initial Assessment</dt>
+            <dd class="service-desc">A free 20-minute conversation to find out whether the EAA applies to your organisation and where to begin &mdash; or, if you already know you need an audit, to talk through what that typically involves and what questions to answer first. No obligation, no assumptions.</dd>
+            <dd class="service-outcome">So you know where to begin.</dd>
+            <dd class="service-price">No charge</dd>
+          </div>
+
+          <div class="service-item">
+            <dt class="service-name">Rapid Exposure Check</dt>
+            <dd class="service-desc">Something specific prompted you to look into this &mdash; a complaint, a conversion drop you can't explain, a market launch you're unsure about. Three specific findings about where you actually stand, delivered in writing within 2 business days. No call required.</dd>
+            <dd class="service-outcome">So you know exactly what's happening, fast.</dd>
+            <dd class="service-price"><span class="price-amount">€250</span></dd>
+          </div>
+
+          <div class="service-item">
+            <dt class="service-name">Quick Compliance Audit</dt>
+            <dd class="service-desc">Your most commercially critical user journeys &mdash; checkout, account creation, booking, payment &mdash; tested against EN 301 549 (WCAG 2.1 Level AA). You receive a prioritised findings report, a remediation plan, and a documented compliance position. The right starting point for most organisations &mdash; not because it resolves compliance, but because it tells you what genuine compliance requires for your specific product.</dd>
+            <dd class="service-outcome">So you know where you stand legally.</dd>
+            <dd class="service-price"><span class="price-amount">€2,500</span> — €3,800</dd>
           </div>
 
         </dl>
@@ -1080,13 +1089,13 @@
         <p class="section-intro">We publish weekly analysis of EAA enforcement developments across Ireland, the Netherlands, Sweden, Italy, and France — so your organisation understands the regulatory picture before it becomes a problem.</p>
         <div class="insights-grid-home">
 
-          <a href="/eaa-video-accessibility.html" class="insight-card">
+          <a href="/eaa-compliance-finland.html" class="insight-card">
             <div class="insight-card-meta">
-              <span class="insight-tag">Guide</span>
-              <span class="insight-date">13 Jul 2026</span>
+              <span class="insight-tag">Country guide</span>
+              <span class="insight-date">14 Jul 2026</span>
             </div>
-            <h3 class="insight-title">EAA video compliance: audit, backlog and solutions</h3>
-            <p class="insight-excerpt">EAA video requires captions, audio description and transcripts, but the case for fixing your backlog does not stop at compliance. Where to start, and which tools help.</p>
+            <h3 class="insight-title">EAA compliance in Finland &mdash; what businesses need to know</h3>
+            <p class="insight-excerpt">Finland&rsquo;s enforcement is complaint-driven from the outset and Traficom imposes conditional fines that accrue daily until resolved &mdash; a different mechanism from a one-time penalty.</p>
           </a>
 
           <a href="/insights/how-to-audit-eaa-compliance.html" class="insight-card">

@@ -132,7 +132,7 @@
 
   <url>
     <loc>https://usableaccess.io/eaa-compliance-finland.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -163,7 +163,7 @@
 
   <url>
     <loc>https://usableaccess.io/eaa-compliance-travel.html</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -216,5 +216,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://usableaccess.io/insights/sweden-eaa-enforcement.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 
 </urlset>
