@@ -75,7 +75,7 @@
   </url>
   <url>
     <loc>https://usableaccess.io/eaa-compliance-netherlands.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -224,5 +224,32 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://usableaccess.io/insights/eaa-floor-not-ceiling.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://usableaccess.io/insights/ai-agents-need-accessibility.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://usableaccess.io/insights/arcom-france-public-sector-enforcement.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://usableaccess.io/eaa-compliance-uk.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
