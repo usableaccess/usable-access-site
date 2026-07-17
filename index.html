@@ -928,6 +928,17 @@
     @media (prefers-reduced-motion: reduce) {
       .back-to-top { transition: none; }
     }
+  
+    /* --- Nav CTA (added to match the six migrated pages) ---------------------
+       One fixed text "Free assessment" at all widths. DOM position: after the
+       logo, before the toggle (tab order: logo -> nav CTA -> toggle/links).
+       Desktop: reordered visually AFTER the nav links via flex `order`; DOM order
+       unchanged so the mobile tab sequence is preserved. 44x44 min touch target. */
+    .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+    .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+    .nav-cta:hover{background:var(--colour-orange-dark)}
+    .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){.nav-links{margin-left:auto}.nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -964,6 +975,9 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
+          <div class="nav-cta-slot">
+            <a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+          </div>
           <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -1031,7 +1045,7 @@
         <dl class="service-list">
 
           <div class="service-item service-item--featured">
-            <dt class="service-name"><span class="sr-only">Most popular — </span>UX-Enhanced Audit <span class="service-badge" aria-hidden="true">Most popular</span></dt>
+            <dt class="service-name">UX-Enhanced Audit</dt>
             <dd class="service-desc">We help you understand what your barriers are costing you in potential customers, and how to implement changes so the potential is realised and new customers are won. Everything in the Quick Compliance Audit, plus an expert assessment of whether your product actually works for users with disabilities — not just whether it passes technical tests. Findings include which user journeys are breaking and where and how to clear the path so that all of your potential customers can complete the journey.</dd>
             <dd class="service-outcome">So you can see what's standing between you and your customers — and what it's costing.</dd>
             <dd class="service-price"><span class="price-amount">€3,800</span> — €5,500</dd>
@@ -1048,20 +1062,13 @@
 
         <p class="section-intro" style="margin-top:var(--space-2xl)">Or start smaller:</p>
 
-        <dl class="service-list--three">
+        <dl class="service-list">
 
           <div class="service-item">
             <dt class="service-name">Free Initial Assessment</dt>
             <dd class="service-desc">A free 20-minute conversation to find out whether the EAA applies to your organisation and where to begin &mdash; or, if you already know you need an audit, to talk through what that typically involves and what questions to answer first. No obligation, no assumptions.</dd>
             <dd class="service-outcome">So you know where to begin.</dd>
             <dd class="service-price">No charge</dd>
-          </div>
-
-          <div class="service-item">
-            <dt class="service-name">Rapid Exposure Check</dt>
-            <dd class="service-desc">Something specific prompted you to look into this &mdash; a complaint, a conversion drop you can't explain, a market launch you're unsure about. Three specific findings about where you actually stand, delivered in writing within 2 business days. No call required.</dd>
-            <dd class="service-outcome">So you know exactly what's happening, fast.</dd>
-            <dd class="service-price"><span class="price-amount">€250</span></dd>
           </div>
 
           <div class="service-item">
