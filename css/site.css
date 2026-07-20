@@ -1,0 +1,170 @@
+/* ==========================================================================
+   site.css  —  Usable Access shared site styles
+   --------------------------------------------------------------------------
+   Everything currently duplicated across the "article" page template:
+   reset, base typography, skip-link, header/nav (incl. mobile toggle),
+   page-header + page-body layout, callout variants, CTA, related-links,
+   back-to-top, footer, focus-visible and reduced-motion.
+
+   Canonical values are taken from the eaa-compliance-ireland pilot, which
+   Phase 0 confirmed is representative of the newer 6-page family (ecommerce,
+   fintech, ireland, netherlands, travel, vendor-responsibility). Component
+   variants that only some pages carried (.callout--gain / --amber) and the
+   nav-CTA placeholder are consolidated here so the file is a complete library.
+
+   NOTE: the older arcom-france / uk template is intentionally NOT covered by
+   this file (different page structure — see the Phase 0 report). Do not point
+   those two pages at site.css until they are reconciled onto this template.
+
+   Depends on: tokens.css (custom properties).
+   ========================================================================== */
+
+/* --- Reset ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--colour-body); background: var(--colour-white); }
+
+/* --- Skip link + screen-reader utility ----------------------------------- */
+.skip-link { position: absolute; top: -100%; left: 0; background: var(--colour-teal); color: var(--colour-white); padding: 0.75rem 1.25rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; z-index: 200; }
+.skip-link:focus { top: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* --- Layout containers ---------------------------------------------------- */
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+.article-container { max-width: 680px; }
+
+/* --- Logo ----------------------------------------------------------------- */
+.site-logo { display: flex; flex-direction: column; gap: 3px; line-height: 1; text-decoration: none; margin-right: var(--space-xl); }
+.site-logo:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+.logo-usable { font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--colour-teal); letter-spacing: -0.01em; }
+.logo-access { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--colour-heading); letter-spacing: 0.32em; text-transform: uppercase; display: block; width: 100%; text-align: center; }
+
+/* --- Header / nav --------------------------------------------------------- */
+header { background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) 0; position: sticky; top: 0; z-index: 100; overflow: visible; }
+nav { width: 100%; }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; position: relative; width: 100%; }
+.nav-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+.nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
+.nav-toggle-bar { display: block; width: 100%; height: 2px; background-color: var(--colour-heading); transition: transform 0.2s ease, opacity 0.2s ease; transform-origin: center; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav-links { display: none; position: absolute; top: 100%; left: calc(-1 * var(--container-pad)); right: calc(-1 * var(--container-pad)); background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) var(--container-pad); list-style: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 200; }
+.nav-links.is-open { display: block; }
+.nav-links li { border-bottom: 1px solid var(--colour-border); }
+.nav-links li:last-child { border-bottom: none; }
+.nav-links a { display: block; font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; padding: var(--space-md) 0; letter-spacing: 0.01em; }
+.nav-links a:hover { color: var(--colour-teal); }
+.nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+/* --- Nav CTA -------------------------------------------------------------
+   ONE fixed CTA text ("Free assessment") at every breakpoint — no display:none
+   text-swap. It sits after the logo in the DOM, which fixes the tab order:
+   skip-link → logo → nav CTA → hamburger toggle (mobile) / nav links (desktop).
+   "Free assessment" is short enough to fit alongside the horizontal nav at
+   every width, so no breakpoint swap is needed to avoid header wrap.
+   An empty slot (:empty) is display:none, so it stays inert if ever blank.
+
+   >>> FUTURE SWAP: when the Rapid Exposure Check payment link is ready, this
+   >>> CTA is expected to be replaced — a one-line edit to the .nav-cta anchor
+   >>> (change href + text). <<< */
+.nav-cta-slot:empty { display: none; }
+.nav-cta-slot { display: flex; align-items: center; margin-left: auto; margin-right: var(--space-md); flex-shrink: 0; }
+.nav-cta { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0.5rem 1.25rem; background: var(--colour-orange); color: var(--colour-white) !important; font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; text-decoration: none; border-radius: 0; text-align: center; white-space: nowrap; }
+.nav-cta:hover { background: var(--colour-orange-dark); }
+.nav-cta:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+/* Desktop (nav goes horizontal at 640px): push the nav group to the right and
+   render the CTA visually AFTER the nav links using flex `order`. This changes
+   only the visual order — the DOM/tab order is untouched (CTA still tabs right
+   after the logo, before the links), preserving the mobile sequence as tested. */
+@media (min-width: 640px) {
+  .nav-links { margin-left: auto; }
+  .nav-cta-slot { order: 1; margin-left: var(--space-xl); margin-right: 0; }
+}
+
+@media (min-width: 640px) {
+  .nav-toggle { display: none; }
+  .nav-links { display: flex !important; position: static; border-bottom: none; padding: 0; box-shadow: none; background: none; list-style: none; gap: var(--space-xl); align-items: center; }
+  .nav-links li { border-bottom: none; }
+  .nav-links a { font-size: 0.875rem; padding: 0; }
+  .nav-links a:hover { color: var(--colour-teal); }
+  .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+  .nav-links a[aria-current="page"] { color: var(--colour-teal); border-bottom: 2px solid var(--colour-teal); padding-bottom: 2px; }
+}
+
+/* --- Page header ---------------------------------------------------------- */
+.page-header { padding: var(--space-2xl) 0 var(--space-xl); border-bottom: 1px solid var(--colour-border); }
+.section-label { display: block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--colour-teal); margin-bottom: var(--space-md); }
+.page-header h1 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; line-height: 1.2; color: var(--colour-heading); margin-bottom: var(--space-md); }
+.page-header .deck { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 400; font-style: italic; color: var(--colour-secondary); line-height: 1.5; max-width: 36em; }
+@media (min-width: 640px) { .page-header h1 { font-size: 2.25rem; } }
+.breadcrumb { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); margin-bottom: var(--space-lg); }
+.breadcrumb a { color: var(--colour-teal); text-decoration: underline; }
+.breadcrumb a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+/* --- Page body ------------------------------------------------------------ */
+.page-body { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--colour-border); }
+.page-body h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-md); margin-top: var(--space-2xl); }
+.page-body h2:first-child { margin-top: 0; }
+.page-body h3 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-sm); margin-top: var(--space-xl); }
+.page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-lg); max-width: 36em; }
+.page-body ul { margin: 0 0 var(--space-lg) var(--space-xl); }
+.page-body ul li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
+.page-body strong { font-weight: 600; color: var(--colour-heading); }
+
+/* --- Callouts ------------------------------------------------------------- */
+.callout { background: var(--colour-teal-subtle); border-left: 4px solid var(--colour-teal); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
+.callout p { margin-bottom: 0; max-width: none; }
+/* --orange is a MODIFIER: markup uses <div class="callout callout--orange"> (base
+   class present), so it only needs to override background + border colour. */
+.callout--orange { background: var(--colour-orange-tint); border-left-color: var(--colour-orange); }
+/* --gain and --amber are used STANDALONE in the markup (<div class="callout--gain">
+   with no base .callout class), so they need the full box, not just colour
+   overrides. Values match the originals, with the hardcoded hex tokenised. */
+.callout--gain { background: var(--colour-gain-bg); border-left: 4px solid var(--colour-gain-border); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
+.callout--gain p { margin-bottom: 0; max-width: none; }
+.callout--amber { background: var(--colour-orange-tint); border-left: 4px solid var(--colour-orange); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
+.callout--amber p { margin-bottom: 0; max-width: none; }
+
+/* --- Article CTA ---------------------------------------------------------- */
+.article-cta { background: var(--colour-teal); padding: var(--space-2xl); margin: var(--space-2xl) 0; }
+.article-cta h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--colour-white); margin-bottom: var(--space-md); margin-top: 0; }
+.article-cta p { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-white); line-height: 1.65; margin-bottom: var(--space-lg); max-width: 36em; }
+.cta-button { display: inline-block; background: var(--colour-orange); color: #ffffff !important; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.875rem 1.75rem; text-decoration: none !important; border-radius: 0; }
+.cta-button:hover { background: var(--colour-orange-dark); }
+.cta-button:focus { outline: 3px solid var(--colour-white); outline-offset: 3px; }
+
+/* --- Related links -------------------------------------------------------- */
+.related-links { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+.related-links h2 { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--colour-meta); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: var(--space-md); }
+.related-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+.related-list a { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
+.related-list a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+/* --- Back link ------------------------------------------------------------ */
+.back-link-section { padding: var(--space-xl) 0; }
+.back-link { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-teal); text-decoration: underline; }
+.back-link:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+/* --- Footer --------------------------------------------------------------- */
+footer { padding: var(--space-xl) 0; border-top: 1px solid var(--colour-border); }
+footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
+footer a { color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
+footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+
+/* --- Focus-visible (keyboard focus) — accessibility-critical -------------- */
+:focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 6px rgba(15, 107, 107, 0.15); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal); }
+
+/* --- Reduced motion — accessibility-critical (WCAG 2.3.3) ----------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* --- Back to top ---------------------------------------------------------- */
+.back-to-top { position: fixed; bottom: var(--space-xl); right: var(--space-xl); background: var(--colour-teal); color: var(--colour-white); border: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease, background 0.15s ease; z-index: 50; text-decoration: none; }
+.back-to-top:hover { background: var(--colour-teal-deep); }
+.back-to-top:focus { outline: 3px solid var(--colour-heading); outline-offset: 3px; opacity: 1; visibility: visible; }
+.back-to-top.is-visible { opacity: 1; visibility: visible; }
+.back-to-top svg { width: 20px; height: 20px; fill: none; stroke: var(--colour-white); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+@media (prefers-reduced-motion: reduce) { .back-to-top { transition: none; } }

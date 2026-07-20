@@ -1,0 +1,51 @@
+/* ==========================================================================
+   tokens.css  —  Usable Access design tokens (custom properties only)
+   --------------------------------------------------------------------------
+   Single source of truth for colour, type and spacing. Changes rarely.
+   Union of the token sets found across the live pages during Phase 0, with
+   cosmetic formatting normalised. Two tokens (--colour-gain-*) previously
+   lived only on the older arcom/uk template; they are promoted here so the
+   .callout--gain component can reference them instead of hardcoding hex.
+   ========================================================================== */
+:root {
+  /* Brand — teal */
+  --colour-teal:        #0F6B6B;
+  --colour-teal-deep:   #0A5252;
+  --colour-teal-subtle: #F4FAFA;
+  --colour-teal-badge:  #E0F2F2;
+
+  /* Brand — orange (CTAs, amber/orange callouts) */
+  --colour-orange:      #B05000;
+  --colour-orange-dark: #8B3D00;
+  --colour-orange-tint: #FEF6EE;
+
+  /* Callout — gain (positive / "good news" variant) */
+  --colour-gain-bg:     #F0F7EE;
+  --colour-gain-border: #2D7A3A;
+
+  /* Neutrals / text */
+  --colour-heading:     #1A1A1A;
+  --colour-body:        #2C2C2C;
+  --colour-secondary:   #555555;
+  --colour-meta:        #595959;
+  --colour-border:      #DDDDDD;
+  --colour-bg-subtle:   #F9F9F9;
+  --colour-white:       #ffffff;
+
+  /* Type */
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'Inter', Arial, sans-serif;
+
+  /* Spacing scale */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Layout */
+  --container-max: 960px;
+  --container-pad: 1.25rem;
+}
