@@ -267,6 +267,17 @@
     .back-to-top.is-visible{opacity:1;visibility:visible}
     .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
     @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+  
+    /* --- Nav CTA (added to match the six migrated pages) ---------------------
+       One fixed text "Free assessment" at all widths. DOM position: after the
+       logo, before the toggle (tab order: logo -> nav CTA -> toggle/links).
+       Desktop: reordered visually AFTER the nav links via flex `order`; DOM order
+       unchanged so the mobile tab sequence is preserved. 44x44 min touch target. */
+    .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+    .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+    .nav-cta:hover{background:var(--colour-orange-dark)}
+    .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){.nav-links{margin-left:auto}.nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -293,7 +304,10 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
-                    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+                    <div class="nav-cta-slot">
+            <a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+          </div>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -335,7 +349,18 @@
         <p class="filter-description" id="filter-description" aria-live="polite"></p>
         <p class="no-results" role="status" id="no-results">No insights match this filter.</p>
         <div class="article-list" id="article-list">
-          <!-- Guide — Travel — promoted to position 1 for Post 16, Thu 16 Jul -->
+          <!-- Sector — FinTech — promoted to position 1 for Post 17, Tue 21 Jul -->
+          <a href="/eaa-compliance-fintech.html" class="article-card article-card--guide" data-type="Sector guide">
+            <div class="article-meta">
+              <span class="article-tag article-tag--guide">Sector guide</span>
+              <span class="article-date">Updated 21 Jul 2026</span>
+            </div>
+            <h3 class="article-title">EAA compliance for FinTech and financial services</h3>
+            <p class="article-excerpt">Financial services has a different EAA regulator to e-commerce: the AFM in the Netherlands, the Central Bank in Ireland &mdash; and it is the worst-performing sector for accessibility, so the journeys that decide revenue are the widest opening to win customers back.</p>
+            <span class="article-market">Ireland &middot; Netherlands &middot; Sweden &middot; Germany</span>
+          </a>
+
+          <!-- Guide — Travel -->
           <a href="/eaa-compliance-travel.html" class="article-card article-card--guide" data-type="Sector guide">
             <div class="article-meta">
               <span class="article-tag article-tag--guide">Sector guide</span>
@@ -526,17 +551,6 @@
             <h3 class="article-title">The EU AI Act and EAA &mdash; what the intersection means</h3>
             <p class="article-excerpt">The EU AI Act and EAA apply simultaneously to AI-assisted products. Being EAA-compliant does not automatically satisfy AI Act obligations. Most product teams haven&rsquo;t modelled the gap &mdash; that is where the compliance risk lives.</p>
             <span class="article-market">All markets</span>
-          </a>
-
-          <!-- Sector — FinTech -->
-          <a href="/eaa-compliance-fintech.html" class="article-card article-card--guide" data-type="Sector guide">
-            <div class="article-meta">
-              <span class="article-tag article-tag--guide">Sector guide</span>
-              <span class="article-date">Updated 15 Jul 2026</span>
-            </div>
-            <h3 class="article-title">EAA compliance for FinTech and financial services</h3>
-            <p class="article-excerpt">Financial services face sector-specific enforcement authorities in each market. In the Netherlands it is the AFM, not the ACM. In Ireland, directors face personal criminal liability.</p>
-            <span class="article-market">Ireland &middot; Netherlands &middot; Sweden</span>
           </a>
 
           <!-- Guide — Sweden -->
