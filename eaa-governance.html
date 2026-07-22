@@ -139,6 +139,17 @@
     @media (prefers-reduced-motion: reduce) {
       .back-to-top { transition: none; }
     }
+  
+    /* --- Nav CTA (added to match the six migrated pages) ---------------------
+       One fixed text "Free assessment" at all widths. DOM position: after the
+       logo, before the toggle (tab order: logo -> nav CTA -> toggle/links).
+       Desktop: reordered visually AFTER the nav links via flex `order`; DOM order
+       unchanged so the mobile tab sequence is preserved. 44x44 min touch target. */
+    .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+    .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+    .nav-cta:hover{background:var(--colour-orange-dark)}
+    .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){.nav-links{margin-left:auto}.nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
@@ -172,6 +183,9 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
+          <div class="nav-cta-slot">
+            <a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+          </div>
           <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -197,7 +211,7 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 30 Jun 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 22 Jul 2026</span>
           </div>
           <h1>EAA governance: what it means and why most organisations are missing it</h1>
           <p class="deck">Most EAA non-compliance is not a technical failure. It is a governance failure. The audit passes. Then the team changes, and the next release introduces a new barrier.</p>
@@ -263,6 +277,12 @@
           </ul>
           <p>The Solid Foundations Method, used across Europe to assess EAA compliance, evaluates whether the core elements users need to complete essential tasks are in place. It is an expert evaluation, not a replacement for user testing with disabled people. Both matter. Governance is what ensures the findings from both are acted on and maintained.</p>
 
+          <h2>The deviation contract: how governance survives contact with real teams</h2>
+          <p>Governance sounds like process. In practice it comes down to a smaller question: what happens the moment someone steps outside the accessible pattern?</p>
+          <p>Anna E. Cook calls the answer a deviation contract. A design system, or any documented standard, cannot stop a team from diverging from the accessible default. What it can do is make the cost of diverging explicit at the point of the decision: if you step outside this pattern, here is what you now own, the annotations, the testing, the accessibility approach itself. Stated that way, the accessible path becomes the path of least resistance, and divergence stops being invisible. Without it, a team deviates for a reasonable-looking reason, nobody records the cost, and the gap surfaces months later as a complaint or a bug report. That is the regression the audit could not predict.</p>
+          <p>This is where AI has changed the shape of the problem. An AI coding assistant is deviation without a contract, at scale. It generates markup that looks right and often is not, and nobody chose to deviate or owns the cost. Peer-reviewed studies consistently find that <a href="/insights/ai-paradox.html">AI coding tools produce inaccessible code by default</a>, because they are trained on a web that is itself overwhelmingly inaccessible: WebAIM&rsquo;s 2026 report found detectable WCAG failures on 95.9% of home pages. A model trained on that reproduces it, on every release, across every surface it touches.</p>
+          <p>The governance answer is the same one that holds for human teams, only it matters more. The accessible default holds only if someone owns the deviation, and when the deviation is coming from a model on every release, that owner has to be a person who can tell compliant structure from a plausible approximation of it. Automated checks catch a fraction of the issues. A person attempting the task on the real journey catches the rest. That named owner is Element 1 of governance for a reason.</p>
+
           <h2>Why the EAA governance gap is a process problem</h2>
           <p>Organisations that sustain accessibility are not trying harder than those that do not. They have built a process that survives team changes, product releases, and restructures. The effort is in building the process once, correctly. After that, it runs.</p>
 
@@ -281,6 +301,7 @@
           <h2>Related guides</h2>
           <ul class="related-list">
             <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
+            <li><a href="/insights/ai-paradox.html">The AI paradox &mdash; why AI coding tools create the problem overlays claim to fix</a></li>
             <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what directors need to know</a></li>
             <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
             <li><a href="/insights.html">All insights</a></li>
