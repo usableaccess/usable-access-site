@@ -6,6 +6,19 @@
   <title>EAA Governance — What It Means and Why It Matters | UA</title>
   <meta name="description" content="Most EAA non-compliance is a governance failure, not a technical one. What EAA governance requires, why it matters, and what enforcement bodies look for.">
   <link rel="canonical" href="https://usableaccess.io/eaa-governance.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="EAA governance: what it means and why it matters">
+  <meta property="og:description" content="Most EAA non-compliance is a governance failure, not a technical one. What EAA governance requires, why it matters, and what enforcement bodies look for.">
+  <meta property="og:url" content="https://usableaccess.io/eaa-governance.html">
+  <meta property="og:image" content="https://usableaccess.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Usable Access — clarity-first EAA compliance. Building accessibility that works.">
+  <meta property="og:site_name" content="Usable Access">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EAA governance: what it means and why it matters">
+  <meta name="twitter:description" content="Most EAA non-compliance is a governance failure, not a technical one. What EAA governance requires, why it matters, and what enforcement bodies look for.">
+  <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -211,7 +224,7 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Guide</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 22 Jul 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 23 Jul 2026</span>
           </div>
           <h1>EAA governance: what it means and why most organisations are missing it</h1>
           <p class="deck">Most EAA non-compliance is not a technical failure. It is a governance failure. The audit passes. Then the team changes, and the next release introduces a new barrier.</p>
@@ -266,7 +279,7 @@
 
           <h2>Governance and the accessibility statement</h2>
           <p>A well-maintained accessibility statement is both evidence of governance and a governance tool. It records your current compliance position, what is not yet accessible, and your remediation plan. Keeping it up to date requires a governance process. Its existence demonstrates one.</p>
-          <p>In Ireland, the accessibility statement is the first document ComReg requests in any complaint investigation. In the Netherlands, it forms part of the mandatory reporting declaration to the ACM. An organisation without a current, accurate statement starts any enforcement interaction at a disadvantage.</p>
+          <p>In Ireland, the accessibility statement is among the first documents a competent authority requests in a complaint investigation, and which authority that is depends on your sector. In the Netherlands, it forms part of the mandatory reporting declaration to the ACM. An organisation without a current, accurate statement starts any enforcement interaction at a disadvantage.</p>
 
           <h2>What good governance looks like in practice</h2>
           <p>For most SMBs, proportionate accessibility governance does not require a dedicated accessibility team or expensive tooling. It requires three things to be in place and documented:</p>
@@ -282,6 +295,11 @@
           <p>Anna E. Cook calls the answer a deviation contract. A design system, or any documented standard, cannot stop a team from diverging from the accessible default. What it can do is make the cost of diverging explicit at the point of the decision: if you step outside this pattern, here is what you now own, the annotations, the testing, the accessibility approach itself. Stated that way, the accessible path becomes the path of least resistance, and divergence stops being invisible. Without it, a team deviates for a reasonable-looking reason, nobody records the cost, and the gap surfaces months later as a complaint or a bug report. That is the regression the audit could not predict.</p>
           <p>This is where AI has changed the shape of the problem. An AI coding assistant is deviation without a contract, at scale. It generates markup that looks right and often is not, and nobody chose to deviate or owns the cost. Peer-reviewed studies consistently find that <a href="/insights/ai-paradox.html">AI coding tools produce inaccessible code by default</a>, because they are trained on a web that is itself overwhelmingly inaccessible: WebAIM&rsquo;s 2026 report found detectable WCAG failures on 95.9% of home pages. A model trained on that reproduces it, on every release, across every surface it touches.</p>
           <p>The governance answer is the same one that holds for human teams, only it matters more. The accessible default holds only if someone owns the deviation, and when the deviation is coming from a model on every release, that owner has to be a person who can tell compliant structure from a plausible approximation of it. Automated checks catch a fraction of the issues. A person attempting the task on the real journey catches the rest. That named owner is Element 1 of governance for a reason.</p>
+
+          <h2>What practitioners report</h2>
+          <p>The pattern is not only a design-systems argument. A 2026 Master&rsquo;s thesis at Tampere University, grounded in interviews with fourteen practitioners working on Finnish design systems, found that accessibility outcomes tracked most reliably with whether a named individual was accountable for them. The author is careful to describe this as a correlation rather than a proven cause, and that caution is worth preserving. But the failure mode participants described is specific: vague shared responsibility, where everyone is collectively responsible, which means nobody is.</p>
+          <p>The same research describes accessibility as something that decays rather than something an organisation arrives at. Participants reported audits conducted every few years that kept surfacing the same uncorrected issues, because nothing in between owned the problem. That is the governance gap stated from the inside: not an absence of audits, but an absence of anyone holding the standard between them.</p>
+          <p>It also points at how the work is funded. Where accessibility expertise is a cross-cutting capability rather than a per-project line item, coverage is consistent. Where it is funded per project, coverage follows budget rather than user need.</p>
 
           <h2>Why the EAA governance gap is a process problem</h2>
           <p>Organisations that sustain accessibility are not trying harder than those that do not. They have built a process that survives team changes, product releases, and restructures. The effort is in building the process once, correctly. After that, it runs.</p>
@@ -302,6 +320,8 @@
           <ul class="related-list">
             <li><a href="/eaa-accessibility-statement.html">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</a></li>
             <li><a href="/insights/ai-paradox.html">The AI paradox &mdash; why AI coding tools create the problem overlays claim to fix</a></li>
+            <li><a href="/eaa-enforcement.html">EAA enforcement &mdash; who enforces the Act and what happens when they do</a></li>
+            <li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit your digital product for EAA compliance</a></li>
             <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; what directors need to know</a></li>
             <li><a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">EAA fines and penalties &mdash; Ireland, Netherlands, Sweden</a></li>
             <li><a href="/insights.html">All insights</a></li>
