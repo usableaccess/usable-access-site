@@ -1,132 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance | Usable Access</title>
-  <meta name="description" content="WCAG-EM 2.0 is the first update since 2014 to the methodology behind credible accessibility audits, and why a sample is not a conformance claim.">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance">
-  <meta property="og:description" content="The first update since 2014 to the methodology behind credible accessibility audits. It now evaluates digital products, not just websites, and is explicit that a sample cannot certify whole-product conformance.">
-  <meta property="og:url" content="https://usableaccess.io/insights/wcag-em-2.html">
-  <meta property="og:image" content="https://usableaccess.io/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Usable Access — clarity-first EAA compliance. Building accessibility that works.">
-  <meta property="og:site_name" content="Usable Access">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance">
-  <meta name="twitter:description" content="The first update since 2014 to the methodology behind credible accessibility audits. Digital products, not just websites, and a sample is not a conformance claim.">
-  <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
-  <link rel="canonical" href="https://usableaccess.io/insights/wcag-em-2.html">
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/site.css">
-
-  <!-- GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
-  <script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance | Usable Access</title>
+<meta name="description" content="WCAG-EM 2.0 is the first update since 2014 to the methodology behind credible accessibility audits, and why a sample is not a conformance claim.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance">
+<meta property="og:description" content="The first update since 2014 to the methodology behind credible accessibility audits. It now evaluates digital products, not just websites, and is explicit that a sample cannot certify whole-product conformance.">
+<meta property="og:url" content="https://usableaccess.io/insights/wcag-em-2.html">
+<meta property="og:image" content="https://usableaccess.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Usable Access — clarity-first EAA compliance. Building accessibility that works.">
+<meta property="og:site_name" content="Usable Access">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance">
+<meta name="twitter:description" content="The first update since 2014 to the methodology behind credible accessibility audits. Digital products, not just websites, and a sample is not a conformance claim.">
+<meta name="twitter:image" content="https://usableaccess.io/og-image.png">
+<link rel="canonical" href="https://usableaccess.io/insights/wcag-em-2.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css?v=1">
+<link rel="stylesheet" href="/css/site.css?v=2">
+<style>
+    /* Page-specific: numbered step list mirrors .page-body ul. */
+    .page-body ol { margin: 0 0 var(--space-lg) var(--space-xl); }
+    .page-body ol li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CWF8FPK9T7');
-  </script>
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xiwyxbc3ze");
-  </script>
+</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-  <header class="site-header">
-    <nav class="site-nav" aria-label="Primary">
-      <a class="site-logo" href="/" aria-label="Usable Access — home">Usable Access</a>
-      <ul class="nav-links">
-        <li><a href="/insights.html">Insights</a></li>
-        <li><a href="/eaa-enforcement.html">Enforcement</a></li>
-        <li><a href="/services.html">Services</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-      <a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
-    </nav>
-  </header>
+<a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<polyline points="18 15 12 9 6 15"></polyline>
+</svg>
+</a>
 
-  <main id="main" tabindex="-1">
-    <article class="article">
-      <div class="article-header">
-        <span class="badge badge--guide">Insight &mdash; standards</span>
-        <h1>WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance</h1>
-        <span class="meta-date">Published 27 Jul 2026</span>
-        <p class="deck">The W3C has published the first update since 2014 to the methodology behind credible accessibility audits. It now evaluates digital products rather than just websites, and it is explicit about the one thing a quick scan cannot do.</p>
-      </div>
+<header>
+<div class="container">
+<nav aria-label="Main navigation">
+<div class="nav-inner">
+<a href="/" class="site-logo" aria-label="Usable Access — home">
+<span class="logo-usable">Usable</span>
+<span class="logo-access">Access</span>
+</a>
+<div class="nav-cta-slot">
+<a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+</div>
+<button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+<span class="nav-toggle-bar" aria-hidden="true"></span>
+</button>
+<ul class="nav-links" id="nav-menu" role="list">
+<li><a href="/#what-we-do">What we do</a></li>
+<li><a href="/#services">Services</a></li>
+<li><a href="/insights.html">Insights</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</header>
 
-      <p>On 23 July 2026, the W3C's Accessibility Guidelines Working Group published <strong>WCAG-EM 2.0</strong>, the WCAG Evaluation Methodology. It replaces the 1.0 version that had stood since 2014 and that most accessibility guidance still quotes. For anyone commissioning or relying on an accessibility audit, the update is worth understanding, because it defines what a credible evaluation actually looks like.</p>
+<main id="main" tabindex="-1">
+<div class="page-header">
+<div class="container">
+<div class="article-container">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/insights.html">Insights</a> &rsaquo; WCAG-EM 2.0
+</nav>
+<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
+<span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Insight &mdash; standards</span>
+<span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
+<span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Published 27 Jul 2026</span>
+</div>
+<h1>WCAG-EM 2.0: what the updated evaluation methodology means for EAA compliance</h1>
+<p class="deck">The W3C has published the first update since 2014 to the methodology behind credible accessibility audits. It now evaluates digital products rather than just websites, and it is explicit about the one thing a quick scan cannot do.</p>
+</div>
+</div>
+</div>
 
-      <p>WCAG-EM is not a new rule. It does not add to or change a single requirement in WCAG 2.2, and it is published as a W3C Group Note rather than a standard. What it provides is the agreed process for evaluating how well a digital product meets WCAG, so that different evaluators reach comparable, defensible results. It is the roadmap underneath a serious audit.</p>
+<div class="page-body">
+<div class="container">
+<div class="article-container">
 
-      <h2>The shift that matters: from "website" to "digital product"</h2>
-      <p>The clearest change is in scope. Version 1.0 evaluated websites. Version 2.0 evaluates <strong>digital products</strong>: websites, web applications, mobile apps, kiosks and self-service terminals, and documents such as PDF and EPUB. That mirrors how the European Accessibility Act already defines its scope, around the product or service a consumer uses, not the technology it is built in. A booking flow, an account area, a mobile app and a PDF statement can all be in scope under the EAA, and the evaluation methodology now reflects that directly.</p>
+<p>On 23 July 2026, the W3C's Accessibility Guidelines Working Group published <strong>WCAG-EM 2.0</strong>, the WCAG Evaluation Methodology. It replaces the 1.0 version that had stood since 2014 and that most accessibility guidance still quotes. For anyone commissioning or relying on an accessibility audit, the update is worth understanding, because it defines what a credible evaluation actually looks like.</p>
 
-      <h2>The five steps of a credible evaluation</h2>
-      <p>The methodology sets out a five-step process. Understanding it is the quickest way to tell a real evaluation from a superficial one.</p>
-      <ol>
-        <li><strong>Define the scope.</strong> State unambiguously what is being evaluated, the target conformance level (WCAG 2.2 Level AA is the accepted standard), and the browsers and assistive technologies the product is expected to support.</li>
-        <li><strong>Explore the product.</strong> Identify common views, essential functionality, the variety of page types, and the technologies relied upon.</li>
-        <li><strong>Select a representative sample.</strong> A structured sample covering the range of the product, plus a random sample equal to roughly 10% of it as a check, plus every page in any complete process.</li>
-        <li><strong>Evaluate the sample</strong> against the five WCAG 2.2 conformance requirements, including full interaction with forms, errors and confirmations along each journey.</li>
-        <li><strong>Report the findings,</strong> documenting scope, sample, technologies and outcomes so the result is transparent and repeatable.</li>
-      </ol>
+<p>WCAG-EM is not a new rule. It does not add to or change a single requirement in WCAG 2.2, and it is published as a W3C Group Note rather than a standard. What it provides is the agreed process for evaluating how well a digital product meets WCAG, so that different evaluators reach comparable, defensible results. It is the roadmap underneath a serious audit.</p>
 
-      <h2>Why journeys, not pages</h2>
-      <p>The methodology is specific about processes. If an evaluation touches any part of a journey, it must include every page in that journey, the default path and the branches a real customer commonly takes. That is a deliberate contrast with page-level scanning, and it is exactly where account creation, checkout and booking flows tend to break. It is also why we scope our own work by journey rather than by page.</p>
+<h2>The shift that matters: from "website" to "digital product"</h2>
+<p>The clearest change is in scope. Version 1.0 evaluated websites. Version 2.0 evaluates <strong>digital products</strong>: websites, web applications, mobile apps, kiosks and self-service terminals, and documents such as PDF and EPUB. That mirrors how the European Accessibility Act already defines its scope, around the product or service a consumer uses, not the technology it is built in. A booking flow, an account area, a mobile app and a PDF statement can all be in scope under the EAA, and the evaluation methodology now reflects that directly.</p>
 
-      <h2>The line worth reading twice: a sample is not a conformance claim</h2>
-      <p>The most important point in the document is one that a good deal of compliance marketing skips. Evaluating a representative sample of a product does not permit a WCAG conformance claim for the whole product. The methodology states this plainly, more than once, because unfound errors always remain possible on the pages that were not evaluated.</p>
-      <p>The practical consequence: a tool or vendor promising "full compliance" from a quick automated pass is not describing something the methodology supports. What a preliminary evaluation is genuinely good for, in the methodology's own words, is identifying obvious barriers and developing an understanding of where a product stands before a full evaluation. That is an honest and useful place to begin, and it is precisely what our Rapid Exposure Check is: a preliminary read of one journey, not a full audit, and never a compliance certificate.</p>
+<h2>The five steps of a credible evaluation</h2>
+<p>The methodology sets out a five-step process. Understanding it is the quickest way to tell a real evaluation from a superficial one.</p>
+<ol>
+<li><strong>Define the scope.</strong> State unambiguously what is being evaluated, the target conformance level (WCAG 2.2 Level AA is the accepted standard), and the browsers and assistive technologies the product is expected to support.</li>
+<li><strong>Explore the product.</strong> Identify common views, essential functionality, the variety of page types, and the technologies relied upon.</li>
+<li><strong>Select a representative sample.</strong> A structured sample covering the range of the product, plus a random sample equal to roughly 10% of it as a check, plus every page in any complete process.</li>
+<li><strong>Evaluate the sample</strong> against the five WCAG 2.2 conformance requirements, including full interaction with forms, errors and confirmations along each journey.</li>
+<li><strong>Report the findings,</strong> documenting scope, sample, technologies and outcomes so the result is transparent and repeatable.</li>
+</ol>
 
-      <h2>What it means for an accessibility statement</h2>
-      <p>WCAG-EM 2.0 also sets out what a credible evaluation statement contains: the date, the WCAG version and conformance level, a clear definition of the product, the technologies relied upon, the accessibility-support baseline, and, where conformance is only partial, which areas do not conform and why. That is a useful checklist against which to judge any accessibility statement, including your own. The EAA requires a statement; this is the shape of one that would withstand scrutiny.</p>
+<h2>Why journeys, not pages</h2>
+<p>The methodology is specific about processes. If an evaluation touches any part of a journey, it must include every page in that journey, the default path and the branches a real customer commonly takes. That is a deliberate contrast with page-level scanning, and it is exactly where account creation, checkout and booking flows tend to break. It is also why we scope our own work by journey rather than by page.</p>
 
-      <div class="cta-block" id="start">
-        <h2>Where do your key journeys stand?</h2>
-        <p>Our free initial assessment is your starting point: a read on whether your consumer-facing journeys are likely in scope, where they stand, and what a proportionate next step looks like.</p>
-        <a class="cta-primary" href="https://calendly.com/hello-usableaccess/20min">Book your free assessment</a>
-      </div>
+<h2>The line worth reading twice: a sample is not a conformance claim</h2>
+<p>The most important point in the document is one that a good deal of compliance marketing skips. Evaluating a representative sample of a product does not permit a WCAG conformance claim for the whole product. The methodology states this plainly, more than once, because unfound errors always remain possible on the pages that were not evaluated.</p>
+<p>The practical consequence: a tool or vendor promising "full compliance" from a quick automated pass is not describing something the methodology supports. What a preliminary evaluation is genuinely good for, in the methodology's own words, is identifying obvious barriers and developing an understanding of where a product stands before a full evaluation. That is an honest and useful place to begin, and it is precisely what our Rapid Exposure Check is: a preliminary read of one journey, not a full audit, and never a compliance certificate.</p>
 
-      <aside class="related-links" aria-label="Related reading">
-        <h2>Related</h2>
-        <ul>
-          <li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit for EAA compliance &mdash; a practical guide</a></li>
-          <li><a href="/eaa-enforcement.html">EAA enforcement across Europe &mdash; who enforces and how</a></li>
-          <li><a href="/eaa-governance.html">EAA governance &mdash; why most non-compliance is a governance failure</a></li>
-          <li><a href="/services.html">Our services &mdash; from a Rapid Exposure Check to a full product audit</a></li>
-          <li><a href="/eaa-compliance-checklist.html">EAA compliance checklist &mdash; four requirements in practice</a></li>
-        </ul>
-      </aside>
-    </article>
-  </main>
+<h2>What it means for an accessibility statement</h2>
+<p>WCAG-EM 2.0 also sets out what a credible evaluation statement contains: the date, the WCAG version and conformance level, a clear definition of the product, the technologies relied upon, the accessibility-support baseline, and, where conformance is only partial, which areas do not conform and why. That is a useful checklist against which to judge any accessibility statement, including your own. The EAA requires a statement; this is the shape of one that would withstand scrutiny.</p>
 
-  <footer class="site-footer">
-    <p>Usable Access &mdash; hello@usableaccess.io &mdash; usableaccess.io &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
-  </footer>
+<div class="article-cta">
+<h2>Where do your key journeys stand?</h2>
+<p>Our free initial assessment is your starting point: a read on whether your consumer-facing journeys are likely in scope, where they stand, and what a proportionate next step looks like.</p>
+<a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment today</a>
+</div>
 
-  <button class="back-to-top" aria-label="Back to top" hidden>&uarr; Top</button>
-  <script>
-    (function(){
-      var btn = document.querySelector('.back-to-top');
-      if(!btn) return;
-      window.addEventListener('scroll', function(){
-        btn.hidden = window.scrollY < 400;
+</div>
+</div>
+</div>
+
+<div class="related-links">
+<div class="container">
+<div class="article-container">
+<h2>Related</h2>
+<ul class="related-list">
+<li><a href="/insights/how-to-audit-eaa-compliance.html">How to audit for EAA compliance &mdash; a practical guide</a></li>
+<li><a href="/eaa-enforcement.html">EAA enforcement across Europe &mdash; who enforces and how</a></li>
+<li><a href="/eaa-governance.html">EAA governance &mdash; why most non-compliance is a governance failure</a></li>
+<li><a href="/services.html">Our services &mdash; from a Rapid Exposure Check to a full product audit</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="back-link-section">
+<div class="container">
+<a href="/insights.html" class="back-link">&larr; Back to Insights</a>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
+</div>
+</footer>
+
+<script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
       });
-      btn.addEventListener('click', function(){
-        window.scrollTo({top:0, behavior:'smooth'});
-        document.getElementById('main').focus();
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
       });
     })();
-  </script>
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+</script>
 </body>
 </html>
