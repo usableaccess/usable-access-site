@@ -61,6 +61,21 @@
   "publisher": { "@type": "Organization", "name": "Usable Access", "url": "https://usableaccess.io" }
 }
 </script>
+<style>
+  /* ua:nav-cta — managed by ua_sync_blocks.py.
+     PROPER FIX: move these rules into site.css and delete this block from every
+     page. They live inline only because site.css does not currently define
+     .nav-cta, which left the CTA rendering as a plain link on every page except
+     the homepage. */
+  .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+  .nav-cta:hover{background:var(--colour-orange-dark)}
+  .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:900px){
+    .nav-links{margin-left:auto}
+    .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
+  }
+</style>
 </head><body>
   <a href="#main" class="skip-link">Skip to main content</a>
   <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
