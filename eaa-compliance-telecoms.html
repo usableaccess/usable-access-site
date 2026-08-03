@@ -46,6 +46,21 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xiwyxbc3ze");
 </script>
+<style>
+  /* ua:nav-cta — managed by ua_sync_blocks.py.
+     PROPER FIX: move these rules into site.css and delete this block from every
+     page. They live inline only because site.css does not currently define
+     .nav-cta, which left the CTA rendering as a plain link on every page except
+     the homepage. */
+  .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+  .nav-cta:hover{background:var(--colour-orange-dark)}
+  .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:900px){
+    .nav-links{margin-left:auto}
+    .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
+  }
+</style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -107,7 +122,7 @@
 <h2>Ireland: the process is already live</h2>
 <p>In Ireland, telecoms enforcement is not hypothetical. In January 2026, Three Ireland was named in a formal accessibility complaint to ComReg, the Commission for Communications Regulation and the competent authority for the accessibility of electronic communications services in Ireland. The complaint is ongoing, and Three Ireland has been responsive and active in the process.</p>
 <p>That case is often read as a warning. It is better read as evidence the process works: a complaint submitted, the regulator processing it, and the operator engaging. In a communications complaint, ComReg's practice is to request the accessibility statement first, before examining the product itself, so the statement is where scrutiny begins.</p>
-<p>Ireland is also distinctive on consequences. It is the only EU member state where serious, sustained non-compliance can carry criminal sanctions, including personal liability for company directors. That is not the likely outcome of a first complaint. Enforcement is remediation-first, and a due-diligence defence is available to an operator that can show it has assessed its products and is acting on what it found. The operators exposed are the ones with nothing to show; the defence is built for the ones with a current assessment and a documented plan.</p>
+<p>Ireland is also distinctive on consequences. It is the only EU member state where serious, sustained non-compliance can carry criminal sanctions, including personal liability for company directors. That is not the likely outcome of a first complaint. There is also a second route that operates independently of the regulator: the Irish regulations allow a consumer to seek an order for compliance directly from the Circuit Court, so a complaint to ComReg is not the only way a requirement gets enforced. Enforcement is remediation-first, and a due-diligence defence is available to an operator that can show it has assessed its products and is acting on what it found. The operators exposed are the ones with nothing to show; the defence is built for the ones with a current assessment and a documented plan.</p>
 
 <div class="callout--orange">
 <p>The Three Ireland complaint raises one plain question for any operator: if a complaint arrived tomorrow, and the first thing requested was your accessibility statement, what could you show?</p>
