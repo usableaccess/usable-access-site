@@ -4,8 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://usableaccess.io/eaa-video-accessibility.html">
+  <!-- ua:og:start -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="EAA Video Compliance: Audit, Backlog &amp; Solutions | UA">
+  <meta property="og:description" content="Most organisations have a video backlog, not one bad video. What EN 301 549 requires, when dubbing applies, and how to prioritise the work.">
+  <meta property="og:url" content="https://usableaccess.io/eaa-video-accessibility.html">
+  <meta property="og:image" content="https://usableaccess.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
+  <meta property="og:site_name" content="Usable Access">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EAA Video Compliance: Audit, Backlog &amp; Solutions | UA">
+  <meta name="twitter:description" content="Most organisations have a video backlog, not one bad video. What EN 301 549 requires, when dubbing applies, and how to prioritise the work.">
+  <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
+  <!-- ua:og:end -->
   <title>EAA Video Compliance: Audit, Backlog & Solutions | UA</title>
-  <meta name="description" content="Most organisations don't have one inaccessible video, they have a backlog. EAA video compliance requires captions, audio description and transcripts.">
+  <meta name="description" content="Most organisations have a video backlog, not one bad video. What EN 301 549 requires, when dubbing applies, and how to prioritise the work.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -154,6 +169,21 @@
     .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
     @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
   </style>
+<style>
+  /* ua:nav-cta — managed by ua_sync_blocks.py.
+     PROPER FIX: move these rules into site.css and delete this block from every
+     page. They live inline only because site.css does not currently define
+     .nav-cta, which left the CTA rendering as a plain link on every page except
+     the homepage. */
+  .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+  .nav-cta:hover{background:var(--colour-orange-dark)}
+  .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:900px){
+    .nav-links{margin-left:auto}
+    .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
+  }
+</style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -169,6 +199,10 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
+<div class="nav-cta-slot">
+<a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+</div>
+
           <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -355,8 +389,9 @@
 
   <footer>
     <div class="container">
-      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
-    </div>
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> </p>
+<p><a href="/accessibility-statement.html">Accessibility statement</a><span aria-hidden="true"> &middot; </span><a href="/privacy.html">Privacy notice</a></p>
+</div>
   </footer>
 
   <script>
