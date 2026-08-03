@@ -6,6 +6,21 @@
   <title>The EU AI Act and EAA &mdash; What the Intersection Means | UA</title>
   <meta name="description" content="The EU AI Act and EAA apply simultaneously to AI-assisted products. Most product teams have not modelled the intersection. What it means in practice.">
   <link rel="canonical" href="https://usableaccess.io/insights/eu-ai-act-accessibility.html">
+  <!-- ua:og:start -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The EU AI Act and EAA &amp;mdash; What the Intersection Means | UA">
+  <meta property="og:description" content="The EU AI Act and EAA apply simultaneously to AI-assisted products. Most product teams have not modelled the intersection. What it means in practice.">
+  <meta property="og:url" content="https://usableaccess.io/insights/eu-ai-act-accessibility.html">
+  <meta property="og:image" content="https://usableaccess.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
+  <meta property="og:site_name" content="Usable Access">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The EU AI Act and EAA &amp;mdash; What the Intersection Means | UA">
+  <meta name="twitter:description" content="The EU AI Act and EAA apply simultaneously to AI-assisted products. Most product teams have not modelled the intersection. What it means in practice.">
+  <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
+  <!-- ua:og:end -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -104,6 +119,21 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xiwyxbc3ze");
 </script>
+<style>
+  /* ua:nav-cta — managed by ua_sync_blocks.py.
+     PROPER FIX: move these rules into site.css and delete this block from every
+     page. They live inline only because site.css does not currently define
+     .nav-cta, which left the CTA rendering as a plain link on every page except
+     the homepage. */
+  .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+  .nav-cta:hover{background:var(--colour-orange-dark)}
+  .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:900px){
+    .nav-links{margin-left:auto}
+    .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
+  }
+</style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -119,6 +149,10 @@
             <span class="logo-usable">Usable</span>
             <span class="logo-access">Access</span>
           </a>
+<div class="nav-cta-slot">
+<a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+</div>
+
           <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
             <span class="nav-toggle-bar" aria-hidden="true"></span>
             <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -146,7 +180,7 @@
           <div class="article-meta">
             <span class="article-tag">Intelligence</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
-            <span class="article-date">Updated 2 Jul 2026</span>
+            <span class="article-date">Updated 3 Aug 2026</span>
             <span class="article-meta-sep" aria-hidden="true">&middot;</span>
             <span class="article-market">All markets</span>
           </div>
@@ -208,7 +242,9 @@
 
           <p>The intersecting framework risk: where an AI system is embedded in an EAA-covered product, both the EAA and the AI Act apply. The compliance requirements are different. Neither satisfies the other. The gap between them is not yet well mapped by most product teams &mdash; which is where the risk lives.</p>
 
-          <p>The EU AI Omnibus, agreed by the Council and European Parliament by late June 2026, delays the AI Act&rsquo;s high-risk system obligations, originally due 2 August 2026, pending formal publication. This changes the timeline for Article 16(1)(l), the requirement that high-risk AI systems comply with existing EU law including the EAA, but it does not change the EAA obligation itself. Organisations whose AI systems interact with EU consumers are subject to EAA enforcement now, regardless of when the AI Act&rsquo;s high-risk obligations formally take effect. The delay does not create a window; it removes an argument for urgency on one track while the other remains active.</p>
+          <p>The AI Act timeline has since moved, and it is worth being precise about what did and did not change. The Digital Omnibus on AI &mdash; Regulation (EU) 2026/1744, adopted by Parliament on 16 June 2026 and the Council on 29 June 2026, published in the Official Journal on 24 July 2026 and in force since 27 July 2026 &mdash; defers the AI Act&rsquo;s high-risk obligations. Stand-alone high-risk systems under Annex III now apply from <strong>2 December 2027</strong> rather than 2 August 2026, and high-risk AI embedded in regulated products under Annex I from <strong>2 August 2028</strong>.</p>
+<p>What was not deferred is the transparency set. The Article 50 obligations, including the duty to tell people they are interacting with an AI system, applied from <strong>2 August 2026</strong> as originally planned, with the Article 50(2) marking and detection requirements for systems already on the market following on 2 December 2026. This is a deferral of one track, not a weakening of the Act: the obligations themselves are unchanged, the conformity assessments and technical documentation are still coming, and the deferral was granted because the harmonised standards were not ready, not because the requirements were reconsidered.</p>
+<p>For accessibility the practical point is unaffected. The change moves the timeline for Article 16(1)(l), the requirement that high-risk AI systems comply with existing EU law including the EAA, but it does not change the EAA obligation itself. Organisations whose AI systems interact with EU consumers are subject to EAA enforcement now, regardless of when the AI Act&rsquo;s high-risk obligations take effect. The deferral does not create a window; it removes an argument for urgency on one track while the other remains active.</p>
 
           <p>Enforcement in Ireland, the Netherlands, and Sweden is active. The <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html">penalty structures</a> are material. The window for getting ahead of enforcement is narrowing.</p>
 
@@ -248,8 +284,9 @@
 
   <footer>
     <div class="container">
-      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> &mdash; <a href="/accessibility-statement.html">Accessibility statement</a></p>
-    </div>
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> </p>
+<p><a href="/accessibility-statement.html">Accessibility statement</a><span aria-hidden="true"> &middot; </span><a href="/privacy.html">Privacy notice</a></p>
+</div>
   </footer>
 
   <script>
