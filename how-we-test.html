@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://usableaccess.io/how-we-test.html">
+  <!-- ua:og:start -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How we test — Usable Access">
+  <meta property="og:description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">
+  <meta property="og:url" content="https://usableaccess.io/how-we-test.html">
+  <meta property="og:image" content="https://usableaccess.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
+  <meta property="og:site_name" content="Usable Access">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How we test — Usable Access">
+  <meta name="twitter:description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">
+  <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
+  <!-- ua:og:end -->
+  <title>How we test — Usable Access</title>
+  <meta name="description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .page-body{padding:var(--space-2xl) 0}
+    .page-body h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .status-block{background:var(--colour-teal-subtle);border:1.5px solid var(--colour-teal);padding:var(--space-xl);margin-bottom:var(--space-xl)}
+    .status-block h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-teal-deep);margin-bottom:var(--space-md);margin-top:0}
+    .status-block p{margin-bottom:var(--space-sm);max-width:none}
+    .status-block p:last-child{margin-bottom:0}
+    .contact-block{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);padding:var(--space-xl);margin-bottom:var(--space-xl)}
+    .contact-block h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-md);margin-top:0}
+    .contact-block p{margin-bottom:var(--space-sm);max-width:none}
+    .contact-block a{color:var(--colour-teal);text-decoration:underline}
+    .contact-block a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .meta-line{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta);margin-top:var(--space-2xl);padding-top:var(--space-xl);border-top:1px solid var(--colour-border)}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiwyxbc3ze");
+</script>
+<style>
+  /* ua:nav-cta — managed by ua_sync_blocks.py.
+     PROPER FIX: move these rules into site.css and delete this block from every
+     page. They live inline only because site.css does not currently define
+     .nav-cta, which left the CTA rendering as a plain link on every page except
+     the homepage. */
+  .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+  .nav-cta:hover{background:var(--colour-orange-dark)}
+  .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:900px){
+    .nav-links{margin-left:auto}
+    .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
+  }
+</style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+<div class="nav-cta-slot">
+<a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+</div>
+
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <span class="section-label">Method</span>
+          <h1>How we test, and what we found</h1>
+          <p class="deck">How we test consumer journeys, what we never do, and what we have found so far. If you have had an email from us about a barrier on your site, this is where it came from. If you have not, this is the honest version of our method &mdash; including the parts that went wrong.</p>
+          <p class="meta-line">Updated 4 August 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <div class="status-block">
+            <h2>The short version</h2>
+            <p>We go through consumer journeys &mdash; insurance quotes, hotel bookings, travel enquiries, financial applications &mdash; the way a customer using a keyboard and a screen reader would. Nineteen so far, all of them in Ireland. Thirteen had a barrier that stopped the journey.</p>
+            <p>When we find one on a site we think the owner would want to know about, we tell them, at no charge and with nothing attached. That is what prompts most of our emails.</p>
+          <p>This page describes that screening: one person, one journey, about an hour. It is the fastest thing we do and the least of it. What a full evaluation adds is set out below.</p>
+          </div>
+
+          <h2>Who is asking</h2>
+          <p>Usable Access is an accessibility compliance practice. We work with mid-sized businesses that sell to consumers in the EU. If we have written to you, it is because we went through one of your journeys and found something we thought you would want to know.</p>
+          <p>We come at it from research rather than engineering, which is why we test whole journeys rather than pages, and why the question we ask is whether someone can finish rather than whether the code passes.</p>
+          <p>We are not a scanning tool, and we are not an agency looking for build work &mdash; anything that needs fixing goes back to whoever builds your site. What we do is find what stops people, tell you plainly, and help you show what you did about it.</p>
+
+          <h2>Will a company we test be named anywhere?</h2>
+          <p>No. We are writing the findings up as aggregate research &mdash; sector, journey type, where the barrier occurred, what kind of control caused it. No company is named, and no individual finding is attributed to anyone. Anything we send a company is theirs alone, and we would not publish it against their name.</p>
+          <p>If we have written to you and you would rather we deleted the finding and your details entirely, say so and we will, and confirm when it is done.</p>
+
+          <h2>What we actually do</h2>
+          <p>We open the journey a real customer would use and try to complete it, using a keyboard alone and a screen reader. We record where it stops, what the control is, and what a customer would experience at that point. Every barrier we report is confirmed by at least two independent methods before we mention it to anyone.</p>
+          <p>That is it. It is a manual walkthrough of a public page, done the way an actual customer would do it. It takes about an hour per journey.</p>
+
+          <h2>What we never do</h2>
+          <ul>
+            <li><strong>We never submit anything.</strong> No applications, no bookings, no quotes requested. We stop the moment the barrier is confirmed, which is well before the point where a record would be created in your systems.</li>
+            <li><strong>We never enter real personal data</strong> &mdash; no real names, no real contact details, nobody&rsquo;s actual identity.</li>
+            <li><strong>We only test public pages.</strong> Never an account area, never anything behind a login.</li>
+            <li><strong>We do not scan, script or crawl at volume.</strong> A person goes through it, once.</li>
+            <li><strong>We never name a company publicly</strong> as an example of a failure.</li>
+          </ul>
+
+          <h2>What we have found so far</h2>
+          <p>Thirteen of the nineteen had a confirmed barrier. Only two of those stopped the customer at the very start. Eleven stopped them in the middle &mdash; at the point where the customer specifies what they want. Dates, occupancy, product, country, title, occupation.</p>
+          <p>That is the commercially worst place for it. A customer blocked there has already chosen you, arrived, and started. They then hit a control they cannot operate, and leave. In your analytics it looks like an ordinary mid-journey drop-off.</p>
+          <p>The symptom was consistent: the control did not say what it was. The cause split roughly evenly. In about half the cases a standard HTML control &mdash; a dropdown, a radio button, an input, a button &mdash; had been replaced by a custom widget, and the accessibility the standard element provides for free had not been rebuilt. In the other half the correct element was used and simply never labelled.</p>
+          <p>That second half is the more uncomfortable one, because nothing clever went wrong. The right element was there. The label was never written.</p>
+          <p>Two journeys passed cleanly, and they prove the point from opposite directions. One kept the native controls. The other used a custom widget with the accessibility deliberately written back in. So this is not an argument against custom interfaces. It is that whether you replace a native control or keep it, the work of making it say what it is has to be done deliberately, and often it simply is not.</p>
+
+          <h2>What went wrong in our method</h2>
+          <p>We publish this because a method you cannot inspect is not really a method. Every study makes mistakes; the ones worth trusting are the ones that catch them and say so.</p>
+          <p>Four times, automated accessibility tooling told us a control was correctly labelled when it was not. In three cases the tool had inferred a name from text sitting next to the control rather than attached to it. In one case the semantics it reported were being injected by an accessibility overlay, not provided by the page. Each would have produced a false clean result.</p>
+          <p>We now confirm every negative finding by computing the accessible name directly, or by live behaviour, rather than trusting a tool&rsquo;s summary. We also started with a different hypothesis &mdash; that most barriers would be at the very first step &mdash; and the data did not support it. We reported what we found instead.</p>
+
+          <h2>What this is, and what it is not</h2>
+          <p>Everything above is screening. It finds what the code exposes to assistive technology, and it does that well &mdash; but it is a walkthrough by someone who knows what to look for, not a study of what happens to a person.</p>
+          <p>It cannot tell you what it is actually like to hit the barrier. How long someone tries. What they attempt. Whether they work around it, ring you instead, or quietly go somewhere else. That takes sessions with disabled people using the product, which is scoped and priced separately as part of a full evaluation.</p>
+          <p>Our first research report will include that layer, and we will say plainly what it changed about the findings.</p>
+
+          <h2>What a single finding does and does not tell you</h2>
+          <p>It is not an audit. It is one confirmed barrier on one journey, found in about an hour. It does not tell you whether the rest of your product conforms, and we would not claim it does. A representative sample never permits a whole-product conformance claim, which is a point the W3C&rsquo;s own evaluation methodology makes repeatedly.</p>
+          <p>It is a real finding about a real journey, and it is usually the start of a longer answer rather than the whole of one.</p>
+
+          <div class="article-cta" id="start">
+            <h2>If you would like the detail</h2>
+            <p>If we have written to you, we are happy to show you exactly where the barrier is and whether it is a one-off or part of a pattern, at no charge and with no obligation. If we have not, the same offer applies to your own journey.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book a 20-minute call</a>
+            <p>Or reply to our email if you have one, or write to <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a>.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
+        <p><a href="/accessibility-statement.html">Accessibility statement</a><span aria-hidden="true"> &middot; </span><a href="/privacy.html">Privacy notice</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
