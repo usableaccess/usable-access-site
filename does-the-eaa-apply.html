@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://usableaccess.io/does-the-eaa-apply.html">
+  <!-- ua:og:start -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Does the EAA apply to your business? A five-question check — Usable Access">
+  <meta property="og:description" content="B2B, microenterprise, or outside the EU? Five questions: who is in scope, what the exemptions really say, and what to do if the Act reaches you.">
+  <meta property="og:url" content="https://usableaccess.io/does-the-eaa-apply.html">
+  <meta property="og:image" content="https://usableaccess.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
+  <meta property="og:site_name" content="Usable Access">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Does the EAA apply to your business? A five-question check — Usable Access">
+  <meta name="twitter:description" content="B2B, microenterprise, or outside the EU? Five questions: who is in scope, what the exemptions really say, and what to do if the Act reaches you.">
+  <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
+  <!-- ua:og:end -->
+  <title>Does the EAA apply to your business? A five-question check — Usable Access</title>
+  <meta name="description" content="B2B, microenterprise, or outside the EU? Five questions: who is in scope, what the exemptions really say, and what to do if the Act reaches you.">>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --colour-teal:#0F6B6B;--colour-teal-deep:#0A5252;--colour-teal-subtle:#F4FAFA;
+      --colour-teal-badge:#E0F2F2;--colour-orange:#B05000;--colour-orange-dark:#8B3D00;
+      --colour-orange-tint:#FEF6EE;--colour-heading:#1A1A1A;--colour-body:#2C2C2C;
+      --colour-secondary:#555555;--colour-meta:#595959;--colour-border:#DDDDDD;
+      --colour-bg-subtle:#F9F9F9;--colour-white:#ffffff;
+      --font-display:'Lora',Georgia,serif;--font-body:'Inter',Arial,sans-serif;
+      --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;
+      --space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+      --container-max:960px;--container-pad:1.25rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+    body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--colour-body);background:var(--colour-white)}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--colour-teal);color:var(--colour-white);padding:.75rem 1.25rem;text-decoration:none;font-family:var(--font-body);font-weight:600;z-index:200}
+    .skip-link:focus{top:0}
+    .container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+    .article-container{max-width:680px}
+    .site-logo{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none;margin-right:var(--space-xl)}
+    .site-logo:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .logo-usable{font-family:var(--font-display);font-size:1.625rem;font-weight:400;color:var(--colour-teal);letter-spacing:-.01em}
+    .logo-access{font-family:var(--font-body);font-size:.75rem;font-weight:700;color:var(--colour-heading);letter-spacing:.32em;text-transform:uppercase;display:block;width:100%;text-align:center}
+    nav{width:100%}
+    header{background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) 0;position:sticky;top:0;z-index:100;overflow:visible}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;position:relative;width:100%}
+    .nav-toggle{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+    .nav-toggle:focus{outline:3px solid var(--colour-teal);outline-offset:4px}
+    .nav-toggle-bar{display:block;width:100%;height:2px;background-color:var(--colour-heading);transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .nav-links{display:none;position:absolute;top:100%;left:calc(-1 * var(--container-pad));right:calc(-1 * var(--container-pad));background:var(--colour-white);border-bottom:2px solid var(--colour-teal);padding:var(--space-md) var(--container-pad);list-style:none;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:200}
+    .nav-links.is-open{display:block}
+    .nav-links li{border-bottom:1px solid var(--colour-border)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--colour-secondary);text-decoration:none;padding:var(--space-md) 0;letter-spacing:.01em}
+    .nav-links a:hover{color:var(--colour-teal)}
+    .nav-links a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    @media(min-width:640px){
+      .nav-toggle{display:none}
+      .nav-links{display:flex!important;position:static;border-bottom:none;padding:0;box-shadow:none;background:none;list-style:none;gap:var(--space-xl);align-items:center}
+      .nav-links li{border-bottom:none}
+      .nav-links a{font-size:.875rem;padding:0}
+    }
+    .page-header{padding:var(--space-2xl) 0 var(--space-xl);border-bottom:1px solid var(--colour-border)}
+    .section-label{display:block;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--colour-teal);margin-bottom:var(--space-md)}
+    .page-header h1{font-family:var(--font-display);font-size:1.75rem;font-weight:400;line-height:1.2;color:var(--colour-heading);margin-bottom:var(--space-md)}
+    .page-header .deck{font-family:var(--font-display);font-size:1.0625rem;font-weight:400;font-style:italic;color:var(--colour-secondary);line-height:1.5;max-width:36em}
+    @media(min-width:640px){.page-header h1{font-size:2.25rem}}
+    .page-body{padding:var(--space-2xl) 0}
+    .page-body h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);line-height:1.3;margin-bottom:var(--space-md);margin-top:var(--space-2xl)}
+    .page-body h2:first-child{margin-top:0}
+    .page-body p{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-lg);max-width:36em}
+    .page-body ul{margin:0 0 var(--space-lg) var(--space-xl)}
+    .page-body ul li{font-family:var(--font-body);font-size:1rem;line-height:1.75;color:var(--colour-body);margin-bottom:var(--space-sm);max-width:34em}
+    .page-body strong{font-weight:600;color:var(--colour-heading)}
+    .status-block{background:var(--colour-teal-subtle);border:1.5px solid var(--colour-teal);padding:var(--space-xl);margin-bottom:var(--space-xl)}
+    .status-block h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-teal-deep);margin-bottom:var(--space-md);margin-top:0}
+    .status-block p{margin-bottom:var(--space-sm);max-width:none}
+    .status-block p:last-child{margin-bottom:0}
+    .contact-block{background:var(--colour-bg-subtle);border:1.5px solid var(--colour-border);padding:var(--space-xl);margin-bottom:var(--space-xl)}
+    .contact-block h2{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--colour-heading);margin-bottom:var(--space-md);margin-top:0}
+    .contact-block p{margin-bottom:var(--space-sm);max-width:none}
+    .contact-block a{color:var(--colour-teal);text-decoration:underline}
+    .contact-block a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    .meta-line{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta);margin-top:var(--space-2xl);padding-top:var(--space-xl);border-top:1px solid var(--colour-border)}
+    footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
+    footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
+    footer a{color:var(--colour-teal);text-decoration:underline}
+    footer a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+    :focus-visible{outline:3px solid var(--colour-teal);outline-offset:3px;box-shadow:0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    .back-to-top{position:fixed;bottom:var(--space-xl);right:var(--space-xl);background:var(--colour-teal);color:var(--colour-white);border:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease,background 0.15s ease;z-index:50;text-decoration:none}
+    .back-to-top:hover{background:var(--colour-teal-deep)}
+    .back-to-top:focus{outline:3px solid var(--colour-heading);outline-offset:3px;opacity:1;visibility:visible}
+    .back-to-top.is-visible{opacity:1;visibility:visible}
+    .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+    /* Answer paths. The border REINFORCES text that already says "If no" /
+     "If yes" — it is never the only signal. Same colour logic as the table:
+     orange = something to do, grey = nothing to do. Both 5:1+ against white. */
+  .answer-continue { border-left: 3px solid var(--colour-orange); padding-left: var(--space-md); margin-left: 0; }
+  .answer-stop { border-left: 3px solid var(--colour-meta); padding-left: var(--space-md); margin-left: 0; }
+</style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWF8FPK9T7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CWF8FPK9T7');
+  </script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiwyxbc3ze");
+</script>
+<style>
+  /* ua:nav-cta — managed by ua_sync_blocks.py.
+     PROPER FIX: move these rules into site.css and delete this block from every
+     page. They live inline only because site.css does not currently define
+     .nav-cta, which left the CTA rendering as a plain link on every page except
+     the homepage. */
+  .nav-cta-slot{display:flex;align-items:center;margin-left:auto;margin-right:var(--space-md);flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0.5rem 1.25rem;background:var(--colour-orange);color:var(--colour-white)!important;font-family:var(--font-body);font-size:0.875rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;border-radius:0;text-align:center;white-space:nowrap}
+  .nav-cta:hover{background:var(--colour-orange-dark)}
+  .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
+  @media(min-width:900px){
+    .nav-links{margin-left:auto}
+    .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
+  }
+</style>
+<style>
+  /* ua:scope-table — matches the pattern already used on eaa-video-accessibility.html.
+     Kept inline because these rules are not in site.css. If they move there, delete this. */
+  .scope-table { width: 100%; border-collapse: collapse; margin: var(--space-xl) 0; font-family: var(--font-body); font-size: 0.9375rem; }
+  .scope-table th { background: var(--colour-teal-subtle); color: var(--colour-heading); font-weight: 600; padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 2px solid var(--colour-teal); }
+  .scope-table td { padding: var(--space-sm) var(--space-md); border-bottom: 1px solid var(--colour-border); vertical-align: top; }
+  .scope-table tr:last-child td { border-bottom: none; }
+  .in-scope { color: var(--colour-orange-dark); font-weight: 600; }
+  .exempt { color: var(--colour-meta); font-weight: 600; }
+  /* Row tint REINFORCES the status text, it never replaces it (WCAG 1.4.1).
+     Orange = action needed, grey = nothing to do. All combinations verified
+     at 6.6:1 or better against body and link colours. */
+  .scope-table tr.row-action td { background: var(--colour-orange-tint); }
+  .scope-table tr.row-clear td  { background: var(--colour-bg-subtle); }
+  /* ua:article-cta — copied verbatim from eaa-enforcement.html, which renders
+     correctly. This shell (privacy/accessibility-statement) has no CTA and so
+     never carried these rules. */
+  .article-cta{background:var(--colour-teal);padding:var(--space-2xl);margin:var(--space-2xl) 0}
+  .article-cta h2{font-family:var(--font-display);font-size:1.25rem;font-weight:400;color:var(--colour-white);margin-bottom:var(--space-md);margin-top:0}
+  .article-cta h3{font-family:var(--font-body);font-size:1rem;font-weight:600;color:var(--colour-white);margin-top:var(--space-md);margin-bottom:var(--space-xs)}
+  .article-cta p{font-family:var(--font-body);font-size:.9375rem;color:var(--colour-white);line-height:1.65;margin-bottom:var(--space-lg);max-width:36em}
+  .article-cta a:not(.cta-button){color:var(--colour-white)}
+  .cta-button{display:inline-block;background:var(--colour-orange);color:#ffffff!important;font-family:var(--font-body);font-size:.9375rem;font-weight:600;letter-spacing:.02em;padding:.875rem 1.75rem;text-decoration:none!important}
+  .cta-button:hover{background:var(--colour-orange-dark)}
+  .cta-button:focus{outline:3px solid var(--colour-white);outline-offset:3px}
+</style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="back-to-top" aria-label="Back to top" id="back-to-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="/" class="site-logo" aria-label="Usable Access — home">
+            <span class="logo-usable">Usable</span>
+            <span class="logo-access">Access</span>
+          </a>
+<div class="nav-cta-slot">
+<a class="nav-cta" href="https://calendly.com/hello-usableaccess/20min">Free assessment</a>
+</div>
+
+          <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+          </button>
+          <ul class="nav-links" id="nav-menu" role="list">
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <div class="page-header">
+      <div class="container">
+        <div class="article-container">
+          <span class="section-label">Five-question check</span>
+          <h1>Does the European Accessibility Act apply to your business?</h1>
+          <p class="deck">Five questions. No form, no email address, no call. It often does not apply, and we will say so plainly &mdash; a wrong answer helps nobody.</p>
+          <p class="meta-line">Updated 4 August 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container">
+        <div class="article-container">
+
+          <div class="status-block">
+            <nav aria-labelledby="five-questions-heading">
+              <h2 id="five-questions-heading">The five questions</h2>
+              <ol>
+                <li><a href="#q1">Do you offer a service or product to consumers in the EU?</a></li>
+                <li><a href="#q2">Is any part of that delivered digitally?</a></li>
+                <li><a href="#q3">Are you a microenterprise?</a></li>
+                <li><a href="#q4">Which sector are you in?</a></li>
+                <li><a href="#q5">Has your product been evaluated, or only scanned?</a></li>
+              </ol>
+              <p>Most businesses know their answer by question three.</p>
+              <p>Questions four and five are about what follows if the Act does reach you.</p>
+              <p><strong>In a hurry?</strong> <a href="#quick">Find your situation in the table below</a>, or <a href="#outcomes">skip to what your answers mean</a>.</p>
+            </nav>
+          </div>
+
+          <h2 id="quick" tabindex="-1">The fast version: find your situation</h2>
+          <p>If one of these describes you, that is your answer. The five questions below explain the reasoning, and cover the cases this table cannot.</p>
+
+          <table class="scope-table" aria-label="Common situations and whether the European Accessibility Act applies">
+            <thead>
+              <tr>
+                <th scope="col">Your situation</th>
+                <th scope="col">Status</th>
+                <th scope="col">What that means</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-clear">
+                <td>No EU consumers at all</td>
+                <td><span class="exempt">Out of scope</span></td>
+                <td>The Act does not reach you. Other accessibility law in your own market still might.</td>
+              </tr>
+              <tr class="row-clear">
+                <td>You sell only to other businesses</td>
+                <td><span class="exempt">Out of scope</span></td>
+                <td>A genuine exclusion &mdash; but check for a consumer-facing edge first. See <a href="#q1">question 1</a>.</td>
+              </tr>
+              <tr class="row-clear">
+                <td>Nothing a customer touches is digital</td>
+                <td><span class="exempt">Out of scope</span></td>
+                <td>The Act&rsquo;s digital requirements do not apply. See <a href="#q2">question 2</a>.</td>
+              </tr>
+              <tr class="row-clear">
+                <td>Under 10 staff, and under &euro;2m turnover <em>or</em> balance sheet &mdash; providing services</td>
+                <td><span class="exempt">Exempt</span></td>
+                <td>The microenterprise exemption. Read <a href="#q3">question 3</a> before relying on it &mdash; it is commonly stated wrongly.</td>
+              </tr>
+              <tr class="row-action">
+                <td>Under 10 staff, but you make or distribute a covered product</td>
+                <td><span class="in-scope">In scope</span></td>
+                <td>Not exempt. Lighter documentation obligations, which is a different thing.</td>
+              </tr>
+              <tr class="row-action">
+                <td>10 or more staff, EU consumers, anything they use is digital</td>
+                <td><span class="in-scope">In scope</span></td>
+                <td>Where most mid-sized businesses land. Go to <a href="#outcomes">what your answers mean</a>.</td>
+              </tr>
+              <tr class="row-action">
+                <td>In scope, and the product has only ever been scanned</td>
+                <td><span class="in-scope">In scope</span></td>
+                <td>A scan is not an evaluation and will not support a conformance claim. See <a href="#q5">question 5</a>.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="q1" tabindex="-1">1. Do you offer a service or product to consumers in the EU?</h2>
+          <p class="answer-stop"><strong>If no &mdash; you can stop here.</strong> The Act covers products and services offered to consumers in the EU market. If you sell only to businesses, and only outside the EU, it does not reach you. Note the two halves of that: selling business-to-business is a genuine exclusion, but selling into the EU from outside it is not.</p>
+          <p class="answer-continue"><strong>Before you settle on B2B, check it properly.</strong> A great many B2B companies have a consumer-facing edge they have stopped noticing: a self-serve sign-up, a public pricing page with a checkout, a support portal an individual uses. We wrote about <a href="/eaa-compliance-saas.html">the B2B assumption and why it is worth checking</a>.</p>
+          <p class="answer-continue"><strong>If yes, continue.</strong> It does not matter where you are established. A business in the United States selling to consumers in Ireland is in scope, in the same way GDPR reaches them.</p>
+
+          <h2 id="q2" tabindex="-1">2. Is any part of that delivered digitally?</h2>
+          <p>A website, an app, a booking flow, a quote journey, an account area, a self-service terminal, an e-book, a PDF you send customers.</p>
+          <p class="answer-stop"><strong>If no</strong> &mdash; a service delivered entirely in person, with no digital component a consumer uses &mdash; the Act&rsquo;s digital requirements largely do not apply to you. Other accessibility law still might.</p>
+          <p class="answer-continue"><strong>If yes, continue.</strong> This is where most businesses find themselves in scope without having realised it. The obligation attaches to the consumer-facing journey, not to whether you consider yourself a technology company.</p>
+
+          <h2 id="q3" tabindex="-1">3. Are you a microenterprise?</h2>
+          <p>The microenterprise exemption is the one real, blanket exemption in the Act, and it is worth getting exactly right. A microenterprise employs <strong>fewer than 10 people</strong>, <strong>and</strong> has <strong>either</strong> an annual turnover of no more than &euro;2 million <strong>or</strong> an annual balance sheet total of no more than &euro;2 million.</p>
+          <p>Read that structure carefully, because it is commonly stated wrongly. The headcount test and the financial test both have to be satisfied &mdash; but the financial test can be met on <em>either</em> turnover <em>or</em> balance sheet. A business with eight staff and &euro;2.5m turnover but a &euro;1.8m balance sheet still qualifies.</p>
+          <p class="answer-stop"><strong>If you qualify:</strong> microenterprises providing services are exempt from the Act&rsquo;s service accessibility obligations. If you manufacture or distribute a covered <em>product</em>, you are not exempt &mdash; you have lighter documentation obligations, which is a different thing.</p>
+          <p><strong>Two things worth knowing before you rely on it.</strong> There is no grace period: the day you take on a tenth employee, the exemption is gone, for anything new you put on the market. And if you have received funding specifically for accessibility improvement, it does not apply.</p>
+          <p class="answer-continue"><strong>If you do not qualify, continue.</strong> If you are in the 51 to 500 range with EU consumers, you are almost certainly in scope.</p>
+          <p>The CCPC, which is the <a href="/eaa-compliance-ireland.html">Irish market surveillance authority</a>, publishes its own guidance for microenterprises. If you are close to the threshold, that is the authoritative place to check.</p>
+
+          <h2 id="q4" tabindex="-1">4. Which sector are you in? (This changes who, not whether)</h2>
+          <p>Some sectors are named explicitly, which usually means a specific regulator and closer attention: <a href="/eaa-compliance-fintech.html">banking and payment services</a>, e-commerce, transport, <a href="/eaa-compliance-telecoms.html">telecoms</a>, e-books, and audiovisual media services. Two more worth naming because they are where we see the most barriers in practice: <a href="/eaa-compliance-travel.html">travel and booking</a>, and SaaS.</p>
+          <p><strong>This question does not change whether the Act applies to you.</strong> It changes which regulator would deal with a complaint, and how closely you are likely to be looked at. If you are not on that list but you sell to consumers digitally, e-commerce is the catch-all that most likely applies.</p>
+
+          <h2 id="q5" tabindex="-1">5. Has your product actually been evaluated &mdash; or only scanned?</h2>
+          <p>This is the question that separates businesses who think they are fine from businesses who are.</p>
+          <p>An automated scan finds a minority of barriers and cannot test whether a journey can be completed at all.</p>
+          <p class="answer-continue"><strong>If it has only been scanned:</strong> that is not an evaluation, and it will not support a conformance claim if anyone asks. &ldquo;We ran a tool and it looked mostly green&rdquo; is the most common answer we hear, and it is the one that leaves a business most exposed without knowing it.</p>
+          <p class="answer-stop"><strong>If a real evaluation has been done:</strong> you will have a dated report naming what was tested, with what assistive technology, and where it falls short. If you cannot lay hands on that document, treat it as not done.</p>
+
+          <div class="status-block">
+            <h2 id="outcomes" tabindex="-1">So where does that leave you?</h2>
+
+            <h3>Out of scope</h3>
+            <p class="answer-stop">No EU consumers, or nothing delivered digitally, or a genuine microenterprise providing services. Nothing more to do, and we would rather tell you that than sell you something.</p>
+            <p class="answer-stop">If you are close to the microenterprise threshold and growing, it is worth diarising a review &mdash; the exemption ends the moment you cross either test, with nothing to warn you.</p>
+
+            <h3>In scope, and evaluated</h3>
+            <p class="answer-stop">You should have a dated report and an accessibility statement naming EN 301 549. Most statements do not name it, so it is worth a second look: <a href="/insights/what-makes-a-good-accessibility-statement.html">the six things a credible statement contains</a>, and how to tell whether yours would hold up.</p>
+
+            <h3>In scope, not evaluated</h3>
+            <p class="answer-continue">This is where most mid-sized businesses are. It is not an emergency, and it is not nothing. <a href="/eaa-enforcement.html">Enforcement across Europe</a> begins with notice and a chance to remediate, and a documented plan materially affects what follows.</p>
+            <p class="answer-continue">The useful next step is knowing what a real evaluation involves before you commission one, or attempt it yourself: <a href="/insights/how-to-audit-eaa-compliance.html">what an EAA compliance audit actually covers</a>, across five components. And if you would like to see how we test, and what nineteen Irish consumer journeys showed, <a href="/how-we-test.html">the method is published</a>.</p>
+          </div>
+
+          <div class="article-cta" id="start">
+            <h2>If you are in scope and want to know where you stand</h2>
+            <p>Our free assessment is a 20-minute call: a read on whether your consumer journeys are likely in scope, roughly where they stand, and a proportionate next step. No obligation, and it counts toward whatever comes next.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
+          </div>
+
+          <h2>Related</h2>
+          <ul>
+            <li><a href="/eaa-accessibility-statement.html">Who needs an accessibility statement, and what the law requires</a></li>
+            <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland &mdash; the authority map and director liability</a></li>
+            <li><a href="/services.html">What we do, and what each step costs</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a></p>
+        <p><a href="/accessibility-statement.html">Accessibility statement</a><span aria-hidden="true"> &middot; </span><a href="/privacy.html">Privacy notice</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function() {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      });
+    })();
+    // Back to top
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
