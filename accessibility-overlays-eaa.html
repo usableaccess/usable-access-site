@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://usableaccess.io/how-we-test.html">
+  <link rel="canonical" href="https://usableaccess.io/accessibility-overlays-eaa.html">
   <!-- ua:og:start -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="How we test — Usable Access">
-  <meta property="og:description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">
-  <meta property="og:url" content="https://usableaccess.io/how-we-test.html">
+  <meta property="og:title" content="Accessibility overlays and the EAA — Usable Access">
+  <meta property="og:description" content="What an overlay changes, what it cannot reach, and what that means under the European Accessibility Act.">>
+  <meta property="og:url" content="https://usableaccess.io/accessibility-overlays-eaa.html">
   <meta property="og:image" content="https://usableaccess.io/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
   <meta property="og:site_name" content="Usable Access">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How we test — Usable Access">
-  <meta name="twitter:description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">
+  <meta name="twitter:title" content="Accessibility overlays and the EAA — Usable Access">
+  <meta name="twitter:description" content="What an overlay changes, what it cannot reach, and what the EAA requires.">>
   <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
   <!-- ua:og:end -->
-  <title>How we test — Usable Access</title>
-  <meta name="description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">>
+  <title>Accessibility overlays and the EAA — Usable Access</title>
+  <meta name="description" content="Three sites on the same overlay, two with a Level A barrier beneath it. What an overlay fixes, what it cannot reach, and what the EAA requires.">>>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -187,10 +187,10 @@
     <div class="page-header">
       <div class="container">
         <div class="article-container">
-          <span class="section-label">Method</span>
-          <h1>How we test, and what we found</h1>
-          <p class="deck">How we test consumer journeys, what we never do, and what we have found so far. If you have had an email from us about a barrier on your site, this is where it came from. If you have not, this is the honest version of our method &mdash; including the parts that went wrong.</p>
-          <p class="meta-line">Updated 4 August 2026</p>
+          <span class="section-label">Overlays</span>
+          <h1>Accessibility overlays and the European Accessibility Act</h1>
+          <p class="deck">What an overlay changes, what it cannot reach, and what happens when a compliance statement credits one. Written from our own testing, not from the vendor debate.</p>
+          <p class="meta-line">Updated 6 August 2026</p>
         </div>
       </div>
     </div>
@@ -201,60 +201,57 @@
 
           <div class="status-block">
             <h2>The short version</h2>
-            <p>We go through consumer journeys &mdash; insurance quotes, hotel bookings, travel enquiries, financial applications &mdash; the way a customer using a keyboard and a screen reader would. Nineteen so far, all of them in Ireland. Thirteen had a barrier that stopped the journey.</p>
-            <p>When we find one on a site we think the owner would want to know about, we tell them, at no charge and with nothing attached. That is what prompts most of our emails.</p>
-          <p>This page describes that screening: one person, one journey, about an hour. It is the fastest thing we do and the least of it. What a full evaluation adds is set out below.</p>
+            <p>An overlay is a script that adjusts a page after it loads. It can change text size, contrast and spacing, and some can improve a few things a screen reader announces. Those are real conveniences.</p>
+            <p>What it cannot do is supply a name, a role or a state that the page never gave a control in the first place. That is where conformance is decided, and it is where we keep finding barriers on sites that have one installed.</p>
           </div>
 
-          <h2>Who is asking</h2>
-          <p>Usable Access is an accessibility compliance practice. We work with mid-sized businesses that sell to consumers in the EU. If we have written to you, it is because we went through one of your journeys and found something we thought you would want to know.</p>
-          <p>We come at it from research rather than engineering, which is why we test whole journeys rather than pages, and why the question we ask is whether someone can finish rather than whether the code passes.</p>
-          <p>We are not a scanning tool, and we are not an agency looking for build work &mdash; anything that needs fixing goes back to whoever builds your site. What we do is find what stops people, tell you plainly, and help you show what you did about it.</p>
+          <h2>What we found</h2>
+          <p>In a field study of twenty-five Irish consumer journeys, three retail sites were running the same overlay product. Two of the three were reachable for a full test. <strong>Both had a confirmed WCAG failure sitting beneath the overlay.</strong></p>
+          <p>On one, the quantity control in the basket announced only its own number, with nothing to say what the number referred to. On the other &mdash; and this is the one worth pausing on &mdash; <strong>the size options on a product page could not be reached by keyboard at all.</strong> Someone navigating without a mouse could view a product and could not choose a size, so they could not buy it. That is WCAG 2.1.1, Level A, on the purchase journey.</p>
+          <p><strong>That second site publishes an accessibility statement which credits the overlay for making the site accessible.</strong></p>
+          <p>We are not naming either company. The point is not that a particular retailer got it wrong &mdash; it is that the overlay was installed, the statement was written, and the buying journey still could not be completed.</p>
 
-          <h2>Will a company we test be named anywhere?</h2>
-          <p>No. We are writing the findings up as aggregate research &mdash; sector, journey type, where the barrier occurred, what kind of control caused it. No company is named, and no individual finding is attributed to anyone. Anything we send a company is theirs alone, and we would not publish it against their name.</p>
-          <p>If we have written to you and you would rather we deleted the finding and your details entirely, say so and we will, and confirm when it is done.</p>
+          <h2>Why an overlay cannot reach this</h2>
+          <p>Assistive technology does not read the screen. It reads what the page exposes: for every control, a name, a role and a state. A screen reader says &ldquo;Size, radio button, medium, selected&rdquo; because the page said so.</p>
+          <p>An overlay runs after the page loads and adjusts what is there. If a size selector was built as a plain container with no role and no keyboard access, there is nothing for the overlay to adjust &mdash; no control to rename, because as far as the browser is concerned no control exists. The overlay cannot invent one, because it has no way of knowing that a group of decorated boxes was meant to be a set of options.</p>
+          <p>This is why the failures we find beneath overlays are so consistent: they are always at the point where a custom control replaced a standard one, and the accessibility the standard element would have provided for free was never rebuilt.</p>
 
-          <h2>What we actually do</h2>
-          <p>We open the journey a real customer would use and try to complete it, using a keyboard alone and a screen reader. We record where it stops, what the control is, and what a customer would experience at that point. Every barrier we report is confirmed by at least two independent methods before we mention it to anyone.</p>
-          <p>That is it. It is a manual walkthrough of a public page, done the way an actual customer would do it. It takes about an hour per journey.</p>
+          <h2>What this means under the European Accessibility Act</h2>
+          <p>The Act points to EN 301 549, the harmonised European standard, which incorporates WCAG 2.1 Level AA for web content. <strong>Conformance is assessed against the product, not against what is installed on top of it.</strong> No overlay vendor can confer conformance, and no market surveillance authority assesses one.</p>
+          <p>There is a second, quieter problem. An accessibility statement is a required document and it is a declaration about your product. A statement that credits an overlay is describing something other than the thing being assessed &mdash; and if the underlying journey fails, the statement is inaccurate as well as the product being non-conformant. That is a worse position than having no statement at all, because it is a documented claim rather than a gap.</p>
+          <p>Of the twenty-five journeys we tested, thirteen carried an accessibility statement. <strong>Not one named EN 301 549.</strong></p>
 
-          <h2>What we never do</h2>
-          <ul>
-            <li><strong>We never submit anything.</strong> No applications, no bookings, no quotes requested. We stop the moment the barrier is confirmed, which is well before the point where a record would be created in your systems.</li>
-            <li><strong>We never enter real personal data</strong> &mdash; no real names, no real contact details, nobody&rsquo;s actual identity.</li>
-            <li><strong>We only test public pages.</strong> Never an account area, never anything behind a login.</li>
-            <li><strong>We do not scan, script or crawl at volume.</strong> A person goes through it, once.</li>
-            <li><strong>We never name a company publicly</strong> as an example of a failure.</li>
-          </ul>
+          <h2>What overlays are actually good for</h2>
+          <p>This is not an argument that overlays are worthless, and we would rather not join the shouting on either side.</p>
+          <p>A user-facing toolbar that lets someone increase text size, raise contrast or increase spacing is a genuine convenience, and some people use and like them. If a business has installed one for that reason and describes it honestly as a convenience feature, there is nothing wrong with it.</p>
+          <p>The problem is the second claim &mdash; that installing it addresses the obligation. It does not, and the evidence is not hard to gather: on two of the two overlay sites we could test fully, a Level A failure sat untouched beneath it.</p>
 
-          <h2>What we have found so far</h2>
-          <p>Thirteen of the nineteen had a confirmed barrier. Only two of those stopped the customer at the very start. Eleven stopped them in the middle &mdash; at the point where the customer specifies what they want. Dates, occupancy, product, country, title, occupation.</p>
-          <p>That is the commercially worst place for it. A customer blocked there has already chosen you, arrived, and started. They then hit a control they cannot operate, and leave. In your analytics it looks like an ordinary mid-journey drop-off.</p>
-          <p>The symptom was consistent: the control did not say what it was. The cause split roughly evenly. In about half the cases a standard HTML control &mdash; a dropdown, a radio button, an input, a button &mdash; had been replaced by a custom widget, and the accessibility the standard element provides for free had not been rebuilt. In the other half the correct element was used and simply never labelled.</p>
-          <p>That second half is the more uncomfortable one, because nothing clever went wrong. The right element was there. The label was never written.</p>
-          <p>Two journeys passed cleanly, and they prove the point from opposite directions. One kept the native controls. The other used a custom widget with the accessibility deliberately written back in. So this is not an argument against custom interfaces. It is that whether you replace a native control or keep it, the work of making it say what it is has to be done deliberately, and often it simply is not.</p>
+          <h2>How to check your own</h2>
+          <p>You do not need us for this, and it takes about two minutes.</p>
+          <ol>
+            <li><strong>Put the mouse away.</strong> Use Tab and the arrow keys only.</li>
+            <li><strong>Go to a product, a booking or a quote</strong> &mdash; whatever your main journey is.</li>
+            <li><strong>Try to complete the selecting step.</strong> Choose a size, a date, a quantity, an option.</li>
+            <li><strong>If you cannot reach it or cannot tell what you selected, the overlay is not helping there.</strong></li>
+          </ol>
+          <p>That is the exact test that produced both findings above. It does not require a screen reader or any technical knowledge, and it is the fastest way to know whether what you have bought is doing what you were told.</p>
 
-          <h2>What went wrong in our method</h2>
-          <p>We publish this because a method you cannot inspect is not really a method. Every study makes mistakes; the ones worth trusting are the ones that catch them and say so.</p>
-          <p>Four times, automated accessibility tooling told us a control was correctly labelled when it was not. In three cases the tool had inferred a name from text sitting next to the control rather than attached to it. In one case the semantics it reported were being injected by an accessibility overlay, not provided by the page. Each would have produced a false clean result. That last one turned out to matter beyond the method: we have since found real barriers sitting beneath overlays on other sites, and written up <a href="/accessibility-overlays-eaa.html">what an overlay reaches and what it cannot</a>.</p>
-          <p>We now confirm every negative finding by computing the accessible name directly, or by live behaviour, rather than trusting a tool&rsquo;s summary. We also started with a different hypothesis &mdash; that most barriers would be at the very first step &mdash; and the data did not support it. We reported what we found instead.</p>
-
-          <h2>What this is, and what it is not</h2>
-          <p>Everything above is screening. It finds what the code exposes to assistive technology, and it does that well &mdash; but it is a walkthrough by someone who knows what to look for, not a study of what happens to a person.</p>
-          <p>It cannot tell you what it is actually like to hit the barrier. How long someone tries. What they attempt. Whether they work around it, ring you instead, or quietly go somewhere else. That takes sessions with disabled people using the product, which is scoped and priced separately as part of a full evaluation.</p>
-          <p>Our first research report will include that layer, and we will say plainly what it changed about the findings.</p>
-
-          <h2>What a single finding does and does not tell you</h2>
-          <p>It is not an audit. It is one confirmed barrier on one journey, found in about an hour. It does not tell you whether the rest of your product conforms, and we would not claim it does. A representative sample never permits a whole-product conformance claim, which is a point the W3C&rsquo;s own evaluation methodology makes repeatedly.</p>
-          <p>It is a real finding about a real journey, and it is usually the start of a longer answer rather than the whole of one.</p>
+          <h2>What to do if you find something</h2>
+          <p>Not panic. Being in scope and not yet conformant is where most mid-sized businesses are, and enforcement across Europe has begun with notice and an opportunity to remediate. What matters is being able to show that you assessed the product and are acting on what you found.</p>
+          <p>Practically: keep the overlay if your customers use it, describe it accurately, and fix the underlying control. Those are separate pieces of work and only the second one affects conformance.</p>
 
           <div class="article-cta" id="start">
-            <h2>If you would like the detail</h2>
-            <p>If we have written to you, we are happy to show you exactly where the barrier is and whether it is a one-off or part of a pattern, at no charge and with no obligation. If we have not, the same offer applies to your own journey.</p>
-            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book a 20-minute call</a>
-            <p>Or reply to our email if you have one, or write to <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a>.</p>
+            <h2>Find out what is actually underneath</h2>
+            <p>Our free assessment is a 20-minute call: a read on whether your consumer journeys are likely in scope, roughly where they stand, and a proportionate next step. No obligation, and it counts toward whatever comes next.</p>
+            <a href="https://calendly.com/hello-usableaccess/20min" class="cta-button">Book your free assessment</a>
           </div>
+
+          <h2>Related</h2>
+          <ul>
+            <li><a href="/does-the-eaa-apply.html">Does the European Accessibility Act apply to your business?</a></li>
+            <li><a href="/insights/what-makes-a-good-accessibility-statement.html">What a credible accessibility statement contains</a></li>
+            <li><a href="/how-we-test.html">How we test, and what we found</a></li>
+          </ul>
 
         </div>
       </div>
