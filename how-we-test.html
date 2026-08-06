@@ -7,7 +7,7 @@
   <!-- ua:og:start -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="How we test — Usable Access">
-  <meta property="og:description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">
+  <meta property="og:description" content="How we test consumer journeys, what we do and do not do, and what we found across twenty-eight Irish journeys. The method behind the emails we send.">
   <meta property="og:url" content="https://usableaccess.io/how-we-test.html">
   <meta property="og:image" content="https://usableaccess.io/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -16,11 +16,11 @@
   <meta property="og:site_name" content="Usable Access">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How we test — Usable Access">
-  <meta name="twitter:description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">
+  <meta name="twitter:description" content="How we test consumer journeys, what we do and do not do, and what we found across twenty-eight Irish journeys. The method behind the emails we send.">
   <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
   <!-- ua:og:end -->
   <title>How we test — Usable Access</title>
-  <meta name="description" content="How we test consumer journeys, what we do and do not do, and what we found across nineteen Irish sites. The method behind the emails we send.">>
+  <meta name="description" content="How we test consumer journeys, what we do and do not do, and what we found across twenty-eight Irish journeys. The method behind the emails we send.">>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -201,7 +201,7 @@
 
           <div class="status-block">
             <h2>The short version</h2>
-            <p>We go through consumer journeys &mdash; insurance quotes, hotel bookings, travel enquiries, financial applications &mdash; the way a customer using a keyboard and a screen reader would. Nineteen so far, all of them in Ireland. Thirteen had a barrier that stopped the journey.</p>
+            <p>We go through consumer journeys &mdash; insurance quotes, hotel bookings, travel enquiries, financial applications, retail checkouts &mdash; the way a customer using a keyboard and a screen reader would. Twenty-eight so far, all of them in Ireland. Twenty-two had a barrier that stopped the journey.</p>
             <p>When we find one on a site we think the owner would want to know about, we tell them, at no charge and with nothing attached. That is what prompts most of our emails.</p>
           <p>This page describes that screening: one person, one journey, about an hour. It is the fastest thing we do and the least of it. What a full evaluation adds is set out below.</p>
           </div>
@@ -229,7 +229,7 @@
           </ul>
 
           <h2>What we have found so far</h2>
-          <p>Thirteen of the nineteen had a confirmed barrier. Only two of those stopped the customer at the very start. Eleven stopped them in the middle &mdash; at the point where the customer specifies what they want. Dates, occupancy, product, country, title, occupation.</p>
+          <p>Twenty-two of the twenty-eight had a confirmed barrier. Only two of those stopped the customer at the very start. The rest stopped them in the middle &mdash; at the point where the customer specifies what they want. Dates, occupancy, product, country, title, occupation.</p>
           <p>That is the commercially worst place for it. A customer blocked there has already chosen you, arrived, and started. They then hit a control they cannot operate, and leave. In your analytics it looks like an ordinary mid-journey drop-off.</p>
           <p>The symptom was consistent: the control did not say what it was. The cause split roughly evenly. In about half the cases a standard HTML control &mdash; a dropdown, a radio button, an input, a button &mdash; had been replaced by a custom widget, and the accessibility the standard element provides for free had not been rebuilt. In the other half the correct element was used and simply never labelled.</p>
           <p>That second half is the more uncomfortable one, because nothing clever went wrong. The right element was there. The label was never written.</p>
@@ -237,7 +237,7 @@
 
           <h2>What went wrong in our method</h2>
           <p>We publish this because a method you cannot inspect is not really a method. Every study makes mistakes; the ones worth trusting are the ones that catch them and say so.</p>
-          <p>Four times, automated accessibility tooling told us a control was correctly labelled when it was not. In three cases the tool had inferred a name from text sitting next to the control rather than attached to it. In one case the semantics it reported were being injected by an accessibility overlay, not provided by the page. Each would have produced a false clean result. That last one turned out to matter beyond the method: we have since found real barriers sitting beneath overlays on other sites, and written up <a href="/accessibility-overlays-eaa.html">what an overlay reaches and what it cannot</a>.</p>
+          <p>Six times, automated accessibility tooling told us a control was correctly labelled when it was not. In five cases the tool had inferred a name from text sitting next to the control rather than attached to it. In one case the semantics it reported were being injected by an accessibility overlay, not provided by the page. Each would have produced a false clean result. That last one turned out to matter beyond the method: we have since found real barriers sitting beneath overlays on other sites, and written up <a href="/accessibility-overlays-eaa.html">what an overlay reaches and what it cannot</a>.</p>
           <p>We now confirm every negative finding by computing the accessible name directly, or by live behaviour, rather than trusting a tool&rsquo;s summary. We also started with a different hypothesis &mdash; that most barriers would be at the very first step &mdash; and the data did not support it. We reported what we found instead.</p>
 
           <h2>What this is, and what it is not</h2>
