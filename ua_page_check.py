@@ -1,0 +1,242 @@
+#!/usr/bin/env python3
+"""
+UA site checker — deterministic pass.
+Usage:  python3 ua_page_check.py <folder-of-html-files>
+Report-only. Never edits. Judgment items (register, tone, argument quality)
+are NOT checked here — those go to the Cowork judgment pass.
+"""
+import sys, os, re, glob
+
+CLARITY = "xiwyxbc3ze"
+GA4 = "G-CWF8FPK9T7"
+
+# --- known factual regressions (from UA_Standing_Corrections) ---
+FACT_TRAPS = [
+    (r"\b32%", "32% — should be 18% (Barometro financial services non-conformant)"),
+    (r"(?i)(complaint to ComReg|ComReg requests|ComReg investigates|ComReg processes formal complaints|What does ComReg actually do|when ComReg receives)", "ComReg used as a GENERAL Irish EAA authority — it is communications ONLY. Distributed: CCPC (primary/products+general services), Central Bank (financial), Coimisiun na Mean (media), NTA (transport), ComReg (communications). Keep ComReg only in a communications context."),
+    (r"(?i)€\s?10[,.]?000|10,000 in provisional", "€10,000 Carrefour damages — VERIFIED ERROR, no damages were awarded"),
+    (r"(?i)first EAA (fine|ruling|penalty)", "'first EAA fine/ruling' framing — Auchan was first and was dismissed"),
+    (r"(?i)(has been|was|were) fined", "claims a fine was ISSUED — no EAA administrative fine exists in any market"),
+    (r"(?i)60 webshops", "60 webshops — should be ~100-webshop sample"),
+    (r"(?i)partial conformance is not a defence anywhere", "overstates a single referé as settled EU law"),
+]
+
+# --- CTA overpromise (free tier must orient, not diagnose/rule) ---
+CTA_TRAPS = [
+    (r"(?i)tells you (which authority|whether the EAA)", "CTA overpromise: claims a definitive scope/authority ruling"),
+    (r"(?i)find out whether the EAA applies to your organisation", "CTA overpromise: definitive scope ruling"),
+    (r"(?i)where your (key journeys|position) stands?", "CTA overpromise: promises a paid-tier diagnostic"),
+]
+
+OG_REQUIRED = [
+    'property="og:title"', 'property="og:description"', 'property="og:url"',
+    'property="og:image"', 'property="og:image:width"', 'property="og:image:height"',
+    'property="og:image:alt"', 'property="og:site_name"',
+    'name="twitter:card" content="summary_large_image"', 'name="twitter:image"',
+]
+
+def strip_tags(h):
+    h = re.sub(r"<script.*?</script>", " ", h, flags=re.S | re.I)
+    h = re.sub(r"<style.*?</style>", " ", h, flags=re.S | re.I)
+    return re.sub(r"<[^>]+>", " ", h)
+
+
+# --- CSS class validation (prevents the "naked page" failure: invented classes not in site.css) ---
+_SITE_CSS_CANDIDATES = [
+    "site.css", "css/site.css", "./css/site.css",
+    os.path.join(os.path.dirname(__file__), "site.css"),
+    os.path.join(os.path.dirname(__file__), "css", "site.css"),
+    "/mnt/user-data/uploads/site.css", "/mnt/project/site.css",
+]
+
+def _report_css_source():
+    """Say which site.css was used, or warn loudly that we are guessing.
+
+    Three real failures in one day (nav-cta, status-block, article-cta) passed
+    this checker because the embedded fallback vouched for classes it could not
+    see. A fallback that says PASS when it means 'probably' is worse than none.
+    """
+    for c in _SITE_CSS_CANDIDATES:
+        if os.path.exists(c):
+            print(f"  css: validating against {c}")
+            return c
+    print("  css: !! site.css NOT FOUND - falling back to the embedded class list.")
+    print("       Classes may pass here and render unstyled in the browser.")
+    print("       Run from the repo root, where css/site.css exists.")
+    return None
+# Embedded fallback = the real vocabulary defined in site.css (keep in sync if site.css gains classes).
+_REAL_CLASSES = {
+    "container","article-container","skip-link","sr-only","site-logo","logo-usable","logo-access",
+    "nav-inner","nav-toggle","nav-toggle-bar","nav-links","is-open","nav-cta-slot","nav-cta",
+    "page-header","section-label","deck","breadcrumb","page-body","callout","callout--orange",
+    "callout--gain","callout--amber","article-cta","cta-button","related-links","related-list",
+    "back-link-section","back-link","back-to-top","is-visible",
+}
+def _load_site_classes():
+    classes = set(_REAL_CLASSES)
+    for cand in _SITE_CSS_CANDIDATES:
+        try:
+            with open(cand, encoding="utf-8") as f:
+                css = f.read()
+            for m in re.findall(r"\.([A-Za-z0-9_-]+)", css):
+                classes.add(m)
+            break  # first found wins (authoritative)
+        except Exception:
+            continue
+    return classes
+SITE_CLASSES = _load_site_classes()
+# Known INVENTED classes (from repeated naked-page failures) -> the real class to use instead.
+INVENTED_CLASSES = {
+    "article": "page-body (wrap content in .page-header + .page-body, not .article)",
+    "article-header": "page-header",
+    "meta-date": "the badge date span (inline-styled), not a .meta-date class",
+    "badge": "section-label (or the inline-styled badge span)",
+    "badge--guide": "section-label",
+    "cta-block": "article-cta",
+    "cta-primary": "cta-button",
+    "site-header": "bare <header> (no .site-header class)",
+    "site-nav": "bare <nav> (no .site-nav class)",
+    "site-footer": "bare <footer> (no .site-footer class)",
+}
+
+def check(path):
+    name = os.path.basename(path)
+    h = open(path, encoding="utf-8", errors="ignore").read()
+    body = strip_tags(h)
+    fails, warns, notes = [], [], []
+
+    # --- infrastructure ---
+    if 'rel="canonical"' not in h:
+        fails.append("no canonical")
+    else:
+        m = re.search(r'rel="canonical"\s+href="([^"]+)"', h)
+        if m and not m.group(1).rstrip("/").endswith(name.replace(".html", "")) \
+           and not m.group(1).rstrip("/").endswith(name):
+            warns.append(f"canonical may not be self-referencing: {m.group(1)}")
+    if CLARITY not in h: fails.append("no Clarity snippet")
+    if GA4 not in h: fails.append("no GA4")
+    if 'id="main" tabindex="-1"' not in h: fails.append('missing <main id="main" tabindex="-1">')
+    if 'class="skip-link"' not in h: fails.append("no skip link")
+    if 'id="back-to-top"' not in h and 'class="back-to-top"' not in h: fails.append("no back-to-top element")
+    elif "back-to-top" not in h.split("</body>")[0].split("<script")[-1] and \
+         "getElementById('back-to-top')" not in h:
+        warns.append("back-to-top element present but JS not found")
+
+    # --- social preview block ---
+    missing_og = [t for t in OG_REQUIRED if t not in h]
+    if missing_og:
+        fails.append("OG block incomplete: " + ", ".join(
+            t.split('"')[1] if '"' in t else t for t in missing_og))
+    if 'content="summary"' in h:
+        fails.append('twitter:card is "summary" — must be summary_large_image')
+
+    # --- meta description ---
+    m = re.search(r'name="description"\s+content="([^"]*)"', h)
+    if not m:
+        fails.append("no meta description")
+    else:
+        n = len(m.group(1))
+        if n > 155: fails.append(f"meta description {n} chars (limit 155)")
+        else: notes.append(f"meta {n} chars")
+
+    # --- related links ---
+    if "/eaa-enforcement.html" not in h: warns.append("related-links missing enforcement hub")
+    if "how-to-audit-eaa-compliance" not in h: warns.append("related-links missing audit guide")
+    cs = set(re.findall(r"/eaa-compliance-[a-z]+\.html|/bfsg-germany[a-z-]*\.html", h))
+    cs = {c for c in cs if name.replace(".html", "") not in c}
+    if len(cs) < 2: warns.append(f"only {len(cs)} related country/sector page(s), standard wants 2+")
+
+    # --- markup integrity ---
+    if h.count("<a ") != h.count("</a>"):
+        fails.append(f"anchor imbalance: {h.count('<a ')} open / {h.count('</a>')} close")
+
+    # --- FAQ block + schema (SEO: eligible for rich results) ---
+    has_faq = bool(re.search(r'(?i)(frequently asked|<h2[^>]*>\s*FAQ|class="faq)', h))
+    has_faq_schema = "FAQPage" in h
+    if has_faq and not has_faq_schema:
+        warns.append("FAQ section present but no FAQPage schema (missing rich-result eligibility)")
+    elif not has_faq:
+        notes.append("no FAQ block")
+    else:
+        notes.append("FAQ + schema")
+
+    # --- date badge ---
+    if not re.search(r"Updated \d{1,2} [A-Z][a-z]{2} 20\d\d", h):
+        warns.append("no 'Updated D Mon YYYY' badge found")
+    else:
+        notes.append(re.search(r"Updated \d{1,2} [A-Z][a-z]{2} 20\d\d", h).group(0))
+
+    # --- em dashes (sparing rule: report count, judgment not automatic fail) ---
+    n_dash = body.count("\u2014") + h.count("&mdash;")
+    if n_dash > 8: warns.append(f"{n_dash} em dashes — check they are sparing and appropriate")
+    else: notes.append(f"{n_dash} em dashes")
+
+    # --- fact + CTA traps ---
+    comms_scoped = bool(re.search(r"telecom|electronic communications|communications regulation", h, re.I)) or "telecoms" in path.lower()
+    for pat, msg in FACT_TRAPS:
+        if "ComReg" in msg and comms_scoped:
+            continue  # ComReg is the correct authority on communications/telecoms pages
+        if re.search(pat, body):
+            if "ComReg" in msg and re.search(r"(?i)not ComReg", body):
+                notes.append("ComReg appears only in a corrective 'not ComReg' construction")
+            else:
+                fails.append("FACT: " + msg)
+    for pat, msg in CTA_TRAPS:
+        if re.search(pat, body): fails.append("CTA: " + msg)
+
+
+    # --- pronoun misuse: "us/we/our" must mean Usable Access, never the reader ---
+    for _tag, _pat in [("H1", r"<h1[^>]*>(.*?)</h1>"),
+                       ("title", r"<title>(.*?)</title>"),
+                       ("meta description", r'<meta name="description" content="([^"]*)"')]:
+        for _m in re.finditer(_pat, h, re.S):
+            _t = re.sub(r"<[^>]+>", "", _m.group(1))
+            if re.search(r"\b(apply to us|for us|do we|are we|should we|our (business|organisation|company|obligations))\b", _t, re.I):
+                fails.append(f"PRONOUN: {_tag} uses we/our/us to mean the READER "
+                             f"(\"{_t.strip()[:60]}\") \u2014 on UA content we/our always means Usable Access. Use you/your.")
+    # slug: "-to-us" reads as the United States in a URL
+    if re.search(r"-to-us\.html$", os.path.basename(path)):
+        fails.append("PRONOUN: filename ends '-to-us.html' \u2014 reads as US (United States) in a slug. Rename.")
+
+    # --- class validation: every class used must be defined in site.css OR the page's own <style> ---
+    inline_defined = set()
+    for style in re.findall(r"<style[^>]*>(.*?)</style>", h, re.S):
+        for m in re.findall(r"\.([A-Za-z0-9_-]+)", style):
+            inline_defined.add(m)
+    used = set()
+    for attr in re.findall(r'class="([^"]+)"', h):
+        for c in attr.split():
+            used.add(c)
+    defined = SITE_CLASSES | inline_defined
+    for c in sorted(used - defined):
+        # A BEM modifier (base--mod) is fine if its BASE class is defined — it just falls back to base styling.
+        # The naked-page failure is an undefined BASE, so only fail when the base itself is undefined.
+        base = c.split("--")[0]
+        if "--" in c and base in defined:
+            continue
+        if c in INVENTED_CLASSES:
+            fails.append(f"CSS: invented class '{c}' is not in site.css — use {INVENTED_CLASSES[c]}")
+        else:
+            fails.append(f"CSS: class '{c}' is not defined in site.css or an inline <style> (page would render unstyled)")
+
+    return name, fails, warns, notes
+
+def main():
+    _report_css_source()
+    folder = sys.argv[1] if len(sys.argv) > 1 else "."
+    files = sorted(glob.glob(os.path.join(folder, "*.html")))
+    if not files:
+        print("No .html files found in", folder); return
+    tot_f = tot_w = 0
+    for f in files:
+        name, fails, warns, notes = check(f)
+        status = "FAIL" if fails else ("WARN" if warns else "PASS")
+        print(f"\n{'='*62}\n{name}   [{status}]")
+        for x in fails: print("   FAIL  " + x)
+        for x in warns: print("   warn  " + x)
+        if notes: print("   ok    " + "; ".join(notes))
+        tot_f += len(fails); tot_w += len(warns)
+    print(f"\n{'='*62}\n{len(files)} pages | {tot_f} failures | {tot_w} warnings")
+
+if __name__ == "__main__":
+    main()
