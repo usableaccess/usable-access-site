@@ -399,6 +399,32 @@ Full detail and exact wording in `UA_Recurring_Revenue_DocChanges.md`:
 Re-run `python3 ua_orphan_check.py .` **against the full repo, not the working folder** — the working folder produces 88 unresolved links because most of the site is not in it.
 ---
 
+## JOB 0l - A SITEMAPPED PAGE DECLARES A DIFFERENT PAGE CANONICAL
+
+**Found 7 August 2026, while removing five duplicate pages. Not fixed - it needs a content decision, not a mechanical one.**
+
+`insights/invisible-revenue-loss.html` is listed in `sitemap.xml`, and its own canonical points at `/eaa-revenue-loss.html`. **The sitemap asks Google to index a URL that then tells Google to index a different one.** The two signals contradict each other, and when they do, the sitemap entry is wasted crawl budget at best.
+
+**Two files now name `/eaa-revenue-loss.html` as canonical:**
+
+| File | Canonical | In sitemap | Inbound |
+|---|---|---|---|
+| `eaa-revenue-loss.html` | itself | yes | 15 |
+| `insights/invisible-revenue-loss.html` | `/eaa-revenue-loss.html` | yes | 1 |
+
+A third, the root-level `invisible-revenue-loss.html`, also named it and was deleted on 7 August 2026 as a duplicate.
+
+### The decision to make
+`insights/invisible-revenue-loss.html` is either its own page or it is not. **Pick one, do not leave it half-way:**
+- **If it is its own page** - give it a self-referential canonical, and check the two are genuinely different articles rather than the same piece under two names. Its only inbound link is from `aimac-deep-dive.html`, so it also needs the three-to-six inbound links the publishing protocol requires.
+- **If it is a duplicate of `eaa-revenue-loss.html`** - remove it from `sitemap.xml` and repoint that one inbound link, then delete it. Keeping a canonical-deferring page in the sitemap is the worst of both.
+
+**Check the Search Console data before deciding.** `eaa-revenue-loss.html` carries 15 inbound links and is clearly the live page, but if the insights URL has impressions of its own, that changes the answer.
+
+### Also worth a checker
+Nothing currently catches this. **A check that every `<loc>` in `sitemap.xml` resolves to a file whose canonical points back at that same URL** would have caught it, and would also catch the sitemap-entry-with-no-file failure recorded in rule 14. Roughly twenty lines.
+---
+
 ## JOB 0k — HOMEPAGE HERO: APPLY THE APPROVED DJ MERGE (content, NOT a judgement call)
 
 **⚠ DO NOT REWRITE ANYTHING. This job is a paste, not an edit.**
