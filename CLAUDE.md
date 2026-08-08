@@ -20,6 +20,39 @@ Never hand-author a page from scratch. Copy the canonical template (`eaa-complia
 
 ---
 
+## 🔴 READ BEFORE THE TOOLING TABLE: MOST OF IT DOES NOT EXIST IN THIS REPO
+
+**Verified 8 August 2026. Seven of the ten scripts named in this file are not here.**
+
+| Script | State |
+|---|---|
+| `ua_page_check.py` | **present** |
+| `ua_a11y_check.py` | **present** (needs `beautifulsoup4`; installed 8 Aug) |
+| `ua_sync_blocks.py` | **present** — written 8 Aug because it was needed. OG block only |
+| `ua_orphan_check.py` | missing |
+| `ua_insights_sync.py` | missing |
+| `ua_backup.py` | missing |
+| `ua_erase.py` | missing |
+| `ua_study_export.py` | missing |
+| `ua_merge_cowork.py` | missing |
+| `ua_volatile_check.py` | missing |
+
+There is no `tools/` directory. The table below describes an intended state, not the repo.
+
+### THE SPLIT, WHICH IS THE ACTUAL RULE
+**Scripts belong in this repo.** Versioning a checker alongside what it checks is the point, and two were written here today because a job needed them and they were not available.
+
+**Client-facing documents and locked references live in the Claude project, which is a different filesystem.** `UA_Pricing_Reference_LOCKED.md`, `05_Services_And_Pricing.docx`, the report templates, `UA_Homepage_Hero_DJ_Merge_Brief.md` and the tracker are not reachable from a session working in this repo, and no amount of searching will find them.
+
+**When a job names a file, check which side of the split it is on before planning around it.** A missing script can be written. A missing locked reference cannot be reconstructed, and guessing at its contents is how a €600 service gets quoted at €1,500.
+
+### WHAT THIS BLOCKS
+**JOB 0h cannot start.** It audits client documents against `UA_Pricing_Reference_LOCKED.md`, and neither the reference nor the documents are reachable here. **Putting them somewhere reachable is Laura's decision, not a gap for a session to work around.** The guard checker 0h asks for — read the locked reference, flag any euro figure in a client document that is not in it — is buildable in this repo the moment the reference is.
+
+**JOB 0j needs re-deriving, not following.** It lists three under-linked pages. Two changed on 8 August: `insights/eu-ai-act-accessibility.html` gained an OG block, and `insights/invisible-revenue-loss.html` was deleted with its one inbound link repointed. `ua_orphan_check.py` is also missing, so the link graph has to be rebuilt before the page list means anything.
+
+---
+
 ## TOOLING (all in `tools/`)
 
 | Script | Does | When |
