@@ -193,7 +193,7 @@
         <div class="article-container">
           <span class="section-label">Method</span>
           <h1>How we test, and what we found</h1>
-          <p class="deck">How we test consumer journeys, what we never do, and what we have found so far. If you have had an email from us about a barrier on your site, this is where it came from. If you have not, this is the honest version of our method &mdash; including the parts that went wrong.</p>
+          <p class="deck">How we test consumer journeys, what we never do, and what we have found so far. If you have had an email from us about a barrier on your site, this is where it came from. If you have not, this is the honest version of our method, including the parts that went wrong.</p>
           <p class="meta-line">Updated 4 August 2026</p>
         </div>
       </div>
@@ -205,7 +205,7 @@
 
           <div class="status-block">
             <h2>The short version</h2>
-            <p>We go through consumer journeys &mdash; insurance quotes, hotel bookings, travel enquiries, financial applications, retail checkouts &mdash; the way a customer using a keyboard and a screen reader would. Twenty-eight so far, all of them in Ireland. Twenty-two had a barrier that stopped the journey.</p>
+            <p>We go through consumer journeys the way a customer using a keyboard and a screen reader would: insurance quotes, hotel bookings, travel enquiries, financial applications, retail checkouts. Twenty-eight so far, all of them in Ireland. Twenty-two had a barrier that stopped the journey.</p>
             <p>When we find one on a site we think the owner would want to know about, we tell them, at no charge and with nothing attached. That is what prompts most of our emails.</p>
           <p>This page describes that screening: one person, one journey, about an hour. It is the fastest thing we do and the least of it. What a full evaluation adds is set out below.</p>
           </div>
@@ -213,10 +213,10 @@
           <h2>Who is asking</h2>
           <p>Usable Access is an accessibility compliance practice. We work with mid-sized businesses that sell to consumers in the EU. If we have written to you, it is because we went through one of your journeys and found something we thought you would want to know.</p>
           <p>We come at it from research rather than engineering, which is why we test whole journeys rather than pages, and why the question we ask is whether someone can finish rather than whether the code passes.</p>
-          <p>We are not a scanning tool, and we are not an agency looking for build work &mdash; anything that needs fixing goes back to whoever builds your site. What we do is find what stops people, tell you plainly, and help you show what you did about it.</p>
+          <p>We are not a scanning tool, and we are not an agency looking for build work. Anything that needs fixing goes back to whoever builds your site. What we do is find what stops people, tell you plainly, and help you show what you did about it.</p>
 
           <h2>Will a company we test be named anywhere?</h2>
-          <p>No. We are writing the findings up as aggregate research &mdash; sector, journey type, where the barrier occurred, what kind of control caused it. No company is named, and no individual finding is attributed to anyone. Anything we send a company is theirs alone, and we would not publish it against their name.</p>
+          <p>No. We are writing the findings up as aggregate research: sector, journey type, where the barrier occurred, and what kind of control caused it. No company is named, and no individual finding is attributed to anyone. Anything we send a company is theirs alone, and we would not publish it against their name.</p>
           <p>If we have written to you and you would rather we deleted the finding and your details entirely, say so and we will, and confirm when it is done.</p>
 
           <h2>What we actually do</h2>
@@ -226,26 +226,26 @@
           <h2>What we never do</h2>
           <ul>
             <li><strong>We never submit anything.</strong> No applications, no bookings, no quotes requested. We stop the moment the barrier is confirmed, which is well before the point where a record would be created in your systems.</li>
-            <li><strong>We never enter real personal data</strong> &mdash; no real names, no real contact details, nobody&rsquo;s actual identity.</li>
+            <li><strong>We never enter real personal data</strong>: no real names, no real contact details, nobody&rsquo;s actual identity.</li>
             <li><strong>We only test public pages.</strong> Never an account area, never anything behind a login.</li>
             <li><strong>We do not scan, script or crawl at volume.</strong> A person goes through it, once.</li>
             <li><strong>We never name a company publicly</strong> as an example of a failure.</li>
           </ul>
 
           <h2>What we have found so far</h2>
-          <p>Twenty-two of the twenty-eight had a confirmed barrier. Only two of those stopped the customer at the very start. The rest stopped them in the middle &mdash; at the point where the customer specifies what they want. Dates, occupancy, product, country, title, occupation.</p>
+          <p>Twenty-two of the twenty-eight had a confirmed barrier. Only two of those stopped the customer at the very start. The rest stopped them in the middle, at the point where the customer specifies what they want. Dates, occupancy, product, country, title, occupation.</p>
           <p>That is the commercially worst place for it. A customer blocked there has already chosen you, arrived, and started. They then hit a control they cannot operate, and leave. In your analytics it looks like an ordinary mid-journey drop-off.</p>
-          <p>The symptom was consistent: the control did not say what it was. The cause split roughly evenly. In about half the cases a standard HTML control &mdash; a dropdown, a radio button, an input, a button &mdash; had been replaced by a custom widget, and the accessibility the standard element provides for free had not been rebuilt. In the other half the correct element was used and simply never labelled.</p>
+          <p>The symptom was consistent: the control did not say what it was. The cause split roughly evenly. In about half the cases a standard HTML control had been replaced by a custom widget, whether a dropdown, a radio button, an input or a button, and the accessibility the standard element provides for free had not been rebuilt. In the other half the correct element was used and simply never labelled.</p>
           <p>That second half is the more uncomfortable one, because nothing clever went wrong. The right element was there. The label was never written.</p>
           <p>Two journeys passed cleanly, and they prove the point from opposite directions. One kept the native controls. The other used a custom widget with the accessibility deliberately written back in. So this is not an argument against custom interfaces. It is that whether you replace a native control or keep it, the work of making it say what it is has to be done deliberately, and often it simply is not.</p>
 
           <h2>What went wrong in our method</h2>
           <p>We publish this because a method you cannot inspect is not really a method. Every study makes mistakes; the ones worth trusting are the ones that catch them and say so.</p>
           <p>Six times, automated accessibility tooling told us a control was correctly labelled when it was not. In five cases the tool had inferred a name from text sitting next to the control rather than attached to it. In one case the semantics it reported were being injected by an accessibility overlay, not provided by the page. Each would have produced a false clean result. That last one turned out to matter beyond the method: we have since found real barriers sitting beneath overlays on other sites, and written up <a href="/accessibility-overlays-eaa.html">what an overlay reaches and what it cannot</a>.</p>
-          <p>We now confirm every negative finding by computing the accessible name directly, or by live behaviour, rather than trusting a tool&rsquo;s summary. We also started with a different hypothesis &mdash; that most barriers would be at the very first step &mdash; and the data did not support it. We reported what we found instead.</p>
+          <p>We now confirm every negative finding by computing the accessible name directly, or by live behaviour, rather than trusting a tool&rsquo;s summary. We also started with a different hypothesis, that most barriers would be at the very first step, and the data did not support it. We reported what we found instead.</p>
 
           <h2>What this is, and what it is not</h2>
-          <p>Everything above is screening. It finds what the code exposes to assistive technology, and it does that well &mdash; but it is a walkthrough by someone who knows what to look for, not a study of what happens to a person.</p>
+          <p>Everything above is screening. It finds what the code exposes to assistive technology, and it does that well. But it is a walkthrough by someone who knows what to look for, not a study of what happens to a person.</p>
           <p>It cannot tell you what it is actually like to hit the barrier. How long someone tries. What they attempt. Whether they work around it, ring you instead, or quietly go somewhere else. That takes sessions with disabled people using the product, which is scoped and priced separately as part of a full evaluation.</p>
           <p>Our first research report will include that layer, and we will say plainly what it changed about the findings.</p>
 
