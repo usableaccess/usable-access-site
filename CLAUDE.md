@@ -67,6 +67,31 @@ There is no `--adopt`. It was documented for bringing hand-written OG blocks und
 
 ---
 
+## STANDING NOTE: THE EXPECTED FAILURE COUNT IS 3, NOT 0
+
+**As of 8 August 2026 `ua_page_check.py` reports 3 failures at the repo root and 0 in `insights/`. That is the correct state. Do not try to reach zero.**
+
+All three are on `eaa-compliance-telecoms.html`, and all three are the ComReg trap firing on sentences that are right:
+
+- "It is also worth knowing how a complaint reaches ComReg at all."
+- "A consumer is expected to raise the problem with the provider first; ComReg comes in when it is not resolved."
+- "So a complaint to ComReg is not the only way a requirement gets enforced."
+
+**Why they fire.** The ComReg exemption is scoped to the sentence, deliberately. A page-wide exemption is what silenced the trap on all thirteen pages carrying ComReg, because it fired on any stray mention of telecoms anywhere in the file, including the Swedish regulator's name and the defect's own wording. See JOB 0o. Sentence scoping fixed that and costs these three: on a telecoms page the section carries the context and the individual sentence does not.
+
+**Why they are not fixed.** Rewriting correct copy so a sentence repeats context the reader already has would make the page worse to make a number nicer. **These sentences read well and say true things.**
+
+**How this differs from the redirect stub**, which WAS resolved by deletion: there the checker was enforcing a rule we had overridden, so the failure was the checker being out of date. Here the checker is correctly reporting what it was asked to report. **One was a stale rule, this is a chosen cost.**
+
+### WHAT WOULD LEGITIMATELY CHANGE THE NUMBER
+- **Up:** any new ComReg sentence outside a telecoms context, which is the trap working. Read it before assuming it is another false positive.
+- **Down to 0:** a smarter scope than the sentence, for example carrying context from the nearest preceding heading. Worth doing only if it does not reintroduce a file-wide bypass.
+- **Down by accident:** if someone edits those three sentences for another reason and happens to add a scoping word. Harmless, but the count moving is then not evidence of anything.
+
+**If the count is anything other than 3 and 0, something changed. Find out what before assuming it is noise.**
+
+---
+
 ## STANDING NOTE: SCOPE A BATCH BY CONTENT, NEVER BY FILENAME
 
 **A correction pass that selects its pages by name will miss the pages that are about the subject but not named for it.**
