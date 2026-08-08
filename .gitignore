@@ -1,0 +1,4 @@
+# macOS folder metadata. Committed accidentally by a `git add -A` on 8 Aug 2026;
+# ignored here so it cannot be re-added.
+.DS_Store
+.DS_Store?
