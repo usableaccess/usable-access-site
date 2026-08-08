@@ -107,6 +107,46 @@ INVENTED_CLASSES = {
     "site-footer": "bare <footer> (no .site-footer class)",
 }
 
+
+
+def _count_prose_dashes(h):
+    """Return (prose_count, excluded_count) of em dashes.
+
+    Prose means text a reader meets as a sentence, inside <main>. Excluded:
+    <style>, <script> (which includes JSON-LD), HTML and CSS comments, <title>,
+    every <meta>, headings h1-h6, section-label <span>s, and related-link
+    <li><a> titles. Those last three are JOB 0n exceptions 1 and 4: a dash used
+    as a title or label separator, not as an aside hung off a main clause.
+    """
+    def _n(t):
+        return t.count("\u2014") + t.count("&mdash;")
+
+    total = _n(h)
+
+    body_m = re.search(r"<main\b[^>]*>(.*?)</main>", h, re.S | re.I)
+    region = body_m.group(1) if body_m else h
+
+    # strip everything a reader never meets as prose
+    region = re.sub(r"<script.*?</script>", " ", region, flags=re.S | re.I)
+    region = re.sub(r"<style.*?</style>", " ", region, flags=re.S | re.I)
+    region = re.sub(r"<!--.*?-->", " ", region, flags=re.S)
+    region = re.sub(r"/\*.*?\*/", " ", region, flags=re.S)
+
+    # exception 1: headings, section labels, related-link titles
+    region = re.sub(r"<h[1-6]\b[^>]*>.*?</h[1-6]>", " ", region, flags=re.S | re.I)
+    # label spans: .section-label, and page-local variants such as
+    # .requirement-number used for the "Checklist - Governance" headings
+    region = re.sub(r"<span[^>]*class=\"[^\"]*(?:section-label|requirement-number|"
+                    r"article-tag|insight-tag|badge)[^\"]*\"[^>]*>.*?</span>",
+                    " ", region, flags=re.S | re.I)
+    region = re.sub(r"<li>\s*<a\b.*?</a>", " ", region, flags=re.S | re.I)
+    # the inline-styled badge span used in place of .section-label on article pages
+    region = re.sub(r"<span[^>]*text-transform:\s*uppercase[^>]*>.*?</span>",
+                    " ", region, flags=re.S | re.I)
+
+    prose = _n(re.sub(r"<[^>]+>", " ", region))
+    return prose, max(0, total - prose)
+
 def check(path):
     name = os.path.basename(path)
     h = open(path, encoding="utf-8", errors="ignore").read()
@@ -174,10 +214,20 @@ def check(path):
     else:
         notes.append(re.search(r"Updated \d{1,2} [A-Z][a-z]{2} 20\d\d", h).group(0))
 
-    # --- em dashes (sparing rule: report count, judgment not automatic fail) ---
-    n_dash = body.count("\u2014") + h.count("&mdash;")
-    if n_dash > 8: warns.append(f"{n_dash} em dashes — check they are sparing and appropriate")
-    else: notes.append(f"{n_dash} em dashes")
+    # --- em dashes: PROSE ONLY (JOB 0m) ---
+    # The old count was every dash in the file, which measured the wrong thing.
+    # It included HTML and CSS comments, <title>, meta descriptions, headings,
+    # section labels and related-link titles - all of them legitimate separators
+    # under the JOB 0n exceptions. index.html reported 36 when 7 were code-comment
+    # banners no reader sees, and six finished pages reported as unfinished because
+    # their only remaining dashes were related-link titles.
+    n_prose, n_excl = _count_prose_dashes(h)
+    if n_prose > 2:
+        warns.append(f"{n_prose} em dashes in prose ({n_prose + n_excl} in file, "
+                     f"{n_excl} outside prose) - check they are sparing and appropriate")
+    else:
+        notes.append(f"{n_prose} em dashes in prose ({n_prose + n_excl} in file, "
+                     f"{n_excl} outside prose)")
 
     # --- fact + CTA traps ---
     # ComReg is checked SENTENCE BY SENTENCE, not page-wide. The old page-wide

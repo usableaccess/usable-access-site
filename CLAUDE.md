@@ -62,6 +62,23 @@ python3 tools/ua_sync_blocks.py . --adopt --write        # apply; --adopt brings
 
 ---
 
+## STANDING NOTE: STRUCTURED DATA REPEATS PAGE COPY, SO EVERY CORRECTION HAS TWO PLACES TO FIX
+
+**JSON-LD blocks (`<script type="application/ld+json">`) carry page sentences verbatim, and they are invisible to any check that reads rendered text.** BeautifulSoup `get_text()` drops them. A grep of visible copy will not see them. A browser will not show them. Google will read them.
+
+**Found 8 August 2026.** `eaa-compliance-ireland.html` carried the invented complaint procedure from JOB 0o **twice**: once in body copy and once inside its JSON-LD `"text"` field. The same page carried a second sentence in both places. Fixing only the visible one would have left the false claim being served to search engines while the page read correctly to a human.
+
+**The rule: after any factual correction, grep the raw file, not the rendered text.** If the page has a JSON-LD block, assume the sentence you just fixed is in it too.
+
+```bash
+grep -l 'application/ld+json' *.html insights/*.html      # which pages have one
+python3 -c "import re,sys; [print(m) for m in re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>', open(sys.argv[1]).read(), re.S)]" PAGE.html
+```
+
+**This applies to the checkers too.** Anything built on `get_text()` is blind to structured data by construction, so a page can pass every check and still serve a corrected-away claim.
+
+---
+
 ## HOW TO WRITE
 
 **Write in plain, direct sentences.**
@@ -552,29 +569,19 @@ The canonical and the redirect already answer the "is this a duplicate" question
 **A check that every `<loc>` in `sitemap.xml` resolves to a file whose canonical points back at that same URL, and that carries no meta refresh.** It would have caught this, and also the sitemap-entry-with-no-file failure recorded in rule 14. Roughly twenty lines.
 ---
 
-## JOB 0m — THE EM DASH COUNT MEASURES THE WRONG THING
+## JOB 0m — THE EM DASH COUNT MEASURES THE WRONG THING — DONE 8 August 2026
 
-**Found 8 August 2026 during the writing pass on `index.html` (commit `c2d1f64`).**
+**Fixed. The count is now prose only.** `ua_page_check.py` reports, for example:
+`ok  0 em dashes in prose (14 in file, 14 outside prose)`
 
-`ua_page_check.py` counts every em dash in the file. That includes HTML comments, CSS comments, `<title>`, and meta descriptions. **None of those are prose, and rule 4 is a rule about prose.**
+**Excluded from the prose count:** everything outside `<main>`, `<style>`, `<script>` (which covers JSON-LD), HTML and CSS comments, `<title>`, every `<meta>`, headings `h1`-`h6`, label spans (`.section-label`, `.requirement-number`, `.article-tag`, `.insight-tag`, `.badge`) and related-link `<li><a>` titles. Those are the JOB 0n exceptions.
 
-`index.html` reported **36**. Seven of those were section banners in code comments, of the form `HEADER — MOBILE FIRST`, invisible to every reader. The prose problem was smaller than the number claimed. **A count that includes things no reader sees cannot tell you whether the writing is over-dashed.**
+**Threshold lowered from 8 to 2**, matching what hard rule 4 actually asks for. It was set at 8 because the old count was inflated by exceptions.
 
-The direction is wrong in both ways. It overstates a page carrying commented-out scaffolding, and it would understate nothing, so the failure is silent. Nobody looks twice at a number that is too high for a reason they cannot see.
+**Effect:** six pages that reported as unfinished now report 0 in prose, because their only dashes were related-link titles and section labels. `eaa-compliance-fintech.html` went from reporting 10 to reporting 0 of 14. Root warnings fell from 69 to 58, insights from 27 to 23, with failures unchanged.
 
-### The fix
-**Scope the count to text content inside `<main>`.** Exclude `<style>`, `<script>`, HTML and CSS comments, `<title>`, and every `<meta>`. Strip tags, then count what remains.
+**Ten fixtures cover it**, including the case that matters most: a prose aside is still counted. Run them before changing the helper.
 
-**Also exclude related-link titles**, meaning the `<li><a>` entries in the related-links block. They are article titles, so exception 1 in JOB 0n already applies to them, and **converting them would make the link text disagree with the heading it points to.** They are a large share of what remains on finished pages: `eaa-compliance-ecommerce.html` cannot drop below about 12 while 11 of those are link titles, and `services.html` is the same with 8 price headings and 4 link titles. **Once this exclusion is in, pages that are effectively finished will report as finished**, which is the point of the count.
-
-**Report both figures while the transition beds in**, e.g.
-`ok  4 em dashes in prose (11 in file, 7 outside prose)`
-
-That keeps the file-level number visible without letting it stand in for the thing the rule cares about.
-
-### Watch for
-- **Separators that are not prose.** A `<title>` reading `Usable Access — Clarity-first EAA Compliance` uses a dash as a brand separator. It is legitimate and should never have been in the count.
-- **Card headings.** `Accessibility statements: what a credible one contains` was a dash before the pass. Headings of that shape read better with a colon, so they are worth flagging, but they are not the aside construction rule 4 exists to catch.
 ---
 
 ## JOB 0n — SENTENCE-CONSTRUCTION PASS ACROSS THE REST OF THE SITE
