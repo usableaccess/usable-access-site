@@ -210,30 +210,30 @@
 
           <h2>What we found</h2>
           <p>In a field study of twenty-five Irish consumer journeys, three retail sites were running the same overlay product. Two of the three were reachable for a full test. <strong>Both had a confirmed WCAG failure sitting beneath the overlay.</strong></p>
-          <p>On one, the quantity control in the basket announced only its own number, with nothing to say what the number referred to. On the other &mdash; and this is the one worth pausing on &mdash; <strong>the size options on a product page could not be reached by keyboard at all.</strong> Someone navigating without a mouse could view a product and could not choose a size, so they could not buy it. That is WCAG 2.1.1, Level A, on the purchase journey.</p>
+          <p>On one, the quantity control in the basket announced only its own number, with nothing to say what the number referred to. On the other, and this is the one worth pausing on, <strong>the size options on a product page could not be reached by keyboard at all.</strong> Someone navigating without a mouse could view a product and could not choose a size, so they could not buy it. That is WCAG 2.1.1, Level A, on the purchase journey.</p>
           <p><strong>That second site publishes an accessibility statement which credits the overlay for making the site accessible.</strong></p>
-          <p>We are not naming either company. The point is not that a particular retailer got it wrong &mdash; it is that the overlay was installed, the statement was written, and the buying journey still could not be completed.</p>
+          <p>We are not naming either company. The point is not that a particular retailer got it wrong. It is that the overlay was installed, the statement was written, and the buying journey still could not be completed.</p>
 
           <h2>Why an overlay cannot reach this</h2>
           <p>Assistive technology does not read the screen. It reads what the page exposes: for every control, a name, a role and a state. A screen reader says &ldquo;Size, radio button, medium, selected&rdquo; because the page said so.</p>
-          <p>An overlay runs after the page loads and adjusts what is there. If a size selector was built as a plain container with no role and no keyboard access, there is nothing for the overlay to adjust &mdash; no control to rename, because as far as the browser is concerned no control exists. The overlay cannot invent one, because it has no way of knowing that a group of decorated boxes was meant to be a set of options.</p>
+          <p>An overlay runs after the page loads and adjusts what is there. If a size selector was built as a plain container with no role and no keyboard access, there is nothing for the overlay to adjust. There is no control to rename, because as far as the browser is concerned no control exists. The overlay cannot invent one, because it has no way of knowing that a group of decorated boxes was meant to be a set of options.</p>
           <p>This is why the failures we find beneath overlays are so consistent: they are always at the point where a custom control replaced a standard one, and the accessibility the standard element would have provided for free was never rebuilt.</p>
 
           <h2>What this means under the European Accessibility Act</h2>
           <p>The Act points to EN 301 549, the harmonised European standard, which incorporates WCAG 2.1 Level AA for web content. <strong>Conformance is assessed against the product, not against what is installed on top of it.</strong> No overlay vendor can confer conformance, and no market surveillance authority assesses one.</p>
-          <p>There is a second, quieter problem. An accessibility statement is a required document and it is a declaration about your product. A statement that credits an overlay is describing something other than the thing being assessed &mdash; and if the underlying journey fails, the statement is inaccurate as well as the product being non-conformant. That is a worse position than having no statement at all, because it is a documented claim rather than a gap.</p>
+          <p>There is a second, quieter problem. An accessibility statement is a required document and it is a declaration about your product. A statement that credits an overlay is describing something other than the thing being assessed. If the underlying journey fails, the statement is inaccurate as well as the product being non-conformant. That is a worse position than having no statement at all, because it is a documented claim rather than a gap.</p>
           <p>Of the twenty-five journeys we tested, thirteen carried an accessibility statement. <strong>Not one named EN 301 549.</strong></p>
 
           <h2>What overlays are actually good for</h2>
           <p>This is not an argument that overlays are worthless, and we would rather not join the shouting on either side.</p>
           <p>A user-facing toolbar that lets someone increase text size, raise contrast or increase spacing is a genuine convenience, and some people use and like them. If a business has installed one for that reason and describes it honestly as a convenience feature, there is nothing wrong with it.</p>
-          <p>The problem is the second claim &mdash; that installing it addresses the obligation. It does not, and the evidence is not hard to gather: on two of the two overlay sites we could test fully, a Level A failure sat untouched beneath it.</p>
+          <p>The problem is the second claim, that installing it addresses the obligation. It does not, and the evidence is not hard to gather: on two of the two overlay sites we could test fully, a Level A failure sat untouched beneath it.</p>
 
           <h2>How to check your own</h2>
           <p>You do not need us for this, and it takes about two minutes.</p>
           <ol>
             <li><strong>Put the mouse away.</strong> Use Tab and the arrow keys only.</li>
-            <li><strong>Go to a product, a booking or a quote</strong> &mdash; whatever your main journey is.</li>
+            <li><strong>Go to a product, a booking or a quote</strong>: whatever your main journey is.</li>
             <li><strong>Try to complete the selecting step.</strong> Choose a size, a date, a quantity, an option.</li>
             <li><strong>If you cannot reach it or cannot tell what you selected, the overlay is not helping there.</strong></li>
           </ol>
