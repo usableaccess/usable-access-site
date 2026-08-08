@@ -195,27 +195,27 @@
       <div class="container">
         <div class="article-container">
 
-          <p>Two things are happening simultaneously in the AI and accessibility space. <a href="/insights/aimac-deep-dive.html">AI coding tools are generating non-compliant HTML by default</a>, creating a continuous stream of accessibility failures in products built with AI assistance. And a separate category of AI-powered tools &mdash; overlay products &mdash; is being sold as the solution to exactly that problem.</p>
+          <p>Two things are happening simultaneously in the AI and accessibility space. <a href="/insights/aimac-deep-dive.html">AI coding tools are generating non-compliant HTML by default</a>, creating a continuous stream of accessibility failures in products built with AI assistance. A separate category of AI-powered tools, the overlay products, is being sold as the solution to exactly that problem.</p>
 
-          <p>Aaron Gustafson, presenting at Microsoft Build in June 2026 alongside Jessie Lorenz, a blind PM at Microsoft, and GitHub&rsquo;s Carie Fisher, framed the underlying dynamic precisely: AI does not fix a broken process. It accelerates whatever process you already have. If accessibility is part of the workflow, AI can help scale inclusion. If it is not, AI will accelerate and scale the barriers being shipped. That is the paradox &mdash; and overlay tools sit squarely on the wrong side of it.</p>
+          <p>Aaron Gustafson, presenting at Microsoft Build in June 2026 alongside Jessie Lorenz, a blind PM at Microsoft, and GitHub&rsquo;s Carie Fisher, framed the underlying dynamic precisely: AI does not fix a broken process. It accelerates whatever process you already have. If accessibility is part of the workflow, AI can help scale inclusion. If it is not, AI will accelerate and scale the barriers being shipped. That is the paradox. Overlay tools sit squarely on the wrong side of it.</p>
 
           <p>One line of JavaScript. Instant compliance. No development work required. That is the claim. It is worth examining carefully.</p>
 
           <h2>What overlay tools claim to do</h2>
 
-          <p>Accessibility overlay tools are JavaScript libraries that load on top of a website or application and apply automated modifications to the underlying page. They typically include features such as contrast adjustment, text resizing, keyboard navigation aids, and screen reader compatibility fixes &mdash; all delivered without changes to the underlying HTML.</p>
+          <p>Accessibility overlay tools are JavaScript libraries that load on top of a website or application and apply automated modifications to the underlying page. They typically include features such as contrast adjustment, text resizing, keyboard navigation aids, and screen reader compatibility fixes. All of it is delivered without changes to the underlying HTML.</p>
 
           <p>The marketing for these tools routinely promises EAA compliance, WCAG conformance, or immediate accessibility for all users. Some overlay vendors claim that a single line of code is sufficient to meet legal accessibility obligations. The price point is attractive. The promise is significant.</p>
 
           <h2>What the evidence shows</h2>
 
-          <p>The evidence does not support the claims. Screen reader users and keyboard users &mdash; the people these tools most directly claim to help &mdash; consistently report that overlay tools make their experience worse, not better. The automated modifications interfere with the assistive technology the user is already using. The result is more barriers, not fewer.</p>
+          <p>The evidence does not support the claims. Screen reader users and keyboard users are the people these tools most directly claim to help. They consistently report that overlay tools make their experience worse, not better. The automated modifications interfere with the assistive technology the user is already using. The result is more barriers, not fewer.</p>
 
           <p>This is not a fringe view. The National Federation of the Blind and the American Council of the Blind have both formally opposed overlay tools. Hundreds of accessibility practitioners and researchers have signed the <a href="https://overlayfactsheet.com" rel="noopener noreferrer">Overlay Fact Sheet</a>, a public statement of opposition based on evidence from disabled users and technical analysis. The practitioner consensus on overlay tools is clear.</p>
 
           <p>In January 2025, the US Federal Trade Commission ordered an overlay vendor to pay $1 million for deceptive claims that its AI product could make websites accessible. EAA enforcement in Europe has not yet produced equivalent decisions, but the direction of travel is clear.</p>
 
-          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The same research found that the assumption automation improves accessibility is not evidenced &mdash; and that ableist bias in AI is structural, rooted in training data, and resistant to technical fix. Overlay tools represent precisely the kind of automated response this research identifies as insufficient: a technical layer applied on top of a structural problem.</p>
+          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The same research found that the assumption automation improves accessibility is not evidenced. It also found that ableist bias in AI is structural, rooted in training data, and resistant to technical fix. Overlay tools represent precisely the kind of automated response this research identifies as insufficient: a technical layer applied on top of a structural problem.</p>
 
           <p>Research presented at Microsoft Build in June 2026 found that out of the box, most AI coding agents only pass around 8&ndash;25% of automatable accessibility checks. Even with instruction files guiding the model, the pass rate only reaches 37&ndash;60%. The implication is direct: AI tools are generating inaccessible code at scale, and overlays applied on top of that code do not resolve the underlying failures.</p>
 
@@ -227,39 +227,39 @@
 
           <h2>The EAA position</h2>
 
-          <p>An overlay tool does not constitute EAA compliance. EN&nbsp;301&nbsp;549 &mdash; the harmonised European accessibility standard referenced by the EAA &mdash; requires conformance with WCAG 2.1 Level AA. Conformance is measured against the underlying HTML, not against a JavaScript layer applied on top of it.</p>
+          <p>An overlay tool does not constitute EAA compliance. EN&nbsp;301&nbsp;549 is the harmonised European accessibility standard referenced by the EAA, and it requires conformance with WCAG 2.1 Level AA. Conformance is measured against the underlying HTML, not against a JavaScript layer applied on top of it.</p>
 
           <p>Enforcement bodies assess the product as a user experiences it, particularly as a disabled user with assistive technology experiences it. An overlay that makes that experience worse does not bring the product closer to conformance. It moves it further away.</p>
 
-          <p>&ldquo;Our AI wrote it&rdquo; is not a compliance defence. Neither is &ldquo;we installed an overlay.&rdquo; The obligation attaches to the output &mdash; to what a disabled user encounters when they try to use the product.</p>
+          <p>&ldquo;Our AI wrote it&rdquo; is not a compliance defence. Neither is &ldquo;we installed an overlay.&rdquo; The obligation attaches to the output. It attaches to what a disabled user encounters when they try to use the product.</p>
 
           <h2>The commercial risk of documented non-compliance</h2>
 
-          <p>There is a specific risk attached to purchasing an overlay tool in the belief that it provides compliance. The purchase creates a documentary record: the organisation was aware of its EAA accessibility obligations, and it chose a response. If that response is subsequently found to be insufficient &mdash; which the evidence strongly suggests it will be &mdash; the organisation has documented its awareness without having addressed the problem.</p>
+          <p>There is a specific risk attached to purchasing an overlay tool in the belief that it provides compliance. The purchase creates a documentary record: the organisation was aware of its EAA accessibility obligations, and it chose a response. The evidence strongly suggests that response will be found insufficient. The organisation has then documented its awareness without having addressed the problem.</p>
 
           <p>In <a href="/eaa-compliance-ireland.html">Ireland</a>, where directors face personal criminal liability for EAA non-compliance, the due diligence defence requires evidence of active, genuine compliance management. A documented decision to install an overlay rather than undertake technical remediation is unlikely to constitute due diligence.</p>
 
-          <p>No EAA fines have been issued in any market as of June 2026. But enforcement is active. When penalty decisions arrive, the organisations with documented awareness and insufficient responses will be in a weaker position than those that took no action at all &mdash; because they have already demonstrated they knew.</p>
+          <p>No EAA fines have been issued in any market as of June 2026. But enforcement is active. When penalty decisions arrive, the organisations with documented awareness and insufficient responses will be in a weaker position than those that took no action at all. They have already demonstrated they knew.</p>
 
           <div class="callout callout--orange">
-            <p><strong>The documented awareness problem:</strong> buying an overlay creates a record that your organisation knew about its accessibility obligations. If the overlay proves insufficient &mdash; and the evidence strongly suggests it will &mdash; you have documented your awareness without having addressed the problem. That is a more exposed position than not having acted at all.</p>
+            <p><strong>The documented awareness problem:</strong> buying an overlay creates a record that your organisation knew about its accessibility obligations. The evidence strongly suggests the overlay will prove insufficient. You have then documented your awareness without having addressed the problem. That is a more exposed position than not having acted at all.</p>
           </div>
 
           <h2>What genuine compliance requires</h2>
 
           <p>There is no shortcut. Genuine EAA compliance requires the same things it always has.</p>
 
-          <p><strong>Technical remediation</strong> of the underlying code: fixing the HTML, the ARIA, the keyboard interactions, the colour contrast, the form labels &mdash; in the source, not in a layer on top of it. This is the work that overlays claim to replace. It cannot be replaced.</p>
+          <p><strong>Technical remediation</strong> of the underlying code: fixing the HTML, the ARIA, the keyboard interactions, the colour contrast, the form labels. All of it in the source, not in a layer on top of it. This is the work that overlays claim to replace. It cannot be replaced.</p>
 
           <p><strong>A published <a href="/eaa-accessibility-statement.html">accessibility statement</a></strong> that accurately reflects the current state of the product, identifies what is not yet accessible, and includes a remediation plan. A statement that claims full compliance through an overlay does not meet this requirement.</p>
 
-          <p><strong>Active <a href="/eaa-governance.html">governance</a></strong>: a named owner for accessibility, a testing process, and a mechanism for catching regressions before they reach production. <a href="/insights/aimac-deep-dive.html">AI-assisted development</a> makes this more important, not less &mdash; the pace of code generation means accessibility failures can accumulate between review cycles if there is no process to catch them.</p>
+          <p><strong>Active <a href="/eaa-governance.html">governance</a></strong>: a named owner for accessibility, a testing process, and a mechanism for catching regressions before they reach production. <a href="/insights/aimac-deep-dive.html">AI-assisted development</a> makes this more important, not less. The pace of code generation means accessibility failures can accumulate between review cycles if there is no process to catch them.</p>
 
           <p><strong>Documentary evidence</strong> of active management: dated assessments, remediation records, and a process trail that demonstrates ongoing attention, not a one-off exercise.</p>
 
           <p>None of these can be purchased as a one-line JavaScript include. <a href="/what-is-digital-accessibility.html">Digital accessibility</a> is a property of the product, not a feature added on top of it.</p>
 
-          <p>Since writing this, we have tested it. Across a field study of Irish consumer journeys, three sites were running the same overlay product and two of the three had a confirmed WCAG failure sitting beneath it &mdash; one of them a Level A keyboard failure on the purchase journey, on a site whose accessibility statement credits the overlay. <a href="/accessibility-overlays-eaa.html">What an overlay reaches, and what it cannot</a>.</p>
+          <p>Since writing this, we have tested it. Across a field study of Irish consumer journeys, three sites were running the same overlay product and two of the three had a confirmed WCAG failure sitting beneath it. One was a Level A keyboard failure on the purchase journey, on a site whose accessibility statement credits the overlay. <a href="/accessibility-overlays-eaa.html">What an overlay reaches, and what it cannot</a>.</p>
 
           <div class="article-cta">
             <h2>Find out where your product actually stands</h2>
@@ -298,7 +298,7 @@
 
   <footer>
     <div class="container">
-      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> </p>
+      <p>Usable Access<span aria-hidden="true"> &middot; </span><a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a><span aria-hidden="true"> &middot; </span><a href="/">usableaccess.io</a> </p>
 <p><a href="/accessibility-statement.html">Accessibility statement</a><span aria-hidden="true"> &middot; </span><a href="/privacy.html">Privacy notice</a></p>
 </div>
   </footer>
