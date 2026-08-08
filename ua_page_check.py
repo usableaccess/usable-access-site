@@ -15,7 +15,14 @@ FACT_TRAPS = [
     (r"\b32%", "32% — should be 18% (Barometro financial services non-conformant)"),
     (r"(?i)(complaint to ComReg|ComReg requests|ComReg investigates|ComReg processes formal complaints|What does ComReg actually do|when ComReg receives)", "ComReg used as a GENERAL Irish EAA authority — it is communications ONLY. Distributed: CCPC (primary/products+general services), Central Bank (financial), Coimisiun na Mean (media), NTA (transport), ComReg (communications). Keep ComReg only in a communications context."),
     (r"(?i)€\s?10[,.]?000|10,000 in provisional", "€10,000 Carrefour damages — VERIFIED ERROR, no damages were awarded"),
-    (r"(?i)first EAA (fine|ruling|penalty)", "'first EAA fine/ruling' framing — Auchan was first and was dismissed"),
+    # Narrowed 8 Aug 2026. The old pattern fired on any "first EAA ruling", which
+    # caught two pages stating DIFFERENT true claims: Lille 5 May 2026 was the
+    # first EAA court ruling in the EU, and Caen 4 June 2026 was the first ruling
+    # ORDERING COMPLIANCE. Both are correct and both said so. A trap that fires
+    # on the corrected position teaches people to ignore it.
+    (r"(?i)first EAA (fine|penalty)|first (?:EAA )?fine (?:under|issued)",
+     "claims a FIRST EAA fine or penalty — none has been issued in any market, "
+     "so nothing can be the first"),
     (r"(?i)(has been|was|were) fined", "claims a fine was ISSUED — no EAA administrative fine exists in any market"),
     (r"(?i)60 webshops", "60 webshops — should be ~100-webshop sample"),
     (r"(?i)partial conformance is not a defence anywhere", "overstates a single referé as settled EU law"),
@@ -302,6 +309,26 @@ def check(path):
             fails.append("FACT: ComReg widened past electronic communications to "
                          "'digital services' - rule 7 allows electronic communications "
                          "ONLY: " + sent[:120])
+    # --- "first EAA ruling" must carry its qualifier ---
+    # Saying a ruling was the first is fine. Saying it without noting WHICH first
+    # it was is the error: Auchan (Lille, 5 May 2026) came first and was dismissed
+    # on a procedural threshold; Carrefour (Caen, 4 June 2026) was the first
+    # ordering compliance. A bare claim collapses the two.
+    for m in re.finditer(r"[^.!?]*first[^.!?]{0,40}(?:EAA )?(?:court )?ruling[^.!?]*[.!?]?",
+                         body, re.I):
+        sent = m.group(0)
+        # The qualifier can be phrased many ways. "ordering compliance" was the
+        # only form anticipated first time, and it missed "the first EAA ruling
+        # ORDERING AN ORGANISATION to make its digital services accessible" -
+        # the same paraphrase problem JOB 0p records, in a trap written to fix it.
+        if re.search(r"(?i)dismiss|procedural|threshold|order(?:ing|ed)|"
+                     r"defendant|in the EU|in Europe|compliance order", sent):
+            continue
+        fails.append("FACT: bare 'first EAA ruling' claim - say which first. Lille "
+                     "5 May 2026 was first overall and was DISMISSED on a procedural "
+                     "threshold; Caen 4 June 2026 was first ORDERING COMPLIANCE: "
+                     + " ".join(sent.split())[:120])
+
     # --- EU-wide ranking claims (JOB 0p) ---
     # Any claim that a market's penalties rank highest/strictest in the EU is
     # unsupportable by construction: nobody here has surveyed 27 transpositions.
