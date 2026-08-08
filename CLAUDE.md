@@ -491,6 +491,46 @@ That keeps the file-level number visible without letting it stand in for the thi
 - **Card headings.** `Accessibility statements: what a credible one contains` was a dash before the pass. Headings of that shape read better with a colon, so they are worth flagging, but they are not the aside construction rule 4 exists to catch.
 ---
 
+## JOB 0n — SENTENCE-CONSTRUCTION PASS ACROSS THE REST OF THE SITE
+
+**`index.html` is done, in commit `c2d1f64`. Every other page still needs it.**
+
+Apply the **HOW TO WRITE** section above to all 43 remaining pages. Same standard as `c2d1f64`.
+
+### The standard
+**Restructure, do not repunctuate.** Swapping a dash for a comma leaves the aside in place and misses the point. Where a dash holds a qualifying aside, split the sentence in two or drop the aside.
+
+**Catch the "X, not Y" construction in the same pass.** It travels with the dash and is the same habit.
+
+### The size of it, measured 8 August 2026
+| | |
+|---|---|
+| Pages needing the pass | **43** |
+| Em dashes in prose, inside `<main>` | **531** |
+| "X, not Y" constructions | **178** |
+| Pages at 3 or more prose dashes | **35** |
+| Pages already at 2 or fewer | **8** |
+
+Heaviest first: `eaa-compliance-checklist.html` (36), `insights.html` (34), `eaa-compliance-travel.html` (25), `insights/ai-paradox.html` (25), `eaa-enforcement.html` (24), `insights/france-eaa-civil-society-enforcement.html` (24).
+
+**Those counts are prose only**, taken from text inside `<main>` with `<style>` and `<script>` removed. They will not match what `ua_page_check.py` reports until JOB 0m is done, because that count still includes comments, `<title>` and meta.
+
+### THREE EXCEPTIONS THAT MUST NOT BE STRIPPED
+1. **Card and article headings using a dash as a title separator.** `Sweden's PTS — proactive inspections` reads as a subtitle, not an aside. A colon is often better, but this is a judgement call per heading and never a mechanical replacement.
+2. **The `<title>` brand separator.** `Usable Access — Clarity-first EAA Compliance`. Leave it.
+3. **Any dash where the contrast genuinely earns its place**, meaning a reader would otherwise assume the opposite. From the `index.html` pass, `not a full audit and never a compliance certificate` and `tested by a person, not a scan` were both kept. Both correct a reasonable wrong assumption. `not because it resolves compliance, but because it tells you` was removed, because nobody assumed it resolved compliance.
+
+**Target is one or two per page, not zero.** A page that reaches zero has probably lost a dash that was working.
+
+### Method
+**One page at a time.** Do not run a scripted replacement across the site. The exceptions above need a judgement on each instance, and a find-and-replace cannot make one.
+
+**Show the diff for the first three pages before continuing**, so the exception handling can be checked before it runs across the rest.
+
+### Verify per page
+`ua_page_check.py` and `ua_a11y_check.py`, and read the page top to bottom. Splitting a sentence changes the rhythm of the paragraph around it, and on `index.html` one connective had to be rewritten because its antecedent moved.
+---
+
 ## JOB 0k — HOMEPAGE HERO: APPLY THE APPROVED DJ MERGE (content, NOT a judgement call)
 
 **⚠ DO NOT REWRITE ANYTHING. This job is a paste, not an edit.**
