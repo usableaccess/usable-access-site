@@ -67,6 +67,24 @@ There is no `--adopt`. It was documented for bringing hand-written OG blocks und
 
 ---
 
+## STANDING NOTE: SCOPE A BATCH BY CONTENT, NEVER BY FILENAME
+
+**A correction pass that selects its pages by name will miss the pages that are about the subject but not named for it.**
+
+**Found 8 August 2026.** The France corrections covered `eaa-compliance-france.html` and `insights/france-eaa-civil-society-enforcement.html`. `insights/rgaa-and-eaa-france.html` was not in the batch, so it kept an unverified €10,000 damages figure and an unattributed astreinte for the rest of the day. It is named for RGAA. **The batch boundary missed it, not the reading.**
+
+**Before any correction pass, build the page list by grepping for the subject**, not by matching filenames:
+
+```bash
+grep -rln "Carrefour\|Caen\|astreinte" --include="*.html" .   # not: ls *france*
+```
+
+Grep the raw file rather than rendered text, so JSON-LD and meta descriptions are included. See the structured-data note below.
+
+**The same applies to any subject that appears under more than one name:** the AI Act pages, the Barómetro figures, the Swedish PTS investigations, ComReg. A filename tells you what a page was called when it was created. It does not tell you what the page now says.
+
+---
+
 ## STANDING NOTE: STRUCTURED DATA REPEATS PAGE COPY, SO EVERY CORRECTION HAS TWO PLACES TO FIX
 
 **JSON-LD blocks (`<script type="application/ld+json">`) carry page sentences verbatim, and they are invisible to any check that reads rendered text.** BeautifulSoup `get_text()` drops them. A grep of visible copy will not see them. A browser will not show them. Google will read them.

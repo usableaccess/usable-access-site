@@ -12,9 +12,17 @@ GA4 = "G-CWF8FPK9T7"
 
 # --- known factual regressions (from UA_Standing_Corrections) ---
 FACT_TRAPS = [
-    (r"\b32%", "32% — should be 18% (Barometro financial services non-conformant)"),
     (r"(?i)(complaint to ComReg|ComReg requests|ComReg investigates|ComReg processes formal complaints|What does ComReg actually do|when ComReg receives)", "ComReg used as a GENERAL Irish EAA authority — it is communications ONLY. Distributed: CCPC (primary/products+general services), Central Bank (financial), Coimisiun na Mean (media), NTA (transport), ComReg (communications). Keep ComReg only in a communications context."),
-    (r"(?i)€\s?10[,.]?000|10,000 in provisional", "€10,000 Carrefour damages — VERIFIED ERROR, no damages were awarded"),
+    # Retargeted 8 Aug 2026. The old pattern matched any euro 10,000, which is
+    # ALSO Germany's legitimate BFSG standard-violation figure on two pages. It
+    # never fired on either, because it matched only the literal sign while the
+    # site writes &euro;. Blind and wrong at the same time. Now it needs the
+    # damages claim, not the number.
+    (r"(?i)(?:\u20ac\s?10[,.]?000[^.]{0,90}(?:damages|awarded)|"
+     r"(?:damages|awarded)[^.]{0,90}\u20ac\s?10[,.]?000|10,000 in provisional)",
+     "claims the Caen court awarded 10,000 euro in damages - the figure appears in "
+     "vendor summaries only, could not be confirmed in five French sources including "
+     "the associations' own communiques, and is marked do-not-publish"),
     # Narrowed 8 Aug 2026. The old pattern fired on any "first EAA ruling", which
     # caught two pages stating DIFFERENT true claims: Lille 5 May 2026 was the
     # first EAA court ruling in the EU, and Caen 4 June 2026 was the first ruling
@@ -83,6 +91,9 @@ def strip_tags(h):
     h = re.sub(r"<script.*?</script>", " ", h, flags=re.S | re.I)
     h = re.sub(r"<style.*?</style>", " ", h, flags=re.S | re.I)
     visible = re.sub(r"<[^>]+>", " ", h)
+    # &euro; is how this site writes the sign. Without decoding it, every
+    # currency trap is blind to the pages it exists to check.
+    visible = visible.replace("&euro;", "\u20ac").replace("&pound;", "\u00a3")
     return " ".join([visible, metas, jsonld, names])
 
 
@@ -292,8 +303,13 @@ def check(path):
             notes.append("ComReg appears in a corrective 'not ComReg' construction")
             continue
         # Correct only where the SAME sentence scopes it to electronic communications.
+        # A named operator or a bare "operator" supplies the telecoms context just
+        # as well as the phrase "electronic communications". Not recognising that
+        # fired on two correct sentences: one naming Three Ireland, one about what
+        # an operator has to show.
         if re.search(r"(?i)electronic communications|communications regulation|"
-                     r"Commission for Communications|mobile operator|telecoms operator", sent):
+                     r"Commission for Communications|\boperators?\b|telecoms?\b|"
+                     r"Three Ireland", sent):
             # ...unless that sentence also widens it past communications.
             if re.search(r"(?i)and digital services|/digital services|telecoms/digital", sent):
                 fails.append("FACT: ComReg scoped to communications AND widened to "
@@ -328,6 +344,24 @@ def check(path):
                      "5 May 2026 was first overall and was DISMISSED on a procedural "
                      "threshold; Caen 4 June 2026 was first ORDERING COMPLIANCE: "
                      + " ".join(sent.split())[:120])
+
+    # --- Barometro figures: criteria are not outcomes ---
+    # BOTH figures are real and neither is wrong. 18% is legal non-conformity;
+    # 32% is technical inadequacy against WCAG criteria. The error is using
+    # either as an OUTCOME claim, because failing a criterion does not establish
+    # that a specific transaction is impossible. The old trap matched a bare
+    # "32%" and fired on E.Leclerc's RGAA conformance score, an unrelated number.
+    for m in re.finditer(r"[^.!?]*\b(?:32|18)%[^.!?]*[.!?]?", body):
+        sent = m.group(0)
+        if not re.search(r"(?i)Bar.metro|financial services|WCAG|conformity|non-conform", sent):
+            continue
+        if re.search(r"(?i)cannot complete|unable to complete|fail to support|"
+                     r"fail at (?:exactly )?these journeys|prevents? users from completing|"
+                     r"means users cannot", sent):
+            fails.append("FACT: a Barometro figure used as an OUTCOME claim. 18% is legal "
+                         "non-conformity and 32% is technical inadequacy against WCAG "
+                         "criteria; failing a criterion does not establish that a "
+                         "transaction is impossible: " + " ".join(sent.split())[:120])
 
     # --- EU-wide ranking claims (JOB 0p) ---
     # Any claim that a market's penalties rank highest/strictest in the EU is
