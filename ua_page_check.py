@@ -19,6 +19,12 @@ FACT_TRAPS = [
     (r"(?i)(has been|was|were) fined", "claims a fine was ISSUED — no EAA administrative fine exists in any market"),
     (r"(?i)60 webshops", "60 webshops — should be ~100-webshop sample"),
     (r"(?i)partial conformance is not a defence anywhere", "overstates a single referé as settled EU law"),
+    # Defect A from JOB 0o: an investigative sequence no regulator publishes.
+    (r"(?i)(first document [A-Za-z ]{0,20}requests|requests? (it|the accessibility statement) first|"
+     r"review the accessibility statement first|statement first in any complaint|"
+     r"first in any complaint investigation)",
+     "claims the accessibility statement is requested FIRST in a complaint investigation - "
+     "no regulator publishes this procedure (JOB 0o defect A)"),
 ]
 
 # --- CTA overpromise (free tier must orient, not diagnose/rule) ---
@@ -172,15 +178,45 @@ def check(path):
     else: notes.append(f"{n_dash} em dashes")
 
     # --- fact + CTA traps ---
-    comms_scoped = bool(re.search(r"telecom|electronic communications|communications regulation", h, re.I)) or "telecoms" in path.lower()
+    # ComReg is checked SENTENCE BY SENTENCE, not page-wide. The old page-wide
+    # bypass scanned the whole file for telecom/electronic communications and
+    # skipped the trap if it found any, which silenced all 13 pages carrying
+    # ComReg. On eaa-compliance-ecommerce.html the only match was the Swedish
+    # regulator's name, "PTS (Post and Telecom Authority)", so mentioning Sweden
+    # disabled the Irish trap. On eaa-fines-penalties the offending cell itself
+    # read "ComReg (telecoms/digital services)", so the defect exempted itself.
+    # The exemption is scoped to the SENTENCE, never to the page. A page-wide
+    # bypass is what silenced all 13 pages: it scanned the whole file for
+    # telecom/electronic communications and skipped the trap on any hit. False
+    # positives on genuine telecoms copy are accepted as the cheaper error.
+    for m in re.finditer(r"[^.!?]*\bComReg\b[^.!?]*[.!?]?", body):
+        sent = m.group(0).strip()
+        if re.search(r"(?i)not ComReg", sent):
+            notes.append("ComReg appears in a corrective 'not ComReg' construction")
+            continue
+        # Correct only where the SAME sentence scopes it to electronic communications.
+        if re.search(r"(?i)electronic communications|communications regulation|"
+                     r"Commission for Communications|mobile operator|telecoms operator", sent):
+            # ...unless that sentence also widens it past communications.
+            if re.search(r"(?i)and digital services|/digital services|telecoms/digital", sent):
+                fails.append("FACT: ComReg scoped to communications AND widened to "
+                             "'digital services' in the same breath - rule 7 allows "
+                             "electronic communications ONLY: " + sent[:120])
+            continue
+        fails.append("FACT: ComReg used outside an electronic-communications context - "
+                     "rule 7: CCPC for products/e-commerce/general services, Central Bank "
+                     "for financial, ComReg for electronic communications ONLY: " + sent[:120])
+    for m in re.finditer(r"[^.!?]*\bComReg\b[^.!?]*[.!?]?", body):
+        sent = m.group(0).strip()
+        if re.search(r"(?i)and digital services|/digital services|telecoms/digital", sent):
+            fails.append("FACT: ComReg widened past electronic communications to "
+                         "'digital services' - rule 7 allows electronic communications "
+                         "ONLY: " + sent[:120])
     for pat, msg in FACT_TRAPS:
-        if "ComReg" in msg and comms_scoped:
-            continue  # ComReg is the correct authority on communications/telecoms pages
+        if "ComReg" in msg:
+            continue  # handled above
         if re.search(pat, body):
-            if "ComReg" in msg and re.search(r"(?i)not ComReg", body):
-                notes.append("ComReg appears only in a corrective 'not ComReg' construction")
-            else:
-                fails.append("FACT: " + msg)
+            fails.append("FACT: " + msg)
     for pat, msg in CTA_TRAPS:
         if re.search(pat, body): fails.append("CTA: " + msg)
 

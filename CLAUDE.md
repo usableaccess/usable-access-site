@@ -473,8 +473,26 @@ The claim was removed from `eaa-compliance-telecoms.html` on 4 August for exactl
 ### CORRECT AND NOT TO BE TOUCHED
 `eaa-compliance-telecoms.html`, `eaa-compliance-ireland.html` lines 223 to 224, `eaa-sanctions.html` line 206, and the `insights.html` telecoms card all reference ComReg on electronic communications, which is right. `eaa-compliance-fintech.html` line 147 explicitly corrects the error and should be left as the model.
 
-### The checker gap
-`ua_page_check.py` traps ComReg as the general authority, and **it did not catch any of these.** Establish why before fixing the pages, or the same copy returns. Add a trap for the defect A wording at the same time.
+### THE CHECKER GAP: A TRAP THAT EXEMPTED ITSELF WHEN THE DEFECT WAS PRESENT
+
+**Diagnosed 8 August 2026. `ua_page_check.py` traps ComReg as the general authority and reported nothing on any of the thirteen pages carrying the word.** Two independent causes, and the first is the one worth remembering.
+
+**1. The bypass was page-wide and fired on unrelated text.** The check computed `comms_scoped` by scanning the **whole file** for `telecom|electronic communications|communications regulation`, and skipped the ComReg trap entirely on any hit.
+
+- On `eaa-compliance-ecommerce.html` the only match in the file was **"PTS (Post and Telecom Authority)"**, the Swedish regulator. Mentioning Sweden disabled the Irish trap. That page **did** match the trap pattern and was silenced anyway.
+- On `eaa-fines-penalties-ireland-netherlands-sweden.html` the offending cell read **`ComReg (telecoms/digital services)`**. The word "telecoms" inside the error triggered the bypass that hid the error. **The defect exempted itself.**
+
+**2. The pattern matched six fixed phrasings**, none of which was how the copy was actually written. `ComReg enforces the EAA for digital travel services`, `ComReg is the enforcement authority for digital services` and `ComReg enforcement ... apply to SaaS companies` all passed.
+
+### The fix, applied
+**The exemption is now scoped to the sentence, never to the page**, and the check matches **every** sentence containing ComReg rather than six phrasings. A sentence is clean only if it scopes itself to electronic communications, and it still fails if it widens to "digital services" in the same breath. **False positives are accepted as the cheaper error**, and the telecoms page now produces three: legitimate sentences where the surrounding section carries the context and the sentence does not.
+
+A trap for defect A was added at the same time.
+
+**After the fix: 14 pages report, against 0 before.**
+
+### THE GENERAL LESSON: AUDIT THE OTHER TRAPS FOR THIS SHAPE
+**A check that switches itself off when it sees the thing it is looking for is worse than no check**, because it reports PASS. The ComReg trap was the only one with a page-level bypass, so no other trap has this exact defect today. **But the shape is what matters: any exemption computed over a whole file can be triggered by text unrelated to the claim being checked.** Before adding a bypass to any future trap, scope it to the sentence.
 
 ---
 
