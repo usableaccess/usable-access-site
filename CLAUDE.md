@@ -539,6 +539,39 @@ A trap for defect A was added at the same time.
 
 ---
 
+## 🔴 JOB 0p — READ THE FACT TRAPS, DO NOT COUNT THEM
+
+**Added 8 August 2026. Both unverified Dutch ceilings were found by accident, not by a check.** The 900,000 euro figure surfaced only because JOB 0m made me dump the JSON-LD blocks. The 300,000 euro figure surfaced only because the Italy callout appeared while chasing the first. Neither was on any job list, and neither tripped a trap.
+
+### THE THREE WAYS A FALSE CLAIM SURVIVED A CHECK TODAY
+All three came from one trap, and all three are shapes rather than one-off bugs.
+
+**1. A bypass that fires on unrelated text.** The ComReg exemption scanned the whole file for `telecom|electronic communications` and skipped the trap on any hit. On `eaa-compliance-ecommerce.html` the only match was **"PTS (Post and Telecom Authority)"**, the Swedish regulator. On `eaa-fines-penalties` the offending cell itself read `ComReg (telecoms/digital services)`, so **the defect exempted itself.**
+
+**2. A phrasing outside the pattern.** The trap matched six fixed strings. The copy said `ComReg enforces the EAA for digital travel services`. Detection then went 6, 8, 13 as each fix widened the pattern, because the claim had been reworded per page while the procedure travelled unchanged.
+
+**3. Structured data the check does not read.** JSON-LD repeats page copy verbatim and is invisible to anything built on rendered text. See the standing note above.
+
+### THE JOB
+**Read every entry in `FACT_TRAPS` and ask what shape of error it would miss.** Not whether it fires today. Report before changing anything.
+
+For each trap, answer:
+- **What claim is it actually testing**, as opposed to what string it matches?
+- **Is there an exemption?** If so, is it scoped to the sentence or to the file? A file-scoped exemption is the shape that hid ComReg.
+- **How else could this claim be phrased?** Reword it three ways and check whether the pattern still catches it. Attribution drift is the common case: ComReg to Irish regulators to the competent authority to the Central Bank.
+- **Would it see the claim inside JSON-LD, a `<title>`, a meta description, or a table cell?**
+- **Is it testing a number that has no source?** A trap on a specific wrong figure catches that figure. It does not catch the same unsourced claim restated as a different figure, which is exactly how one Dutch ceiling became two.
+
+### WHAT IS ALREADY KNOWN TO BE MISSING
+- **No trap on an unsourced Dutch ceiling**, only on the specific strings once they were known.
+- **No trap on comparative or superlative claims.** "Among the highest in the EU" was on three pages for three different markets. Nobody has surveyed twenty-seven transpositions, so any ranking is unsupportable by construction and is cheap to catch.
+- **No trap for a civil ceiling compared against a criminal maximum**, which the Italy callout did.
+
+### SCOPE HONESTLY
+**A trap can only catch a claim someone already knew was wrong.** This job reduces the surface, it does not close it. Say so in the output rather than implying the FACT set is now complete.
+
+---
+
 ## JOB 0l — A SITEMAPPED PAGE THAT CANONICAL-DEFERS AND REDIRECTS AWAY
 
 **Found 7 August 2026 while removing five duplicate pages. Investigated fully 8 August 2026 — the diagnosis below replaces the original entry, which overstated the problem.**
