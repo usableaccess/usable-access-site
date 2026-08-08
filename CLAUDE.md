@@ -565,6 +565,8 @@ The direction is wrong in both ways. It overstates a page carrying commented-out
 ### The fix
 **Scope the count to text content inside `<main>`.** Exclude `<style>`, `<script>`, HTML and CSS comments, `<title>`, and every `<meta>`. Strip tags, then count what remains.
 
+**Also exclude related-link titles**, meaning the `<li><a>` entries in the related-links block. They are article titles, so exception 1 in JOB 0n already applies to them, and **converting them would make the link text disagree with the heading it points to.** They are a large share of what remains on finished pages: `eaa-compliance-ecommerce.html` cannot drop below about 12 while 11 of those are link titles, and `services.html` is the same with 8 price headings and 4 link titles. **Once this exclusion is in, pages that are effectively finished will report as finished**, which is the point of the count.
+
 **Report both figures while the transition beds in**, e.g.
 `ok  4 em dashes in prose (11 in file, 7 outside prose)`
 
