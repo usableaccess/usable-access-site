@@ -201,7 +201,15 @@ def check(path):
         warns.append("back-to-top element present but JS not found")
 
     # --- social preview block ---
-    missing_og = [t for t in OG_REQUIRED if t not in h]
+    # A redirect stub is not a social destination. Giving it a full OG block
+    # tells crawlers to treat a page that immediately leaves as somewhere to
+    # land, so ua_sync_blocks.py deliberately skips them. Without this exemption
+    # the checker would fail such a page forever, and a permanent known failure
+    # trains people to ignore the count.
+    is_redirect_stub = bool(re.search(r'http-equiv="refresh"', h, re.I))
+    missing_og = [] if is_redirect_stub else [t for t in OG_REQUIRED if t not in h]
+    if is_redirect_stub:
+        notes.append("redirect stub - OG block not required")
     if missing_og:
         fails.append("OG block incomplete: " + ", ".join(
             t.split('"')[1] if '"' in t else t for t in missing_og))
