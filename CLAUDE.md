@@ -460,6 +460,13 @@ The five late finds were attributed differently every time: **"the competent aut
 
 The trap now covers the variant wordings. It found none on the final pass.
 
+### WHERE IT CAME FROM, AND WHY IT WORE FOUR DIFFERENT ATTRIBUTIONS
+**The claim was in four project markdown files, and two of them taught it as a house pattern.** That is why it appeared on 13 pages under four attributions rather than being copied verbatim: each page was written from a source that presented the procedure as established, and each author attributed it to whichever authority that page was about. **The site was not the origin. It was the symptom.**
+
+Those source files are being removed at source, and the client-facing documents were checked and are clean.
+
+**The general lesson for the register: when a false claim appears in more than two or three places under varying wording, look for a source document that taught it.** Deleting the instances without removing the source leaves it to be rewritten.
+
 | Page | Line | Attributed to |
 |---|---|---|
 | `eaa-compliance-checklist.html` | 275 | ComReg |
