@@ -230,6 +230,31 @@ Every other job on this list is invisible to a visitor. **This one is on the ele
 **4. Report the pair, the ratio and the requirement**, e.g.
 `FAIL contrast: .article-cta a (#0000EE default) on .article-cta background (#0F6B6B) = 1.49:1, needs 4.5:1`
 
+### AND A FOCUS-STATE CHECK, WHICH CONTRAST ALONE WOULD NOT HAVE CAUGHT
+
+**Added 8 August 2026 after a focus indicator we introduced went to production nearly invisible.**
+
+**The failure:** `.article-cta .cta-button` had a 2px white resting outline and a 3px white focus outline, both setting the same `outline` property. **Focus replaced the resting ring rather than adding to it** — a 1px width change in the same colour.
+
+**A contrast check would have passed it.** White on teal is 6.30:1 in both states. **The ratio was never the problem.**
+
+**What to check instead, for every element with both a resting and a focus style:**
+
+1. **Do the two states differ by MORE than width in the same colour?** A change of colour, or an added property such as `box-shadow`, or a change in offset large enough to read as a new band. **Warn if the only difference is the width of the same-coloured outline.**
+
+2. **Do both states set the same property?** If resting and focus both set `outline`, **focus replaces rather than adds.** That is legitimate if the colour changes, and near-invisible if it does not. Flag the combination.
+
+3. **Is the visible band what the CSS suggests?** **Outlines paint above outer box-shadows**, and both start at the border edge — so a 2px outline over a 3px shadow shows **1px** of shadow. **Compute the visible width, not the declared value.**
+
+4. **Is there a focus style at all?** Any interactive element with a resting outline and no `:focus` or `:focus-visible` rule.
+
+**Report the visible widths and the delta**, e.g.
+`WARN focus-state: .cta-button resting 2px #ffffff, focus 3px #ffffff — same colour, 1px delta. Focus may be indistinguishable.`
+
+**Reference values, now live and correct:** resting `outline: 2px solid #ffffff`; focus `outline: 2px solid #ffffff` plus `box-shadow: 0 0 0 7px #000000`, giving **5px of visible black.** Different property, different colour, unmistakable.
+
+**Why this matters more than most checks here.** Three defects in one session — unstyled CTA links, a missing `<main>`, and this — **were all found by eye. The tooling actively passed the focus ring.** WCAG 2.4.7 Focus Visible is Level A.
+
 ### Also check, in the same pass
 - **Colour used alone to convey meaning.** If a rule sets only `color` on a link inside a coloured block with no `text-decoration`, warn — that is 1.4.1.
 - **Focus states.** Any `:focus` outline colour against the background it sits on needs 3:1.
@@ -399,30 +424,34 @@ Full detail and exact wording in `UA_Recurring_Revenue_DocChanges.md`:
 Re-run `python3 ua_orphan_check.py .` **against the full repo, not the working folder** — the working folder produces 88 unresolved links because most of the site is not in it.
 ---
 
-## JOB 0l — A SITEMAPPED PAGE DECLARES A DIFFERENT PAGE CANONICAL
+## JOB 0l — A SITEMAPPED PAGE THAT CANONICAL-DEFERS AND REDIRECTS AWAY
 
-**Found 7 August 2026, while removing five duplicate pages. Not fixed — it needs a content decision, not a mechanical one.**
+**Found 7 August 2026 while removing five duplicate pages. Investigated fully 8 August 2026 — the diagnosis below replaces the original entry, which overstated the problem.**
 
-`insights/invisible-revenue-loss.html` is listed in `sitemap.xml`, and its own canonical points at `/eaa-revenue-loss.html`. **The sitemap asks Google to index a URL that then tells Google to index a different one.** The two signals contradict each other, and when they do, the sitemap entry is wasted crawl budget at best.
+`insights/invisible-revenue-loss.html` carries **three signals that do not agree**:
 
-**Two files now name `/eaa-revenue-loss.html` as canonical:**
+| Signal | Says |
+|---|---|
+| `sitemap.xml` line 121 | index this URL |
+| `rel="canonical"` (line 6) | the real page is `/eaa-revenue-loss.html` |
+| `<meta http-equiv="refresh" content="0; ...">` (line 7) | leave immediately for `/eaa-revenue-loss.html` |
 
-| File | Canonical | In sitemap | Inbound |
-|---|---|---|---|
-| `eaa-revenue-loss.html` | itself | yes | 15 |
-| `insights/invisible-revenue-loss.html` | `/eaa-revenue-loss.html` | yes | 1 |
+### Why Search Console appears to contradict this — it does not
+URL Inspection reports the page **indexed**, with **user-declared canonical: None**, last crawled **8 July 2026**.
 
-A third, the root-level `invisible-revenue-loss.html`, also named it and was deleted on 7 August 2026 as a duplicate.
+**The canonical and the meta refresh both entered the repo on 13 July 2026, in commit `903959a`. That is five days after the last crawl.** At the moment Google looked, the page genuinely had neither tag. **The report is a faithful record of a page that no longer exists in that form**, not evidence that the tags are being ignored.
 
-### The decision to make
-`insights/invisible-revenue-loss.html` is either its own page or it is not. **Pick one, do not leave it half-way:**
-- **If it is its own page** — give it a self-referential canonical, and check the two are genuinely different articles rather than the same piece under two names. Its only inbound link is from `aimac-deep-dive.html`, so it also needs the three-to-six inbound links the publishing protocol requires.
-- **If it is a duplicate of `eaa-revenue-loss.html`** — remove it from `sitemap.xml` and repoint that one inbound link, then delete it. Keeping a canonical-deferring page in the sitemap is the worst of both.
+Both tags are confirmed present in the **live served HTML**, not merely the repo, and the canonical sits on line 6, *before* the refresh on line 7 — so the parser cannot reach the refresh first. The tags are correct and correctly ordered.
 
-**Check the Search Console data before deciding.** `eaa-revenue-loss.html` carries 15 inbound links and is clearly the live page, but if the insights URL has impressions of its own, that changes the answer.
+**Origin of the meta refresh is unknown.** It arrived in a bulk `Add files via upload` commit with no explanation, and it is the **only page on the site carrying one**.
+
+### The conclusion — the decision is smaller than it first looked
+The canonical and the redirect already answer the "is this a duplicate" question, and they agree with each other. **Once Google re-crawls, the redirect resolves this on its own.**
+
+**The one thing still wrong, and the only thing we control today, is `sitemap.xml` line 121.** We should not ask Google to index a URL that defers by canonical and then redirects away. Removing that line is the whole job.
 
 ### Also worth a checker
-Nothing currently catches this. **A check that every `<loc>` in `sitemap.xml` resolves to a file whose canonical points back at that same URL** would have caught it, and would also catch the sitemap-entry-with-no-file failure recorded in rule 14. Roughly twenty lines.
+**A check that every `<loc>` in `sitemap.xml` resolves to a file whose canonical points back at that same URL, and that carries no meta refresh.** It would have caught this, and also the sitemap-entry-with-no-file failure recorded in rule 14. Roughly twenty lines.
 ---
 
 ## JOB 0k — HOMEPAGE HERO: APPLY THE APPROVED DJ MERGE (content, NOT a judgement call)
