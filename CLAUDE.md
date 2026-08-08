@@ -26,18 +26,23 @@ Never hand-author a page from scratch. Copy the canonical template (`eaa-complia
 |---|---|---|
 | `ua_page_check.py` | Validates every CSS class against `site.css` and hard-fails undefined ones (this is what stops naked pages). Also fact traps, CTA wording, meta length, em-dash count | Before every commit |
 | `ua_a11y_check.py` | Static WCAG checks: lang, skip link, landmarks, single h1, heading order, alt text, link/button names, form labels, ARIA validity, duplicate ids, table headers, zoom | Before every commit |
-| `ua_sync_blocks.py` | Shared-block sync. Defines the footer legal links and the OG block **once** and writes them into every page. Dry-run by default | Whenever a shared block changes, or a page is added |
+| `ua_sync_blocks.py` | **OG/Twitter block ONLY** (built 8 Aug 2026). Defines it **once** and writes it into every page, taking title, description and canonical from the page itself. Dry-run by default; `--write` applies. **Refuses two things:** redirect stubs, and any description over 155 chars, which it flags and skips rather than propagating | Whenever the OG block changes, or a page is added |
 | `ua_orphan_check.py` | Builds the internal link graph. Reports orphans (zero inbound links), under-linked pages, in-sitemap-but-orphaned, and unresolved links. Counts links from `<main>` only — a page reachable solely from nav or footer is still effectively orphaned | Whenever a page is added; before declaring anything published |
 | `ua_insights_sync.py` | Drift detector — home cards vs the insights index | Before declaring anything published |
 | `ua_backup.py` | Timestamped snapshots of the irreplaceable files | Not repo work, but keep it versioned here |
 | `ua_erase.py` | GDPR data-subject find/erase across the tracker | Not repo work, but keep it versioned here |
 
-**`ua_sync_blocks.py` is the answer to "how do I change the footer on 40 pages".** Edit `LEGAL_LINKS` or the OG template at the top of the script, run `--write`, run both checkers. Do not hand-edit footers.
+**`ua_sync_blocks.py` manages the OG block and nothing else.** Edit `OG_TEMPLATE` at the top of the script, run `--write`, run both checkers.
+
+**The register previously described a wider tool that did not exist.** It claimed ownership of the footer legal links and, under JOB 5, the nav CTA markup and CSS. **No such script was ever in the repo.** What exists now covers OG only. **The footer and nav CTA are still hand-edited**, so do not assume a sync will propagate them.
 
 ```bash
-python3 tools/ua_sync_blocks.py .                        # dry run
-python3 tools/ua_sync_blocks.py . --adopt --write        # apply; --adopt brings existing OG under management
+python3 ua_sync_blocks.py .                  # dry run, changes nothing
+python3 ua_sync_blocks.py . --write          # apply
+python3 ua_sync_blocks.py insights --write   # the insights folder is separate
 ```
+
+There is no `--adopt`. It was documented for bringing hand-written OG blocks under management; every OG block on the site is already inside the `ua:og:start` / `ua:og:end` markers, so there was nothing to adopt.
 
 ---
 
