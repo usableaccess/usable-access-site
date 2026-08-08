@@ -539,36 +539,39 @@ A trap for defect A was added at the same time.
 
 ---
 
-## 🔴 JOB 0p — READ THE FACT TRAPS, DO NOT COUNT THEM
+## JOB 0p — READ THE FACT TRAPS, DO NOT COUNT THEM — AUDITED 8 August 2026
 
-**Added 8 August 2026. Both unverified Dutch ceilings were found by accident, not by a check.** The 900,000 euro figure surfaced only because JOB 0m made me dump the JSON-LD blocks. The 300,000 euro figure surfaced only because the Italy callout appeared while chasing the first. Neither was on any job list, and neither tripped a trap.
+### FINDING 1: THE TRAP SET IS A BOOKMARK OF KNOWN ERRORS, NOT A CHECK
+Each trapped claim was reworded three ways. **18 of 22 paraphrases were missed.**
 
-### THE THREE WAYS A FALSE CLAIM SURVIVED A CHECK TODAY
-All three came from one trap, and all three are shapes rather than one-off bugs.
+| Trap | Catches | Misses |
+|---|---|---|
+| `32%` | `32%` | "thirty-two per cent", "32 percent" |
+| Carrefour damages | `€10,000` | "10.000 euro", "ten thousand euros in damages" |
+| first EAA ruling | "first EAA ruling" | "the EU's first EAA judgment", "the first ruling under the Act" |
+| a fine was issued | "was fined" | "a fine has been issued", "regulators have imposed fines" |
+| 60 webshops | "60 webshops" | "sixty webshops", "60 online shops" |
+| partial conformance | the exact sentence | "partial compliance is no defence in the EU" |
 
-**1. A bypass that fires on unrelated text.** The ComReg exemption scanned the whole file for `telecom|electronic communications` and skipped the trap on any hit. On `eaa-compliance-ecommerce.html` the only match was **"PTS (Post and Telecom Authority)"**, the Swedish regulator. On `eaa-fines-penalties` the offending cell itself read `ComReg (telecoms/digital services)`, so **the defect exempted itself.**
+**This is not a reason to remove them.** It changes what a passing trap set means. **A green FACT result says "none of the specific wordings we have already been burned by is present." It does not say the page is factually sound.** Do not report it as though it does.
 
-**2. A phrasing outside the pattern.** The trap matched six fixed strings. The copy said `ComReg enforces the EAA for digital travel services`. Detection then went 6, 8, 13 as each fix widened the pattern, because the claim had been reworded per page while the procedure travelled unchanged.
+### FINDING 2: A SOURCE CHECK MUST BE PER-MARKET OR NOT AT ALL
+The proposed unsourced-ceiling trap was tested against the two Dutch ceilings it was designed to catch. **It caught one and missed the other.**
 
-**3. Structured data the check does not read.** JSON-LD repeats page copy verbatim and is invisible to anything built on rendered text. See the standing note above.
+`eaa-compliance-italy.html` carried the €300,000 Dutch figure and **passed**, because the page cites "Decreto" for its own Stanca Law figures. **A citation for one market's numbers vouched for a different market's number sitting in the same paragraph.** That is not a bug to fix. It is a property of any page-scoped or paragraph-scoped source test, and it is exactly how the second ceiling survived.
 
-### THE JOB
-**Read every entry in `FACT_TRAPS` and ask what shape of error it would miss.** Not whether it fires today. Report before changing anything.
+Any future source check has to pair each figure with the market named nearest it and require a citation for **that** market. Not built.
 
-For each trap, answer:
-- **What claim is it actually testing**, as opposed to what string it matches?
-- **Is there an exemption?** If so, is it scoped to the sentence or to the file? A file-scoped exemption is the shape that hid ComReg.
-- **How else could this claim be phrased?** Reword it three ways and check whether the pattern still catches it. Attribution drift is the common case: ComReg to Irish regulators to the competent authority to the Central Bank.
-- **Would it see the claim inside JSON-LD, a `<title>`, a meta description, or a table cell?**
-- **Is it testing a number that has no source?** A trap on a specific wrong figure catches that figure. It does not catch the same unsourced claim restated as a different figure, which is exactly how one Dutch ceiling became two.
+### WHAT WAS BUILT
+**1. The blindness fix, done first.** `strip_tags` now includes meta descriptions, `og:description`, JSON-LD, alt text and aria-label. Before this, **every trap was blind to all five**, which is why the €900,000 Dutch ceiling in a meta description and the JOB 0o procedure in an Ireland JSON-LD field were structurally uncatchable. Image URLs stay excluded so no noise enters. No count changed on the day, because those instances had already been cleaned by hand: this is regression-proofing, and it makes every future trap more effective.
 
-### WHAT IS ALREADY KNOWN TO BE MISSING
-- **No trap on an unsourced Dutch ceiling**, only on the specific strings once they were known.
-- **No trap on comparative or superlative claims.** "Among the highest in the EU" was on three pages for three different markets. Nobody has surveyed twenty-seven transpositions, so any ranking is unsupportable by construction and is cheap to catch.
-- **No trap for a civil ceiling compared against a criminal maximum**, which the Italy callout did.
+**2. The EU-wide ranking trap.** Any claim that a market ranks highest or strictest in the EU is unsupportable by construction, so a pattern match is a complete test rather than an approximation. **Bounded comparisons are exempt** — "the sharpest regime of the three" compares three surveyed markets and is this file's own wording. Requires a penalty context and EU-wide scope. **1 hit, 0 false positives**, and the hit was a live defect: a second ranking in the `eaa-compliance-italy.html` deck, in different wording from the callout deleted earlier the same day. Now fixed; the trap reports 0.
 
-### SCOPE HONESTLY
-**A trap can only catch a claim someone already knew was wrong.** This job reduces the surface, it does not close it. Say so in the output rather than implying the FACT set is now complete.
+### WHAT WAS NOT BUILT, AND WHY
+**The unsourced-ceiling trap. Do not ship it in either form.** At sentence level it produced **50 hits, essentially all legitimate** — Ireland's €60,000 from S.I. 636/2023, Italy's Stanca table, France's per-offence model, and our own service prices. A 170-character window cannot see a citation in a table caption or an earlier paragraph. At page level it produced 1 flag but failed the Italy case above.
+
+### THE LIMIT, WHICH IS THE POINT OF THIS JOB
+**A trap can only catch a claim someone already knew was wrong.** Everything here reduces the surface. **None of it would have found either Dutch ceiling first.** Both were found by reading, and the second only while chasing the first. **The FACT set will never be complete, and saying so matters more than the number of traps in it.**
 
 ---
 

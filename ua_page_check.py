@@ -43,10 +43,40 @@ OG_REQUIRED = [
     'name="twitter:card" content="summary_large_image"', 'name="twitter:image"',
 ]
 
+
+# --- EU-wide ranking claims (JOB 0p) ---
+_RANK_PAT = re.compile(r"(?i)\b(among the (?:highest|strictest|toughest|most severe|most significant)|"
+                       r"one of the (?:highest|strictest|toughest)|at the upper end|places it alongside|"
+                       r"(?:highest|strictest|toughest|most severe) (?:maximum )?(?:fine |penalty |)"
+                       r"(?:ceiling|ceilings|penalties|fines|regime)s? in)")
+_RANK_LEGAL = re.compile(r"(?i)fine|penalt|ceiling|sanction|enforcement|liability")
+_RANK_EUWIDE = re.compile(r"(?i)\b(the EU|Europe|European Union|member states?)\b")
+_RANK_BOUNDED = re.compile(r"(?i)of the three|of the (?:two|four|five)|Phase 1 markets|of those three")
+
 def strip_tags(h):
+    """Text surface for the FACT and CTA traps.
+
+    Includes regions a rendered-text strip would drop. Every trap was blind to
+    five of them until 8 August 2026, which is why two claims were structurally
+    uncatchable: the 900,000 euro Dutch ceiling lived in a meta description, and
+    the JOB 0o complaint procedure lived in a JSON-LD "text" field on a page
+    whose visible copy had already been corrected. No pattern could reach either.
+    """
+    # JSON-LD repeats page copy verbatim. Capture it before <script> is dropped.
+    jsonld = " ".join(re.findall(
+        r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', h, re.S | re.I))
+    jsonld = jsonld.replace("\\u20ac", "€").replace('\\"', " ")
+    # description/title metadata lives in attributes, invisible after tag stripping.
+    metas = " ".join(m.group(2) for m in re.finditer(
+        r'<meta[^>]*(?:name|property)="([^"]*(?:description|title)[^"]*)"[^>]*content="([^"]*)"',
+        h, re.I))
+    # accessible names can carry claims too
+    names = " ".join(re.findall(r'\b(?:alt|aria-label)="([^"]*)"', h, re.I))
+
     h = re.sub(r"<script.*?</script>", " ", h, flags=re.S | re.I)
     h = re.sub(r"<style.*?</style>", " ", h, flags=re.S | re.I)
-    return re.sub(r"<[^>]+>", " ", h)
+    visible = re.sub(r"<[^>]+>", " ", h)
+    return " ".join([visible, metas, jsonld, names])
 
 
 # --- CSS class validation (prevents the "naked page" failure: invented classes not in site.css) ---
@@ -264,6 +294,21 @@ def check(path):
             fails.append("FACT: ComReg widened past electronic communications to "
                          "'digital services' - rule 7 allows electronic communications "
                          "ONLY: " + sent[:120])
+    # --- EU-wide ranking claims (JOB 0p) ---
+    # Any claim that a market's penalties rank highest/strictest in the EU is
+    # unsupportable by construction: nobody here has surveyed 27 transpositions.
+    # That makes a pattern match a complete test rather than an approximation.
+    # BOUNDED comparisons are exempt. "the sharpest regime of the three" compares
+    # three surveyed markets and is the standing corrections' own wording.
+    for m in _RANK_PAT.finditer(body):
+        w = body[max(0, m.start() - 220):m.start() + 240]
+        if not (_RANK_LEGAL.search(w) and _RANK_EUWIDE.search(w)):
+            continue
+        if _RANK_BOUNDED.search(w):
+            continue
+        fails.append("FACT: unsupportable EU-wide ranking claim - nobody has surveyed "
+                     "27 transpositions, so no market can be placed highest or strictest: "
+                     + " ".join(w[200:360].split()))
     for pat, msg in FACT_TRAPS:
         if "ComReg" in msg:
             continue  # handled above
