@@ -580,34 +580,16 @@ Any future source check has to pair each figure with the market named nearest it
 
 ---
 
-## JOB 0l — A SITEMAPPED PAGE THAT CANONICAL-DEFERS AND REDIRECTS AWAY
+## JOB 0l — A SITEMAPPED PAGE THAT CANONICAL-DEFERS AND REDIRECTS AWAY — CLOSED 8 August 2026
 
-**Found 7 August 2026 while removing five duplicate pages. Investigated fully 8 August 2026 — the diagnosis below replaces the original entry, which overstated the problem.**
+**Resolved by deleting the page.** `insights/invisible-revenue-loss.html` carried three signals that did not agree: a sitemap entry, a canonical naming `/eaa-revenue-loss.html`, and a zero-delay meta refresh to the same URL.
 
-`insights/invisible-revenue-loss.html` carries **three signals that do not agree**:
+**What was done, in order.** The sitemap entry went first (`7f22518`). Then the page itself, once it was confirmed that nothing linked to it: one inbound link remained, a related-links entry on `insights/aimac-deep-dive.html`, repointed to `/eaa-revenue-loss.html`. The link text, "Inaccessible design is invisible revenue loss", is that page's own title, so it needed no rewording.
 
-| Signal | Says |
-|---|---|
-| `sitemap.xml` line 121 | index this URL |
-| `rel="canonical"` (line 6) | the real page is `/eaa-revenue-loss.html` |
-| `<meta http-equiv="refresh" content="0; ...">` (line 7) | leave immediately for `/eaa-revenue-loss.html` |
+**Why deletion rather than keeping the redirect.** Seven impressions in three months and zero clicks. The redirect was preserving almost nothing, and it was accumulating checker exemptions: it needed one for the OG block, and would have needed further ones for the missing back-to-top element and a 168-character description. **Each exemption is a rule someone has to understand later.** Three of them to keep a page nobody reaches is a bad trade.
 
-### Why Search Console appears to contradict this — it does not
-URL Inspection reports the page **indexed**, with **user-declared canonical: None**, last crawled **8 July 2026**.
+**One exemption was kept**, because it is right in general rather than for this page: `ua_page_check.py` no longer requires an OG block on a page carrying a meta refresh. A redirect is not a social destination.
 
-**The canonical and the meta refresh both entered the repo on 13 July 2026, in commit `903959a`. That is five days after the last crawl.** At the moment Google looked, the page genuinely had neither tag. **The report is a faithful record of a page that no longer exists in that form**, not evidence that the tags are being ignored.
-
-Both tags are confirmed present in the **live served HTML**, not merely the repo, and the canonical sits on line 6, *before* the refresh on line 7 — so the parser cannot reach the refresh first. The tags are correct and correctly ordered.
-
-**Origin of the meta refresh is unknown.** It arrived in a bulk `Add files via upload` commit with no explanation, and it is the **only page on the site carrying one**.
-
-### The conclusion — the decision is smaller than it first looked
-The canonical and the redirect already answer the "is this a duplicate" question, and they agree with each other. **Once Google re-crawls, the redirect resolves this on its own.**
-
-**The one thing still wrong, and the only thing we control today, is `sitemap.xml` line 121.** We should not ask Google to index a URL that defers by canonical and then redirects away. Removing that line is the whole job.
-
-### Also worth a checker
-**A check that every `<loc>` in `sitemap.xml` resolves to a file whose canonical points back at that same URL, and that carries no meta refresh.** It would have caught this, and also the sitemap-entry-with-no-file failure recorded in rule 14. Roughly twenty lines.
 ---
 
 ## JOB 0m — THE EM DASH COUNT MEASURES THE WRONG THING — DONE 8 August 2026
