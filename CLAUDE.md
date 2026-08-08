@@ -438,6 +438,46 @@ Full detail and exact wording in `UA_Recurring_Revenue_DocChanges.md`:
 Re-run `python3 ua_orphan_check.py .` **against the full repo, not the working folder** — the working folder produces 88 unresolved links because most of the site is not in it.
 ---
 
+## 🔴 JOB 0o — AN UNSUPPORTED ENFORCEMENT PROCEDURE, AND ComReg CAST TOO WIDE, ON ELEVEN PAGES
+
+**Found 8 August 2026 during the JOB 0n writing pass. Two separate factual defects, both repeated across the site. This is a hard rule 7 breach in the wild, and rule 7 exists because of it.**
+
+The claim was removed from `eaa-compliance-telecoms.html` on 4 August for exactly these reasons. **It was never removed from anywhere else.**
+
+### DEFECT A — a procedure no regulator publishes
+**"The accessibility statement is requested first in any complaint investigation."** Nothing ComReg publishes supports this. It describes an investigative sequence we have invented. It is stated as settled procedure, sometimes attributed to ComReg and sometimes to "Irish regulators", which makes it read as established fact on seven pages.
+
+| Page | Line | Attributed to |
+|---|---|---|
+| `eaa-compliance-checklist.html` | 275 | ComReg |
+| `eaa-compliance-ecommerce.html` | 131 | ComReg |
+| `eaa-compliance-ireland.html` | 181 | Irish regulators |
+| `eaa-accessibility-statement.html` | 252 | Irish regulators |
+| `eaa-fines-penalties-ireland-netherlands-sweden.html` | 341 | Irish regulators |
+| `insights.html` | 730 | Irish regulators |
+
+**Delete the procedural claim.** The defensible point survives without it: an accessibility statement is a mandatory EAA requirement, and an absent or inadequate one is visible to anyone who looks. Do not replace one invented procedure with another.
+
+### DEFECT B — ComReg presented as the general authority
+**Hard rule 7: CCPC for products, e-commerce and consumer services generally. Central Bank for consumer banking and e-money. ComReg for electronic communications ONLY.**
+
+| Page | Line | What it says | Correct authority |
+|---|---|---|---|
+| `eaa-compliance-travel.html` | 133 | "ComReg enforces the EAA for digital travel services" | CCPC |
+| `eaa-compliance-ecommerce.html` | 113 | "ComReg is the enforcement authority for digital services" | CCPC |
+| `eaa-compliance-saas.html` | 266 | "ComReg enforcement ... apply to SaaS companies" | CCPC |
+| `eaa-enforcement.html` | 229 | "ComReg enforces for electronic communications **and digital services**" | drop the second half |
+| `eaa-fines-penalties-ireland-netherlands-sweden.html` | 288 | "ComReg (telecoms/**digital services**)" | drop the second half |
+| `eaa-compliance-france.html` | 282 | link titled "criminal liability and ComReg enforcement" | retitle |
+
+### CORRECT AND NOT TO BE TOUCHED
+`eaa-compliance-telecoms.html`, `eaa-compliance-ireland.html` lines 223 to 224, `eaa-sanctions.html` line 206, and the `insights.html` telecoms card all reference ComReg on electronic communications, which is right. `eaa-compliance-fintech.html` line 147 explicitly corrects the error and should be left as the model.
+
+### The checker gap
+`ua_page_check.py` traps ComReg as the general authority, and **it did not catch any of these.** Establish why before fixing the pages, or the same copy returns. Add a trap for the defect A wording at the same time.
+
+---
+
 ## JOB 0l — A SITEMAPPED PAGE THAT CANONICAL-DEFERS AND REDIRECTS AWAY
 
 **Found 7 August 2026 while removing five duplicate pages. Investigated fully 8 August 2026 — the diagnosis below replaces the original entry, which overstated the problem.**
@@ -519,6 +559,7 @@ Heaviest first: `eaa-compliance-checklist.html` (36), `insights.html` (34), `eaa
 1. **Card and article headings using a dash as a title separator.** `Sweden's PTS — proactive inspections` reads as a subtitle, not an aside. A colon is often better, but this is a judgement call per heading and never a mechanical replacement.
 2. **The `<title>` brand separator.** `Usable Access — Clarity-first EAA Compliance`. Leave it.
 3. **Any dash where the contrast genuinely earns its place**, meaning a reader would otherwise assume the opposite. From the `index.html` pass, `not a full audit and never a compliance certificate` and `tested by a person, not a scan` were both kept. Both correct a reasonable wrong assumption. `not because it resolves compliance, but because it tells you` was removed, because nobody assumed it resolved compliance.
+4. **Card and preview copy: TITLES ONLY, not excerpts.** A card title such as `Accessibility statements &mdash; what a credible one contains` is a subtitle, and the dash belongs there. **The excerpt below it is ordinary prose and is in scope.** This exception was added on 8 August 2026 after a first pass stripped the card copy on `insights.html` wholesale; that was reverted. Two excerpt changes on `index.html` were kept, because both were genuine asides.
 
 **Target is one or two per page, not zero.** A page that reaches zero has probably lost a dash that was working.
 
