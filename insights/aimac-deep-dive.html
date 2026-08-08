@@ -213,30 +213,30 @@
       <div class="container">
         <div class="article-container">
 
-          <p>AI coding tools have become a standard part of front-end development. GitHub Copilot, Claude, ChatGPT, Gemini &mdash; these tools generate significant portions of the HTML that ends up in production. The assumption among most teams is that the output is broadly correct. For accessibility, that assumption needs examining.</p>
+          <p>AI coding tools have become a standard part of front-end development. GitHub Copilot, Claude, ChatGPT and Gemini generate significant portions of the HTML that ends up in production. The assumption among most teams is that the output is broadly correct. For accessibility, that assumption needs examining.</p>
 
-          <p>The 2026 WebAIM Million report &mdash; the largest annual study of web accessibility, covering one million home pages &mdash; found that errors per page jumped 10.1% this year to an average of 56.1 errors per page, reversing six years of gradual improvement. Page complexity increased 22.5% in the same period. 95.9% of pages now fail basic accessibility checks. WebAIM linked the reversal directly to increased reliance on AI-assisted coding practices. The AIMAC benchmark exists to understand why.</p>
+          <p>The 2026 WebAIM Million report is the largest annual study of web accessibility, covering one million home pages. It found that errors per page jumped 10.1% this year to an average of 56.1 errors per page, reversing six years of gradual improvement. Page complexity increased 22.5% in the same period. 95.9% of pages now fail basic accessibility checks. WebAIM linked the reversal directly to increased reliance on AI-assisted coding practices. The AIMAC benchmark exists to understand why.</p>
 
-          <p>The AIMAC (AI Model Accessibility Checker) benchmark is a systematic evaluation of 36 AI coding models, developed by the <a href="https://gaad.foundation" rel="noopener noreferrer">GAAD Foundation</a> in partnership with <a href="https://www.servicenow.com" rel="noopener noreferrer">ServiceNow</a>. It tests what each model produces by default &mdash; without explicit accessibility prompting &mdash; when asked to generate HTML. The benchmark measures whether the output meets accessibility criteria including WCAG conformance. It is an expert evaluation of model defaults, not a replacement for a full accessibility audit or user testing with disabled people.</p>
+          <p>The AIMAC (AI Model Accessibility Checker) benchmark is a systematic evaluation of 36 AI coding models, developed by the <a href="https://gaad.foundation" rel="noopener noreferrer">GAAD Foundation</a> in partnership with <a href="https://www.servicenow.com" rel="noopener noreferrer">ServiceNow</a>. It tests what each model produces by default, without explicit accessibility prompting, when asked to generate HTML. The benchmark measures whether the output meets accessibility criteria including WCAG conformance. It is an expert evaluation of model defaults, not a replacement for a full accessibility audit or user testing with disabled people.</p>
 
           <p>The headline finding: most models produce non-compliant HTML by default.</p>
 
           <h2>What AIMAC measures and what it does not</h2>
 
-          <p>The test is specifically about default output. What does the model produce when a developer asks it to write a form, a navigation component, a modal, a data table &mdash; without saying &ldquo;make it accessible&rdquo;? The benchmark captures the baseline behaviour of the tool as most developers use it most of the time.</p>
+          <p>The test is specifically about default output. What does the model produce when a developer asks it to write a form, a navigation component, a modal, a data table, without saying &ldquo;make it accessible&rdquo;? The benchmark captures the baseline behaviour of the tool as most developers use it most of the time.</p>
 
           <p>AIMAC does not measure overall code quality. A model that scores poorly on the AIMAC accessibility benchmark may produce excellent code in other respects. The benchmark is narrow and specific: accessibility output by default. That narrowness is what makes it useful. It isolates exactly the question that matters for EAA compliance: what does AI-generated code look like before anyone has thought about accessibility?</p>
 
-          <p>These findings are reinforced by research presented at Microsoft Build in June 2026 by Aaron Gustafson (Microsoft), which found that out of the box, most AI coding agents pass only around 8&ndash;25% of automatable accessibility checks. Even with instruction files, the pass rate climbs only to 37&ndash;60%. It is not until models are given deterministic accessibility tests to run against their own output that results improve significantly &mdash; and even then, automated checks only cover around half of what genuine accessibility requires. The AIMAC benchmark and the Microsoft Build research are measuring different things, but they point to the same conclusion.</p>
+          <p>These findings are reinforced by research presented at Microsoft Build in June 2026 by Aaron Gustafson (Microsoft), which found that out of the box, most AI coding agents pass only around 8&ndash;25% of automatable accessibility checks. Even with instruction files, the pass rate climbs only to 37&ndash;60%. It is not until models are given deterministic accessibility tests to run against their own output that results improve significantly. Even then, automated checks only cover around half of what genuine accessibility requires. The AIMAC benchmark and the Microsoft Build research are measuring different things, but they point to the same conclusion.</p>
 
-          <p>The current rankings (updated June 2026) show OpenAI at the top, with GPT 5.4 Mini ranking first with a median accessibility debt score of zero across all 28 categories. OpenAI holds all five top positions. At the other end of the 36-model leaderboard, the worst performers produce significantly more accessibility violations by default. The full rankings are at <a href="https://aimac.ai" rel="noopener noreferrer">aimac.ai</a> and updated as models change &mdash; worth checking which tools your team uses.</p>
+          <p>The current rankings (updated June 2026) show OpenAI at the top, with GPT 5.4 Mini ranking first with a median accessibility debt score of zero across all 28 categories. OpenAI holds all five top positions. At the other end of the 36-model leaderboard, the worst performers produce significantly more accessibility violations by default. The full rankings are at <a href="https://aimac.ai" rel="noopener noreferrer">aimac.ai</a> and updated as models change. It is worth checking which tools your team uses.</p>
 
           <h2>What the data shows</h2>
 
-          <p>Across the 36 models tested, the majority produce HTML that fails accessibility requirements without specific prompting. The range is wide &mdash; some models perform significantly better than others &mdash; but the central finding holds: default output from most AI coding tools is not EAA-compliant.</p>
+          <p>Across the 36 models tested, the majority produce HTML that fails accessibility requirements without specific prompting. The range is wide, and some models perform significantly better than others. The central finding still holds: default output from most AI coding tools is not EAA-compliant.</p>
 
           <div class="callout">
-            <p><strong>The default problem:</strong> a developer who does not know to prompt for accessibility gets non-compliant code by default. Most developers are not accessibility specialists. Most AI coding prompts do not include accessibility requirements. The result is a systematic gap between what is generated and what EAA compliance requires &mdash; at scale, across every team using AI-assisted development.</p>
+            <p><strong>The default problem:</strong> a developer who does not know to prompt for accessibility gets non-compliant code by default. Most developers are not accessibility specialists. Most AI coding prompts do not include accessibility requirements. The result is a systematic gap between what is generated and what EAA compliance requires, at scale, across every team using AI-assisted development.</p>
           </div>
 
           <h2>Why this matters for EAA compliance</h2>
@@ -249,19 +249,19 @@
 
           <h2>What prompting can do and what it cannot</h2>
 
-          <p>Prompting AI tools to produce accessible output improves results. Asking for ARIA labels, semantic HTML, sufficient colour contrast, keyboard navigability &mdash; these prompts produce better output than the default. The AIMAC data supports this: models respond to accessibility-specific prompting.</p>
+          <p>Prompting AI tools to produce accessible output improves results. Asking for ARIA labels, semantic HTML, sufficient colour contrast and keyboard navigability. These prompts produce better output than the default. The AIMAC data supports this: models respond to accessibility-specific prompting.</p>
 
-          <p>But prompting is not sufficient on its own for two reasons. First, it requires developers to know what to ask for &mdash; which requires accessibility knowledge that most developers do not have. Second, even accessibility-prompted output needs review. AI tools can produce output that appears accessible but fails in specific contexts, for specific assistive technologies, or under conditions the prompt did not anticipate.</p>
+          <p>But prompting is not sufficient on its own for two reasons. First, it requires developers to know what to ask for. That requires accessibility knowledge that most developers do not have. Second, even accessibility-prompted output needs review. AI tools can produce output that appears accessible but fails in specific contexts, for specific assistive technologies, or under conditions the prompt did not anticipate.</p>
 
           <p>Prompting is a useful first step. It is not the same as a compliance process.</p>
 
-          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The same research found that the assumption automation improves accessibility is not evidenced &mdash; and that ableist bias in AI is structural, rooted in training data, and resistant to technical fix. These findings reinforce why prompting is a starting point, not a solution: the tools can be guided toward better output, but the underlying defaults reflect training choices that accessibility prompts do not fundamentally alter.</p>
+          <p>Research published in June 2026 by the University of Southampton, drawing on findings from 48 accessibility leaders, researchers and practitioners, found that verification demands from AI-generated content can double rather than reduce accessibility workloads. The same research found that the assumption automation improves accessibility is not evidenced. It also found that ableist bias in AI is structural, rooted in training data, and resistant to technical fix. These findings reinforce why prompting is a starting point, not a solution: the tools can be guided toward better output, but the underlying defaults reflect training choices that accessibility prompts do not fundamentally alter.</p>
 
           <h2>The governance argument</h2>
 
-          <p>This is why <a href="/eaa-governance.html">governance matters beyond the one-off audit</a>. A product that passes an accessibility check today can regress with the next feature release if no accessibility review is built into the development process. AI-assisted development accelerates the pace of that regression risk &mdash; more code is being generated more quickly, and if accessibility is not part of the review process, non-compliant features accumulate between audits.</p>
+          <p>This is why <a href="/eaa-governance.html">governance matters beyond the one-off audit</a>. A product that passes an accessibility check today can regress with the next feature release if no accessibility review is built into the development process. AI-assisted development accelerates the pace of that regression risk. More code is being generated more quickly, and if accessibility is not part of the review process, non-compliant features accumulate between audits.</p>
 
-          <p>The organisations that will maintain EAA compliance over time are the ones that treat accessibility as part of their release process, not as a periodic exercise. That means accessibility criteria in acceptance testing, a named owner who reviews AI-generated components, and a documented process that survives team changes. Not because the regulator will ask for it &mdash; though they will &mdash; but because it is the only way the work holds.</p>
+          <p>The organisations that will maintain EAA compliance over time are the ones that treat accessibility as part of their release process, not as a periodic exercise. That means accessibility criteria in acceptance testing, a named owner who reviews AI-generated components, and a documented process that survives team changes. Not because the regulator will ask for it, though they will, but because it is the only way the work holds.</p>
 
           <div class="callout callout--orange">
             <p><strong>The practical question:</strong> does your development process include an accessibility review before AI-generated front-end code goes into production? If not, the AIMAC data suggests that non-compliant features are being shipped in every release cycle. That is the gap a governance process closes.</p>
@@ -304,7 +304,7 @@
 
   <footer>
     <div class="container">
-      <p>Usable Access &mdash; <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a> &mdash; <a href="/">usableaccess.io</a> </p>
+      <p>Usable Access<span aria-hidden="true"> &middot; </span> <a href="mailto:hello@usableaccess.io">hello@usableaccess.io</a><span aria-hidden="true"> &middot; </span><a href="/">usableaccess.io</a> </p>
 <p><a href="/accessibility-statement.html">Accessibility statement</a><span aria-hidden="true"> &middot; </span><a href="/privacy.html">Privacy notice</a></p>
 </div>
   </footer>
