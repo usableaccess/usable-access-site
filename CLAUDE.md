@@ -468,6 +468,29 @@ The canonical and the redirect already answer the "is this a duplicate" question
 **A check that every `<loc>` in `sitemap.xml` resolves to a file whose canonical points back at that same URL, and that carries no meta refresh.** It would have caught this, and also the sitemap-entry-with-no-file failure recorded in rule 14. Roughly twenty lines.
 ---
 
+## JOB 0m — THE EM DASH COUNT MEASURES THE WRONG THING
+
+**Found 8 August 2026 during the writing pass on `index.html` (commit `c2d1f64`).**
+
+`ua_page_check.py` counts every em dash in the file. That includes HTML comments, CSS comments, `<title>`, and meta descriptions. **None of those are prose, and rule 4 is a rule about prose.**
+
+`index.html` reported **36**. Seven of those were section banners in code comments, of the form `HEADER — MOBILE FIRST`, invisible to every reader. The prose problem was smaller than the number claimed. **A count that includes things no reader sees cannot tell you whether the writing is over-dashed.**
+
+The direction is wrong in both ways. It overstates a page carrying commented-out scaffolding, and it would understate nothing, so the failure is silent. Nobody looks twice at a number that is too high for a reason they cannot see.
+
+### The fix
+**Scope the count to text content inside `<main>`.** Exclude `<style>`, `<script>`, HTML and CSS comments, `<title>`, and every `<meta>`. Strip tags, then count what remains.
+
+**Report both figures while the transition beds in**, e.g.
+`ok  4 em dashes in prose (11 in file, 7 outside prose)`
+
+That keeps the file-level number visible without letting it stand in for the thing the rule cares about.
+
+### Watch for
+- **Separators that are not prose.** A `<title>` reading `Usable Access — Clarity-first EAA Compliance` uses a dash as a brand separator. It is legitimate and should never have been in the count.
+- **Card headings.** `Accessibility statements: what a credible one contains` was a dash before the pass. Headings of that shape read better with a colon, so they are worth flagging, but they are not the aside construction rule 4 exists to catch.
+---
+
 ## JOB 0k — HOMEPAGE HERO: APPLY THE APPROVED DJ MERGE (content, NOT a judgement call)
 
 **⚠ DO NOT REWRITE ANYTHING. This job is a paste, not an edit.**
