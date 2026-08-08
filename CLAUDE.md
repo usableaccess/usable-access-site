@@ -555,11 +555,14 @@ Heaviest first: `eaa-compliance-checklist.html` (36), `insights.html` (34), `eaa
 
 **Those counts are prose only**, taken from text inside `<main>` with `<style>` and `<script>` removed. They will not match what `ua_page_check.py` reports until JOB 0m is done, because that count still includes comments, `<title>` and meta.
 
-### THREE EXCEPTIONS THAT MUST NOT BE STRIPPED
+### EXCEPTIONS AND CONVERSIONS: CHECK EACH INSTANCE
 1. **Card and article headings using a dash as a title separator.** `Sweden's PTS — proactive inspections` reads as a subtitle, not an aside. A colon is often better, but this is a judgement call per heading and never a mechanical replacement.
 2. **The `<title>` brand separator.** `Usable Access — Clarity-first EAA Compliance`. Leave it.
 3. **Any dash where the contrast genuinely earns its place**, meaning a reader would otherwise assume the opposite. From the `index.html` pass, `not a full audit and never a compliance certificate` and `tested by a person, not a scan` were both kept. Both correct a reasonable wrong assumption. `not because it resolves compliance, but because it tells you` was removed, because nobody assumed it resolved compliance.
-4. **Card and preview copy: TITLES ONLY, not excerpts.** A card title such as `Accessibility statements &mdash; what a credible one contains` is a subtitle, and the dash belongs there. **The excerpt below it is ordinary prose and is in scope.** This exception was added on 8 August 2026 after a first pass stripped the card copy on `insights.html` wholesale; that was reverted. Two excerpt changes on `index.html` were kept, because both were genuine asides.
+4. **Term-and-definition labels in body copy: CONVERT THE DASH TO A COLON.** This is a conversion rule, **not an exemption.** The pattern is a label followed by its definition, rendered as a paragraph or list item rather than a real definition list: `<strong>Published accessibility statement</strong> &mdash; a public document describing...`, `<strong>Netherlands</strong> &mdash; the ACM enforces...`, `<strong>Track 1 &mdash; Regulatory enforcement.</strong>`. The dash is doing a separator's job, so the sentence does not need restructuring, but the character still goes. **Roughly 24 instances of the `<strong>Label</strong>` form across 8 pages, plus 13 country and track labels.**
+
+   **Check the capitalisation after every colon.** Lowercase the first word unless it is a proper noun or an acronym. `Netherlands: the ACM enforces`, not `Netherlands: The ACM enforces`. `Ireland: ComReg enforces` keeps its capital because ComReg is a name. This is easy to miss because the word was correctly capitalised when it followed a dash.
+5. **Card and preview copy: TITLES ONLY, not excerpts.** A card title such as `Accessibility statements &mdash; what a credible one contains` is a subtitle, and the dash belongs there. **The excerpt below it is ordinary prose and is in scope.** This exception was added on 8 August 2026 after a first pass stripped the card copy on `insights.html` wholesale; that was reverted. Two excerpt changes on `index.html` were kept, because both were genuine asides.
 
 **Target is one or two per page, not zero.** A page that reaches zero has probably lost a dash that was working.
 
