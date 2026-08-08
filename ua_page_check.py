@@ -22,7 +22,9 @@ FACT_TRAPS = [
     # Defect A from JOB 0o: an investigative sequence no regulator publishes.
     (r"(?i)(first document [A-Za-z ]{0,20}requests|requests? (it|the accessibility statement) first|"
      r"review the accessibility statement first|statement first in any complaint|"
-     r"first in any complaint investigation)",
+     r"first in any complaint investigation|first in any complaint process|"
+     r"among the first documents [A-Za-z ]{0,24}requests|"
+     r"first document [A-Za-z ]{0,24}(?:authority |supervisory authority )?requests)",
      "claims the accessibility statement is requested FIRST in a complaint investigation - "
      "no regulator publishes this procedure (JOB 0o defect A)"),
 ]

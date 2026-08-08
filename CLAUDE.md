@@ -445,7 +445,20 @@ Re-run `python3 ua_orphan_check.py .` **against the full repo, not the working f
 The claim was removed from `eaa-compliance-telecoms.html` on 4 August for exactly these reasons. **It was never removed from anywhere else.**
 
 ### DEFECT A — a procedure no regulator publishes
-**"The accessibility statement is requested first in any complaint investigation."** Nothing ComReg publishes supports this. It describes an investigative sequence we have invented. It is stated as settled procedure, sometimes attributed to ComReg and sometimes to "Irish regulators", which makes it read as established fact on seven pages.
+**"The accessibility statement is requested first in any complaint investigation."** Nothing ComReg publishes supports this. It describes an investigative sequence we have invented, stated as settled procedure.
+
+**FINAL COUNT: 13 pages. All deleted 8 August 2026.**
+
+### THE DETECTION HISTORY IS THE POINT: 6, THEN 8, THEN 13
+| Stage | Found | Why the earlier number was wrong |
+|---|---|---|
+| Manual grep on one phrasing | **6** | Searched for the wording seen on the first page |
+| After the checker trap was written | **8** | The trap matched more phrasings than the grep |
+| After deleting those and re-grepping | **13** | Five more in variants the trap still missed |
+
+The five late finds were attributed differently every time: **"the competent authority"** (`eaa-compliance-ireland.html`, twice, once inside JSON-LD), **"a competent authority"** (`eaa-governance.html`), **"the Central Bank"** (`eaa-compliance-fintech.html`), **"a supervisory authority"** (`eaa-compliance-finland.html`, hedged with "typically"). **The claim had been reworded for each page while the invented procedure travelled unchanged.** Attribution drifted from ComReg to Irish regulators to the competent authority to the Central Bank, so no single search term could find them all. **Assume any invented framing has spread further than the phrasing you first searched for**, and re-grep after each deletion round until a round finds nothing.
+
+The trap now covers the variant wordings. It found none on the final pass.
 
 | Page | Line | Attributed to |
 |---|---|---|
@@ -455,6 +468,12 @@ The claim was removed from `eaa-compliance-telecoms.html` on 4 August for exactl
 | `eaa-accessibility-statement.html` | 252 | Irish regulators |
 | `eaa-fines-penalties-ireland-netherlands-sweden.html` | 341 | Irish regulators |
 | `insights.html` | 730 | Irish regulators |
+| `services.html` | 126 | "an authority" |
+| `insights/what-eaa-compliance-actually-requires.html` | 245 | Irish regulators |
+| `eaa-compliance-ireland.html` | 79, 244 | the competent authority (one inside JSON-LD) |
+| `eaa-governance.html` | 288 | a competent authority |
+| `eaa-compliance-fintech.html` | 176 | the Central Bank |
+| `eaa-compliance-finland.html` | 212 | a supervisory authority |
 
 **Delete the procedural claim.** The defensible point survives without it: an accessibility statement is a mandatory EAA requirement, and an absent or inadequate one is visible to anyone who looks. Do not replace one invented procedure with another.
 
