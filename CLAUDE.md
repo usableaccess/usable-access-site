@@ -62,6 +62,20 @@ python3 tools/ua_sync_blocks.py . --adopt --write        # apply; --adopt brings
 
 ---
 
+## HOW TO WRITE
+
+**Write in plain, direct sentences.**
+
+**Avoid constructions that need an em dash.** The dash is usually a symptom of a main clause with a qualifying aside hung off it. Restructure instead. Two short sentences are almost always better than one sentence with an aside. Em dashes are fine where they genuinely earn their place, at roughly one or two per page.
+
+**Avoid the "it is X, not Y" construction.** It disguises itself as precision, sets up contrasts that often do not need to exist, and makes every statement sound like a correction of something nobody said. Use it only where a reader would genuinely otherwise assume the opposite.
+
+**Say the thing plainly, then say the next thing.** Most qualifying asides are either unnecessary or deserve their own sentence.
+
+**This applies to site copy, commit messages, and replies in the session.**
+
+---
+
 ## JOB QUEUE
 
 ### 0a. 🔴 CORRECT THE EU AI ACT DATES — TODAY, BEFORE ANYTHING ELSE
