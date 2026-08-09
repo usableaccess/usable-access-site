@@ -100,6 +100,43 @@ CTA_TRAPS = [
     (r"(?i)where your (key journeys|position) stands?", "CTA overpromise: promises a paid-tier diagnostic"),
 ]
 
+# --- hard rule 16: the two footer legal links (JOB 0r) ---------------------
+#
+# THE QUESTION THIS ANSWERS: does this page's footer link BOTH legal documents?
+# Not "does the page mention privacy" and not "is there a footer", which are the
+# cheaper questions and which 21 pages would pass.
+#
+# Found 8 August 2026 while measuring accessible-name variation across footers.
+# The names split 23/21, and the 21 were not named differently: they had no
+# privacy notice link at all. The naming check was the wrong instrument, so this
+# is its own check.
+#
+# WHY IT IS NOT COSMETIC. GDPR Article 14 requires that a person contacted out
+# of the blue can find the privacy information. Outreach emails carry the link
+# themselves, so sends are covered, but a recipient who lands on any of these
+# 21 pages instead has no route to it.
+#
+# Scoped to <footer> deliberately: a privacy link elsewhere in the body does not
+# satisfy rule 16, which is about the footer being the reliable place to look.
+FOOTER_LEGAL = [
+    ("/accessibility-statement.html", "accessibility statement"),
+    ("/privacy.html", "privacy notice"),
+]
+
+
+def _footer_legal_failures(h):
+    m = re.search(r"<footer\b.*?</footer>", h, re.S | re.I)
+    if not m:
+        return ["no <footer> element, so neither legal link can be present (rule 16)"]
+    foot = m.group(0)
+    out = []
+    for href, label in FOOTER_LEGAL:
+        if not re.search(r'href\s*=\s*["\']' + re.escape(href), foot, re.I):
+            out.append(f"footer has no {label} link ({href}) - hard rule 16. "
+                       f"GDPR Article 14 needs the privacy notice reachable from any landing page")
+    return out
+
+
 OG_REQUIRED = [
     'property="og:title"', 'property="og:description"', 'property="og:url"',
     'property="og:image"', 'property="og:image:width"', 'property="og:image:height"',
@@ -446,6 +483,10 @@ def check(path):
             fails.append(f"FACT: {msg}: {snippet}")
     for pat, msg in CTA_TRAPS:
         if re.search(pat, body): fails.append("CTA: " + msg)
+
+    # --- hard rule 16: both legal links in the footer ---
+    for msg in _footer_legal_failures(h):
+        fails.append("FOOTER: " + msg)
 
 
     # --- pronoun misuse: "us/we/our" must mean Usable Access, never the reader ---
