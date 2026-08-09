@@ -475,6 +475,30 @@ Roughly 1–1.5 hours, most of it in the token resolution and pair-building. **W
 
 **Each was caught by eye, not by tooling** — and one shipped to production before it was noticed.
 
+### STEPS 1 TO 3 ARE DONE — 9 August 2026. STEP 4 IS NOT, AND IS DELIBERATELY DEFERRED.
+
+**Done:** the estate was measured, five class-name collisions renamed, the divergences resolved.
+- **Measured.** 35 of 44 pages load no external CSS at all; only 9 link `site.css`. Of 2,417 inline rules whose selector also exists in `site.css`, **2,132 are byte-identical to it** once formatting is normalised. **It is a copy-paste estate with drift, not bespoke design per page.**
+- **Renamed**, because they were not drift: `.article-title`, `.article-tag`, `.article-date`, `.article-meta` and `.article-market` meant one thing on `insights.html` cards and another on page headers. Now `.card-*` on `insights.html`, which was the only page using them as card classes. Verified pixel-identical before and after.
+- **Resolved:** 18 single-property selectors to their strict majority (76 values, 35 pages), `.callout` and `.callout--orange` normalised, `.nav-links` unified to mobile-first on the five pages written mobile-last.
+- **Left alone by decision:** `:root` tokens, `.cta-button`, `.article-tag`, `.requirement` and the other multi-property selectors. **Consolidating a design decision is worse than living with two versions.** They want a designer's eye, not a majority vote.
+
+### 🔴 STEP 4 IS ITS OWN JOB: LINK `site.css` EVERYWHERE AND DELETE THE INLINE BLOCKS
+**Not started, and not to be started casually.** 35 pages currently load no external CSS. Switching them means every page's styling depends on one file for the first time, and **the gain is maintainability rather than anything a reader sees.**
+
+**THE ORDERING CONSTRAINT, which is the whole risk.** Adding the `<link>` and removing the inline block must happen **together, per page, in one edit**. Any window where a page has neither renders naked. And switching a page silently adopts `site.css`'s value for every selector where the two still disagree, so **that is a rendering change, not a no-op** — which is why steps 1 to 3 came first.
+
+**Verify visually before deleting, not after.** Three page types minimum: a country page, an insights page, and the homepage. **`ua_page_check.py` cannot help**, because it validates classes against `site.css` whether or not the page links it. That is the third fallback failure, recorded below.
+
+**When it becomes worth doing:** the next time the CSS needs a site-wide change. At that point it is 44 hand edits either way and the consolidation pays for itself immediately. Same reasoning as the managed footer block in JOB 0r.
+
+### THE NARROW RULE THIS JOB PRODUCED: RESOLVE BOTH CSS SOURCES, ALWAYS
+**While this site has two CSS sources, any question about what a page has must resolve both.** Not the inline block. Not `site.css`. Both, for that page.
+
+**This is narrower than the easier-question rule and it is the one that would have prevented both of 9 August's instances.** A class check asked "is this class defined anywhere" rather than "does the definition reach this page". A reduced-motion check asked "does the inline block contain it" rather than "does the page get it" — and nearly added a duplicate block to the nine pages that already had it from `site.css`.
+
+**Knowing the general pattern does not prevent the specific error.** The second instance was written about an hour after the eighth was recorded. **Only resolving both sources prevents it.** Step 4 removes the problem at source by making there be one source, which is the strongest argument for eventually doing it.
+
 **Two things to do:**
 - **Consolidate.** Move the shared vocabulary into `site.css`, keep only genuinely page-specific rules inline, and link `site.css` from every page. Verify nothing regresses visually before deleting the inline duplicates.
 ### THE THIRD FALLBACK VARIANT, FOUND 8 August 2026
