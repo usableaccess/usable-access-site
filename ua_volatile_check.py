@@ -37,7 +37,12 @@ WHAT IT CANNOT DO
 - It cannot resolve "soon", "shortly", "in the coming months". No end date, so
   nothing to compare. Those are a writing problem, not a parsing one.
 - It cannot know when an elapsed counter was last correct. It flags the counter
-  and asks for a review date; it does not recompute the number.
+  and asks for a review date; it does not recompute the number. COUNTER runs at
+  about half precision: of the four it reports today, "Fourteen months on" and
+  "Thirteen months after the Act became applicable" are real, while "an
+  assessment from two years ago" and "persists more than six months after a
+  first sanction" are durations that do not move. They are warnings, not
+  failures, and tightening further would start missing the real ones.
 - It reads the same surface as ua_page_check: visible text, meta descriptions,
   JSON-LD and accessible names. A stale date in structured data counts.
 """
@@ -92,9 +97,16 @@ AS_OF = re.compile(rf"(?i)\bas of\s+((?:mid|early|late)[- ]20\d\d|(?:{MONTH_RE})
 
 # Elapsed counters: "thirteen months", "18 months since". The number is correct
 # on the day it is written and wrong later. Watched, never recomputed here.
-ELAPSED = re.compile(r"(?i)\b(" + "|".join(WORD_NUM) + r"|\d{1,3})[\s-]+(month|year)s?\b")
-ELAPSED_CTX = re.compile(r"(?i)\b(since|so far|to date|have passed|has passed|into|"
-                         r"of enforcement|after the deadline|now|already)\b")
+# The marker must be ADJACENT to the duration, not merely in the same sentence.
+# First attempt used a sentence-wide context list and flagged "imprisonment of up
+# to 18 months" on four pages: a statutory maximum, which does not move. That is
+# the easier question again - does a duration appear, rather than is this a count
+# from a past point to now. Only the second one goes stale.
+# "on" only counts when the clause ends there. "Fourteen months on, businesses..."
+# is elapsed. "imprisonment up to 18 months on indictment" is a sentence length,
+# and it was the second false positive this check produced on its first day.
+ELAPSED = re.compile(r"(?i)\b(" + "|".join(WORD_NUM) + r"|\d{1,3})[\s-]+(month|year)s?"
+                     r"\s+(?:on(?=[,.;])|since|later|into|ago|after)\b")
 
 STALE_GRACE_DAYS = 0     # a period that has ended is stale the next day
 SOON_DAYS = 90           # ends within a quarter: set a review date now
@@ -145,11 +157,10 @@ def check_text(text, today):
                     warns.append(("AS-OF", sent, f'freshness stamp "{m.group(0)}" is '
                                                  f'{(today - end).days} days old'))
                 break
-        if ELAPSED_CTX.search(sent):
-            for m in ELAPSED.finditer(sent):
-                warns.append(("COUNTER", sent, f'"{m.group(0)}" is an elapsed count and '
-                                               f'changes with the calendar - needs a review date'))
-                break
+        for m in ELAPSED.finditer(sent):
+            warns.append(("COUNTER", sent, f'"{m.group(0)}" is an elapsed count and '
+                                           f'changes with the calendar - needs a review date'))
+            break
     return fails, warns
 
 
@@ -197,6 +208,18 @@ FIXTURES = [
      "2026-08-08", False, "a fixed historical date is not volatile"),
     ("Enforcement has been running for thirteen months since the deadline.",
      "2026-08-08", False, "warns as a COUNTER, does not fail"),
+    # The homepage counter this check missed on its first day. "Thirteen months
+    # ON" rather than "since", so the context list was one word short and the
+    # number was already wrong: June 2025 to August 2026 is fourteen.
+    ("The Act became applicable in June 2025. Thirteen months on, businesses are unsure.",
+     "2026-08-08", False, "must WARN as a COUNTER, which the fail check does not cover"),
+]
+
+COUNTER_FIXTURES = [
+    "Enforcement has been running for thirteen months since the deadline.",
+    "The Act became applicable in June 2025. Thirteen months on, businesses are unsure.",
+    "Eighteen months after the deadline, no fine has been issued.",
+    "Two years later, the picture has not changed.",
 ]
 
 
@@ -212,11 +235,12 @@ def selftest():
             for k, s, d in fails + warns:
                 print(f"   -> {k}: {d}")
             bad += 1
-    counter = check_text("Enforcement has been running for thirteen months since the deadline.",
-                         datetime.date(2026, 8, 8))[1]
-    if not any(k == "COUNTER" for k, _, _ in counter):
-        print("WRONG: elapsed counter not warned"); bad += 1
-    print(f"selftest: {len(FIXTURES)} fixtures, {bad} wrong")
+    for text in COUNTER_FIXTURES:
+        warns = check_text(text, datetime.date(2026, 8, 8))[1]
+        if not any(k == "COUNTER" for k, _, _ in warns):
+            print(f"WRONG: elapsed counter not warned: {text}"); bad += 1
+    print(f"selftest: {len(FIXTURES)} period fixtures, "
+          f"{len(COUNTER_FIXTURES)} counter fixtures, {bad} wrong")
     return bad
 
 
