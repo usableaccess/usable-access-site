@@ -129,22 +129,13 @@ Detail and instances: JOB 0f (the first three) and JOB 0r (the fourth, and the c
 
 ---
 
-## STANDING NOTE: THE EXPECTED FAILURE COUNT IS 17 AND 7, AND ONLY 3 OF THEM ARE PERMANENT
+## STANDING NOTE: THE EXPECTED FAILURE COUNT IS 3, NOT 0
 
-**As of 8 August 2026, later the same day, `ua_page_check.py` reports 17 failures at the repo root and 7 in `insights/`. Two different kinds, and the difference is the whole point.**
+**As of 9 August 2026 `ua_page_check.py` reports 3 failures at the repo root and 0 in `insights/`. That is the correct state. Do not try to reach zero.**
 
-| Count | What | Do what |
-|---|---|---|
-| **3** at root | The ComReg trap on `eaa-compliance-telecoms.html`, described below | **Nothing. A chosen cost.** |
-| **14** at root, **7** in insights | The rule 16 footer check added for JOB 0r: 21 pages have no privacy notice link | **Fix the pages.** These should reach 0 |
+It briefly read 17 and 7 on 8 August, when the rule 16 footer check was added and the 21 pages it found were not fixed in the same pass. **Those 21 were fixed on 9 August and the count returned to 3 and 0.** All 44 pages now carry both legal links.
 
-**So the target is 3 and 0 again, once the 21 footers are fixed.** Until then a run is clean at 17 and 7. **If either number moves for another reason, find out why before assuming it is noise.**
-
-The footer check was added on the day the defect was found and the pages were not fixed in the same pass, deliberately: 21 pages of markup edits are a separate change from the check that finds them, and the check is what stops the next one.
-
-### THE THREE THAT STAY
-
-**Do not try to reach zero on these.**
+**Do not try to reach zero on the remaining three.**
 
 All three are on `eaa-compliance-telecoms.html`, and all three are the ComReg trap firing on sentences that are right:
 
@@ -708,14 +699,17 @@ In `ua_a11y_check.py`. It collects the accessible name of each repeated element 
 
 **Verified against the real defect**, not only against fixtures: reintroducing ` , ` into the logo on a copy of the site produces `FAIL 4.1.2 site logo accessible name is 'Usable Access , home' but 31/32 pages use 'Usable Access — home'`. `--selftest` covers five cases including the tie and the below-threshold case.
 
-### THE FOOTER CHECK IS BUILT — 8 August 2026. THE 21 PAGES ARE NOT YET FIXED.
-In `ua_page_check.py`, and it reports 14 at root and 7 in `insights/`. See the standing note on the expected failure count: those 21 are a defect to fix, unlike the three ComReg ones.
+### THE FOOTER CHECK IS BUILT AND THE 21 PAGES ARE FIXED — 8 and 9 August 2026
+In `ua_page_check.py`. **The question it answers:** does this page's footer link BOTH legal documents? Not "does the page mention privacy" and not "is there a footer", which are the cheaper questions all 21 pages would pass. **A privacy link elsewhere in the body does not satisfy rule 16**, and a fixture covers that, because the rule is about the footer being the reliable place to look.
 
-**The question it answers:** does this page's footer link BOTH legal documents? Not "does the page mention privacy" and not "is there a footer", which are the cheaper questions all 21 pages would pass. **A privacy link elsewhere in the body does not satisfy rule 16**, and a fixture covers that, because the rule is about the footer being the reliable place to look.
+**Fixed 9 August.** All 21 were missing `/privacy.html` only. Each had its single `<p>` split so the legal links sit in their own second `<p>`, matching the majority shape, with the `aria-hidden` middot separator between them. **All 44 pages now carry both links, and the footer link sequence is one distinct value across the whole site.** The check reports 0.
 
-**The 21 pages, all missing `/privacy.html` only:** `bfsg-germany-accessibility-compliance`, `eaa-compliance-checklist`, `eaa-compliance-ecommerce`, `eaa-compliance-finland`, `eaa-compliance-france`, `eaa-compliance-italy`, `eaa-compliance-netherlands`, `eaa-compliance-travel`, `eaa-compliance-uk`, `eaa-disproportionate-burden`, `eaa-fines-penalties-ireland-netherlands-sweden`, `eaa-revenue-loss`, `eaa-sanctions`, `what-is-digital-accessibility`, and in `insights/`: `arcom-france-public-sector-enforcement`, `bfsg-germany-enforcement-abmahnungen`, `france-eaa-civil-society-enforcement`, `how-to-audit-eaa-compliance`, `rgaa-and-eaa-france`, `sweden-eaa-enforcement`, `what-eaa-compliance-actually-requires`.
+### CORRECTION: "EXACTLY TWO FOOTER SHAPES" WAS WRONG
+**The 8 August note said there were two footer shapes. There were seven.** That claim came from the accessible-name measurement, which normalises whitespace, so it collapsed markup differences that a name comparison cannot see. Reading the raw markup before editing found: two variants of the broken shape differing by a stray space, four variants of the good shape, and one page carrying both links inline in a single `<p>` rather than in a second one.
 
-**The fix is mechanical**, because there are exactly two footer shapes. The 23 good pages carry the legal links in their own second `<p>`; the 21 carry a single `<p>` ending with the accessibility statement link and no privacy link. Bring the 21 to the majority shape. **`ua_sync_blocks.py` does not manage the footer** — see the tooling note — so this is a hand edit or a new managed block.
+**The measurement was right about names and wrong about markup, and it was quoted as though it were about markup.** Five cosmetic shapes remain, all whitespace except `eaa-compliance-telecoms.html`, which keeps its links inline, and `what-happens-if-you-do-nothing.html`, which uses `&mdash;` separators instead of middots. **Neither affects what a reader or a screen reader gets**, so both were left alone.
+
+**The general point, which is the same as everything else in this file:** a measurement answers the question it was built for. Quoting it for a different question is how "two shapes" got into a commit message. **`ua_sync_blocks.py` does not manage the footer**, so bringing the remaining cosmetic variants into line would be a hand edit or a new managed block, and neither is warranted for whitespace.
 
 ### HOW THE FOOTER LINKS WERE MEASURED, AND WHY THEY ARE NOT IN THE NAME VOTE
 Footer link names split 23/21 across 44 pages. **The difference is that 21 pages omit the privacy notice link entirely.** That is hard rule 16 ("footer with the accessibility statement **and** privacy notice links") and JOB 1 already lists it as expected.
