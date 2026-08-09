@@ -94,6 +94,9 @@ A check that answers an easier question does not fail loudly. **It reports PASS*
 | Does the literal € sign appear? | **Does the figure?** | The site writes `&euro;`, so a currency trap was blind to every page it existed to check |
 | Is there an accessible name? | **Is the name right?** | The logo announced "Usable Access comma home" on the accessibility statement page |
 | How many footer *names* are there? | **How many footer *shapes* are there?** | "Exactly two footer shapes" went into a commit message and this register. There were seven |
+| Is the link inside `<main>`? | **Is the link inside running copy?** | `ua_orphan_check.py`, written to enforce the body-copy distinction, counted 15 listing cards as body copy on its first run |
+
+**The sixth is the sharpest, because the check existed for nothing else.** `ua_orphan_check.py` was written on 9 August precisely to separate a body-copy link from a listing card, since that distinction is what the publishing protocol turns on. It classified a card by looking for a class matching `card`, and `insights.html` wraps each entry in `<div class="article-list">`, which contains no such word. **A check whose entire purpose was one distinction could not see that distinction.** Fixing it moved the under-linked count from 8 to 22, so the first run understated the problem by nearly three times. **A checker is not exempt from the rule it enforces. Test a new check against the case it was written for, not against the case that is easy to construct.**
 
 **The fifth is the one to watch for, because no check was involved.** A measurement was taken correctly, for one purpose, and then quoted to answer a different question. An accessible-name comparison normalises whitespace, so it cannot describe markup, and it reported two footer variants where the markup had seven. **A number is only true of the question it was measured for. Carrying it to a neighbouring question is the same failure with no code in it.**
 
@@ -108,6 +111,30 @@ A check that answers a weaker question returns a count that is always too low. T
 The accessible-name check built for JOB 0r is the model: repeated elements must have identical accessible names across pages, and any page disagreeing with the majority fails. No vocabulary of bad strings, nothing to widen, and no wording it can be blind to. **Where a rule can be expressed as "these should all agree", prefer that over a list of things that are wrong.**
 
 Detail and instances: JOB 0f (the first three) and JOB 0r (the fourth, and the consistency check).
+
+---
+
+## 🔴 STANDING RULE: END EVERY SESSION WITH THE SEARCH CONSOLE LIST
+
+**At the end of any session, list the full URLs that need indexing in Search Console, or say explicitly that none do.** Saying "none" is part of the rule. Silence is not the same answer and leaves someone checking.
+
+**Give full URLs, `https://usableaccess.io/...`, never paths**, so they can be pasted straight in.
+
+| Submit for indexing | Do not submit |
+|---|---|
+| New pages | Prose edits and rewording |
+| Changed `<title>` or meta description | CSS, class fixes, rendering fixes |
+| Changed canonical | Footer and nav changes |
+| Factual corrections to a page's **central claim** | Anything Google will recrawl on its own schedule |
+
+**Say whether the sitemap needs resubmitting.** It does only when entries were **added or removed**, not when a page's content changed.
+
+### AFTER A DELETION, SAY WHETHER THE URL WAS INDEXED
+**A 404 is not the whole job.** If the deleted URL was indexed, it needs a removal request as well, otherwise it keeps being served in results and keeps collecting impressions against a page that no longer exists.
+
+**So for every page deleted or redirected, record: the full URL, whether it was indexed, and whether a removal request was raised.** `insights/invisible-revenue-loss.html` was deleted on 8 August with seven impressions in three months, so it was indexed and a removal request applies. **That was not raised at the time**, which is why this rule exists.
+
+**The judgement is about the central claim, not the edit size.** A one-word fix that changes what a page asserts belongs in the list. A full rewrite of the prose around an unchanged claim does not.
 
 ---
 
@@ -537,48 +564,50 @@ Full detail and exact wording in `UA_Recurring_Revenue_DocChanges.md`:
 **Note the filename trap:** there are three copies of the pricing reference and the clean filename is not always the current one. The checker should read the one with the latest internal date, and say which file it used.
 ---
 
-## JOB 0j — THREE UNDER-LINKED PAGES NEED BODY-COPY INBOUND LINKS
+## JOB 0j — TWENTY-TWO UNDER-LINKED PAGES. REWRITTEN 9 August 2026 FROM THE REAL GRAPH.
 
-**Found by `ua_orphan_check.py` on 7 August 2026.** Three pages have one or two inbound links, and in two cases the only link is from `insights.html` — a listing page, which carries far less weight than a link inside an argument.
+**The previous version of this job was wrong in scope, in paths and in counts, and following it would have produced a confident report of success after editing almost nothing.** It listed three pages. There are twenty-two. It named `insights/eaa-video-accessibility.html`, **which does not exist** — the page is `eaa-video-accessibility.html` at the repo root. And it described each page's inbound link "from `insights.html`" as a link, when every one of those is a **listing card**, so the pages it listed had zero body-copy links rather than one or two.
 
-| Page | Inbound now | Linked only from |
+**It was written on 7 August from a run of `ua_orphan_check.py` that no longer existed in the repo.** Numbers in this file need re-deriving before use whenever the tool that produced them is gone. See the fifth entry in the easier-question table: a measurement is only true of the question and the moment it was taken.
+
+### THE NUMBERS, 9 August 2026, from `python3 ua_orphan_check.py .`
+44 pages, 1 orphan, 22 under-linked, 0 unresolved. The protocol wants **three or more inbound with at least two in body copy**. Links are counted from `<main>` only; nav and footer never count.
+
+### GROUP A — THIN. Under three inbound. Mechanical.
+| Page | total | body |
 |---|---|---|
-| `eaa-compliance-telecoms.html` | 2 | `does-the-eaa-apply.html`, `insights.html` |
-| `insights/eaa-video-accessibility.html` | 1 | `insights.html` |
-| `insights/eu-ai-act-accessibility.html` | 1 | `insights.html` |
+| `what-happens-if-you-do-nothing.html` | 0 | 0 |
+| `eaa-compliance-uk.html` | 1 | 0 |
+| `eaa-video-accessibility.html` | 1 | 0 |
+| `insights/arcom-france-public-sector-enforcement.html` | 1 | 0 |
+| `insights/eu-ai-act-accessibility.html` | 1 | 0 |
+| `insights/rgaa-and-eaa-france.html` | 1 | 0 |
+| `eaa-compliance-telecoms.html` | 2 | 1 |
 
-**Target: three to six inbound each, with at least two in body copy.** Per `UA_Publishing_Protocol.md`.
+Five of these have a single listing card and nothing else. **These need links, and the targets are the ones the old job already suggested for telecoms and the AI Act page.**
 
-### The rule that governs this — do not link from everywhere
-**Choose by where the reader is in the journey, not by topic similarity.** A link that arrives at the wrong moment is ignored, and enough of them teach the reader our links are not worth following.
+`what-happens-if-you-do-nothing.html` ships Wednesday and is a separate batch: **the page, its `sitemap.xml` entry and its inbound links must be committed together.** The sitemap entry is already written and uncommitted, and committing it alone would publish a sitemap pointing at a 404, which is hard rule 14.
 
-### Suggested targets, to be confirmed against the live pages
+### GROUP B — BODY-STARVED. Reachable, never argued for.
+| Page | total | body | related | card |
+|---|---|---|---|---|
+| `eaa-compliance-france.html` | 10 | **0** | 9 | 1 |
+| `eaa-compliance-checklist.html` | 6 | **0** | 5 | 1 |
+| `insights/wcag-em-2.html` | 5 | **0** | 3 | 2 |
 
-**`eaa-compliance-telecoms.html`** — the reader is a telecoms operator working out what applies to them.
-- `eaa-compliance-ireland.html` — where sectors and their authorities are discussed. **ComReg is correct on this page only**, so it is the natural place to say "telecoms is the one sector ComReg handles" and link across
-- `eaa-enforcement.html` — where authorities by market are covered
-- `eaa-accessibility-statement.html` — telecoms statements carry the Real Time Text and third-party nomination requirements, which no other sector has
+**This is the Sweden failure mode at scale, and it is not solved by adding links.** France has ten inbound and not one inside a sentence. A page with nine Related entries is not short of links; it is short of a reason for anyone to follow one. **These need a judgement about where an argument naturally reaches for the page, which is content work, not graph work.**
 
-**`insights/eaa-video-accessibility.html`** — the reader has video in a consumer journey.
-- `eaa-compliance-ecommerce.html` — product video is common in retail
-- `eaa-compliance-travel.html` — destination and property video
-- `wcag-em-2.html` or the audit guide — where evaluation scope is discussed and video is a scope question people miss
+### GROUP C — ONE BODY LINK. The same shape, one notch less severe.
+Thirteen pages sit at exactly one body-copy link with heavy Related counts: `eaa-compliance-netherlands` (19 inbound), `eaa-sanctions` (16), `eaa-compliance-sweden` (15), `eaa-revenue-loss` (15), `eaa-compliance-ecommerce` (11), `bfsg-germany-accessibility-compliance` (7), `eaa-compliance-italy` (5), `eaa-compliance-saas` (5), `eaa-compliance-travel` (4), `insights/what-eaa-compliance-actually-requires` (4), `eaa-compliance-finland` (3), `insights/bfsg-germany-enforcement-abmahnungen` (3), `what-is-digital-accessibility` (3).
 
-**`insights/eu-ai-act-accessibility.html`** — the reader is deploying AI in a consumer journey.
-- `ai-paradox.html` — **the strongest candidate.** Same subject area, already argues about AI and accessibility, and the AI Act phasing is directly relevant to its argument
-- `eaa-governance.html` — governance obligations overlap
-- `aimac-deep-dive.html` — AI and accessibility measurement
+**The pattern across B and C is one fact: the site links by topic adjacency, through Related lists, and almost never from inside an argument.** Sixteen of forty-four pages have one body link or none. Fixing them one at a time treats the symptom.
 
-### How to write the links
-**Body copy, inside a sentence, where the argument naturally reaches for it.** Written so it makes sense to someone who never clicks. Not a Related-list entry — those are cheaper and weaker, and two of these pages already have one.
+### THE RULE THAT GOVERNS ALL OF IT
+**Choose by where the reader is in the journey, not by topic similarity.** A link that arrives at the wrong moment is ignored, and enough of them teach the reader our links are not worth following. Do not link from pages whose reader is past that question.
 
-### Also fix while in there
-**`ua_orphan_check.py` flags `index.html` as under-linked. That is a false positive.** The homepage is linked from the global nav on every page and is the target of every external link — it is the most-linked page on the site. **Add an exception excluding `index.html` from the under-linked report, with a comment explaining why.**
+### THE CHECKER FIXES FROM THE OLD JOB ARE DONE
+`index.html` is excluded from the under-linked report with the reason in the code. `privacy.html` and `accessibility-statement.html` report as a footer-pages category rather than as orphans. Run it from the repo root: `python3 ua_orphan_check.py .` includes `insights/` automatically.
 
-**`privacy.html` and `accessibility-statement.html` show as orphans. Also expected** — they are footer pages by design. Either exclude them or mark them as a known-acceptable category rather than an error.
-
-### Verify
-Re-run `python3 ua_orphan_check.py .` **against the full repo, not the working folder** — the working folder produces 88 unresolved links because most of the site is not in it.
 ---
 
 ## 🔴 JOB 0o — AN UNSUPPORTED ENFORCEMENT PROCEDURE, AND ComReg CAST TOO WIDE, ON ELEVEN PAGES
