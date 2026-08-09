@@ -93,6 +93,9 @@ A check that answers an easier question does not fail loudly. **It reports PASS*
 | Does the file mention telecoms? | **Does this sentence?** | The ComReg trap exempted itself on thirteen pages. On one, the word "telecoms" inside the error triggered the bypass that hid the error |
 | Does the literal € sign appear? | **Does the figure?** | The site writes `&euro;`, so a currency trap was blind to every page it existed to check |
 | Is there an accessible name? | **Is the name right?** | The logo announced "Usable Access comma home" on the accessibility statement page |
+| How many footer *names* are there? | **How many footer *shapes* are there?** | "Exactly two footer shapes" went into a commit message and this register. There were seven |
+
+**The fifth is the one to watch for, because no check was involved.** A measurement was taken correctly, for one purpose, and then quoted to answer a different question. An accessible-name comparison normalises whitespace, so it cannot describe markup, and it reported two footer variants where the markup had seven. **A number is only true of the question it was measured for. Carrying it to a neighbouring question is the same failure with no code in it.**
 
 **The tell is that the easier question is always the cheaper one to implement.** Existence is cheaper than reachability. A file scan is cheaper than a sentence scan. A literal character is cheaper than a normalised value. Presence is cheaper than correctness. **When a check was quick to write, that is when to ask what it is actually testing.**
 
@@ -709,7 +712,14 @@ In `ua_page_check.py`. **The question it answers:** does this page's footer link
 
 **The measurement was right about names and wrong about markup, and it was quoted as though it were about markup.** Five cosmetic shapes remain, all whitespace except `eaa-compliance-telecoms.html`, which keeps its links inline, and `what-happens-if-you-do-nothing.html`, which uses `&mdash;` separators instead of middots. **Neither affects what a reader or a screen reader gets**, so both were left alone.
 
-**The general point, which is the same as everything else in this file:** a measurement answers the question it was built for. Quoting it for a different question is how "two shapes" got into a commit message. **`ua_sync_blocks.py` does not manage the footer**, so bringing the remaining cosmetic variants into line would be a hand edit or a new managed block, and neither is warranted for whitespace.
+**The general point, which is the same as everything else in this file:** a measurement answers the question it was built for. Quoting it for a different question is how "two shapes" got into a commit message. It is the fifth instance in the table at the top of this file.
+
+### IF YOU BUILD A MANAGED FOOTER BLOCK LATER, THESE TWO ARE THE ONLY REAL OUTLIERS
+**Not built, deliberately.** The check now guarantees the thing that matters, the five remaining shapes differ only in whitespace, and a second managed block in `ua_sync_blocks.py` is a bigger commitment than this register accounts for. **Build it when the footer next needs to change** — a third legal link, a company registration line, a cookie notice — because at that point it is 21 hand edits again and the block pays for itself immediately.
+
+**The two that are not whitespace, and will need a decision rather than a reformat:**
+- **`eaa-compliance-telecoms.html`** carries both legal links **inline in the first `<p>`**, not in a second one. It passes the check and reads identically. A managed block would restructure it.
+- **`what-happens-if-you-do-nothing.html`** uses **`&mdash;` separators** where every other page uses `<span aria-hidden="true"> &middot; </span>`. It is still untracked and ships Wednesday, so it will need bringing into line then whether or not a block exists.
 
 ### HOW THE FOOTER LINKS WERE MEASURED, AND WHY THEY ARE NOT IN THE NAME VOTE
 Footer link names split 23/21 across 44 pages. **The difference is that 21 pages omit the privacy notice link entirely.** That is hard rule 16 ("footer with the accessibility statement **and** privacy notice links") and JOB 1 already lists it as expected.
