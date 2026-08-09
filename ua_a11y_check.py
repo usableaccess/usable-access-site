@@ -19,7 +19,14 @@ here means the groundwork is right, not that the page is accessible.
 Usage:
     python3 ua_a11y_check.py page.html [more.html ...]
     python3 ua_a11y_check.py /path/to/folder
+    python3 ua_a11y_check.py . insights     <- prefer this
+    python3 ua_a11y_check.py --selftest     <- consistency-check fixtures
 Exit code 1 if any FAIL.
+
+RUN BOTH FOLDERS IN ONE INVOCATION. The accessible-name consistency check votes
+across the pages it is given, so the other pages ARE the specification. Checking
+`.` and `insights` separately gives it 32 pages and then 12, instead of 44, and
+a smaller electorate is a weaker check.
 """
 import sys, os, re, glob
 from bs4 import BeautifulSoup
@@ -62,6 +69,98 @@ def accessible_name(el):
     if el.name == "input" and el.get("value", "").strip() and el.get("type") in ("submit", "button", "reset"):
         return el["value"].strip()
     return ""
+
+
+# --- JOB 0r: accessible-name consistency across pages ---------------------
+#
+# THE QUESTION THIS ANSWERS: does this element's accessible name match the name
+# the same element has everywhere else? Not "does it have a name", which is what
+# every other name check here asks, and which passed the logo announcing
+# "Usable Access comma home" on eaa-accessibility-statement.html.
+#
+# WHY THIS SHAPE IS DIFFERENT. Every trap written for this repo has failed at
+# least once because it needed to know in advance what wrong looks like: a list
+# of phrasings, a literal currency sign, a set of class names. This one needs to
+# know only what DIFFERENT looks like. There is no vocabulary to widen and no
+# wording it can be blind to. A single-page corruption of repeated chrome cannot
+# hide from it, because the other 30 pages are the specification.
+#
+# HOW IT DECIDES. For each selector below, collect the accessible name found on
+# every page, take the majority, and fail any page that disagrees. A tie means
+# there is no majority and nothing is reported: with two variants at 50/50 we
+# cannot say which is the corruption, and guessing would be worse than silence.
+#
+# SCOPE, decided by measuring rather than by assuming. Across 44 pages:
+#   site logo    44 pages, 1 name    skip link   44 pages, 1 name
+#   back to top  44 pages, 1 name    main nav    44 pages, 1 name
+#   nav CTA      26 pages, 1 name
+# Those five are chrome with one purpose and no legitimate variation, so a
+# disagreement is a defect and they FAIL.
+#
+#   CTA button   41 pages, 4 names
+# The CTA is different. 35 pages say "Book your free assessment today", 4 say
+# "Book your free assessment", and 2 legitimately differ because they ask for
+# something else ("Book a 20-minute call", "Five questions to check"). A
+# majority vote would call all six a defect and be wrong about two, so it WARNS.
+#
+# Footer links were measured too and deliberately left out. They split 23/21,
+# but the difference is that 21 pages omit the privacy notice link entirely.
+# That is a missing-link defect under hard rule 16, not a naming inconsistency,
+# and reporting it here would describe it wrongly. It needs its own check.
+REPEATED_ELEMENTS = [
+    ("site logo",    lambda s: s.select("a.site-logo")),
+    ("skip link",    lambda s: s.select("a.skip-link")),
+    ("back to top",  lambda s: s.select("a.back-to-top, button.back-to-top")),
+    ("nav CTA",      lambda s: s.select("a.nav-cta")),
+    ("main nav",     lambda s: s.select("nav[aria-label]")),
+]
+# Same vote, reported as a warning, for elements where variation can be genuine.
+REPEATED_SOFT = [
+    ("CTA button",   lambda s: s.select("a.cta-button")),
+]
+# Below this share of pages an element is not "repeated chrome" and a majority
+# means little. The logo is on every page; something on three is not a pattern.
+MIN_PAGES = 5
+
+
+def collect_names(path, elements=None):
+    """Return {label: name} for the repeated elements present on this page."""
+    soup = BeautifulSoup(open(path, encoding="utf-8", errors="ignore").read(), "html.parser")
+    return names_from_soup(soup, elements)
+
+
+def names_from_soup(soup, elements=None):
+    found = {}
+    for label, sel in (elements if elements is not None else REPEATED_ELEMENTS):
+        els = sel(soup)
+        if not els:
+            continue
+        if label == "main nav":
+            found[label] = els[0].get("aria-label", "").strip()
+        else:
+            found[label] = accessible_name(els[0])
+    return found
+
+
+def name_consistency(per_page):
+    """per_page: {path: {label: name}} -> list of (path, label, got, expected, share)."""
+    from collections import Counter
+    out = []
+    labels = {l for names in per_page.values() for l in names}
+    for label in sorted(labels):
+        seen = {p: n[label] for p, n in per_page.items() if label in n}
+        if len(seen) < MIN_PAGES:
+            continue
+        counts = Counter(seen.values()).most_common()
+        if len(counts) == 1:
+            continue
+        top, n_top = counts[0]
+        if len(counts) > 1 and counts[1][1] == n_top:
+            continue  # no majority; see the note above
+        for path, name in sorted(seen.items()):
+            if name != top:
+                out.append((path, label, name, top, f"{n_top}/{len(seen)}"))
+    return out
 
 
 def check(path):
@@ -215,8 +314,45 @@ def check(path):
     return issues, notes
 
 
+def selftest_consistency():
+    """Prove the check catches the real defect and stays quiet where it should.
+
+    The real defect: on 8 Aug 2026 one page carried
+    aria-label="Usable Access , home" while 43 carried the em dash. A screen
+    reader announced "Usable Access comma home". Every other name check here
+    passed it, because they ask whether a name exists.
+    """
+    GOOD, BAD = "Usable Access — home", "Usable Access , home"
+    cases = [
+        ("the real defect: 1 page differs from 43",
+         {f"p{i}.html": {"site logo": GOOD} for i in range(43)} | {"bad.html": {"site logo": BAD}},
+         [("bad.html", "site logo", BAD, GOOD)]),
+        ("all pages agree", {f"p{i}.html": {"site logo": GOOD} for i in range(44)}, []),
+        ("a 50/50 tie reports nothing, because neither side is the specification",
+         {f"a{i}.html": {"site logo": GOOD} for i in range(6)} |
+         {f"b{i}.html": {"site logo": BAD} for i in range(6)}, []),
+        ("under MIN_PAGES the vote is not meaningful",
+         {f"p{i}.html": {"site logo": GOOD} for i in range(3)} | {"bad.html": {"site logo": BAD}}, []),
+        ("two odd pages out of many are both reported",
+         {f"p{i}.html": {"site logo": GOOD} for i in range(20)} |
+         {"x.html": {"site logo": BAD}, "y.html": {"site logo": "Usable Access, home"}},
+         [("x.html", "site logo", BAD, GOOD),
+          ("y.html", "site logo", "Usable Access, home", GOOD)]),
+    ]
+    bad = 0
+    for why, per_page, expected in cases:
+        got = [(p, l, g, e) for p, l, g, e, _ in name_consistency(per_page)]
+        if sorted(got) != sorted(expected):
+            print(f"WRONG ({why})\n   expected {expected}\n   got      {got}")
+            bad += 1
+    print(f"consistency selftest: {len(cases)} cases, {bad} wrong")
+    return bad
+
+
 def main():
     args = sys.argv[1:]
+    if "--selftest" in args:
+        sys.exit(1 if selftest_consistency() else 0)
     if not args:
         print(__doc__)
         sys.exit(0)
@@ -231,8 +367,20 @@ def main():
     print("=" * 62)
     print("UA STATIC ACCESSIBILITY CHECK")
     print("=" * 62)
+
+    # Cross-page pass first, so its findings attach to the pages below.
+    cross = {}
+    if len(files) >= MIN_PAGES:
+        for elements, sev in ((REPEATED_ELEMENTS, FAIL), (REPEATED_SOFT, WARN)):
+            per_page = {f: collect_names(f, elements) for f in files}
+            for path, label, got, expected, share in name_consistency(per_page):
+                cross.setdefault(path, []).append(
+                    (sev, "4.1.2", f"{label} accessible name is {got!r} but {share} pages "
+                                   f"use {expected!r} — repeated elements must announce identically"))
+
     for f in files:
         issues, notes = check(f)
+        issues += cross.get(f, [])
         fails = [i for i in issues if i[0] == FAIL]
         warns = [i for i in issues if i[0] == WARN]
         total_fail += len(fails)

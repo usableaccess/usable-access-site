@@ -79,6 +79,35 @@ There is no `--adopt`. It was documented for bringing hand-written OG blocks und
 
 ---
 
+## 🔴 THE ONE QUESTION TO ASK OF ANY CHECK
+
+**Before writing or trusting any check, state the question it must answer. Then confirm it is not answering a weaker one.**
+
+A check that answers an easier question does not fail loudly. **It reports PASS**, which is worse than having no check, because it converts a real defect into a green tick and stops anyone looking.
+
+**Four checks on this site did exactly that, and all four were found on 8 August 2026.**
+
+| The check asked | The question it should have asked | What shipped |
+|---|---|---|
+| Does the class exist somewhere? | **Does it reach this page?** | A page linking no stylesheet passed, with a CTA panel that would render with no teal background and no orange button |
+| Does the file mention telecoms? | **Does this sentence?** | The ComReg trap exempted itself on thirteen pages. On one, the word "telecoms" inside the error triggered the bypass that hid the error |
+| Does the literal € sign appear? | **Does the figure?** | The site writes `&euro;`, so a currency trap was blind to every page it existed to check |
+| Is there an accessible name? | **Is the name right?** | The logo announced "Usable Access comma home" on the accessibility statement page |
+
+**The tell is that the easier question is always the cheaper one to implement.** Existence is cheaper than reachability. A file scan is cheaper than a sentence scan. A literal character is cheaper than a normalised value. Presence is cheaper than correctness. **When a check was quick to write, that is when to ask what it is actually testing.**
+
+### THE COROLLARY: A TRAP'S COUNT IS A FLOOR, NEVER A TOTAL
+A check that answers a weaker question returns a count that is always too low. The JOB 0o instance count went 6, 13, 17, 24, 26, 27. **Only one of those jumps came from reading. Every other came from widening the detector.** Report a green trap as "none of the wordings we have been burned by is present", never as "the page is clean".
+
+### THE SHAPE THAT ESCAPES THIS: CONSISTENCY, NOT QUALITY
+**Every trap above failed because it needed to know in advance what wrong looks like.** A consistency check does not. It only needs to know what *different* looks like.
+
+The accessible-name check built for JOB 0r is the model: repeated elements must have identical accessible names across pages, and any page disagreeing with the majority fails. No vocabulary of bad strings, nothing to widen, and no wording it can be blind to. **Where a rule can be expressed as "these should all agree", prefer that over a list of things that are wrong.**
+
+Detail and instances: JOB 0f (the first three) and JOB 0r (the fourth, and the consistency check).
+
+---
+
 ## HARD RULES (these come from real mistakes; do not relitigate)
 
 1. **Never use a CSS class that is not defined in `site.css`.** A page built on invented classes (`article`, `badge`, `site-header`, `cta-block`, `meta-date`…) renders completely unstyled. This has happened. The checker now blocks it.
@@ -410,18 +439,7 @@ Roughly 1–1.5 hours, most of it in the token resolution and pair-building. **W
 
 **The rule: a page that links no stylesheet must not pass by inheriting one.** Resolve which stylesheets a page actually loads, and validate only against those plus its own inline `<style>`.
 
-**This is the third failure of this shape in one day**, and naming the shape matters more than the three instances:
-- the **ComReg bypass** computed over the whole file and fired on unrelated text, so the defect exempted itself
-- the **`&euro;` blindness**, where a currency trap matched only the literal sign the site never uses
-- **this**, where a class check vouches for definitions the page cannot reach
-
-**All three are the same error: the check answered an easier question than the one being asked.** Does the class exist somewhere, rather than does it reach this page. Does the file mention telecoms, rather than does this sentence. Does the literal character appear, rather than does the figure. **When writing any check, state the question it must answer and confirm it is not answering a weaker one.**
-
-### THE SAME RULE FROM THE OTHER END: A TRAP'S COUNT IS A FLOOR, NEVER A TOTAL
-
-A check that answers a weaker question returns a count that is always too low. **A trap's count is a floor, never a total.** Six became thirteen, thirteen became seventeen, seventeen became twenty-four, twenty-four became twenty-six, and twenty-six became twenty-seven — and only one of those jumps came from reading. Every other came from widening the detector.
-
-**Report a green trap as "none of the wordings we have been burned by is present", and never as "the page is clean".**
+**This was the third failure of this shape in one day**, and a fourth followed the same afternoon. **The shape, the four instances and the corollary about counts now live in one place: THE ONE QUESTION TO ASK OF ANY CHECK, near the top of this file.** Read that rather than this list. What belongs here is only the class-check instance itself, above.
 
 - **Trim the checker's fallback list.** `ua_page_check.py` passed all three of the above, because `nav-cta`, `status-block`, `article-cta` and `cta-button` are all in its embedded fallback vocabulary. **A fallback that vouches for classes it cannot see is worse than no fallback** — it converts a real failure into a green tick. Either point the checker at the real `site.css` and fail when it is absent, or make it warn loudly that it is guessing.
 ---
@@ -653,11 +671,7 @@ A trap for defect A was added at the same time.
 ### WHY BOTH CHECKERS PASSED IT, WHICH IS THE POINT
 **`ua_a11y_check.py` checks that links and buttons HAVE an accessible name. It does not check what the name SAYS.** `ua_page_check.py` reads `aria-label` into its trap surface, so it could see the text, but no trap looks at name quality.
 
-**This is the easier-question failure in its purest form yet.** Does an accessible name exist, rather than does the accessible name read correctly aloud. Presence is trivial to test and it is not the thing that matters. Set beside the earlier three:
-- the class check asked *does the class exist somewhere*, not *does it reach this page*
-- the ComReg bypass asked *does the file mention telecoms*, not *does this sentence*
-- the currency trap asked *does the literal sign appear*, not *does the figure*
-- **this one asked *is there a name*, not *is the name right***
+**This is the easier-question failure in its purest form yet:** does an accessible name exist, rather than does the accessible name read correctly aloud. Presence is trivial to test and it is not the thing that matters. **It is the fourth instance in the table under THE ONE QUESTION TO ASK OF ANY CHECK, near the top of this file. Read that for the shape.**
 
 **It is also the fourth defect found by eye on our own site while the tooling reported clean**, after the unstyled CTA links, the missing `<main>` and the near-invisible focus ring.
 
@@ -668,7 +682,23 @@ A trap for defect A was added at the same time.
 3. **Empty-after-normalisation names**, and names that are only punctuation or entities.
 4. **`alt` text duplicating adjacent visible text**, which doubles the announcement.
 
-**Build rule 2 first.** It is a consistency check rather than a quality judgement, so it cannot be argued with, and repeated chrome is exactly where a single-page corruption hides.
+### RULE 2 IS BUILT — 8 August 2026
+In `ua_a11y_check.py`. It collects the accessible name of each repeated element on every page given to it, takes the majority, and fails any page that disagrees. **The other pages are the specification**, so it needs no vocabulary of bad strings.
+
+**Run it as `python3 ua_a11y_check.py . insights`, in one invocation.** The vote is taken across the pages it is given, so checking the two folders separately gives it 32 pages and then 12 instead of 44. A smaller electorate is a weaker check.
+
+**Scope was decided by measuring, not by assuming.** Across 44 pages the site logo, skip link, back-to-top and main nav each have exactly one name on 44 pages, and the nav CTA one name on 26. Those five FAIL on disagreement, with no false positives available to them.
+
+**The CTA button WARNS instead.** It has four names across 41 pages: 35 say "Book your free assessment today", 4 say "Book your free assessment", and 2 legitimately differ because they ask for something else. A majority vote there would be right about four and wrong about two, so it is a warning.
+
+**A tie reports nothing.** With two variants at 50/50 there is no majority, neither side is the specification, and guessing would be worse than silence.
+
+**Verified against the real defect**, not only against fixtures: reintroducing ` , ` into the logo on a copy of the site produces `FAIL 4.1.2 site logo accessible name is 'Usable Access , home' but 31/32 pages use 'Usable Access — home'`. `--selftest` covers five cases including the tie and the below-threshold case.
+
+### FOOTER LINKS WERE MEASURED AND LEFT OUT, AND THE MEASUREMENT FOUND SOMETHING
+Footer link names split 23/21 across 44 pages. **The difference is that 21 pages omit the privacy notice link entirely.** That is hard rule 16 ("footer with the accessibility statement **and** privacy notice links") and JOB 1 already lists it as expected.
+
+**It is a missing-link defect, not a naming inconsistency**, so putting it through the name vote would describe it wrongly and it was excluded. **Nothing currently enforces rule 16.** A separate check is warranted, and it is close to trivial: every page's footer must contain a link to `/accessibility-statement.html` and one to `/privacy.html`. **This matters beyond tidiness because `privacy.html` is required before outreach sends** under GDPR Article 14, per JOB 2.
 
 ### IT BELONGS IN THE SKIP-LINK POST, WHICH IS NOT IN THIS REPO
 The piece arguing that automated tools confirm presence while only a person confirms function should use this as its example. **It beats any hypothetical**: our own site, our own name, both checkers green, and the failure audible only to someone actually listening.
