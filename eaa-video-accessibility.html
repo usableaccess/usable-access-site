@@ -90,18 +90,12 @@
     .nav-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
     .nav-toggle:focus { outline: 3px solid var(--colour-teal); outline-offset: 4px; }
     .nav-toggle-bar { display: block; width: 100%; height: 2px; background-color: var(--colour-heading); border-radius: 1px; transition: transform 0.2s ease, opacity 0.2s ease; }
-    .nav-links { list-style: none; display: flex; gap: var(--space-lg); align-items: center; }
-    .nav-links a { font-family: var(--font-body); font-size: 0.9375rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; padding: var(--space-xs) 0; }
-    .nav-links a:hover { color: var(--colour-teal); }
-    .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
-    @media (max-width: 640px) {
-      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 100%; left: calc(-1 * var(--container-pad)); right: calc(-1 * var(--container-pad)); background: var(--colour-white); border-top: 1px solid var(--colour-border); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) var(--container-pad); z-index: 99; }
-      .nav-links.is-open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--colour-border); width: 100%; }
-      .nav-links li:last-child a { border-bottom: none; }
-    }
-    @media (min-width: 641px) { .nav-toggle { display: none; } }
+    
+    
+    
+    
+    
+    
 
     .page-hero { background: var(--colour-teal-subtle); border-bottom: 1px solid var(--colour-border); padding: var(--space-2xl) 0; }
     .article-meta-hero { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
@@ -111,19 +105,19 @@
     .deck { font-family: var(--font-body); font-size: 1.125rem; color: var(--colour-secondary); line-height: 1.7; max-width: 36em; }
     .page-meta { font-family: var(--font-body); font-size: 0.8125rem; color: var(--colour-meta); margin-top: var(--space-md); }
 
-    .page-body { padding: var(--space-2xl) 0; }
+    .page-body { padding: var(--space-2xl) 0; border-bottom: 1px solid var(--colour-border);}
     .page-body h2 { font-family: var(--font-display); font-size: 1.375rem; font-weight: 600; color: var(--colour-heading); margin: var(--space-2xl) 0 var(--space-md); line-height: 1.3; }
     .page-body h2:first-child { margin-top: 0; }
-    .page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-md); max-width: 36em; }
+    .page-body p { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-lg); max-width: 36em; }
     .page-body p:last-child { margin-bottom: 0; }
     .page-body a { color: var(--colour-teal); text-decoration: underline; }
-    .page-body a:focus { outline: 3px solid var(--colour-teal); outline-offset: 2px; }
-    .page-body ul { margin: var(--space-md) 0 var(--space-md) var(--space-xl); }
+    .page-body a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    .page-body ul { margin: 0 0 var(--space-lg) var(--space-xl); }
     .page-body ul li { font-family: var(--font-body); font-size: 1rem; line-height: 1.75; color: var(--colour-body); margin-bottom: var(--space-sm); max-width: 34em; }
 
-    .callout { padding: var(--space-lg); margin: var(--space-xl) 0; border-left: 4px solid; }
+    .callout { background: var(--colour-teal-subtle); border-left: 4px solid var(--colour-teal); padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); margin-bottom: var(--space-xl); }
     .callout p { margin-bottom: 0; max-width: 100%; }
-    .callout--orange { background: var(--colour-orange-tint); border-color: var(--colour-orange); }
+    .callout--orange { background: var(--colour-orange-tint); border-left-color: var(--colour-orange); }
     .callout--teal { background: var(--colour-teal-subtle); border-color: var(--colour-teal); }
 
     .requirements { margin: var(--space-xl) 0; border: 1px solid var(--colour-border); border-radius: 2px; overflow: hidden; }
@@ -158,7 +152,7 @@
     footer a { color: var(--colour-teal); text-decoration: underline; min-height: 44px; display: inline-block; line-height: 44px; }
     footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
 
-    :focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 6px rgba(15,107,107,0.15); }
+    :focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 2px var(--colour-white),0 0 0 5px var(--colour-teal); }
     a:focus-visible, button:focus-visible { outline: 3px solid var(--colour-teal); outline-offset: 3px; box-shadow: 0 0 0 2px var(--colour-white), 0 0 0 5px var(--colour-teal); }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms!important; animation-iteration-count: 1!important; transition-duration: 0.01ms!important; scroll-behavior: auto!important; } }
 
@@ -168,7 +162,21 @@
     .back-to-top.is-visible{opacity:1;visibility:visible}
     .back-to-top svg{width:20px;height:20px;fill:none;stroke:var(--colour-white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
     @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
-  </style>
+  
+    .nav-links { display: none; position: absolute; top: 100%; left: calc(-1 * var(--container-pad)); right: calc(-1 * var(--container-pad)); background: var(--colour-white); border-bottom: 2px solid var(--colour-teal); padding: var(--space-md) var(--container-pad); list-style: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 200; }
+    .nav-links.is-open { display: block; }
+    .nav-links li { border-bottom: 1px solid var(--colour-border); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links a { display: block; font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: var(--colour-secondary); text-decoration: none; padding: var(--space-md) 0; letter-spacing: 0.01em; }
+    .nav-links a:hover { color: var(--colour-teal); }
+    .nav-links a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
+    @media (min-width: 640px) {
+      .nav-toggle { display: none; }
+      .nav-links { display: flex !important; position: static; border-bottom: none; padding: 0; box-shadow: none; background: none; list-style: none; gap: var(--space-xl); align-items: center; }
+      .nav-links li { border-bottom: none; }
+      .nav-links a { font-size: 0.875rem; padding: 0; }
+    }
+</style>
 <style>
   /* ua:nav-cta — managed by ua_sync_blocks.py.
      PROPER FIX: move these rules into site.css and delete this block from every
@@ -180,7 +188,7 @@
   .nav-cta:hover{background:var(--colour-orange-dark)}
   .nav-cta:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
   @media(min-width:900px){
-    .nav-links{margin-left:auto}
+    
     .nav-cta-slot{order:1;margin-left:var(--space-xl);margin-right:0}
   }
 </style>

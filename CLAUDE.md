@@ -95,6 +95,17 @@ A check that answers an easier question does not fail loudly. **It reports PASS*
 | Is there an accessible name? | **Is the name right?** | The logo announced "Usable Access comma home" on the accessibility statement page |
 | How many footer *names* are there? | **How many footer *shapes* are there?** | "Exactly two footer shapes" went into a commit message and this register. There were seven |
 | Is the link inside `<main>`? | **Is the link inside running copy?** | `ua_orphan_check.py`, written to enforce the body-copy distinction, counted 15 listing cards as body copy on its first run |
+| What does the CSS text say? | **What does the browser do?** | A nav audit reported five pages with no mobile navigation and a hamburger that expands nothing. There was no defect. All 44 collapse correctly |
+
+### THE EIGHTH INSTANCE NAMES WHY THE OTHER SEVEN HAPPEN
+
+**A regex reads text. A browser resolves cascade and viewport.** Those are different questions about the same file, and the first one is always easier to ask.
+
+The nav audit ran three times and was wrong twice. First a flat regex matched the *first* `.nav-links` rule in the file, which is the desktop one, and reported the pattern intact everywhere. Then a "context-aware" version looked for a base-context `display:none` — but five pages are written mobile-last, hiding the nav inside `@media (max-width: 640px)`, so it reported them broken. Both passes were asking *does this text appear in this place*. **Only the third pass asked the real question: evaluate every media query against a concrete viewport width and see what wins.** At 390px, all 44 pages collapse correctly. There was never a defect.
+
+**The correction was worth more than the finding would have been**, because it had already been characterised as a live WCAG 4.1.2 failure on production, and a fix was about to be written for pages that did not need one.
+
+**Three of the eight instances came from the same author error: reading CSS or HTML with a regex that cannot see structure.** That is a specific and correctable class, not general carelessness. **When a question is about what renders, do not answer it by matching text.** Parse with context, resolve the cascade, evaluate the media query at a width, or open a browser. If none of those is available, say the check is textual and therefore provisional.
 
 **The sixth is the sharpest, because the check existed for nothing else.** `ua_orphan_check.py` was written on 9 August precisely to separate a body-copy link from a listing card, since that distinction is what the publishing protocol turns on. It classified a card by looking for a class matching `card`, and `insights.html` wraps each entry in `<div class="article-list">`, which contains no such word. **A check whose entire purpose was one distinction could not see that distinction.** Fixing it moved the under-linked count from 8 to 22, so the first run understated the problem by nearly three times. **A checker is not exempt from the rule it enforces. Test a new check against the case it was written for, not against the case that is easy to construct.**
 
