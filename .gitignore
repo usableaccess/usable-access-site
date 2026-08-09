@@ -2,3 +2,11 @@
 # ignored here so it cannot be re-added.
 .DS_Store
 .DS_Store?
+
+# Binary responses saved by web fetches during source-checking sessions. On
+# 8 Aug 2026 one landed in ~/.claude/projects/ rather than here, so nothing
+# needed removing. The pattern is preventive: source-checking against primary
+# documents is now routine, PDFs are how regulators publish, and `git add -A`
+# would sweep one in. Same reason as .DS_Store above.
+webfetch-*
+*.pdf.tmp

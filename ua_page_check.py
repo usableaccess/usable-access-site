@@ -34,12 +34,61 @@ FACT_TRAPS = [
     (r"(?i)(has been|was|were) fined", "claims a fine was ISSUED — no EAA administrative fine exists in any market"),
     (r"(?i)60 webshops", "60 webshops — should be ~100-webshop sample"),
     (r"(?i)partial conformance is not a defence anywhere", "overstates a single referé as settled EU law"),
+    # JOB 0q: the ACM prioritises non-reporters for audit. The ACM publishes the
+    # opposite basis - user impact, and the largest companies by customer
+    # numbers. Found on four pages in five wordings. This trap is a bookmark of
+    # those five, so read the note in CLAUDE.md before trusting a green result.
+    (r"(?i)(?:front of the (?:ACM(?:'s|’s)? )?audit queue|"
+     r"(?:failed to report|did not self-report|missed the deadline|non-report(?:ers?|ing)|"
+     r"failure to report)[^.]{0,90}(?:prioritis|audited first|front of|priority target|"
+     r"audit queue)|"
+     r"prioritis\w+ (?:organisations|companies|businesses|those) (?:that |who )?"
+     r"(?:did not|failed to|have not))",
+     "claims a regulator prioritises non-reporting organisations for audit - the ACM's "
+     "published basis is user impact and company size, not reporting status (JOB 0q)"),
     # Defect A from JOB 0o: an investigative sequence no regulator publishes.
-    (r"(?i)(first document [A-Za-z ]{0,20}requests|requests? (it|the accessibility statement) first|"
+    #
+    # Rebuilt 8 Aug 2026, third widening in one day. The previous version was a
+    # list of the wordings we had already been burned by, so each widening found
+    # instances the last one could not see: 6, then 13, then 17, then 24. The
+    # count of a phrasing list is always a floor.
+    #
+    # Match the CLAIM in either word order, not a phrasing:
+    #   the <thing> is <requested>      "the first document requested"
+    #   <requested> ... first           "the document requested first"
+    # plus the versions that drop "first" and say "at the start of any complaint".
+    #
+    # A REQUEST VERB is required. Without it the pattern fires on "an absent
+    # statement is the first signal", which is a true sentence about what a
+    # reader can infer, not a claim about procedure. A DETERMINER before "first"
+    # is required for the same reason: bare "First, it requires..." is an
+    # enumerator, not a claim that anything is requested first.
+    (r"(?i)(?:"
+     r"\b(?:the|a|an|its|their|our|that|this)\s+(?:first|initial)\b[^.]{0,60}?"
+     r"\b(?:request(?:s|ed|ing)?|asks? for|asked for|asking for|ask(?:s|ed)? to see|"
+     r"seeks?|sought|demands?|demanded|wants? to see|looks? for|looked for)\b"
+     r"|"
+     r"\b(?:request(?:s|ed|ing)?|asks? for|asked for|asking for|ask(?:s|ed)? to see|"
+     r"seeks?|sought|demands?|demanded|wants? to see|looks? for|looked for)\b"
+     r"[^.]{0,60}?\bfirst\b"
+     r"|"
      r"review the accessibility statement first|statement first in any complaint|"
-     r"first in any complaint investigation|first in any complaint process|"
-     r"among the first documents [A-Za-z ]{0,24}requests|"
-     r"first document [A-Za-z ]{0,24}(?:authority |supervisory authority )?requests)",
+     r"first in any complaint (?:investigation|process)"
+     r"|"
+     r"(?:at the (?:very )?start of|early in|at the outset of)\s+(?:any|a|the)\s+"
+     r"(?:complaint|enforcement|investigation)"
+     r"|"
+     # 26th instance, found by reading after this trap had been widened twice and
+     # reported the page clean. It states the sequence without using "first" and
+     # without a standalone request verb near it: "requests documentation
+     # starting with the accessibility statement". It was in body copy and in
+     # JSON-LD on the same page.
+     r"(?:start(?:s|ing)?|begin(?:s|ning)?) with the (?:accessibility )?statement"
+     r"|"
+     # 27th instance: "where enforcement bodies look first". Bare "look" without
+     # "for", so the request-verb list missed it by one word.
+     r"\blook(?:s|ed|ing)?\s+first\b"
+     r")",
      "claims the accessibility statement is requested FIRST in a complaint investigation - "
      "no regulator publishes this procedure (JOB 0o defect A)"),
 ]
@@ -381,8 +430,20 @@ def check(path):
     for pat, msg in FACT_TRAPS:
         if "ComReg" in msg:
             continue  # handled above
-        if re.search(pat, body):
-            fails.append("FACT: " + msg)
+        seen = set()
+        for m in re.finditer(pat, body):
+            # Report the sentence, not only the rule. A trap that prints its own
+            # message and nothing else says a page is dirty without saying where,
+            # and every widening of the JOB 0o trap needed the matched text to
+            # tell a real hit from a false one. Dedupe: a meta description is
+            # repeated in og: and twitter:, so one claim would report three times.
+            s = body.rfind(".", 0, m.start()) + 1
+            e = body.find(".", m.end())
+            snippet = " ".join(body[s:e + 1 if e != -1 else len(body)].split())[:200]
+            if snippet in seen:
+                continue
+            seen.add(snippet)
+            fails.append(f"FACT: {msg}: {snippet}")
     for pat, msg in CTA_TRAPS:
         if re.search(pat, body): fails.append("CTA: " + msg)
 
