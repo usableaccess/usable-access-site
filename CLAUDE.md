@@ -640,6 +640,43 @@ A trap for defect A was added at the same time.
 
 ---
 
+## 🔴 JOB 0r — A SCREEN READER ANNOUNCED "USABLE ACCESS COMMA HOME". BOTH CHECKERS PASSED IT.
+
+**Found 8 August 2026 by reading, on `eaa-accessibility-statement.html`.** The site logo's accessible name was:
+
+```html
+<a href="/" class="site-logo" aria-label="Usable Access , home">
+```
+
+**A screen reader announced our own company name with a comma in the middle of it, on the accessibility statement page.** Every other page carries `aria-label="Usable Access &mdash; home"`. An em-dash conversion had turned the dash into ` , ` on this one page. Fixed the same day.
+
+### WHY BOTH CHECKERS PASSED IT, WHICH IS THE POINT
+**`ua_a11y_check.py` checks that links and buttons HAVE an accessible name. It does not check what the name SAYS.** `ua_page_check.py` reads `aria-label` into its trap surface, so it could see the text, but no trap looks at name quality.
+
+**This is the easier-question failure in its purest form yet.** Does an accessible name exist, rather than does the accessible name read correctly aloud. Presence is trivial to test and it is not the thing that matters. Set beside the earlier three:
+- the class check asked *does the class exist somewhere*, not *does it reach this page*
+- the ComReg bypass asked *does the file mention telecoms*, not *does this sentence*
+- the currency trap asked *does the literal sign appear*, not *does the figure*
+- **this one asked *is there a name*, not *is the name right***
+
+**It is also the fourth defect found by eye on our own site while the tooling reported clean**, after the unstyled CTA links, the missing `<main>` and the near-invisible focus ring.
+
+### THE CHECKER GAP TO CLOSE
+**Validate accessible-name CONTENT, not only presence.** In `ua_a11y_check.py`, across every `aria-label`, `alt` and link text:
+1. **Punctuation a screen reader will announce.** A comma, semicolon or colon surrounded by spaces (` , `), doubled punctuation, or a name ending in a stray separator. **` , ` is the defect actually found and it must FAIL, not warn.**
+2. **Names that are the same across pages must BE the same.** The logo, the skip link, the back-to-top control and the nav CTA appear on every page. Build the set of accessible names per repeated element and **fail on any page that disagrees with the majority.** That one rule would have caught this, and it needs no vocabulary of bad strings.
+3. **Empty-after-normalisation names**, and names that are only punctuation or entities.
+4. **`alt` text duplicating adjacent visible text**, which doubles the announcement.
+
+**Build rule 2 first.** It is a consistency check rather than a quality judgement, so it cannot be argued with, and repeated chrome is exactly where a single-page corruption hides.
+
+### IT BELONGS IN THE SKIP-LINK POST, WHICH IS NOT IN THIS REPO
+The piece arguing that automated tools confirm presence while only a person confirms function should use this as its example. **It beats any hypothetical**: our own site, our own name, both checkers green, and the failure audible only to someone actually listening.
+
+**Checked 8 August 2026: that post is not on this side of the split.** Every `skip link` string in the repo is either CSS or the boilerplate link itself, and no page carries the presence-versus-function argument. The nearest thing is `index.html`, which says findings come from going through the journey rather than from an automated pass. **The post is in the content project, so the example has to be added there.**
+
+---
+
 ## JOB 0q — A PROCEDURE PUT IN THE ACM'S MOUTH. CHECKED AGAINST SOURCE 8 August 2026 AND IT FAILS.
 
 **Its own item, not part of JOB 0o.** Defect A is a procedure nobody published. **This is a procedure attributed to a named regulator that the regulator's own publications contradict.** The attribution makes it worse, not better: an unattributed claim is ours to withdraw, and this one puts words in the ACM's mouth.
