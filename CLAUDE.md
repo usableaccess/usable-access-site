@@ -35,7 +35,7 @@ Never hand-author a page from scratch. Copy the canonical template (`eaa-complia
 | `ua_erase.py` | missing |
 | `ua_study_export.py` | missing |
 | `ua_merge_cowork.py` | missing |
-| `ua_volatile_check.py` | missing |
+| `ua_volatile_check.py` | **present** — written 8 Aug because a stale prediction shipped. `--selftest` runs 8 fixtures |
 
 There is no `tools/` directory. The table below describes an intended state, not the repo.
 
@@ -403,6 +403,26 @@ Roughly 1–1.5 hours, most of it in the token resolution and pair-building. **W
 
 **Two things to do:**
 - **Consolidate.** Move the shared vocabulary into `site.css`, keep only genuinely page-specific rules inline, and link `site.css` from every page. Verify nothing regresses visually before deleting the inline duplicates.
+### THE THIRD FALLBACK VARIANT, FOUND 8 August 2026
+**`ua_page_check.py` validates classes against `css/site.css` whether or not the page links it.** A page that loads no stylesheet at all still passes, because the definitions exist somewhere.
+
+`what-happens-if-you-do-nothing.html` arrived with no `<link>` to any stylesheet, an inline `<style>` defining 18 classes, and four classes used but defined only in `site.css`: `.article-cta`, `.cta-button`, `.related-links`, `.related-list`. **The CTA panel would have rendered with no teal background, no orange button and no focus ring**, and it passed both checkers. It was built from `does-the-eaa-apply.html` with the CTA rules dropped.
+
+**The rule: a page that links no stylesheet must not pass by inheriting one.** Resolve which stylesheets a page actually loads, and validate only against those plus its own inline `<style>`.
+
+**This is the third failure of this shape in one day**, and naming the shape matters more than the three instances:
+- the **ComReg bypass** computed over the whole file and fired on unrelated text, so the defect exempted itself
+- the **`&euro;` blindness**, where a currency trap matched only the literal sign the site never uses
+- **this**, where a class check vouches for definitions the page cannot reach
+
+**All three are the same error: the check answered an easier question than the one being asked.** Does the class exist somewhere, rather than does it reach this page. Does the file mention telecoms, rather than does this sentence. Does the literal character appear, rather than does the figure. **When writing any check, state the question it must answer and confirm it is not answering a weaker one.**
+
+### THE SAME RULE FROM THE OTHER END: A TRAP'S COUNT IS A FLOOR, NEVER A TOTAL
+
+A check that answers a weaker question returns a count that is always too low. **A trap's count is a floor, never a total.** Six became thirteen, thirteen became seventeen, seventeen became twenty-four, twenty-four became twenty-six, and twenty-six became twenty-seven — and only one of those jumps came from reading. Every other came from widening the detector.
+
+**Report a green trap as "none of the wordings we have been burned by is present", and never as "the page is clean".**
+
 - **Trim the checker's fallback list.** `ua_page_check.py` passed all three of the above, because `nav-cta`, `status-block`, `article-cta` and `cta-button` are all in its embedded fallback vocabulary. **A fallback that vouches for classes it cannot see is worse than no fallback** — it converts a real failure into a green tick. Either point the checker at the real `site.css` and fail when it is absent, or make it warn loudly that it is guessing.
 ---
 
@@ -617,6 +637,127 @@ A trap for defect A was added at the same time.
 
 ### THE GENERAL LESSON: AUDIT THE OTHER TRAPS FOR THIS SHAPE
 **A check that switches itself off when it sees the thing it is looking for is worse than no check**, because it reports PASS. The ComReg trap was the only one with a page-level bypass, so no other trap has this exact defect today. **But the shape is what matters: any exemption computed over a whole file can be triggered by text unrelated to the claim being checked.** Before adding a bypass to any future trap, scope it to the sentence.
+
+---
+
+## JOB 0q — A PROCEDURE PUT IN THE ACM'S MOUTH. CHECKED AGAINST SOURCE 8 August 2026 AND IT FAILS.
+
+**Its own item, not part of JOB 0o.** Defect A is a procedure nobody published. **This is a procedure attributed to a named regulator that the regulator's own publications contradict.** The attribution makes it worse, not better: an unattributed claim is ours to withdraw, and this one puts words in the ACM's mouth.
+
+**The sentence, on `eaa-compliance-netherlands.html` line 164, inside an orange callout:**
+> Failure to report does not make an organisation invisible to enforcement. It makes it a priority target. **The ACM has been explicit that non-reporting organisations will be audited first.**
+
+**What the ACM actually publishes.** Four of its own pages were read.
+- **Meldplicht page** — states the obligation and nothing about consequences for not reporting. On what follows a report: *"We nemen geen contact op na uw melding, behalve als we nog vragen hebben."* No prioritisation of non-reporters anywhere.
+- **"ACM roept bedrijven op…"** — the stated first-period priority is the **opposite** basis: *"De ACM richt zich in de eerste periode vooral op kritieke toegankelijkheidsproblemen die veel negatieve impact hebben op gebruiksmogelijkheden door mensen met een beperking."* Selection by user impact, not by who filed.
+- **English supervision page** — *"Our enforcement actions depend on the magnitude of the problems, and on what steps companies are taking to solve those problems."*
+- **The large-webshop investigation** — selection criterion stated as **"de grootste bedrijven met de meeste klanten"**, and next steps as *"De ACM wijst de grootste bedrijven die het slechtst presteren op de verbeterpunten."* Size and performance. Reporting status is not mentioned as a criterion.
+
+### THE FOUR ACM SOURCES — READ THESE, DO NOT REPEAT THE SEARCH
+| What it settles | URL |
+|---|---|
+| The meldplicht itself, and that nothing follows a report except questions | `https://www.acm.nl/nl/toegankelijkheid/toegankelijkheid-van-e-handelsdiensten-en-elektronische-communicatiediensten/meldplicht-bij-niet-voldoen-aan-toegankelijkheid` |
+| The stated first-period priority, by user impact | `https://www.acm.nl/nl/publicaties/acm-roept-bedrijven-op-zich-voor-te-bereiden-op-regels-toegankelijkheid-websites-en-apps` |
+| Enforcement scaled to problem magnitude and to what the company is doing | `https://www.acm.nl/en/accessibility/accessibility-e-commerce-services-and-electronic-communications-services` |
+| The ~100 webshop study: selection criterion, the 61%, the 33% | `https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht` |
+
+### THE NETHERLANDS PAGE IS A KNOWN ROUTE FOR VENDOR-SUMMARY CLAIMS
+**The claim is in vendor blog summaries in almost our wording. Same provenance as the Carrefour €10,000 damages figure**: present in secondary commentary, absent from the primary source. **Two of the three defects on this page now share that origin**, and the third was the €900,000 ceiling borrowed from Sweden.
+
+**That is a property of the page, not a coincidence.** Dutch primary sources are in Dutch, so an English-language vendor summary is the path of least resistance and it is where the wording came from. **Treat anything on this page that attributes a position to the ACM as unverified until it is read against acm.nl directly.**
+
+**Verified against source while here, and correct:** approximately 100 of the largest Dutch webshops tested, ordering impossible with assistive technology in **61%** (*"bij 61% onmogelijk is om een bestelling te plaatsen met hulpapparatuur"*), serious problems in a further 33%. That figure is in the meta description too and is safe.
+
+### THE OTHER THREE, CHECKED 8 August 2026: TWO FAIL, ONE HOLDS
+
+**"The ACM has stated publicly that fines are not its primary goal." HOLDS.** The [ACM Toezichtvisie](https://www.acm.nl/system/files/documents/acm-toezichtvisie.pdf) describes the ACM as a mission-driven supervisor, says supervision is more than imposing a fine when a company breaks the law, and says it prioritises preventing further harm over punishing past behaviour. **The two sentences that followed it did not hold.** "Contributing to equal access rather than punishing non-compliance" grafted the accessibility mission onto a general supervision vision whose mission is well-functioning markets. "Except in cases of egregious or wilful non-compliance" was our own carve-out with no source. Both replaced with what the sources support, including the ACM spokesperson in [NOS](https://nos.nl/artikel/2607639-veel-grote-webwinkels-niet-toegankelijk-voor-mensen-met-beperking): companies get *"een redelijke termijn"*, and if they still do not comply *"dan volgen er sancties. Bijvoorbeeld een boete of last onder dwangsom."*
+
+**"As of June 2026 the ACM has moved from information-gathering toward formal sanctions." FAILS.** No ACM publication describes a phase transition. Deleted from four pages, in three wordings: "moved from the information-gathering phase … toward formal sanctions", "has shifted from information-gathering to formal sanctions" twice, and "is moving toward formal sanctions".
+
+**"Formal sanctions are expected in the second half of 2026." FAILS, and differently.** Deleted from five places including a JSON-LD field and a comparison-table cell.
+
+### THE NEW RULE: A PREDICTED TIMELINE CANNOT BE ATTRIBUTED
+
+**A published intention is checkable. A predicted timeline is not, because the period is not over.** Attributing a prediction to a regulator is therefore a stronger claim than making it ourselves, and it is unfalsifiable until the moment it is simply wrong.
+
+**The rule.** Never attribute a future timeline to a regulator. If we believe sanctions are coming in a given period, **say that we expect it and why**, or say nothing. The NOS quote shows what a regulator will actually commit to: a reasonable period, then sanctions. No date. **If the regulator would not put a date on it, we cannot put one in its mouth.**
+
+**This extends rule 10 twice over.** Rule 10 covered unverified figures. JOB 0q extended it to unverified regulator *intentions*. This extends it again to regulator *predictions*, which are worse, because no amount of checking can confirm one.
+
+### THE SECOND HALF OF THE RULE: ANY STATED FUTURE PERIOD NEEDS A REVIEW DATE
+
+**The attribution rule is not enough, because the mechanism is not about regulators.** A future period becomes wrong **by the calendar, not by any change in the world**. The sentence was true when written and nothing touched the file. That is the same mechanism as "thirteen months" and the Navigator trial deadline, and it is the fourth instance of stale framing found today.
+
+**So: any future period stated anywhere needs a review date attached.** Not only the ones attributed to a regulator.
+
+**This belongs in tooling, not in a FACT trap, and the distinction matters.** A FACT trap is a bookmark of wordings we have been burned by, so its count is a floor. **A quarter or a year that has passed is mechanically detectable** — compute the end of the period, compare to today. There is no phrasing list to widen and no source to check. It has passed or it has not.
+
+**`ua_volatile_check.py`, written 8 August 2026.** It answers one question: *does this page state a period as still ahead when the calendar has passed it?* It parses `Q2 2026`, `second half of 2026`, `H1 2026`, `June 2026`, `mid-2026` and bare years, computes the end, and requires future framing (`expected`, `due`, `set to`, `any week now`) with no past framing (`arrived`, `entered`, `since`) in the same sentence. **History is never flagged.** It also warns on `as of <period>` stamps older than 120 days, on periods ending within 90 days, and on elapsed counters such as "thirteen months".
+
+```bash
+python3 ua_volatile_check.py .            # today
+python3 ua_volatile_check.py . --today 2027-01-04   # see what goes stale
+python3 ua_volatile_check.py --selftest   # 8 fixtures, including the real one
+```
+
+**It found a second instance on its first run**, on `bfsg-germany-accessibility-compliance.html`, the country page. The same "expected in Q2 2026" sentence that had just been deleted from the insights page. Both now gone. Root reports 0 failures and 3 warnings, insights 0 and 0.
+
+**What it cannot do, and this is in its own output:** it cannot tell whether a future claim is TRUE, cannot resolve "soon" or "in the coming months", and does not recompute elapsed counters.
+
+### PRECISION IS A WRITING RULE, NOT ONLY A CHECKING ONE
+
+**The one ACM claim that survived was the most precisely worded one.** Stated sample, stated failure mode, stated figure: approximately 100 of the largest Dutch webshops, ordering impossible with assistive technology, 61%. **Every claim that failed was loosely worded**, and the looseness is what let it drift from a source it never had.
+
+**A precisely worded claim is harder to fabricate, because the precision has to come from somewhere.** "The ACM has been explicit that non-reporting organisations will be audited first" names no document, no date and no number, and it cost nothing to write. **Vagueness is not caution. It is where invented claims hide.**
+
+**Write the sample, the date, the figure and the source into the sentence.** If they cannot be written, the claim is not ready.
+
+### THE PREDICTION RULE IMMEDIATELY CAUGHT ONE OUTSIDE THE NETHERLANDS
+A sweep for any future period attributed to a regulator found one more, on `insights/bfsg-germany-enforcement-abmahnungen.html`: *"formal enforcement decisions are expected in Q2 2026, which means they could arrive any week now."*
+
+**It had also gone stale.** Q2 2026 ended in June and today is 8 August, so the page was telling a reader that a passed quarter is imminent. **A predicted timeline does not merely fail to be sourceable. It rots on a known date and nothing on the site was watching.** Deleted.
+
+**The MLBF January 2026 claim, checked 8 August 2026: a third verdict, and it is not "fails".** It is on both German pages: *"The market surveillance authority (MLBF) entered its active enforcement phase in January 2026."*
+
+- **The MLBF's own site does not date it.** Neither the [homepage](https://www.mlbf-barrierefrei.de/) nor the [Marktüberwachungsstrategien page](https://www.mlbf-barrierefrei.de/Markt%C3%BCberwachungsstrategien) gives a date for the strategies or for an enforcement phase.
+- **Several independent German sources do**, agreeing that the MLBF adopted its market surveillance strategies on 29 January 2026 and has been in the active control phase since.
+- **Nothing contradicts it.** That is the difference from the ACM claims, where the regulator published the opposite basis.
+
+**So it is unverified against primary, corroborated in secondary, and uncontradicted. Left in place.** Recording the three verdicts as distinct matters more than the individual call: **contradicted by source** (delete), **unsourceable in principle** (delete, and never attribute), **undated by the source but corroborated elsewhere** (ordinary sourcing, keep and note).
+
+**What the MLBF does publish is worth using**, and it echoes the ACM: *"Wir fokussieren uns dort, wo der Handlungsbedarf am größten ist"*, with consumer submissions, risk assessment, technological change and emerging trends as the indicators. **Two authorities, in two countries, both selecting by need and impact.** Neither selects by who filed a report.
+
+### THE RATIO IS THE ARGUMENT FOR CHECKING
+**Nine ACM claims checked. Eight wrong, one right.** The one that held is the 61%, and it held because it was precisely worded: a stated sample size, a stated failure mode, a stated figure. **Every claim that failed was loosely worded**, and the looseness is what let it drift from a source it never had.
+
+**Read that ratio as the case for checking, not against it.** Eight of nine were removable in an afternoon against four public URLs.
+
+**Done 8 August 2026.** The two unsupported sentences deleted and the sourced replacement approved and live:
+> If you have not yet reported to the ACM, this is urgent. Failure to report does not make an organisation invisible to enforcement. The ACM inspects on its own initiative. It began with the largest companies by customer numbers, and its published focus for the first period is the problems with the most impact on disabled users.
+
+**It replaces a claim that told a small company the wrong thing.** "Non-reporters get audited first" reads as safety to anyone small. Largest companies and biggest user impact is the truth about where attention has gone, and a reader can check it.
+
+### IT WAS ON FOUR PAGES IN FIVE WORDINGS, NOT ON ONE
+**The first search found one sentence. Two further rounds found eight, and the page it was "about" held only four of them.**
+
+| Round | Where | Wording |
+|---|---|---|
+| 1 | `eaa-compliance-netherlands.html` callout | "The ACM has been explicit that non-reporting organisations will be audited first" |
+| 2 | same page, lines 160, 204 **and JSON-LD line 72** | "have moved to the front of the ACM('s) audit queue" |
+| 3 | `eaa-compliance-ecommerce.html` | "Failure to report puts an organisation at the front of the audit queue" |
+| 3 | `eaa-compliance-ecommerce.html` | "prioritising organisations that did not self-report by the October 2025 deadline" |
+| 3 | `eaa-fines-penalties-ireland-netherlands-sweden.html` | "conducting active audits of organisations that failed to report" |
+| 3 | `eaa-fines-penalties-ireland-netherlands-sweden.html` | "prioritising organisations that did not self-report" |
+| 3 | `eaa-fines-penalties-ireland-netherlands-sweden.html` | "Failure to report, or submitting an incomplete report, prioritises an organisation for audit" |
+| 3 | `insights.html` card excerpt | "Non-reporters have been moved to the front of the audit queue" |
+
+All deleted. Round 4 found nothing. **The "ACM is moving toward formal sanctions in the second half of 2026" half of two sentences was kept**, because that is a separate claim and it is in the not-yet-checked list above.
+
+**Every lesson from JOB 0o reappeared here, on a defect of a different class.** One deletion round is never enough. The rewording travels within a single page as readily as across pages. The JSON-LD carried a copy. **And scoping by filename would have found four of eight**, because a claim about the ACM lives on the e-commerce and fines pages too.
+
+**A trap now covers all five wordings** (`ua_page_check.py`, JOB 0q). **It is a bookmark of the five we know**, exactly as JOB 0p describes, so a green result means those five are absent and nothing more.
+
+**The general rule this adds.** Rule 10 says do not state an unverified Dutch figure. **Extend it: do not state an unverified regulator *intention* either.** "The ACM has been explicit that" is a citation in the shape of a sentence, and it is checkable in ten minutes. **If a claim says a named regulator said something, either link what it said or do not attribute it.**
 
 ---
 
