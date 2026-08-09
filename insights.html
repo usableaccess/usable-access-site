@@ -232,13 +232,13 @@
     .article-card--positioning { border-top-color: var(--colour-orange); }
 
     .article-meta { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); flex-wrap: wrap; }
-    .article-tag { display: inline-block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; }
-    .article-tag--intelligence { background: var(--colour-teal-badge); color: var(--colour-teal-deep); }
-    .article-tag--guide { background: var(--colour-teal-deep); color: var(--colour-white); }
-    .article-tag--positioning { background: var(--colour-orange-tint); color: var(--colour-orange); }
-    .article-date { font-family: var(--font-body); font-size: 0.75rem; color: var(--colour-meta); }
+    .card-tag { display: inline-block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; }
+    .card-tag--intelligence { background: var(--colour-teal-badge); color: var(--colour-teal-deep); }
+    .card-tag--guide { background: var(--colour-teal-deep); color: var(--colour-white); }
+    .card-tag--positioning { background: var(--colour-orange-tint); color: var(--colour-orange); }
+    .card-date { font-family: var(--font-body); font-size: 0.75rem; color: var(--colour-meta); }
 
-    .article-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-sm); }
+    .card-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--colour-heading); line-height: 1.3; margin-bottom: var(--space-sm); }
     .article-excerpt { font-family: var(--font-body); font-size: 0.9375rem; color: var(--colour-secondary); line-height: 1.65; flex: 1; margin-bottom: var(--space-md); }
     .article-market { font-family: var(--font-body); font-size: 0.75rem; color: var(--colour-meta); margin-top: auto; padding-top: var(--space-sm); border-top: 1px solid var(--colour-border); }
 
@@ -247,7 +247,7 @@
     footer p { font-family: var(--font-body); font-size: 0.875rem; color: var(--colour-meta); }
     footer a { color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.25rem 0; min-height: 44px; line-height: 44px; }
     footer a:focus { outline: 3px solid var(--colour-teal); outline-offset: 3px; }
-    .article-tag--revenue { background: var(--colour-orange-tint); color: var(--colour-orange); }
+    .card-tag--revenue { background: var(--colour-orange-tint); color: var(--colour-orange); }
 
     /* ── Enhanced focus styles ── */
     :focus-visible {
@@ -373,74 +373,74 @@
           <!-- Insight — What makes a good accessibility statement — Thursday 30 Jul post -->
           <!-- Sector guide — Telecoms — new 3 Aug 2026 -->
           <!-- Two-minute check — scope — new 4 Aug 2026 -->
-          <a href="/accessibility-overlays-eaa.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/accessibility-overlays-eaa.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Published 6 Aug 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Published 6 Aug 2026</span>
             </div>
-            <h3 class="article-title">Accessibility overlays and the EAA</h3>
+            <h3 class="card-title">Accessibility overlays and the EAA</h3>
             <p class="article-excerpt">Three sites on the same overlay, two with a confirmed WCAG failure beneath it. One was a Level A keyboard failure on a site whose statement credits the overlay. What an overlay reaches, and what it cannot.</p>
             <span class="article-market">All markets</span>
           </a>
 
-                    <a href="/does-the-eaa-apply.html" class="article-card article-card--guide" data-type="Guide">
+                    <a href="/does-the-eaa-apply.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Published 4 Aug 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Published 4 Aug 2026</span>
             </div>
-            <h3 class="article-title">Does the European Accessibility Act apply to us?</h3>
+            <h3 class="card-title">Does the European Accessibility Act apply to us?</h3>
             <p class="article-excerpt">Five questions, no form and no call. It often does not apply, and we say so plainly, including what the microenterprise exemption actually says.</p>
             <span class="article-market">All markets</span>
           </a>
 
-          <a href="/eaa-compliance-telecoms.html" class="article-card article-card--guide" data-type="Sector guide">
+          <a href="/eaa-compliance-telecoms.html" class="article-card" data-type="Sector guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Sector guide</span>
-              <span class="article-date">Published 3 Aug 2026</span>
+              <span class="card-tag card-tag--guide">Sector guide</span>
+              <span class="card-date">Published 3 Aug 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance for telecoms &mdash; scope, enforcement and the four requirements</h3>
+            <h3 class="card-title">EAA compliance for telecoms &mdash; scope, enforcement and the four requirements</h3>
             <p class="article-excerpt">Electronic communications is the one sector with its own regulator and a live Irish complaint already in process. What ComReg enforces, and what an operator has to be able to show.</p>
             <span class="article-market">Ireland &middot; All markets</span>
           </a>
 
-          <a href="/insights/what-makes-a-good-accessibility-statement.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/insights/what-makes-a-good-accessibility-statement.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Published 30 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Published 30 Jul 2026</span>
             </div>
-            <h3 class="article-title">Accessibility statements &mdash; what a credible one contains</h3>
+            <h3 class="card-title">Accessibility statements &mdash; what a credible one contains</h3>
             <p class="article-excerpt">The EAA requires an accessibility statement. WCAG-EM 2.0 defines what a credible one contains: six things to check, and how to tell if yours would survive being read closely.</p>
             <span class="article-market">All markets</span>
           </a>
 
                     <!-- Insight — WCAG-EM 2.0 — Monday post (position 2, after the statement card) -->
-          <a href="/insights/wcag-em-2.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/insights/wcag-em-2.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Published 27 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Published 27 Jul 2026</span>
             </div>
-            <h3 class="article-title">WCAG-EM 2.0 &mdash; what the updated evaluation methodology means</h3>
+            <h3 class="card-title">WCAG-EM 2.0 &mdash; what the updated evaluation methodology means</h3>
             <p class="article-excerpt">The W3C has published the first update to its accessibility evaluation methodology since 2014. It now covers digital products, not just websites. It is also explicit that a sample is not a conformance claim.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Intelligence — EU AI Act -->
           <a href="/insights/eu-ai-act-accessibility.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">Updated 3 Aug 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">Updated 3 Aug 2026</span>
             </div>
-            <h3 class="article-title">The EU AI Act and EAA &mdash; what the intersection means</h3>
+            <h3 class="card-title">The EU AI Act and EAA &mdash; what the intersection means</h3>
             <p class="article-excerpt">The EU AI Act and EAA apply simultaneously to AI-assisted products. Being EAA-compliant does not automatically satisfy AI Act obligations. Most product teams haven&rsquo;t modelled the gap. That is where the compliance risk lives.</p>
             <span class="article-market">All markets</span>
           </a>
 
           <!-- Sector — SaaS -->
-          <a href="/eaa-compliance-saas.html" class="article-card article-card--guide" data-type="Sector guide">
+          <a href="/eaa-compliance-saas.html" class="article-card" data-type="Sector guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Sector guide</span>
-              <span class="article-date">Updated 23 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Sector guide</span>
+              <span class="card-date">Updated 23 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance for SaaS &mdash; the B2B assumption worth checking</h3>
+            <h3 class="card-title">EAA compliance for SaaS &mdash; the B2B assumption worth checking</h3>
             <p class="article-excerpt">Most SaaS companies assume the EAA does not apply to them because they sell to businesses. Most are wrong. Here is what actually determines whether the EAA applies to your platform.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -448,163 +448,163 @@
           <!-- Guide — Governance — promoted to position 2, updated 22 Jul (deviation contract / AI) -->
           <a href="/eaa-governance.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Updated 22 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Updated 22 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA governance: what it means and why most organisations are missing it</h3>
+            <h3 class="card-title">EAA governance: what it means and why most organisations are missing it</h3>
             <p class="article-excerpt">Most EAA non-compliance is a governance failure, not a technical one: a passing audit does not mean a compliant product next quarter. AI coding tools deviate from the accessible default at scale. The deviation contract is how governance survives contact with real teams.</p>
             <span class="article-market">All markets</span>
           </a>
 
           <!-- Sector — FinTech -->
-          <a href="/eaa-compliance-fintech.html" class="article-card article-card--guide" data-type="Sector guide">
+          <a href="/eaa-compliance-fintech.html" class="article-card" data-type="Sector guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Sector guide</span>
-              <span class="article-date">Updated 21 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Sector guide</span>
+              <span class="card-date">Updated 21 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance for FinTech and financial services</h3>
+            <h3 class="card-title">EAA compliance for FinTech and financial services</h3>
             <p class="article-excerpt">Financial services has a different EAA regulator to e-commerce: the AFM in the Netherlands, the Central Bank in Ireland. It is also the worst-performing sector for accessibility, so the journeys that decide revenue are the widest opening to win customers back.</p>
             <span class="article-market">Ireland &middot; Netherlands &middot; Sweden &middot; Germany</span>
           </a>
 
           <!-- Guide — Travel -->
-          <a href="/eaa-compliance-travel.html" class="article-card article-card--guide" data-type="Sector guide">
+          <a href="/eaa-compliance-travel.html" class="article-card" data-type="Sector guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Sector guide</span>
-              <span class="article-date">16 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Sector guide</span>
+              <span class="card-date">16 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance for travel &mdash; booking accessibility</h3>
+            <h3 class="card-title">EAA compliance for travel &mdash; booking accessibility</h3>
             <p class="article-excerpt">40% of travel websites have a technical adequacy rating of &lsquo;not valid&rsquo; under WCAG criteria. Travel is explicitly in EAA scope. Here is what compliance requires and what enforcement looks like.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Intelligence — Arcom France public sector -->
           <a href="/insights/arcom-france-public-sector-enforcement.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">15 Jul 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">15 Jul 2026</span>
             </div>
-            <h3 class="article-title">Arcom's first ministry notice, and what it actually means</h3>
+            <h3 class="card-title">Arcom's first ministry notice, and what it actually means</h3>
             <p class="article-excerpt">France's regulator issued its first-ever formal notice to a government ministry over accessibility. Not an EAA case, but the 100% claimed vs 42% audited gap is worth knowing regardless.</p>
             <span class="article-market">France</span>
           </a>
           <!-- Guide — UK -->
-          <a href="/eaa-compliance-uk.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/eaa-compliance-uk.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">15 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">15 Jul 2026</span>
             </div>
-            <h3 class="article-title">Does the EAA apply to UK businesses?</h3>
+            <h3 class="card-title">Does the EAA apply to UK businesses?</h3>
             <p class="article-excerpt">Brexit did not create an accessibility exemption. If you sell to EU consumers, the EAA applies to those products and services regardless of where you are headquartered.</p>
             <span class="article-market">UK</span>
           </a>
           <!-- Country — Finland -->
           <a href="/eaa-compliance-finland.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">14 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">14 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance in Finland &mdash; what businesses need to know</h3>
+            <h3 class="card-title">EAA compliance in Finland &mdash; what businesses need to know</h3>
             <p class="article-excerpt">Finland&rsquo;s enforcement is complaint-driven from the outset and Traficom imposes conditional fines that accrue daily until resolved. That is a different mechanism from a one-time penalty. High public awareness means complaints are possible from day one.</p>
             <span class="article-market">Finland</span>
           </a>
 
           <!-- Guide — Video accessibility -->
-          <a href="/eaa-video-accessibility.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/eaa-video-accessibility.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">13 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">13 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA video compliance: audit, backlog and solutions</h3>
+            <h3 class="card-title">EAA video compliance: audit, backlog and solutions</h3>
             <p class="article-excerpt">EAA video requires captions, audio description and transcripts, but the case for fixing your backlog does not stop at compliance. Where to start, and which tools help.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Intelligence — Sweden enforcement -->
           <a href="/insights/sweden-eaa-enforcement.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">Updated 7 Aug 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">Updated 7 Aug 2026</span>
             </div>
-            <h3 class="article-title">Sweden's PTS is already investigating named retailers</h3>
+            <h3 class="card-title">Sweden's PTS is already investigating named retailers</h3>
             <p class="article-excerpt">28 supervisory investigations, opened from 15 October 2025. H&amp;M, IKEA, Coop, ICA and Systembolaget are among the companies named. Still investigatory. No penalty has been imposed. The enforcement ladder, the statutory penalty range, and what it means if you sell into Sweden.</p>
             <span class="article-market">Sweden</span>
           </a>
           <!-- Guide — EAA Compliance Audit -->
-          <a href="/insights/how-to-audit-eaa-compliance.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/insights/how-to-audit-eaa-compliance.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">29 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">29 Jun 2026</span>
             </div>
-            <h3 class="article-title">How to audit your digital product for EAA compliance</h3>
+            <h3 class="card-title">How to audit your digital product for EAA compliance</h3>
             <p class="article-excerpt">Automated scans find 30&ndash;40% of EAA accessibility barriers. Here is what a genuine compliance audit covers across five components, and what the Quick Compliance Audit delivers.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Guide — EAA Compliance Checklist -->
-          <a href="/eaa-compliance-checklist.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/eaa-compliance-checklist.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Updated 30 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Updated 30 Jun 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance checklist — four requirements, what each one means in practice</h3>
+            <h3 class="card-title">EAA compliance checklist — four requirements, what each one means in practice</h3>
             <p class="article-excerpt">Most organisations have addressed one of the four EAA compliance requirements. This checklist covers what each one means and what evidence you need to demonstrate it.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Sector — E-commerce -->
-          <a href="/eaa-compliance-ecommerce.html" class="article-card article-card--guide" data-type="Sector guide">
+          <a href="/eaa-compliance-ecommerce.html" class="article-card" data-type="Sector guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Sector guide</span>
-              <span class="article-date">Updated 15 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Sector guide</span>
+              <span class="card-date">Updated 15 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance for e-commerce: what online retailers need to know</h3>
+            <h3 class="card-title">EAA compliance for e-commerce: what online retailers need to know</h3>
             <p class="article-excerpt">Online retailers are the primary enforcement target across Germany, Sweden and the Netherlands simultaneously. Four in ten disabled users cannot complete an e-commerce purchase.</p>
             <span class="article-market">Germany &middot; Sweden &middot; Netherlands &middot; Ireland</span>
           </a>
           <!-- Intelligence — AIMAC deep dive -->
           <a href="/insights/aimac-deep-dive.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">Updated 30 Jun 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">Updated 30 Jun 2026</span>
             </div>
-            <h3 class="article-title">AI coding models and accessibility &mdash; what the AIMAC benchmark reveals</h3>
+            <h3 class="card-title">AI coding models and accessibility &mdash; what the AIMAC benchmark reveals</h3>
             <p class="article-excerpt">36 AI models tested across 28 accessibility categories. OpenAI holds all five top spots. Most models produce non-compliant code by default. Not because they cannot, but because accessibility is not in the prompt.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Country guide — Italy -->
-          <a href="/eaa-compliance-italy.html" class="article-card article-card--guide" data-type="Country">
+          <a href="/eaa-compliance-italy.html" class="article-card" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">Updated 10 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">Updated 10 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance in Italy: what organisations need to know</h3>
+            <h3 class="card-title">EAA compliance in Italy: what organisations need to know</h3>
             <p class="article-excerpt">Italy&rsquo;s cure period is proportionate to the non-conformity: organisations propose their own remediation schedule, which AgID monitors. The fine ceiling reaches &euro;1,000,000. AgID enforces.</p>
             <span class="article-market">Italy</span>
           </a>
           <!-- Guide — EAA Enforcement -->
-          <a href="/eaa-enforcement.html" class="article-card article-card--guide" data-type="Guide">
+          <a href="/eaa-enforcement.html" class="article-card" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">26 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">26 Jun 2026</span>
             </div>
-            <h3 class="article-title">EAA enforcement &mdash; who enforces the Act and what happens when they do</h3>
+            <h3 class="card-title">EAA enforcement &mdash; who enforces the Act and what happens when they do</h3>
             <p class="article-excerpt">EAA enforcement is already active across Ireland, Netherlands, Sweden, France, Germany, Finland, and Italy. It operates through two independent tracks simultaneously. Here is how it works.</p>
             <span class="article-market">All markets</span>
           </a>
           <!-- Intelligence — RGAA and the obligation of result -->
           <a href="/insights/rgaa-and-eaa-france.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">9 Jul 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">9 Jul 2026</span>
             </div>
-            <h3 class="article-title">RGAA, the EAA, and the obligation of result &mdash; what the Carrefour ruling established</h3>
+            <h3 class="card-title">RGAA, the EAA, and the obligation of result &mdash; what the Carrefour ruling established</h3>
             <p class="article-excerpt">France's court rejected Carrefour's argument that 71% RGAA conformance was sufficient. Accessibility is an obligation of result. 100% is required. What this means across the EU.</p>
             <span class="article-market">France &middot; All markets</span>
           </a>
           <!-- Intelligence — France civil society enforcement -->
           <a href="/insights/france-eaa-civil-society-enforcement.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">Updated 30 Jun 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">Updated 30 Jun 2026</span>
             </div>
-            <h3 class="article-title">France EAA enforcement &mdash; civil society takes the lead</h3>
+            <h3 class="card-title">France EAA enforcement &mdash; civil society takes the lead</h3>
             <p class="article-excerpt">Carrefour has been ordered to make its online commerce services fully accessible, under penalty of &euro;500 per day of delay. The case was brought by disability organisations, not a regulator.</p>
             <span class="article-market">France</span>
           </a>
@@ -612,10 +612,10 @@
           <!-- Guide — EAA sanctions -->
           <a href="/eaa-sanctions.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Updated 30 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Updated 30 Jun 2026</span>
             </div>
-            <h3 class="article-title">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</h3>
+            <h3 class="card-title">EAA sanctions &mdash; criminal liability, market bans and enforcement mechanisms</h3>
             <p class="article-excerpt">The most severe EAA consequences go beyond fines. Ireland imposes criminal liability on directors. Sweden can ban products from market. The Netherlands can impose immediate penalties for serious violations.</p>
             <span class="article-market">Ireland &middot; Netherlands &middot; Sweden &middot; Germany</span>
           </a>
@@ -623,10 +623,10 @@
           <!-- Guide — Sweden -->
           <a href="/eaa-compliance-sweden.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">Updated 7 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">Updated 7 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance in Sweden &mdash; PTS enforcement</h3>
+            <h3 class="card-title">EAA compliance in Sweden &mdash; PTS enforcement</h3>
             <p class="article-excerpt">PTS launched systematic inspections in October 2025 and has named H&amp;M, IKEA and Coop among its first 28 investigations. Sweden has two distinct fine types and market ban authority.</p>
             <span class="article-market">Sweden</span>
           </a>
@@ -634,10 +634,10 @@
           <!-- Revenue — Inaccessible design is invisible revenue loss -->
           <a href="/eaa-revenue-loss.html" class="article-card article-card--intelligence" data-type="Revenue">
             <div class="article-meta">
-              <span class="article-tag article-tag--revenue">Revenue</span>
-              <span class="article-date">Updated 6 Jul 2026</span>
+              <span class="card-tag card-tag--revenue">Revenue</span>
+              <span class="card-date">Updated 6 Jul 2026</span>
             </div>
-            <h3 class="article-title">Inaccessible design is invisible revenue loss</h3>
+            <h3 class="card-title">Inaccessible design is invisible revenue loss</h3>
             <p class="article-excerpt">15&ndash;20% of EU adults have a disability. When your product works for all of them, that segment converts. Here is what the data shows about what is available to you.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -645,10 +645,10 @@
           <!-- Guide — EAA fines by country -->
           <a href="/eaa-fines-penalties-ireland-netherlands-sweden.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">Updated 10 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">Updated 10 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA fines, penalties and sanctions: Ireland, Netherlands, Sweden</h3>
+            <h3 class="card-title">EAA fines, penalties and sanctions: Ireland, Netherlands, Sweden</h3>
             <p class="article-excerpt">Country-by-country breakdown of EAA enforcement penalties, enforcement authorities, and active enforcement status across the three most active markets.</p>
             <span class="article-market">Ireland &middot; Netherlands &middot; Sweden</span>
           </a>
@@ -656,10 +656,10 @@
           <!-- Intelligence — AI paradox -->
           <a href="/insights/ai-paradox.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">18 Jun 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">18 Jun 2026</span>
             </div>
-            <h3 class="article-title">The AI paradox &mdash; overlay tools and EAA compliance</h3>
+            <h3 class="card-title">The AI paradox &mdash; overlay tools and EAA compliance</h3>
             <p class="article-excerpt">AI coding tools generate non-compliant HTML by default. AI-powered overlays are marketed as the fix. The same technology creating the problem is being sold as the solution. Overlays do not produce genuine EAA compliance.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -669,10 +669,10 @@
           <!-- Guide — EAA compliance Ireland -->
           <a href="/eaa-compliance-ireland.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">Updated 7 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">Updated 7 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance in Ireland &mdash; what directors need to know</h3>
+            <h3 class="card-title">EAA compliance in Ireland &mdash; what directors need to know</h3>
             <p class="article-excerpt">Ireland is the only EU member state where serious EAA non-compliance can carry criminal sanctions, including imprisonment, with company officers personally liable. This guide covers the four compliance requirements, the distributed enforcement authorities (the CCPC, the Central Bank, and sector regulators), and the due diligence defence.</p>
             <span class="article-market">Ireland</span>
           </a>
@@ -680,10 +680,10 @@
           <!-- Guide — France country compliance -->
           <a href="/eaa-compliance-france.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">Updated 30 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">Updated 30 Jun 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance in France &mdash; what businesses need to know</h3>
+            <h3 class="card-title">EAA compliance in France &mdash; what businesses need to know</h3>
             <p class="article-excerpt">France has produced two EAA court rulings. Civil society enforcement was active before any regulator moved. What the French regulatory framework, the Auchan dismissal, and the Carrefour compliance order mean for your business.</p>
             <span class="article-market">France &middot; All markets</span>
           </a>
@@ -691,10 +691,10 @@
           <!-- Guide — Netherlands -->
           <a href="/eaa-compliance-netherlands.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">Updated 15 Jul 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">Updated 15 Jul 2026</span>
             </div>
-            <h3 class="article-title">EAA compliance in the Netherlands: what organisations need to know</h3>
+            <h3 class="card-title">EAA compliance in the Netherlands: what organisations need to know</h3>
             <p class="article-excerpt">In 61% of roughly 100 webshops tested by the ACM, ordering was entirely impossible for users with disabilities. Mid-2026 enforcement is now active.</p>
             <span class="article-market">Netherlands</span>
           </a>
@@ -702,20 +702,20 @@
           <!-- Guide — BFSG Germany -->
           <a href="/bfsg-germany-accessibility-compliance.html" class="article-card article-card--intelligence" data-type="Country">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Country guide</span>
-              <span class="article-date">Updated 30 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Country guide</span>
+              <span class="card-date">Updated 30 Jun 2026</span>
             </div>
-            <h3 class="article-title">BFSG Germany &mdash; what the Abmahnung wave means for your business</h3>
+            <h3 class="card-title">BFSG Germany &mdash; what the Abmahnung wave means for your business</h3>
             <p class="article-excerpt">Germany&rsquo;s BFSG took effect in June 2025. Law firms have already sent private warning letters. Fines run from &euro;10,000 for standard violations to &euro;100,000 for serious or repeated ones. This guide explains the mechanism, the enforcement timeline, and what compliance requires.</p>
             <span class="article-market">Germany-exposed organisations</span>
           </a>
           <!-- Guide — Disproportionate burden -->
           <a href="/eaa-disproportionate-burden.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">8 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">8 Jun 2026</span>
             </div>
-            <h3 class="article-title">The EAA disproportionate burden exemption &mdash; what it actually requires</h3>
+            <h3 class="card-title">The EAA disproportionate burden exemption &mdash; what it actually requires</h3>
             <p class="article-excerpt">The exemption is a safeguard with conditions, not an opt-out. Assuming it applies is not the same as qualifying for it. Most organisations claiming it haven&rsquo;t done the assessment the exemption requires.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -723,10 +723,10 @@
           <!-- Guide — Accessibility statement -->
           <a href="/eaa-accessibility-statement.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">3 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">3 Jun 2026</span>
             </div>
-            <h3 class="article-title">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</h3>
+            <h3 class="card-title">The EAA accessibility statement &mdash; what it is and why most organisations don&rsquo;t have one</h3>
             <p class="article-excerpt">A published accessibility statement is a mandatory EAA requirement. Most organisations we speak with don&rsquo;t have one.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -734,10 +734,10 @@
           <!-- Guide — What is digital accessibility -->
           <a href="/what-is-digital-accessibility.html" class="article-card article-card--intelligence" data-type="Guide">
             <div class="article-meta">
-              <span class="article-tag article-tag--guide">Guide</span>
-              <span class="article-date">5 Jun 2026</span>
+              <span class="card-tag card-tag--guide">Guide</span>
+              <span class="card-date">5 Jun 2026</span>
             </div>
-            <h3 class="article-title">What is digital accessibility &mdash; and why does it matter for your business?</h3>
+            <h3 class="card-title">What is digital accessibility &mdash; and why does it matter for your business?</h3>
             <p class="article-excerpt">One in four European adults has some form of disability. Digital accessibility means they can use your website to do what everyone else can. Here is what that means in practice.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -745,10 +745,10 @@
           <!-- Intelligence — Four EAA requirements -->
           <a href="/insights/what-eaa-compliance-actually-requires.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">29 May 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">29 May 2026</span>
             </div>
-            <h3 class="article-title">What EAA compliance actually requires</h3>
+            <h3 class="card-title">What EAA compliance actually requires</h3>
             <p class="article-excerpt">EAA compliance has four requirements. Most organisations know about one of them. Technical conformance, a published accessibility statement, active governance, and documentary evidence. All four are mandatory.</p>
             <span class="article-market">All markets</span>
           </a>
@@ -756,10 +756,10 @@
           <!-- Intelligence — Germany/BFSG -->
           <a href="/insights/bfsg-germany-enforcement-abmahnungen.html" class="article-card article-card--intelligence" data-type="Intelligence">
             <div class="article-meta">
-              <span class="article-tag article-tag--intelligence">Intelligence</span>
-              <span class="article-date">27 May 2026</span>
+              <span class="card-tag card-tag--intelligence">Intelligence</span>
+              <span class="card-date">27 May 2026</span>
             </div>
-            <h3 class="article-title">Germany: law firms are already sending BFSG warning letters</h3>
+            <h3 class="card-title">Germany: law firms are already sending BFSG warning letters</h3>
             <p class="article-excerpt">When the BFSG took effect, it wasn&rsquo;t regulators who moved first. Law firms began sending private warning letters to businesses within weeks. The exposure is live regardless of whether you&rsquo;ve heard from any authority.</p>
             <span class="article-market">Germany-exposed organisations</span>
           </a>
