@@ -558,6 +558,30 @@ Do not delete `data-type`. The card styling depends on it, and the type is still
 
 **Do not link from pages whose reader is past that question.** Someone reading about statement quality already knows they are in scope; sending them to "does it apply to you?" is backwards.
 
+### AND SET THE DATE IN THE SHIPPING COMMIT, NOT WHEN THE PAGE IS WRITTEN
+
+**Nothing checks that a publication date matches the day a page actually went live.** `ua_volatile_check.py` catches a period that has already passed. It cannot catch a date that was correct when typed and wrong by the time the file shipped.
+
+**The date lives in three places and all three drift together:** the page's own meta line, its card on `insights.html`, and its `<lastmod>` in `sitemap.xml`. Written on the 8th, shipped on the 12th, all three say the 8th.
+
+**And all three use a different form, so a find-and-replace on the date will not catch them:**
+
+| Where | Form | Example |
+|---|---|---|
+| Page badge | `Updated D Mon YYYY` | `Updated 12 Aug 2026` |
+| `insights.html` card | `Published D Mon YYYY` | `Published 12 Aug 2026` |
+| `sitemap.xml` | ISO `YYYY-MM-DD` | `2026-08-12` |
+
+Searching for `8 Aug 2026` finds two of the three and misses the sitemap entirely. **Change all three by hand and check each one.**
+
+**This will recur, because writing ahead of shipping is now the normal pattern rather than the exception.** `what-happens-if-you-do-nothing.html` was written on 8 August and ships on the 12th, and the mismatch was caught by reading rather than by any check.
+
+**The rule: update all three dates in the shipping commit.** Not when the page is written.
+
+**And mind that the two places use different words.** `ua_page_check.py` requires the page's own badge to read `Updated D Mon YYYY` and warns if it does not, while the `insights.html` card reads `Published D Mon YYYY` like every other new card. Writing `Published` on the page badge produces a warning, which is how this was caught.
+
+**Add this to `UA_Publishing_Protocol.md`, which is in the Claude project rather than this repo** — see the split note at the top. Recorded here so a session working in the repo sees it.
+
 Full procedure and checklist: `UA_Publishing_Protocol.md`.
 ---
 
