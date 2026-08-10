@@ -217,6 +217,23 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 ---
 
+## 🔴 STANDING NOTE: A FINDING KEEPS THE DENOMINATOR IT WAS MEASURED ON
+
+**When the study grows, the headline numbers move and the subset findings do not.** A finding measured on part of the sample keeps that part as its denominator. Restating it against the new total silently invents a measurement nobody took.
+
+**Found twice on 9 August**, when the field study went from 28 Irish journeys to 55 across Ireland and the Netherlands:
+- **The overlay count.** Three retail sites on the same overlay were found in the **Irish e-commerce batch** — Life Style Sports, Carraig Donn, Home Store + More. No Dutch journey was checked for overlays as a systematic step. Restating it as "three of fifty-five" would understate the rate and overstate the scope in one sentence.
+- **The statement counts.** Dutch coverage was 11 of 12 on an **insurance-only** sample and became 12 yes to 14 no once e-commerce was included, which is slightly worse than Ireland. **The finding reversed because the sample changed, not because the market did.** That is a sector effect wearing a market's clothes.
+
+**The cause split has the same property** — the "standard control replaced by a custom one" versus "right element, never labelled" division was counted on the Irish journeys. It currently appears on `index.html` with no numbers attached, which is why it is safe. **If numbers are ever added to it, they need their own denominator.**
+
+### THE RULE
+**Before restating any figure against a new total, ask which sample it was measured on.** If the answer is "part of it", the sentence must say so and keep the smaller denominator. **Only figures measured across the whole study take the whole study's total.**
+
+**Both directions of this error happened within an hour**, which is what makes it worth its own note: a global denominator given to a subset finding, and a subset finding quoted as though it were global.
+
+---
+
 ## STANDING NOTE: STRUCTURED DATA REPEATS PAGE COPY, SO EVERY CORRECTION HAS TWO PLACES TO FIX
 
 **JSON-LD blocks (`<script type="application/ld+json">`) carry page sentences verbatim, and they are invisible to any check that reads rendered text.** BeautifulSoup `get_text()` drops them. A grep of visible copy will not see them. A browser will not show them. Google will read them.
