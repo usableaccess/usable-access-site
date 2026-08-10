@@ -217,6 +217,20 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 ---
 
+## 🔴 STANDING NOTE: A BRIEF THAT QUOTES PAGE COPY IS QUOTING A SNAPSHOT
+
+**The working copy of the site outside this repo is a snapshot, not a mirror.** Read it for structure. **Never treat a quotation from it as the current text.**
+
+**When a job brief says "replace X with Y", verify X against the repo and the live page before acting.** If X does not match, the brief was written against an older file, and applying it literally will overwrite whatever changed in between.
+
+**Twice on 9 August:**
+- A brief reported the homepage contradicting itself, twenty-two in the hero against thirteen lower down. **The live page was consistent.** The contradiction had been fixed the previous day in `c3ba50e`, and the copy predated it.
+- A brief quoted a "before" paragraph and asked for it to be replaced. **The quoted text predated the em-dash pass and omitted a body link added hours earlier for JOB 0j.** Applying it literally would have deleted the homepage's only link to `eaa-revenue-loss`.
+
+**So: match the quoted text against the file first.** If it does not match exactly, say so and show the difference before changing anything. **The instruction is still the instruction — what changes is which text it lands on**, and a brief cannot account for edits made after it was written.
+
+---
+
 ## 🔴 STANDING NOTE: A FINDING KEEPS THE DENOMINATOR IT WAS MEASURED ON
 
 **When the study grows, the headline numbers move and the subset findings do not.** A finding measured on part of the sample keeps that part as its denominator. Restating it against the new total silently invents a measurement nobody took.
