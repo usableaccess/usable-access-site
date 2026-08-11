@@ -135,6 +135,15 @@ A check that answers a weaker question returns a count that is always too low. T
 
 The accessible-name check built for JOB 0r is the model: repeated elements must have identical accessible names across pages, and any page disagreeing with the majority fails. No vocabulary of bad strings, nothing to widen, and no wording it can be blind to. **Where a rule can be expressed as "these should all agree", prefer that over a list of things that are wrong.**
 
+### BUT A CONSISTENCY CHECK CAN AGREE ON A VALUE NOBODY HEARS
+**Found 11 August 2026, on the JOB 0s skip link, and not fixed.** The label shortens at 390px, so the link carries two spans and CSS shows one at a time. `ua_a11y_check.py` builds an accessible name from the text it can see and reports `Skip to main content Skip to content` on all 44 pages.
+
+**The vote passes, because all 44 agree.** A browser exposes one name at a time, so the string they agree on is one no user ever hears.
+
+**This is not the easier-question failure.** The check asked its own question and answered it correctly: these pages agree. What it cannot see is whether the agreed value is the one that reaches a reader, because that depends on which rules apply at a given viewport width. It is the eighth instance wearing new clothes, reading text where the answer belongs to the cascade.
+
+**So a consistency check is sound about difference and silent about correctness.** Unanimity is not evidence. **When every page agrees, ask whether the value they agree on is the one a user gets.** A name assembled from a subtree should skip anything the page hides, which is a real fix and not a large one.
+
 Detail and instances: JOB 0f (the first three) and JOB 0r (the fourth, and the consistency check).
 
 ---
