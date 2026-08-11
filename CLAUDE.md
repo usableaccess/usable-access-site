@@ -32,6 +32,15 @@ Prefer designs that fail visibly. Where there is a choice between something a ch
 
 Recorded 11 August 2026, after a practitioner published an account of Claude green-checking a one-pager whose reading order and heading structure were both broken. Full text in `UA_Standing_Corrections_v3.md`, which lives in the Claude project, not this repo.
 
+### THE DEMONSTRATION, THE SAME DAY, ON THE DEFECT THE RULE WAS WRITTEN ABOUT
+**JOB 0s ran all three checkers three times: before the change, after it, and after two fixes. All nine runs returned identical numbers.** 3 failures at root and 0 in `insights/` from `ua_page_check.py`, 0 failures across 44 pages from `ua_a11y_check.py`, 0 orphans and 0 unresolved from `ua_orphan_check.py`.
+
+**Nothing in that sequence confirmed anything.** The skip link moved from hidden to visible, gained a strip, changed its label at one breakpoint, and had two real defects found and fixed in between. The checkers were blind to all of it, and they would have returned the same numbers had it been left invisible.
+
+**What found the two defects was a browser at a stated width.** A skip link starting 60px left of the logo, because the strip was 1080px against a 960px container. A focus ring losing about 4px to the page edge and about 3px to the sticky header, because the strip's padding was smaller than the ring's reach. **Neither is expressible as a rule any of these checkers holds.**
+
+**Read the identical numbers as the finding, not as the reassurance.** Three green runs across a change of this size means the checkers do not cover it, which is information about the checkers. **A number that does not move when the thing it describes has changed is measuring something else.**
+
 ---
 
 ## 🔴 READ BEFORE THE TOOLING TABLE: MOST OF IT DOES NOT EXIST IN THIS REPO
