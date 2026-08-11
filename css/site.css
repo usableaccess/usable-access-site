@@ -30,7 +30,7 @@ body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: 
    automated check. WCAG 2.4.1 does not require this; it is a deliberate
    choice to exceed it. Do not restore position:absolute / top:-100%. */
 .util-strip { background: var(--colour-teal-subtle); border-bottom: 1px solid #DCEAEA; }
-.util-inner { max-width: 1080px; margin: 0 auto; padding: 0.3rem 1.25rem; }
+.util-inner { max-width: var(--container-max); margin: 0 auto; padding: 0.6rem 1.25rem; }
 .skip-link { display: inline-block; padding: 0.5rem 0.4rem; font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; color: var(--colour-teal); text-decoration: underline; text-underline-offset: 2px; background: transparent; }
 .skip-link:focus { background: var(--colour-teal); color: var(--colour-white); text-decoration: none; outline: 2px solid #ffffff; box-shadow: 0 0 0 7px #000000; position: relative; z-index: 5; }
 .skip-short { display: none; }
