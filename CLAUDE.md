@@ -20,16 +20,30 @@ Never hand-author a page from scratch. Copy the canonical template (`eaa-complia
 
 ---
 
+## 🔴 THE GENERATOR MUST NOT GRADE ITS OWN WORK
+
+A check run by whatever produced the artefact is not verification. Claude writes the copy, Code applies it, and Code runs the checkers and reports independently. That separation is the reason the site is in good shape, and it is not optional.
+
+Two consequences.
+
+A check result is never a conclusion. PASS means the checker found nothing it knows to look for. Report the result and the limit together, or do not report it. Report what the checker returned and what it is capable of returning.
+
+Prefer designs that fail visibly. Where there is a choice between something a checker confirms and something a human would notice broken, take the second. The skip link is the worked example: a hidden-until-focus link broke twice and passed every automated check.
+
+Recorded 11 August 2026, after a practitioner published an account of Claude green-checking a one-pager whose reading order and heading structure were both broken. Full text in `UA_Standing_Corrections_v3.md`, which lives in the Claude project, not this repo.
+
+---
+
 ## 🔴 READ BEFORE THE TOOLING TABLE: MOST OF IT DOES NOT EXIST IN THIS REPO
 
-**Verified 8 August 2026. Seven of the ten scripts named in this file are not here.**
+**Verified 11 August 2026. Five of the ten scripts named in this file are not here.**
 
 | Script | State |
 |---|---|
 | `ua_page_check.py` | **present** |
 | `ua_a11y_check.py` | **present** (needs `beautifulsoup4`; installed 8 Aug) |
 | `ua_sync_blocks.py` | **present** — written 8 Aug because it was needed. OG block only |
-| `ua_orphan_check.py` | missing |
+| `ua_orphan_check.py` | **present** — written 9 Aug because JOB 0j could not be re-derived without it. `--selftest` included |
 | `ua_insights_sync.py` | missing |
 | `ua_backup.py` | missing |
 | `ua_erase.py` | missing |
@@ -49,7 +63,7 @@ There is no `tools/` directory. The table below describes an intended state, not
 ### WHAT THIS BLOCKS
 **JOB 0h cannot start.** It audits client documents against `UA_Pricing_Reference_LOCKED.md`, and neither the reference nor the documents are reachable here. **Putting them somewhere reachable is Laura's decision, not a gap for a session to work around.** The guard checker 0h asks for — read the locked reference, flag any euro figure in a client document that is not in it — is buildable in this repo the moment the reference is.
 
-**JOB 0j needs re-deriving, not following.** It lists three under-linked pages. Two changed on 8 August: `insights/eu-ai-act-accessibility.html` gained an OG block, and `insights/invisible-revenue-loss.html` was deleted with its one inbound link repointed. `ua_orphan_check.py` is also missing, so the link graph has to be rebuilt before the page list means anything.
+**JOB 0j needs re-deriving, not following.** It lists three under-linked pages. Two changed on 8 August: `insights/eu-ai-act-accessibility.html` gained an OG block, and `insights/invisible-revenue-loss.html` was deleted with its one inbound link repointed. `ua_orphan_check.py` was then written on 9 August and the graph rebuilt, so JOB 0j below now carries real numbers. This paragraph is kept because the reason it was needed still stands.
 
 ---
 
