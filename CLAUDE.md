@@ -198,7 +198,13 @@ Detail and instances: JOB 0f (the first three) and JOB 0r (the fourth, and the c
 13. **Never name a company as a failing example** on a public page. Aggregated and anonymised only. **Carve-out: parties named by a court or by a regulator in its own publication may be named**, because the naming comes from that body rather than from us. This covers parties to public litigation (Auchan, Carrefour, E.Leclerc, Picard Surgel&eacute;s) and organisations a regulator has itself publicly listed. It does **not** extend to anything found in our own testing, and it does **not** permit characterising a listed organisation as failing. **PTS has published 28 names under investigation with no finding against any of them, so they may be named as under supervision and must never be described as non-compliant.** The risk is not the naming. It is implying a finding that does not exist.
 14. **Never link a URL you have not confirmed exists.** Presence in `sitemap.xml` is NOT evidence a page exists — two sitemap entries pointed at pages that were never built, and the homepage linked to both. Check the file is in the repo before linking it.
 15. **A new page ships orphaned by default.** Zero inbound internal links means almost no crawl priority, and its traffic then tells you nothing. Add body-copy links from topically adjacent pages — a card or a "Related" entry alone is demonstrably not enough (the Sweden article had both and was never fetched).
-16. **Every page needs:** canonical, full OG + Twitter block, GA4, Clarity, `tokens.css?v=1` + `site.css?v=2`, skip link, back-to-top, footer with the accessibility statement **and** privacy notice links.
+16. **Every page needs:** canonical, full OG + Twitter block, GA4, Clarity, `tokens.css?v=1` + `site.css?v=2` **or an inline `<style>` block that defines everything the page uses**, skip link, back-to-top, footer with the accessibility statement **and** privacy notice links.
+
+    **The stylesheet clause is not a loophole, it is the current state of the site.** Measured 12 August 2026: **35 of 44 pages link neither `tokens.css` nor `site.css`** and are self-contained. They all render correctly. Read literally, the rule as first written failed 35 pages that have nothing wrong with them, which is the register describing the repo inaccurately.
+
+    **What the clause still forbids is the case that caused it.** `what-happens-if-you-do-nothing.html` arrived on 8 August linking no stylesheet while using `.article-cta`, `.cta-button`, `.related-links` and `.related-list`, which were defined only in `site.css`. Its CTA panel would have rendered with no teal background and no orange button. **Self-contained means every class the page uses is defined where the page can reach it. It does not mean no stylesheet.**
+
+    **This clause becomes unnecessary when JOB 0f step 4 lands** and every page links `site.css` for real. Delete it then.
 
 ---
 
