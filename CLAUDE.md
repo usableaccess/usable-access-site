@@ -369,6 +369,13 @@ Fix what the checkers flag, in one PR per class of defect, with a short summary 
 ### 4. Do NOT recreate these cards
 `/insights/ai-agents-need-accessibility.html` and `/insights/eaa-floor-not-ceiling.html` had homepage cards and sitemap entries but **the pages were never built** — visitors clicking them got a 404, and Google queued the URLs without ever fetching them. Cards replaced and sitemap entries removed on 3 Aug 2026. Both pages are on the content build queue with their recovered specs; **restore the cards only when the pages actually exist.** Run `ua_orphan_check.py` when they do, so they do not ship with zero inbound links.
 
+### 4b. THE HOMEPAGE CARD ORDER IS DELIBERATE, NOT CHRONOLOGICAL
+**Set 12 August 2026, JOB 0u.** The four `.insight-card`s in `.insights-grid-home` were in date order, newest first, until `what-happens-if-you-do-nothing.html` was added. It is the newest and it does **not** lead.
+
+**`does-the-eaa-apply.html` keeps the lead slot**, dated 4 Aug against the newer card's 12 Aug. A visitor needs to know whether any of this applies to them before they need to know what happens if they ignore it, and the scope check is the homepage's primary funnel entry, linked five other times from the same page.
+
+**Chronological is the right default and this is the case for overriding it.** A comment in `index.html` says so at the point of the edit, because the next person to look will otherwise see one card out of date order and correct it. **If you re-sort these cards by date, you have undone a decision rather than fixed a bug.**
+
 ### 5. Move the nav-CTA styling into `site.css` (do early — it is a live rendering bug)
 `.nav-cta` and `.nav-cta-slot` are defined **only in `index.html`'s inline `<style>`**. They are NOT in `site.css`. Consequence: the "Free assessment" button renders as a plain blue underlined link on **every page except the homepage** — including pages that have been live for weeks.
 
