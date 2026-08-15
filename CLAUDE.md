@@ -301,6 +301,26 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 ---
 
+## 🔴 STANDING NOTE: A CONCLUSION ABOUT *WHERE* READ AS A CONCLUSION ABOUT *WHETHER*
+
+**The sibling of the denominator note above, and the same mechanism on a negative instead of a figure. The scope of a negative gets widened without anyone deciding to widen it.**
+
+**Both instances landed on 15 August 2026.**
+
+| The true, narrow conclusion | What it silently became | Why the difference matters |
+|---|---|---|
+| The EAA is **not incorporated** into the EEA Agreement | it is **delayed** | Two different states. Conflating them produces the wrong plan for Norway |
+| `ua_claim_check.py` does not belong in **the site repo** | it does not belong **under version control** | The first is about one location, the second about a property. The script has been edited four times with no diff |
+
+**The tell is that the narrow conclusion is usually right.** Nobody argued for the wide version, and nobody noticed adopting it. The site repo genuinely may be the wrong home, because it holds the site and deploys to a public server while the script checks outreach documents. **That argues against one location. It says nothing about whether history is needed**, and history was the actual requirement. A third versioned location satisfies it.
+
+### THE TEST
+**When a conclusion is a negative, say exactly what it rules out, then read the next sentence and check it does not rule out more.** "Not here" is not "not anywhere". "Not incorporated" is not "not coming". "Not this tool" is not "not any tool".
+
+**Ask what the requirement actually was**, because the widened negative usually drops it. The requirement was history, not proximity. Once that is named, the false choice between two locations dissolves and a third option appears that nobody had to argue for.
+
+---
+
 ## STANDING NOTE: STRUCTURED DATA REPEATS PAGE COPY, SO EVERY CORRECTION HAS TWO PLACES TO FIX
 
 **JSON-LD blocks (`<script type="application/ld+json">`) carry page sentences verbatim, and they are invisible to any check that reads rendered text.** BeautifulSoup `get_text()` drops them. A grep of visible copy will not see them. A browser will not show them. Google will read them.
