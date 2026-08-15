@@ -59,8 +59,23 @@ Recorded 11 August 2026, after a practitioner published an account of Claude gre
 | `ua_study_export.py` | missing |
 | `ua_merge_cowork.py` | missing |
 | `ua_volatile_check.py` | **present** — written 8 Aug because a stale prediction shipped. `--selftest` runs 8 fixtures |
+| `ua_claim_check.py` | **elsewhere, deliberately for now** — lives in the Claude project. See the gap note below |
+| `ua_regulator_facts.json` | **elsewhere** — its data file, same place, same note |
 
 There is no `tools/` directory. The table below describes an intended state, not the repo.
+
+### THE ELEVENTH SCRIPT, WHICH IS IN NEITHER TABLE — RECORDED 15 August 2026
+**`ua_claim_check.py` and `ua_regulator_facts.json` were built on 11 August 2026 in the Claude project session and have stayed there.** They were absent from the present-table and the missing-table alike, so the register said nothing about them at all.
+
+**A blank cannot distinguish missing from deliberate**, which is why this note exists rather than a silent absence. Recorded as §22 in the standing corrections, which is on the project side of the split.
+
+**Why it never came here:** the script is stdlib-only, so it ran wherever it was written and never needed the repo. **The facts file is public information**, so there is no reason it cannot be versioned.
+
+**Why it is the sharpest instance of the split rule.** It is the one checker with a fixture pair that means something: **eleven block fixtures and seven pass fixtures**, a known-bad set it must flag and a known-good set it must not. That is the only control that survives its own author, because it does not route through the author's judgement at the time of writing. See JOB 0v, where a harness written to catch summary-blindness was itself summary-blind. **The one checker whose self-test is worth trusting is the one not versioned alongside what it checks.**
+
+**The live consequence, which is not hypothetical.** It has been edited four times since it was written: Norway added, the German claim retired, prohibitions extended twice. **No history, no diff, and no record of what changed when.** That is the same class as the tarball problem, recoverable and invisible.
+
+**Two things to settle, and neither is urgent.** Whether `ua_regulator_facts.json` goes in the repo, and whether the script follows it. **The repo may be the wrong home even though the project session clearly is too**, because the script checks outreach documents rather than site pages, and this repo holds the site. A third location that is version-controlled would satisfy the actual requirement, which is history rather than proximity.
 
 ### THE SPLIT, WHICH IS THE ACTUAL RULE
 **Scripts belong in this repo.** Versioning a checker alongside what it checks is the point, and two were written here today because a job needed them and they were not available.
