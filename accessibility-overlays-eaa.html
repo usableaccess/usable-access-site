@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
   <!-- ua:og:end -->
   <title>Accessibility overlays and the EAA — Usable Access</title>
-  <meta name="description" content="Three sites on the same overlay, two with a Level A barrier beneath it. What an overlay fixes, what it cannot reach, and what the EAA requires.">>>
+  <meta name="description" content="Three sites on the same overlay, two with a Level A barrier beneath it. What an overlay fixes, what it cannot reach, and what the EAA requires.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -91,6 +91,8 @@
     .contact-block a{color:var(--colour-teal);text-decoration:underline}
     .contact-block a:focus{outline:3px solid var(--colour-teal);outline-offset:3px}
     .meta-line{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta);margin-top:var(--space-2xl);padding-top:var(--space-xl);border-top:1px solid var(--colour-border)}
+    .figures-note{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta);margin-top:var(--space-md);margin-bottom:var(--space-xl);max-width:36em}
+    .figures-note:last-child{margin-bottom:0}
     footer{padding:var(--space-xl) 0;border-top:1px solid var(--colour-border)}
     footer p{font-family:var(--font-body);font-size:.875rem;color:var(--colour-meta)}
     footer a{ color: var(--colour-teal); text-decoration: underline; display: inline-block; padding: 0.375rem 0; min-height: 44px; line-height: 1.6; }
@@ -217,6 +219,7 @@
           <p>On one, the quantity control in the basket announced only its own number, with nothing to say what the number referred to. On the other, and this is the one worth pausing on, <strong>the size options on a product page could not be reached by keyboard at all.</strong> Someone navigating without a mouse could view a product and could not choose a size, so they could not buy it. That is WCAG 2.1.1, Level A, on the purchase journey.</p>
           <p><strong>That second site publishes an accessibility statement which credits the overlay for making the site accessible.</strong></p>
           <p>We are not naming either company. The point is not that a particular retailer got it wrong. It is that the overlay was installed, the statement was written, and the buying journey still could not be completed.</p>
+          <p class="figures-note">Figures as of 15 August 2026. The three sites were found in the Irish journeys, which is the sample this finding was measured on.</p>
 
           <h2>Why an overlay cannot reach this</h2>
           <p>Assistive technology does not read the screen. It reads what the page exposes: for every control, a name, a role and a state. A screen reader says &ldquo;Size, radio button, medium, selected&rdquo; because the page said so.</p>
