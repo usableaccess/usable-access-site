@@ -1151,7 +1151,25 @@ Heaviest first: `eaa-compliance-checklist.html` (36), `insights.html` (34), `eaa
 If something in it reads wrong, **flag it and stop.** Do not fix it.
 
 ### Numbers to regenerate rather than trust
-The draft says **twenty-eight journeys, twenty-two barriers**. **These have moved twice this month.** Run `python3 ua_study_export.py` and use its output. Same for "thirteen months" — correct as of August 2026, and watched by `ua_volatile_check.py`.
+The draft says **twenty-eight journeys, twenty-two barriers**. **Do not use those. They are three revisions stale, and the draft predates two markets being in the sample.**
+
+**`ua_study_export.py` does not exist and never has.** It is one of the five scripts in the missing-scripts table near the top of this file, so the old instruction here resolved to nothing. **The numbers come from a derivation against the tracker, which is in the Claude project and not in this repo.** Re-run it there whenever the frozen sample changes, rather than copying figures out of any document including this one.
+
+**As of 15 August 2026 it returns:**
+
+| Axis | Values | Denominator |
+|---|---|---|
+| Headline | 58 journeys, 41 blocked, 17 clean | all 58 |
+| Market | Ireland 31 journeys, 25 blocked. Netherlands 27, 16 | all 58 |
+| Where it stopped | selecting 38, entry 2, checkout 1, no block 17 | all 58 |
+| Barrier type | labelling 14, name-role-value 13, keyboard-operability 11, focus-trap 1, other 2 | the 41 blocked |
+| Cause | custom-control substitution 17, native not labelled 17, other implementation 7 | the 41 blocked |
+
+**Barrier type and cause are different axes and must not be read across.** Type is *what* fails, cause is *why*. Reading `labelling 14` as the native-not-labelled cause would say the cause split is 14 against 27 and prompt a correction to the site's "split roughly evenly" wording. **The cause split is 17 and 17, so that wording is right and understates the evenness if anything.** This is the neighbouring-question failure from the table at the top of this file, and it is available here on a plate: two axes, similar vocabulary, and an inference that looks sound.
+
+**The entry-stage pair is named as an exception rather than folded in**, because the location claim is that barriers cluster mid-journey and two of fifty-eight is a genuine tail.
+
+**"Thirteen months" is elapsed and rots by the calendar.** Fourteen months as of August 2026. `ua_volatile_check.py` flags the shape of an elapsed counter and **never its value**, so a wrong month count and a right one produce identical output. **Nothing anywhere confirms an elapsed counter is currently true.** Recompute it by hand against June 2025. See JOB 0v.
 
 ### After
 **Read the whole homepage top to bottom.** The hero, the reframe, the ladder and the CTA have to read as one argument, and edits to one section have twice left another stranded.
