@@ -1156,3 +1156,44 @@ The draft says **twenty-eight journeys, twenty-two barriers**. **These have move
 ### After
 **Read the whole homepage top to bottom.** The hero, the reframe, the ladder and the CTA have to read as one argument, and edits to one section have twice left another stranded.
 
+
+---
+
+## 🔴 JOB 0v — THE GATE MUST NOT BE BUILT ON THE FIVE SUMMARY INTEGERS
+
+**Written 15 August 2026, from a capability test rather than from reasoning.** The four checkers had never been shown capable of returning anything other than their expected numbers, so a deliberate defect of each class was pushed against a throwaway copy of the working tree and each checker was watched to see whether it went red.
+
+**All four can fail.** Three went red on a first-attempt realistic defect. What the test found is not that the checkers are broken. It is that **three real defect classes are invisible to the summary line the gate was going to be built on.**
+
+### THE RESULT
+Baseline: `ua_page_check` 3 failures at root and 0 in insights, `ua_a11y_check` 0 failures across 44 pages, `ua_orphan_check` 0 orphans and 0 unresolved, `ua_volatile_check` 0 failures.
+
+| Injected defect | Checker | Verdict |
+|---|---|---|
+| Skip-link target removed (`id="main"` deleted) | a11y | **RED**, 0 to 1 failure, and `ua_page_check` moved 3 to 4 |
+| Body-copy link to a page that does not exist | orphan | **RED**, unresolved 0 to 1 |
+| Stale future period, "Q2 2026 ... any week now" | volatile | **RED**, 0 to 1 failure |
+| Three em dashes in prose | page | **Warn only.** 57 to 58 warnings, failures unmoved |
+| Sitemap entry for a file that does not exist | orphan | **Reported and uncounted** |
+| Elapsed counter changed from fourteen months to three | volatile | **Shape flagged, value not** |
+
+### 1. PARSE SECTION HEADINGS AND PER-PAGE LINES, NEVER THE FIVE INTEGERS
+**The reason is that the harness built to test this was itself summary-blind.** It read only the summary lines, so it reported two of the six defects as "not detected" when both were reported plainly in the output body. **The tool testing for summary-blindness had the defect it was testing for**, which is the easier-question failure inside the check written to catch it. It is the third instance of that shape in one session, after a stray-text sweep that flagged 176 HTML comments and a close script that was correct but partial.
+
+**So the gate reads the output body.** A count is a summary of what a checker chose to count, and what it chose to count is not the same set as what it found.
+
+### 2. PROMOTE `IN SITEMAP BUT NOT IN THE REPO` INTO THE ORPHAN COUNT
+**Highest-value single change in this job.** `ua_orphan_check.py` detects a sitemap entry pointing at a file that is not in the repo, and prints it under its own heading naming hard rule 14. **It does not appear in `0 orphans | 6 under-linked | 0 unresolved`.**
+
+**A gate on those integers would pass the exact defect hard rule 14 exists for, and that defect has shipped here before.** Two sitemap entries once pointed at pages that were never built, and the homepage linked to both. See JOB 4.
+
+### 3. HARD RULE 4 CANNOT FAIL A BUILD, BY CONSTRUCTION
+The em-dash check calls `warns.append`, never `fails.append`. Three em dashes in a prose paragraph moved the warning count and left the failure count untouched. **A rule that cannot fail a build is not a rule.** Decide whether hard rule 4 is enforced or advisory, and make the code say which. Do not leave it looking enforced.
+
+### 4. THE ELAPSED COUNTER FLAGS SHAPE AND NEVER VALUE
+`ua_volatile_check.py` warns that an elapsed count needs a review date. **"Fourteen months on" and "Three months on" produce byte-identical output**, so the warning fires whether the number is right or wrong and cannot separate them. That is documented scope rather than a bug, and it means **no check anywhere confirms an elapsed counter is currently true.**
+
+**A number that does not move when the thing it describes has changed is measuring something else.** The gate should treat this warning as a prompt to read, not as coverage.
+
+### THE HARNESS
+`scratchpad/captest.py` against a copy of the working tree. Copying rather than branching was deliberate, because the work under test was uncommitted. **Rebuild it to parse the output body before extending it**, since its summary-reading is the thing this job exists to fix.
