@@ -1155,6 +1155,56 @@ The draft says **twenty-eight journeys, twenty-two barriers**. **Do not use thos
 
 **`ua_study_export.py` does not exist and never has.** It is one of the five scripts in the missing-scripts table near the top of this file, so the old instruction here resolved to nothing. **The numbers come from a derivation against the tracker, which is in the Claude project and not in this repo.** Re-run it there whenever the frozen sample changes, rather than copying figures out of any document including this one.
 
+**The query. Run it where the tracker is, which is the Claude project session, not this repo.**
+
+```python
+import openpyxl
+from collections import Counter
+
+w = openpyxl.load_workbook("UA_Global_Outreach_Tracker.xlsx")
+sc = w["Site Checks (A)"]
+hdr = [sc.cell(row=2, column=c).value for c in range(1, sc.max_column + 1)]
+i = {h: k + 1 for k, h in enumerate(hdr) if h}
+
+# latest row per code — a prospect may be crawled more than once
+# counting both rows inflates the denominator
+best = {}
+for r in range(3, sc.max_row + 1):
+    code = sc.cell(row=r, column=1).value
+    if not code:
+        continue
+    d = str(sc.cell(row=r, column=i["Test date"]).value)[:10]
+    if code not in best or d >= best[code][0]:
+        best[code] = (d, {h: sc.cell(row=r, column=i[h]).value for h in i})
+
+# "in-denominator" is the filter. Excluded journeys still sit in the sheet,
+# so the denominator is never the row count.
+den = [r for c, (d, r) in best.items()
+       if str(r.get("Exclusion type", "")).startswith("in-denominator")]
+
+# blocked is derived from the stage field, not from a boolean column.
+# "n-a-no-block" is the clean value.
+def blocked(r):
+    s = str(r.get("Stage of first block", "")).lower()
+    return s not in ("n-a-no-block", "", "none", "n/a", "nan")
+
+print("TOTAL:", len(den), "journeys |", sum(1 for r in den if blocked(r)), "blocked")
+
+mk = Counter()
+for r in den:
+    m = str(r.get("Market", ""))
+    m = "Ireland" if m.startswith("Ire") else ("Netherlands" if "ether" in m else m[:12])
+    mk[(m, blocked(r))] += 1
+for m in ["Ireland", "Netherlands"]:
+    print(f"{m}: {mk[(m,True)]+mk[(m,False)]} journeys, {mk[(m,True)]} blocked")
+
+print("STAGE:", Counter(str(r.get("Stage of first block")) for r in den))
+print("BARRIER TYPE:", Counter(str(r.get("Barrier type")) for r in den if blocked(r)))
+print("CAUSE:", Counter(str(r.get("Cause of failure")) for r in den if blocked(r)))
+```
+
+**The three steps that are not obvious are commented in the code, and all three change the answer if dropped.** Counting every row rather than the latest per code inflates the denominator. Taking the row count rather than filtering on `in-denominator` counts journeys that were excluded on purpose. And `blocked` has no boolean to read, so it is derived from the stage field against the clean value `n-a-no-block`.
+
 **As of 15 August 2026 it returns:**
 
 | Axis | Values | Denominator |
@@ -1166,6 +1216,8 @@ The draft says **twenty-eight journeys, twenty-two barriers**. **Do not use thos
 | Cause | custom-control substitution 17, native not labelled 17, other implementation 7 | the 41 blocked |
 
 **Barrier type and cause are different axes and must not be read across.** Type is *what* fails, cause is *why*. Reading `labelling 14` as the native-not-labelled cause would say the cause split is 14 against 27 and prompt a correction to the site's "split roughly evenly" wording. **The cause split is 17 and 17, so that wording is right and understates the evenness if anything.** This is the neighbouring-question failure from the table at the top of this file, and it is available here on a plate: two axes, similar vocabulary, and an inference that looks sound.
+
+**They come from two different columns and they carve the same 41 into different shapes**, five buckets by type and three by cause, so no bucket in one corresponds to a bucket in the other. `Barrier type` and `Cause of failure` are separate fields in the sheet, which is the thing to check before quoting either. **The totals matching is what makes the mistake easy**, because a figure from the wrong axis still adds up.
 
 **The entry-stage pair is named as an exception rather than folded in**, because the location claim is that barriers cluster mid-journey and two of fifty-eight is a genuine tail.
 
