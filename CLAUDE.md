@@ -337,7 +337,18 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 **The general lesson, which extends JOB 0q rather than repeating it.** The Netherlands defects came in through English-language vendor summaries, so the rule there was to go to the primary source. **Here the primary source is the one that is wrong.** Being on the regulator's domain is not the same as being the regulator's position on the question you are asking, and a national regulator restating an EU timetable is describing the EU, not itself.
 
 ### WHAT THE SITE CURRENTLY SAYS
-**One mention, on `eaa-compliance-finland.html` line 220**, in the Nordic enforcement passage. It says Norway *"operates under equivalent EEA obligations rather than the EAA directly"*, which is the careful framing and does not assert the EAA applies. **Not changed, and it needs checking against the facts file rather than against this note**, on two points: which obligations "equivalent EEA obligations" actually names, since that is the kind of vagueness JOB 0q identifies as where unsourced claims hide, and whether the HelsaMi enforcement detail in the same sentence is in the facts file.
+**One mention, on `eaa-compliance-finland.html` line 220**, in the Nordic enforcement passage. It says Norway *"operates under equivalent EEA obligations rather than the EAA directly"*, which is the careful framing and does not assert the EAA applies. **That half survives.** The rest was checked against `ua_regulator_facts.json` on 15 August 2026 and **neither part has an entry behind it.**
+
+| On the page | State |
+|---|---|
+| The HelsaMi enforcement detail: December 2025, NOK 50,000 daily, 64 of 119 issues unresolved, 425,000 residents | **Not in the facts file. None of it.** Not the case, not the figure, not the counts |
+| "equivalent EEA obligations" | **Names nothing.** No instrument, no source |
+
+**So a live page carries a precisely worded enforcement claim about Norway with nothing behind it, established on the day Norway was confirmed out of EAA scope.** Read that against the precision note in JOB 0q, which was misread earlier the same day to mean the opposite: **precision without a source is the more dangerous shape, not the safer one.**
+
+**Two content decisions, flagged rather than fixed, and neither is a repo change:**
+- **The HelsaMi detail comes off the page until it has a primary source.** If it is real it belongs in the facts file first. If it came from a summary, that is the same route as the three claims that dissolved this month.
+- **"equivalent EEA obligations" needs replacing or removing.** Norway has domestic accessibility law predating and independent of the EAA, which is plausibly what it means. **Plausibly is not a claim**, and naming the instrument is the whole of the fix if it is right.
 
 ---
 
@@ -1023,6 +1034,15 @@ python3 ua_volatile_check.py --selftest   # 8 fixtures, including the real one
 **A precisely worded claim is harder to fabricate, because the precision has to come from somewhere.** "The ACM has been explicit that non-reporting organisations will be audited first" names no document, no date and no number, and it cost nothing to write. **Vagueness is not caution. It is where invented claims hide.**
 
 **Write the sample, the date, the figure and the source into the sentence.** If they cannot be written, the claim is not ready.
+
+#### 🔴 BUT PRECISION IS NOT EVIDENCE, AND THIS SECTION HAS ALREADY BEEN MISREAD ONCE
+**Added 15 August 2026, after this section produced exactly the wrong inference.** Asked whether an unverified enforcement claim on the Norway passage should be trusted, a session reasoned that it was "precisely worded, which by the register's own ratio is a good sign." **That is a misreading of this section and it needs saying here rather than being left to be repeated.**
+
+**The ratio above was measured on claims that had already been checked against source.** Precision predicted which of the nine ACM claims survived checking. **It says nothing about a claim nobody has checked yet.**
+
+**An unverified precise figure is not the safe shape. It is the more dangerous one**, because it carries every signal of having a source and none of the fact. **That is what the invented complaint procedure looked like** before anyone went looking: stated actor, stated sequence, stated document, and no publication behind any of it. See JOB 0o.
+
+**So the rule is a writing rule, exactly as the heading says.** Precision is what you owe a reader when you have a source. **It is never the reason to believe a sentence, and a precise claim with no entry in the facts file is a claim with no source, not a well-made one.**
 
 ### THE PREDICTION RULE IMMEDIATELY CAUGHT ONE OUTSIDE THE NETHERLANDS
 A sweep for any future period attributed to a regulator found one more, on `insights/bfsg-germany-enforcement-abmahnungen.html`: *"formal enforcement decisions are expected in Q2 2026, which means they could arrive any week now."*
