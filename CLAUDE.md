@@ -309,7 +309,7 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 | The true, narrow conclusion | What it silently became | Why the difference matters |
 |---|---|---|
-| The EAA is **not incorporated** into the EEA Agreement | it is **delayed** | Two different states. Conflating them produces the wrong plan for Norway |
+| The EAA is **not incorporated** into the EEA Agreement | it is **delayed** | Two different states. "Delayed" implies a date exists. None does. See the Norway note below |
 | `ua_claim_check.py` does not belong in **the site repo** | it does not belong **under version control** | The first is about one location, the second about a property. The script has been edited four times with no diff |
 
 **The tell is that the narrow conclusion is usually right.** Nobody argued for the wide version, and nobody noticed adopting it. The site repo genuinely may be the wrong home, because it holds the site and deploys to a public server while the script checks outreach documents. **That argues against one location. It says nothing about whether history is needed**, and history was the actual requirement. A third versioned location satisfies it.
@@ -318,6 +318,26 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 **When a conclusion is a negative, say exactly what it rules out, then read the next sentence and check it does not rule out more.** "Not here" is not "not anywhere". "Not incorporated" is not "not coming". "Not this tool" is not "not any tool".
 
 **Ask what the requirement actually was**, because the widened negative usually drops it. The requirement was history, not proximity. Once that is named, the false choice between two locations dissolves and a third option appears that nobody had to argue for.
+
+---
+
+## 🔴 STANDING NOTE: NORWAY. THE EAA IS NOT IN THE EEA AGREEMENT, AND THE REGULATOR'S OWN SITE SAYS OTHERWISE
+
+**Verified at source 15 August 2026.** The full record is in `ua_regulator_facts.json` under `NO`, which is the source of truth and is on the project side of the split.
+
+**The position.** **Bufdir**, the Norwegian directorate, states it has not been decided that the EAA will enter the EEA Agreement: *"Det er ennå ikke vedtatt at Tilgjengelighetsdirektivet (EAA) skal inn i EØS-avtalen"*, and on timing, *"det er vanskelig å si når dette blir."* **EFTA's EEA-Lex register** lists **32019L0882** as under scrutiny, with a draft Joint Committee Decision under consideration and entry into force pending. **No adopted JCD.**
+
+**So the accurate line is that it is not incorporated, and no date exists.** Not "delayed", which implies a date that has moved. Not "coming", which implies a decision that has been taken.
+
+### THE TRAP, AND IT IS THE WORST KIND
+**`uutilsynet.no`, the Norwegian regulator's own site, still carries the EU timetable, "in force June 2025", as though it were Norway's.** It is stale, and **reliance on it is prohibited by name in the facts file.**
+
+**This is worse than the three syndication failures.** Those were third parties repeating something stale. **This is the authority's own domain publishing a timetable that was never its own**, which makes it the most credible-looking wrong answer available on the question. **Anyone checking quickly stops there**, because a regulator's own site is exactly where a careful person expects to land.
+
+**The general lesson, which extends JOB 0q rather than repeating it.** The Netherlands defects came in through English-language vendor summaries, so the rule there was to go to the primary source. **Here the primary source is the one that is wrong.** Being on the regulator's domain is not the same as being the regulator's position on the question you are asking, and a national regulator restating an EU timetable is describing the EU, not itself.
+
+### WHAT THE SITE CURRENTLY SAYS
+**One mention, on `eaa-compliance-finland.html` line 220**, in the Nordic enforcement passage. It says Norway *"operates under equivalent EEA obligations rather than the EAA directly"*, which is the careful framing and does not assert the EAA applies. **Not changed, and it needs checking against the facts file rather than against this note**, on two points: which obligations "equivalent EEA obligations" actually names, since that is the kind of vagueness JOB 0q identifies as where unsourced claims hide, and whether the HelsaMi enforcement detail in the same sentence is in the facts file.
 
 ---
 
