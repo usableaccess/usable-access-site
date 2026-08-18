@@ -134,6 +134,7 @@ A check that answers an easier question does not fail loudly. **It reports PASS*
 | How many footer *names* are there? | **How many footer *shapes* are there?** | "Exactly two footer shapes" went into a commit message and this register. There were seven |
 | Is the link inside `<main>`? | **Is the link inside running copy?** | `ua_orphan_check.py`, written to enforce the body-copy distinction, counted 15 listing cards as body copy on its first run |
 | What does the CSS text say? | **What does the browser do?** | A nav audit reported five pages with no mobile navigation and a hamburger that expands nothing. There was no defect. All 44 collapse correctly |
+| What does a 390px **window** show? | **What does a 390px viewport show?** | Headless Chrome clamps to 500px, so the screenshot was a 500px layout painted onto a 390px canvas. It reads as horizontal overflow on the page |
 
 ### THE EIGHTH INSTANCE NAMES WHY THE OTHER SEVEN HAPPEN
 
@@ -143,7 +144,38 @@ The nav audit ran three times and was wrong twice. First a flat regex matched th
 
 **The correction was worth more than the finding would have been**, because it had already been characterised as a live WCAG 4.1.2 failure on production, and a fix was about to be written for pages that did not need one.
 
-**Three of the eight instances came from the same author error: reading CSS or HTML with a regex that cannot see structure.** That is a specific and correctable class, not general carelessness. **When a question is about what renders, do not answer it by matching text.** Parse with context, resolve the cascade, evaluate the media query at a width, or open a browser. If none of those is available, say the check is textual and therefore provisional.
+**Three of the nine instances came from the same author error: reading CSS or HTML with a regex that cannot see structure.** That is a specific and correctable class, not general carelessness. **When a question is about what renders, do not answer it by matching text.** Parse with context, resolve the cascade, evaluate the media query at a width, or open a browser. If none of those is available, say the check is textual and therefore provisional.
+
+### THE NINTH INSTANCE: THE BROWSER IS AN INSTRUMENT TOO, AND IT LIES ABOUT WIDTH
+**Found 18 August 2026, one line after the remedy above says "or open a browser."**
+
+**Headless Chrome clamps its layout viewport to a 500px minimum.** `--window-size=390,2200` renders the page at 500px and paints it onto a 390px canvas. The right-hand side is cut off, so **it looks exactly like horizontal overflow on the page.** Probed from inside the document, a window asked for 390 reports:
+
+```
+client=500  inner=500  dpr=1
+```
+
+**Reporting that as a defect would have produced a fix for overflow that does not exist**, on a page that renders correctly. That is the nav audit again, one layer further out: a real defect characterised on production, a fix about to be written, and no defect there.
+
+### THE PRECONDITION, WHICH IS THE POINT
+**Before trusting any screenshot as evidence about a width, assert the width from inside the document.** Read `document.documentElement.clientWidth` in the page under test and confirm it is the number you asked for. **This is a precondition, not a workaround**, in the same shape as reading `document.activeElement` before sending a key sequence: the instrument's state has to be established before its output means anything.
+
+**Report the probed width alongside the finding.** A screenshot with no width assertion is not evidence about that width, whatever the filename says.
+
+**The method that works:** render the page in an iframe of the target width inside a window at or above the clamp, and write the measured width into the document so it is visible in the image itself. The 390px checks on `index.html` were done this way and carry a `vw=390` badge in the corner.
+
+### WHAT THIS DOES AND DOES NOT CALL INTO QUESTION
+**Only checks run through a headless window inherit it**, and the scope has to be stated rather than assumed, because a widened negative is the failure this register has recorded twice already.
+
+**The 390px nav finding above is not affected.** It evaluated every media query against a concrete viewport width and never opened a window, so the clamp could not reach it. All 44 pages collapse correctly at 390px and that still stands.
+
+**Any past "no overflow at 390px" taken from a screenshot is worth exactly as much as whether the probe ran.** None is recorded in this file, so nothing here needs revisiting. The rule is for the next one.
+
+### WHY IT IS THE THIRD INSTANCE IN ONE SESSION
+**The correction that produced it was right.** "What does the CSS text say" was replaced with "what does the browser do", which is the eighth instance's own prescription, and the new instrument had a blind spot the old one did not. **Knowing the general pattern did not prevent the specific error**, which is the 9 August finding holding for the third time in a day, after `:last-child` and after the summary-blind harness in JOB 0v.
+
+**So the remedy list above is not a list of answers. It is a list of instruments**, and each one needs its own calibration reported with its result.
+
 
 **The sixth is the sharpest, because the check existed for nothing else.** `ua_orphan_check.py` was written on 9 August precisely to separate a body-copy link from a listing card, since that distinction is what the publishing protocol turns on. It classified a card by looking for a class matching `card`, and `insights.html` wraps each entry in `<div class="article-list">`, which contains no such word. **A check whose entire purpose was one distinction could not see that distinction.** Fixing it moved the under-linked count from 8 to 22, so the first run understated the problem by nearly three times. **A checker is not exempt from the rule it enforces. Test a new check against the case it was written for, not against the case that is easy to construct.**
 
