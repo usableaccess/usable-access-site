@@ -252,6 +252,29 @@ All three are on `eaa-compliance-telecoms.html`, and all three are the ComReg tr
 
 ---
 
+## STANDING NOTE: THE HOMEPAGE HERO CARRIES FOUR EM DASHES IN PROSE, DELIBERATELY
+
+**`ua_page_check.py` warns `4 em dashes in prose` on `index.html`. That is the correct state, and root warnings are 58 rather than 57 because of it. Do not fix it by rewriting the hero.**
+
+**Set 18 August 2026.** Two pairs, both in the hero, and both are interruptions rather than qualifying asides:
+
+- `Ireland and the Netherlands &mdash; insurance quotes, hotel bookings, travel enquiries, retail checkouts &mdash; tested the way a customer would`
+- `What the standard element already did &mdash; work with a keyboard, announce what it is, report whether it is selected &mdash; was never rebuilt`
+
+**Commas cannot do this job, because both asides contain commas.** Parentheses can, and were rejected: they read as a technical footnote where the sentence needs to read as speech. The alternative to the second pair is three short sentences, which loses the interruption the sentence is performing on purpose.
+
+### THE GAP THIS SITS IN, WHICH IS THE PART WORTH KEEPING
+**Hard rule 4 counts characters. It cannot distinguish an interruption from a qualifying aside**, and the HOW TO WRITE section is built entirely on that distinction. The rule's own reasoning is that a dash is usually the symptom of a main clause with an aside hung off it. **An interruption is not that shape**, and no character count can tell the two apart.
+
+**So this will recur**, on any sentence that needs to break its own stride rather than qualify itself. **Record the decision, do not tune the threshold.** Lowering it makes more of these; raising it stops rule 4 catching the habit it exists to catch.
+
+### WHY IT IS RECORDED RATHER THAN LEFT TO BE REDISCOVERED
+**A warning that is known and accepted looks identical to one nobody has read.** That is the same problem as the three ComReg failures on `eaa-compliance-telecoms.html`, and it has the same answer: say which number is expected, and why, so a session can tell a live defect from a settled one.
+
+**What would legitimately change it. Up:** any new prose dash on the homepage, which is the count working, so read the sentence before assuming it is this note. **Down:** a rewrite of either hero sentence for an unrelated reason, in which case the count moving is not evidence of anything.
+
+---
+
 ## STANDING NOTE: SCOPE A BATCH BY CONTENT, NEVER BY FILENAME
 
 **A correction pass that selects its pages by name will miss the pages that are about the subject but not named for it.**
