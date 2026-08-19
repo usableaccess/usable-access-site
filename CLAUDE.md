@@ -356,6 +356,26 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 ---
 
+## 🔴 STANDING NOTE: A RETRACTION MOVES THE FIGURES AND THE WORDS THAT QUANTIFIED THEM, AND ONLY THE FIGURES ARE GREPPABLE
+
+**Found 19 August 2026, on the P-12 retraction.** The blocked count went 41 to 40, and every affected figure was found by grepping for digits and for word-forms of digits. **One sentence moved with them and no search could have surfaced it**, because the word it turns on is not a number.
+
+`index.html` read *"The cause was usually a standard control replaced by a custom one."* At 17 against 17 that was defensible. The retraction took one custom-control journey out, leaving **16 against 17**, so "usually" was naming the second-largest cause. **Nothing was wrong with the sentence when it was written and nothing touched the file.** Changed to "often", which is true at 16 of 40 and survives the next retraction in either direction.
+
+### WHY NO CHECK WILL EVER CATCH THIS
+**A quantifying word has no value to compare.** "Usually", "most", "the majority", "typically", "in about half", "rarely" and "consistently" all assert a proportion and none of them states one, so there is nothing for a trap to match and nothing for a consistency vote to disagree about. **This is not the easier-question failure.** No cheaper question was substituted. There is no question to ask, because the claim lives in the gap between a word and a table that is somewhere else entirely.
+
+**It is the sibling of the elapsed-counter gap in JOB 0v.** There, a wrong month count and a right one produce byte-identical output. Here, a wrong quantifier and a right one produce no output at all.
+
+### THE RULE
+**After any figure changes, re-read the sentences around it for words that assert a proportion, not only for the digits.** The digits are findable. The words are not, and they were true when they were typed, which is exactly what makes them invisible on a re-read that is looking for errors.
+
+**Build the list of quantifying words as part of the change**, not as a search afterwards, because the search has nothing to search for. **The pages that carry a study figure are the pages to re-read whole**, and there are only ever a handful.
+
+**Known instances to watch, both current and both correct today:** `index.html` "The cause was often", and `how-we-test.html` "The cause split roughly evenly", which holds at 16 and 17 and is more accurate now than when it was written. **`index.html` also says "In the remaining cases the right element was used and simply never labelled."** The remaining cases are 24, of which 17 were never labelled and 7 were other implementation faults. That imprecision predates the retraction and did not move with it, so it is recorded rather than changed.
+
+---
+
 ## 🔴 STANDING NOTE: A CONCLUSION ABOUT *WHERE* READ AS A CONCLUSION ABOUT *WHETHER*
 
 **The sibling of the denominator note above, and the same mechanism on a negative instead of a figure. The scope of a negative gets widened without anyone deciding to widen it.**
@@ -1335,19 +1355,30 @@ print("CAUSE:", Counter(str(r.get("Cause of failure")) for r in den if blocked(r
 
 **The three steps that are not obvious are commented in the code, and all three change the answer if dropped.** Counting every row rather than the latest per code inflates the denominator. Taking the row count rather than filtering on `in-denominator` counts journeys that were excluded on purpose. And `blocked` has no boolean to read, so it is derived from the stage field against the clean value `n-a-no-block`.
 
-**As of 15 August 2026 it returns:**
+**As of 19 August 2026 it returns:**
 
 | Axis | Values | Denominator |
 |---|---|---|
-| Headline | 58 journeys, 41 blocked, 17 clean | all 58 |
-| Market | Ireland 31 journeys, 25 blocked. Netherlands 27, 16 | all 58 |
-| Where it stopped | selecting 38, entry 2, checkout 1, no block 17 | all 58 |
-| Barrier type | labelling 14, name-role-value 13, keyboard-operability 11, focus-trap 1, other 2 | the 41 blocked |
-| Cause | custom-control substitution 17, native not labelled 17, other implementation 7 | the 41 blocked |
+| Headline | 58 journeys, 40 blocked, 17 clean | all 58 |
+| Market | Ireland 31 journeys, 24 blocked. Netherlands 27, 16 | all 58 |
+| Where it stopped | selecting 37, entry 2, checkout 1, no block 17 | all 58 |
+| Barrier type | labelling 14, name-role-value 13, keyboard-operability 10, focus-trap 1, other 2 | the 40 blocked |
+| Cause | custom-control substitution 16, native not labelled 17, other implementation 7 | the 40 blocked |
 
-**Barrier type and cause are different axes and must not be read across.** Type is *what* fails, cause is *why*. Reading `labelling 14` as the native-not-labelled cause would say the cause split is 14 against 27 and prompt a correction to the site's "split roughly evenly" wording. **The cause split is 17 and 17, so that wording is right and understates the evenness if anything.** This is the neighbouring-question failure from the table at the top of this file, and it is available here on a plate: two axes, similar vocabulary, and an inference that looks sound.
+**The previous derivation, 15 August 2026, read 41 blocked and Ireland 25.** P-12 was retracted on 19 August and the site was corrected the same day. **Read the 15 August figures as superseded, not as a second measurement**, and take this table rather than any figure quoted in prose elsewhere in this file.
 
-**They come from two different columns and they carve the same 41 into different shapes**, five buckets by type and three by cause, so no bucket in one corresponds to a bucket in the other. `Barrier type` and `Cause of failure` are separate fields in the sheet, which is the thing to check before quoting either. **The totals matching is what makes the mistake easy**, because a figure from the wrong axis still adds up.
+### 40 AND 17 DO NOT SUM TO 58, AND THAT IS THE CORRECT STATE
+**P-12 leaves the blocked count without joining the clean one.** It was retracted rather than re-run end to end, so it is in the denominator as tested and in neither bucket. **A retraction is not a pass.** The evidence never met the bar: a component fingerprint was read as sufficient with no `.focus()` test, which is the tooling-summary failure this study already records six of.
+
+**One journey came out of exactly one cell on each axis**, which is why only four cells moved. It was a loan-amount slider, so it leaves **selecting** on the stage axis, **custom-control substitution** on cause, and **keyboard-operability** on type. **Ireland loses it, the Netherlands does not.** Any future retraction moves the same four axes and has to be worked through one at a time, because no axis can be inferred from another.
+
+**The site does not state 40 and 17 adjacently**, so nothing reads as contradictory today. **A reader can still subtract**, and there is no line on any page explaining the gap. Worth writing when the study is next written up.
+
+**Barrier type and cause are different axes and must not be read across.** Type is *what* fails, cause is *why*. Reading `labelling 14` as the native-not-labelled cause would say the cause split is 14 against 26 and prompt a correction to the site's "split roughly evenly" wording. **The cause split is 16 and 17, so that wording is right and is now almost exactly even.** This is the neighbouring-question failure from the table at the top of this file, and it is available here on a plate: two axes, similar vocabulary, and an inference that looks sound.
+
+**But the homepage says more than "roughly evenly", and the retraction has caught it.** `index.html` reads "The cause was usually a standard control replaced by a custom one", which was defensible at 17 against 17 and is now the smaller of the two at **16 against 17**. **It is a word, not a figure, so no count will ever flag it.** Flagged 19 August 2026 and left for a copy decision. `how-we-test.html` says "split roughly evenly" and needs nothing.
+
+**They come from two different columns and they carve the same 40 into different shapes**, five buckets by type and three by cause, so no bucket in one corresponds to a bucket in the other. `Barrier type` and `Cause of failure` are separate fields in the sheet, which is the thing to check before quoting either. **The totals matching is what makes the mistake easy**, because a figure from the wrong axis still adds up.
 
 **The entry-stage pair is named as an exception rather than folded in**, because the location claim is that barriers cluster mid-journey and two of fifty-eight is a genuine tail.
 
