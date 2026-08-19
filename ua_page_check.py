@@ -476,11 +476,16 @@ def check(path):
             # repeated in og: and twitter:, so one claim would report three times.
             s = body.rfind(".", 0, m.start()) + 1
             e = body.find(".", m.end())
-            snippet = " ".join(body[s:e + 1 if e != -1 else len(body)].split())[:200]
-            if snippet in seen:
+            # Dedupe on the FULL sentence and truncate only for display. Keying off
+            # the truncated string collapses two different claims that share their
+            # first 200 characters and drops the second silently. The likeliest pair
+            # is a claim in body copy and the same claim inside JSON-LD, which is the
+            # copy served to search engines - see the structured-data standing note.
+            full = " ".join(body[s:e + 1 if e != -1 else len(body)].split())
+            if full in seen:
                 continue
-            seen.add(snippet)
-            fails.append(f"FACT: {msg}: {snippet}")
+            seen.add(full)
+            fails.append(f"FACT: {msg}: {full[:200]}")
     for pat, msg in CTA_TRAPS:
         if re.search(pat, body): fails.append("CTA: " + msg)
 
