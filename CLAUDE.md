@@ -75,6 +75,8 @@ There is no `tools/` directory. The table below describes an intended state, not
 
 **The live consequence, which is not hypothetical.** It has been edited four times since it was written: Norway added, the German claim retired, prohibitions extended twice. **No history, no diff, and no record of what changed when.** That is the same class as the tarball problem, recoverable and invisible.
 
+**This is the first of two instances of a class recorded below**, under THE CLASS: A TOOL AND ITS SUBJECT ON OPPOSITE SIDES. Read that as well, because the part that generalises is the trigger rather than the location.
+
 **Two things to settle, and neither is urgent.** Whether `ua_regulator_facts.json` goes in the repo, and whether the script follows it. **The repo may be the wrong home even though the project session clearly is too**, because the script checks outreach documents rather than site pages, and this repo holds the site. A third location that is version-controlled would satisfy the actual requirement, which is history rather than proximity.
 
 ### THE SPLIT, WHICH IS THE ACTUAL RULE
@@ -84,10 +86,54 @@ There is no `tools/` directory. The table below describes an intended state, not
 
 **When a job names a file, check which side of the split it is on before planning around it.** A missing script can be written. A missing locked reference cannot be reconstructed, and guessing at its contents is how a €600 service gets quoted at €1,500.
 
+### 🔴 THE CLASS: A TOOL AND ITS SUBJECT ON OPPOSITE SIDES RUNS WHEN SOMEONE REMEMBERS
+**Promoted from a note to a class on 20 August 2026, on the second instance.** The first was recorded as a peculiarity of one script. Two is a shape.
+
+| Tool | Lives | Its subject lives |
+|---|---|---|
+| `ua_claim_check.py` and `ua_regulator_facts.json` | the Claude project | outreach documents, the Claude project, but the site pages it reasons about are here |
+| `scripts/build_studylog_index.py` | this repo, and only on the `studylog-index-generator` branch | `UA_StudyLog_Notes_CrossCutting_5.md`, the Claude project |
+
+**The consequence is not that the work cannot be done.** Both are retrievable, and the second is on GitHub, so a project session can pull it. **The consequence is that it is never automatic.** A checker beside the thing it checks can run on every change, in a commit hook, in a job queue, or because someone ran the three checkers before committing. **A checker across the boundary runs when a person remembers it exists**, which is a different reliability class and degrades in a way nothing reports.
+
+**The failure mode is silence.** Nothing goes red when a study log is edited and its index is not regenerated. Nothing goes red when the facts file gains a country and no page is re-checked. **The tool is fine, the subject is fine, and the gap between them holds no state**, so there is no artefact anywhere carrying the fact that they have drifted.
+
+**This is why the §31.2 banner is worth reading as a symptom rather than a one-off.** A generated block inherited a wrong number and cited itself 92 times, which is what a hand-edit produces and a regeneration cannot. **The regeneration was available the whole time.** What was missing was anything that ran it.
+
+### THE TEST, WHICH IS CHEAPER THAN THE FIX
+**Before accepting a split, ask what triggers the tool.** If the honest answer is "someone notices", record that in the same breath as recording where the tool lives. **A location note that omits the trigger reads as solved when it is only located.**
+
+**What would actually resolve it is one filesystem, not a better habit.** Either the subject comes to the tool or the tool goes to the subject. **A third versioned location satisfies the requirement for both**, which is the conclusion the eleventh-script note reached about history and which applies unchanged here.
+
 ### WHAT THIS BLOCKS
 **JOB 0h cannot start.** It audits client documents against `UA_Pricing_Reference_LOCKED.md`, and neither the reference nor the documents are reachable here. **Putting them somewhere reachable is Laura's decision, not a gap for a session to work around.** The guard checker 0h asks for — read the locked reference, flag any euro figure in a client document that is not in it — is buildable in this repo the moment the reference is.
 
 **JOB 0j needs re-deriving, not following.** It lists three under-linked pages. Two changed on 8 August: `insights/eu-ai-act-accessibility.html` gained an OG block, and `insights/invisible-revenue-loss.html` was deleted with its one inbound link repointed. `ua_orphan_check.py` was then written on 9 August and the graph rebuilt, so JOB 0j below now carries real numbers. This paragraph is kept because the reason it was needed still stands.
+
+### 🔴 THE CLASS THE SPLIT PRODUCES: A TOOL SEPARATED FROM ITS SUBJECT RUNS ON MEMORY
+**Promoted from a note to a class on 20 August 2026, on the second instance.** One instance is a circumstance. Two with the same mechanism is a class, and this one has no owner by construction, because neither side of the boundary can see the other.
+
+| Tool | Lives | Its subject lives |
+|---|---|---|
+| `ua_claim_check.py` and `ua_regulator_facts.json` | the Claude project | outreach documents, same side, but nothing versions either |
+| `scripts/build_studylog_index.py` | this repo, and only on the `studylog-index-generator` branch | `UA_StudyLog_Notes_CrossCutting_5.md`, the Claude project |
+
+**The property is not distance. It is that nothing fires on change.** A checker sitting beside what it checks still only runs when someone runs it, but the file and the tool arrive in the same session, so the prompt is there. **Split them and the tool runs when somebody remembers**, which is a different and much worse schedule than "when the file changes".
+
+**Both instances have already paid for it.** `ua_claim_check.py` has been edited four times with no diff and no record of what changed when. The study log index went three days with four collisions resolved silently, which is the failure the current generator exists to refuse.
+
+### THE TEST, WHICH IS THE *WHERE* AND *WHETHER* NOTE AGAIN
+**Say what the requirement actually is before choosing a location.** The requirement is that the check runs when its subject changes, and that its history is recoverable. **Proximity is one way to get both. It is not the requirement**, and treating it as the requirement is how "not this repo" became "not under version control" in the note above.
+
+**So record two things for any tool whose subject is on the other side:** where the subject lives, and what is supposed to trigger a run. **A tool with neither recorded is not a check. It is a script somebody wrote once.**
+
+### AND THE REASON PUSHING IS PART OF THE FIX
+**A tool on the far side of the boundary is retrievable rather than blocking, but only if it was pushed.** `build_studylog_index.py` can be pulled into a Cowork session because it went to GitHub on 19 August. Had it stayed on one machine in a Dropbox folder, the boundary would have been absolute rather than an inconvenience. **One machine and a sync folder is not a copy, and for a split tool it is not a location either.**
+
+### THE COROLLARY ON WHAT AN INDEX MAY SILENTLY DO
+**Reporting a collision is correct behaviour and must not be read as a defect in the reporter.** The generated index shows §31.2 at two line numbers with the same GOVERNS figure, because two sections carry that number. **The defect is in the banner. The index is telling the truth about it.**
+
+**An index that resolved the collision silently would have hidden it**, which is what the 16 August one did for four collisions across three days. This is the prefer-visible-failure rule at the top of this file, applied to a generated artefact: **where there is a choice between a clean output and one that shows the mess, take the one that shows the mess.**
 
 ---
 
