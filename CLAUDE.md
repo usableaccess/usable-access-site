@@ -366,6 +366,44 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 ---
 
+## 🔴 STANDING NOTE: UNCOMMITTED EDITS ARE NOT PRIVATE, AND A COMMIT MESSAGE CAN DESCRIBE WORK ITS AUTHOR NEVER SAW
+
+**Found 20 August 2026, in `17d7eb8` and fixed in `5d9da75`.** Two sessions were editing this working tree within a few minutes of each other. Both were asked to record the same class into this file. One wrote its block and had not committed yet. The other wrote its own block, ran `git add CLAUDE.md`, and **committed both**, then pushed. The first session learned about it from `nothing to commit, working tree clean`.
+
+**The register then carried two headings for one class**, separated by an unrelated section, each with its own two-row table of the same two tools and its own `THE TEST` subsection. **A fact in two places is a future error**, which this file says at the top and had just done to itself.
+
+### WHY THIS IS A DIFFERENT FAILURE FROM THE REST OF THIS FILE
+**Everything else recorded here is a record going stale, or a view being partial.** A brief quoting a snapshot. A trap matching a weaker pattern. A browser lying about its width. In every one of those, something was true once, or true of a smaller question.
+
+**This one is a record written accurately about content its author could not read.** The commit message asserted the work was finished and correct. **It happened to be both. Nothing in the process established that**, and the same commit would have been written had the edits been half-applied, wrong, or an experiment about to be reverted.
+
+**The direction is what is new.** The usual hazard is a description falling behind the thing it describes. Here the description ran ahead of it, into work the describer had no way to check.
+
+### NO CHECK TOUCHES ANY OF THIS
+**All four checkers ran identically across the duplication and across the fix.** They read `.html`, so **none of them reads `CLAUDE.md` at all.** A duplicated section, a contradicted rule, a job queue that disagrees with the repo: nothing reports any of it.
+
+**That makes this file the least protected thing in the repo and the most consequential to get wrong**, because it is what every session reads first and it is the only place several rules exist. **A defect here does not fail a build. It gets followed.**
+
+### THE PRACTICE
+**Check the log before starting a register edit, and again before committing.** It costs one command and it is the only thing that would have caught this:
+
+```bash
+git fetch origin -q && git status -sb && git log --oneline -3 && git status --short
+```
+
+**Commit in small units, so the window in which your edits are unowned is short.** An uncommitted change is visible to every process in the folder and belongs to whoever commits first.
+
+**Never `git add` a file you did not edit this session**, and never `git add -A` or `git commit -a` in this repo. Both are how another session's work ends up inside your commit with your message on it.
+
+### WHEN TWO RECORDS OF ONE THING ALREADY EXIST
+**Delete one. Do not merge them into a third.** Merging produces a section carrying both authors' framings and neither's argument.
+
+**Choose by accuracy on the point where they disagree, not by recency and not by whose it is.** The two blocks here differed on one table row, and the surviving one was right about it. That is the whole of the decision and it is usually available, because two records of one class almost always disagree somewhere specific.
+
+**Then fix the cross-references, which is the part that gets missed.** A forward pointer in another section named the deleted heading. **Deleting a section leaves every link to it dangling, and nothing in this repo checks links inside a markdown file.**
+
+---
+
 ## 🔴 STANDING NOTE: A FINDING KEEPS THE DENOMINATOR IT WAS MEASURED ON
 
 **When the study grows, the headline numbers move and the subset findings do not.** A finding measured on part of the sample keeps that part as its denominator. Restating it against the new total silently invents a measurement nobody took.
