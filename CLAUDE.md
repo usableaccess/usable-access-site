@@ -420,6 +420,13 @@ git fetch origin -q && git status -sb && git log --oneline -3 && git status --sh
 
 **Then fix the cross-references, which is the part that gets missed.** A forward pointer in another section named the deleted heading. **Deleting a section leaves every link to it dangling, and nothing in this repo checks links inside a markdown file.**
 
+### THE ONE TIME THE MECHANISM DID NOT BITE
+**21 August 2026.** Two sessions on opposite sides of the split corrected the same claim about EN 301 549 on the same day, independently: **hard rule 12 in this file**, and the EN 301 549 section of **`UA_Standing_Corrections_v3.md`** on the project side. **The two corrections were compatible**, and neither author could read the other's file.
+
+**Nothing in the process made that likely.** They agreed because both were sourced from the same verification pass on 20 August. **Change the source on one side and the identical mechanism produces two rules that contradict each other**, in two files, on opposite sides of a boundary where neither side can see the other, and nothing fires on either.
+
+**So read it as the mechanism not biting, not as the mechanism being safe.** It is the same shape as the nine identical checker runs at the top of this file: **an outcome that would have looked exactly the same had it gone wrong.**
+
 ---
 
 ## 🔴 STANDING NOTE: A FINDING KEEPS THE DENOMINATOR IT WAS MEASURED ON
