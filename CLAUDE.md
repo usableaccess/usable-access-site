@@ -268,7 +268,25 @@ Detail and instances: JOB 0f (the first three) and JOB 0r (the fourth, and the c
 9. **France:** enforcement is civil-society-led (disability organisations sued directly, Nov 2025). The June 2026 Carrefour outcome is a **court order with a €500/day astreinte, not an administrative fine**. Never state a French administrative fine figure.
 10. **Netherlands:** the Oct 2025 reporting deadline is real; **do not state a hard NL fine ceiling** — unverified. Sweden is SEK 10m ≈ €900,000 plus market-ban power. **On 8 August 2026 the site was found asserting TWO different unverified Dutch ceilings: €900,000 on eight pages (borrowed from the Swedish figure) and €300,000 on `eaa-compliance-italy.html`. Neither had a source. Both removed.** That is what an unsourced number does over time: it does not stay wrong in one way, it multiplies into several mutually inconsistent versions on different pages. **The documented Dutch position:** the ACM is the general market surveillance authority with sector regulators alongside it, financial penalties have been legally available since June 2025, none has been issued, and the ACM's published posture is compliance first.
 11. **No large administrative fines have been issued yet.** The accurate line is "enforcement is now running", never "fines are being levied".
-12. **EN 301 549 currently references WCAG 2.1 AA.** Use that as the conformance target. (v4.1.1 → WCAG 2.2 is expected; when it lands, every page stating a level needs a migration pass.)
+12. **EN 301 549 V3.2.1 adopts WCAG 2.1 Level AA, and that is the standard we measure against.** We measure against it because it is the most detailed testable account of these requirements that exists. The Act did not assign it.
+
+    **No harmonised standard has been cited in the Official Journal under Directive (EU) 2019/882, so nothing currently confers presumed conformity with the EAA.** EN 301 549 V3.2.1 *is* cited, by Implementing Decision (EU) 2021/1339 amending 2018/2048, and that citation is in support of **2016/2102, the public-sector websites and mobile applications directive**. Verified at source 20 August 2026.
+
+    **So “the standard we measure against” is fine. “The conformance target the Act requires” is not.** The second tells a private company its obligation is a standard never cited for the law that binds it.
+
+    ### THE DEFECT IS THE ATTACHMENT, NOT THE PHRASE
+    **“EN 301 549, the harmonised European standard” is not wrong on its own. It is one, under 2016/2102.** What fails is what gets attached to it:
+
+    - **“under the EAA”**
+    - **“referenced by the EAA”**
+    - **“the EAA’s harmonised standard”**
+    - **“must meet EN 301 549”** stated as the obligation
+
+    **So several of the affected pages need four words cut rather than a rewrite. Do not over-correct.** Cut the attachment, keep the standard, and rewrite only where the sentence’s whole point was the obligation. **Seventeen pages carry twenty such sentences**, derived 20 August 2026 across three wording families. **Read that as a floor**: two derivations returned 14 pages and 9 before the union with a read gave 17.
+
+    **The wording that works is live on `accessibility-statement.html`**, in the Compliance status section, since 20 August 2026. Use it as the model rather than inventing a second phrasing.
+
+    (v4.1.1 → WCAG 2.2 is expected; when it lands, every page stating a level needs a migration pass.)
 13. **Never name a company as a failing example** on a public page. Aggregated and anonymised only. **Carve-out: parties named by a court or by a regulator in its own publication may be named**, because the naming comes from that body rather than from us. This covers parties to public litigation (Auchan, Carrefour, E.Leclerc, Picard Surgel&eacute;s) and organisations a regulator has itself publicly listed. It does **not** extend to anything found in our own testing, and it does **not** permit characterising a listed organisation as failing. **PTS has published 28 names under investigation with no finding against any of them, so they may be named as under supervision and must never be described as non-compliant.** The risk is not the naming. It is implying a finding that does not exist.
 14. **Never link a URL you have not confirmed exists.** Presence in `sitemap.xml` is NOT evidence a page exists — two sitemap entries pointed at pages that were never built, and the homepage linked to both. Check the file is in the repo before linking it.
 15. **A new page ships orphaned by default.** Zero inbound internal links means almost no crawl priority, and its traffic then tells you nothing. Add body-copy links from topically adjacent pages — a card or a "Related" entry alone is demonstrably not enough (the Sweden article had both and was never fetched).
