@@ -7,7 +7,7 @@
   <!-- ua:og:start -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="How we test — Usable Access">
-  <meta property="og:description" content="How we test consumer journeys, what we do and do not do, and what we found across thirty-one Irish journeys. The method behind the emails we send.">
+  <meta property="og:description" content="How we test consumer journeys, what we do and do not do, and what we found across fifty-seven journeys in Ireland and the Netherlands.">
   <meta property="og:url" content="https://usableaccess.io/how-we-test.html">
   <meta property="og:image" content="https://usableaccess.io/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -16,11 +16,11 @@
   <meta property="og:site_name" content="Usable Access">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How we test — Usable Access">
-  <meta name="twitter:description" content="How we test consumer journeys, what we do and do not do, and what we found across thirty-one Irish journeys. The method behind the emails we send.">
+  <meta name="twitter:description" content="How we test consumer journeys, what we do and do not do, and what we found across fifty-seven journeys in Ireland and the Netherlands.">
   <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
   <!-- ua:og:end -->
   <title>How we test — Usable Access</title>
-  <meta name="description" content="How we test consumer journeys, what we do and do not do, and what we found across thirty-one Irish journeys. The method behind the emails we send.">
+  <meta name="description" content="How we test consumer journeys, what we do and do not do, and what we found across fifty-seven journeys in Ireland and the Netherlands.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -211,10 +211,10 @@
 
           <div class="status-block">
             <h2>The short version</h2>
-            <p>We go through consumer journeys the way a customer using a keyboard and a screen reader would: insurance quotes, hotel bookings, travel enquiries, financial applications, retail checkouts. Fifty-eight so far, in Ireland and the Netherlands. Forty had a barrier that stopped the journey.</p>
+            <p>We go through consumer journeys the way a customer using a keyboard and a screen reader would: insurance quotes, hotel bookings, travel enquiries, financial applications, retail checkouts. Fifty-seven so far, in Ireland and the Netherlands. Forty had a barrier that stopped the journey.</p>
             <p>When we find one on a site we think the owner would want to know about, we tell them, at no charge and with nothing attached. That is what prompts most of our emails.</p>
           <p>This page describes that screening: one person, one journey, about an hour. It is the fastest thing we do and the least of it. What a full evaluation adds is set out below.</p>
-          <p class="figures-note">Figures as of 19 August 2026.</p>
+          <p class="figures-note">Figures as of 27 August 2026.</p>
           </div>
 
           <h2>Who is asking</h2>
@@ -240,12 +240,12 @@
           </ul>
 
           <h2>What we have found so far</h2>
-          <p>Forty of the fifty-eight had a confirmed barrier. Only two of those stopped the customer at the very start. Thirty-seven stopped them in the middle, at the point where the customer specifies what they want. One stopped them at checkout. Dates, occupancy, product, country, title, occupation.</p>
+          <p>Forty of the fifty-seven had a confirmed barrier. Almost none were at the front door. Thirty-eight of the forty stopped the customer in the middle of the journey, at the moment the customer says what they want. One stopped them at the very start, and one at checkout. Dates, occupancy, product, country, title, occupation.</p>
           <p>That is the commercially worst place for it. A customer blocked there has already chosen you, arrived, and started. They then hit a control they cannot operate, and leave. In your analytics it looks like an ordinary mid-journey drop-off.</p>
-          <p>The symptom was consistent: the control did not say what it was. The cause split roughly evenly. In about half the cases a standard HTML control had been replaced by a custom widget, whether a dropdown, a radio button, an input or a button, and the accessibility the standard element provides for free had not been rebuilt. In the other half the correct element was used and simply never labelled.</p>
-          <p>That second half is the more uncomfortable one, because nothing clever went wrong. The right element was there. The label was never written.</p>
+          <p>The symptom was consistent: the control did not say what it was. The causes divided three ways. The right element was used and never labelled in eighteen cases. In sixteen, a standard HTML control had been replaced by a custom widget that never acquired a name or a role. The remaining six failed some other way, usually an error or status message that was never announced.</p>
+          <p>The first of those is the more uncomfortable one, because nothing clever went wrong. The right element was there. The label was never written.</p>
           <p>Seventeen journeys passed cleanly. Two of them prove the point from opposite directions. One kept the native controls. The other used a custom widget with the accessibility deliberately written back in. So this is not an argument against custom interfaces. It is that whether you replace a native control or keep it, the work of making it say what it is has to be done deliberately, and often it simply is not.</p>
-          <p class="figures-note">Figures as of 19 August 2026.</p>
+          <p class="figures-note">Figures as of 27 August 2026.</p>
 
           <h2>What went wrong in our method</h2>
           <p>We publish this because a method you cannot inspect is not really a method. Every study makes mistakes; the ones worth trusting are the ones that catch them and say so.</p>

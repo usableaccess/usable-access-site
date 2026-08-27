@@ -329,16 +329,19 @@ All three are on `eaa-compliance-telecoms.html`, and all three are the ComReg tr
 
 ---
 
-## STANDING NOTE: THE HOMEPAGE HERO CARRIES FOUR EM DASHES IN PROSE, DELIBERATELY
+## STANDING NOTE: THE HOMEPAGE HERO CARRIES TWO EM DASHES IN PROSE, DELIBERATELY
 
-**`ua_page_check.py` warns `4 em dashes in prose` on `index.html`. That is the correct state, and root warnings are 58 rather than 57 because of it. Do not fix it by rewriting the hero.**
+**`ua_page_check.py` warns `2 em dashes in prose` on `index.html`. That is the correct state, and root warnings are 57. Do not fix it by rewriting the hero.**
 
-**Set 18 August 2026.** Two pairs, both in the hero, and both are interruptions rather than qualifying asides:
+**It was four until 27 August 2026, and root warnings were 58.** The second pair went with the study-figures correction in `eed4063`, because the sentence carrying it stated the cause split the wrong way round and had to be rewritten rather than renumbered. **The count moved for a content reason, not because anyone tuned the threshold.**
+
+**Set 18 August 2026 on two pairs. One survives**, and it is an interruption rather than a qualifying aside:
 
 - `Ireland and the Netherlands &mdash; insurance quotes, hotel bookings, travel enquiries, retail checkouts &mdash; tested the way a customer would`
-- `What the standard element already did &mdash; work with a keyboard, announce what it is, report whether it is selected &mdash; was never rebuilt`
 
-**Commas cannot do this job, because both asides contain commas.** Parentheses can, and were rejected: they read as a technical footnote where the sentence needs to read as speech. The alternative to the second pair is three short sentences, which loses the interruption the sentence is performing on purpose.
+**The retired pair, kept here because the reasoning still applies to the next one:** `What the standard element already did &mdash; work with a keyboard, announce what it is, report whether it is selected &mdash; was never rebuilt`.
+
+**Commas cannot do this job, because the aside contains commas.** Parentheses can, and were rejected: they read as a technical footnote where the sentence needs to read as speech.
 
 ### THE GAP THIS SITS IN, WHICH IS THE PART WORTH KEEPING
 **Hard rule 4 counts characters. It cannot distinguish an interruption from a qualifying aside**, and the HOW TO WRITE section is built entirely on that distinction. The rule's own reasoning is that a dash is usually the symptom of a main clause with an aside hung off it. **An interruption is not that shape**, and no character count can tell the two apart.
@@ -348,7 +351,9 @@ All three are on `eaa-compliance-telecoms.html`, and all three are the ComReg tr
 ### WHY IT IS RECORDED RATHER THAN LEFT TO BE REDISCOVERED
 **A warning that is known and accepted looks identical to one nobody has read.** That is the same problem as the three ComReg failures on `eaa-compliance-telecoms.html`, and it has the same answer: say which number is expected, and why, so a session can tell a live defect from a settled one.
 
-**What would legitimately change it. Up:** any new prose dash on the homepage, which is the count working, so read the sentence before assuming it is this note. **Down:** a rewrite of either hero sentence for an unrelated reason, in which case the count moving is not evidence of anything.
+**What would legitimately change it. Up:** any new prose dash on the homepage, which is the count working, so read the sentence before assuming it is this note. **Down:** a rewrite of the surviving hero sentence for an unrelated reason, in which case the count moving is not evidence of anything.
+
+**And the reason this note is worth its length.** A checker reading 57 against a register saying 58 is a phantom discrepancy, and chasing one costs more than recording the real number does. **When an edit moves a documented count, the register moves in the same commit.**
 
 ---
 
