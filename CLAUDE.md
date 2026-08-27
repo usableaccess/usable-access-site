@@ -331,9 +331,11 @@ All three are on `eaa-compliance-telecoms.html`, and all three are the ComReg tr
 
 ## STANDING NOTE: THE HOMEPAGE HERO CARRIES TWO EM DASHES IN PROSE, DELIBERATELY
 
-**`ua_page_check.py` warns `2 em dashes in prose` on `index.html`. That is the correct state, and root warnings are 57. Do not fix it by rewriting the hero.**
+**`ua_page_check.py` warns `2 em dashes in prose` on `index.html`. That is the correct state. Do not fix it by rewriting the hero.**
 
-**It was four until 27 August 2026, and root warnings were 58.** The second pair went with the study-figures correction in `eed4063`, because the sentence carrying it stated the cause split the wrong way round and had to be rewritten rather than renumbered. **The count moved for a content reason, not because anyone tuned the threshold.**
+**Do not pin the root warning total in this note.** It was written here as 58, then 57, then 55 within ten days, because the total moves for reasons that have nothing to do with the hero: two `Updated` badges changing format on 27 August took it from 57 to 55. **A number that moves for unrelated reasons is not a fact about this section**, and pinning it here manufactures the phantom discrepancy the note exists to prevent. The fact worth recording is the per-page count, which is 2.
+
+**It was four until 27 August 2026.** The second pair went with the study-figures correction, because the sentence carrying it stated the cause split the wrong way round and had to be rewritten rather than renumbered. **The count moved for a content reason, not because anyone tuned the threshold.**
 
 **Set 18 August 2026 on two pairs. One survives**, and it is an interruption rather than a qualifying aside:
 
