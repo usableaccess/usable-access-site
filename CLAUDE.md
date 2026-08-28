@@ -553,6 +553,12 @@ python3 -c "import re,sys; [print(m) for m in re.findall(r'<script type=\"applic
 
 **This applies to site copy, commit messages, and replies in the session.**
 
+**After any prose rewrite, re-read the sentence after the one you changed, and the heading above it.**
+
+A rewrite can move a referent and leave a pointer behind. "That second half", "the remaining cases", "those figures", "it", a heading whose section no longer says what it announces. **Both halves stay individually well-formed, so nothing is malformed and no checker can see it.** This is not the easier-question failure, because **there is no question to ask**.
+
+Four instances between 20 and 28 August. Three shipped or nearly shipped; the fourth was caught by looking at the neighbours before committing. **The cost of the check is one paragraph read. The cost of missing it is a live sentence pointing at nothing**, which `eaa-governance.html` carried for twelve days.
+
 ---
 
 ## JOB QUEUE
@@ -1400,57 +1406,17 @@ If something in it reads wrong, **flag it and stop.** Do not fix it.
 ### Numbers to regenerate rather than trust
 The draft says **twenty-eight journeys, twenty-two barriers**. **Do not use those. They are three revisions stale, and the draft predates two markets being in the sample.**
 
-**`ua_study_export.py` does not exist and never has.** It is one of the five scripts in the missing-scripts table near the top of this file, so the old instruction here resolved to nothing. **The numbers come from a derivation against the tracker, which is in the Claude project and not in this repo.** Re-run it there whenever the frozen sample changes, rather than copying figures out of any document including this one.
+**Derive the figures by running the export. Do not re-implement the query here.**
 
-**The query. Run it where the tracker is, which is the Claude project session, not this repo.**
-
-```python
-import openpyxl
-from collections import Counter
-
-w = openpyxl.load_workbook("UA_Global_Outreach_Tracker.xlsx")
-sc = w["Site Checks (A)"]
-hdr = [sc.cell(row=2, column=c).value for c in range(1, sc.max_column + 1)]
-i = {h: k + 1 for k, h in enumerate(hdr) if h}
-
-# latest row per code — a prospect may be crawled more than once
-# counting both rows inflates the denominator
-best = {}
-for r in range(3, sc.max_row + 1):
-    code = sc.cell(row=r, column=1).value
-    if not code:
-        continue
-    d = str(sc.cell(row=r, column=i["Test date"]).value)[:10]
-    if code not in best or d >= best[code][0]:
-        best[code] = (d, {h: sc.cell(row=r, column=i[h]).value for h in i})
-
-# "in-denominator" is the filter. Excluded journeys still sit in the sheet,
-# so the denominator is never the row count.
-den = [r for c, (d, r) in best.items()
-       if str(r.get("Exclusion type", "")).startswith("in-denominator")]
-
-# blocked is derived from the stage field, not from a boolean column.
-# "n-a-no-block" is the clean value.
-def blocked(r):
-    s = str(r.get("Stage of first block", "")).lower()
-    return s not in ("n-a-no-block", "", "none", "n/a", "nan")
-
-print("TOTAL:", len(den), "journeys |", sum(1 for r in den if blocked(r)), "blocked")
-
-mk = Counter()
-for r in den:
-    m = str(r.get("Market", ""))
-    m = "Ireland" if m.startswith("Ire") else ("Netherlands" if "ether" in m else m[:12])
-    mk[(m, blocked(r))] += 1
-for m in ["Ireland", "Netherlands"]:
-    print(f"{m}: {mk[(m,True)]+mk[(m,False)]} journeys, {mk[(m,True)]} blocked")
-
-print("STAGE:", Counter(str(r.get("Stage of first block")) for r in den))
-print("BARRIER TYPE:", Counter(str(r.get("Barrier type")) for r in den if blocked(r)))
-print("CAUSE:", Counter(str(r.get("Cause of failure")) for r in den if blocked(r)))
+```bash
+python3 ua_study_export.py --exclusions=column     # in UA Tooling, where the tracker is
 ```
 
-**The three steps that are not obvious are commented in the code, and all three change the answer if dropped.** Counting every row rather than the latest per code inflates the denominator. Taking the row count rather than filtering on `in-denominator` counts journeys that were excluded on purpose. And `blocked` has no boolean to read, so it is derived from the stage field against the clean value `n-a-no-block`.
+**The flag is part of the command, not an option beside it.** Without `--exclusions=column` the script re-infers exclusions instead of reading the `Exclusion type` column and returns **69 / 43 / 26**, wrong by eleven codes, with no error. **A broken default that exits cleanly is the worst shape available**, so never quote a figure from a run that did not carry the flag.
+
+**This replaced a copy of the query that used to live here, and the copy had three defects the script does not.** It compared `Test date` as a string, so `"6 Aug 2026"` beat `"19 Aug 2026"` and the wrong row won latest-per-code. It matched `Exclusion type` without normalising. And it derived `blocked` from the stage field with no cross-check against barrier type. **A second implementation of a derivation drifts from the first, and the copy in the register is the one nobody runs and nobody fixes.**
+
+**Two things the script has settled, so nobody re-opens them.** The denominator filter is positive, `norm_token(...) == "in-denominator"`, so a row must opt in and any future exclusion wording drops out without anyone updating a match list. A suffix matcher on `-excluded` was tested and fails: `out-of-Dutch-denominator` carries no such suffix, so every Dutch-excluded row would silently rejoin the count.
 
 **As of 19 August 2026 it returns:**
 
