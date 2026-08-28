@@ -1418,17 +1418,9 @@ python3 ua_study_export.py --exclusions=column     # in UA Tooling, where the tr
 
 **Two things the script has settled, so nobody re-opens them.** The denominator filter is positive, `norm_token(...) == "in-denominator"`, so a row must opt in and any future exclusion wording drops out without anyone updating a match list. A suffix matcher on `-excluded` was tested and fails: `out-of-Dutch-denominator` carries no such suffix, so every Dutch-excluded row would silently rejoin the count.
 
-**As of 19 August 2026 it returns:**
+**Figures are not reproduced here. Run the command above for current ones.** A table in this file is a second copy of derived data, in the file no checker reads, and it goes stale silently the moment the tracker moves.
 
-| Axis | Values | Denominator |
-|---|---|---|
-| Headline | 58 journeys, 40 blocked, 17 clean | all 58 |
-| Market | Ireland 31 journeys, 24 blocked. Netherlands 27, 16 | all 58 |
-| Where it stopped | selecting 37, entry 2, checkout 1, no block 17 | all 58 |
-| Barrier type | labelling 14, name-role-value 13, keyboard-operability 10, focus-trap 1, other 2 | the 40 blocked |
-| Cause | custom-control substitution 16, native not labelled 17, other implementation 7 | the 40 blocked |
-
-**The previous derivation, 15 August 2026, read 41 blocked and Ireland 25.** P-12 was retracted on 19 August and the site was corrected the same day. **Read the 15 August figures as superseded, not as a second measurement**, and take this table rather than any figure quoted in prose elsewhere in this file.
+**The previous derivation, 15 August 2026, read 41 blocked and Ireland 25.** P-12 was retracted on 19 August and the site was corrected the same day. **Read the 15 August figures as superseded, not as a second measurement**, and take a fresh run of the command above rather than any figure quoted in prose elsewhere in this file.
 
 ### 40 AND 17 DO NOT SUM TO 58, AND THAT IS THE CORRECT STATE
 **P-12 leaves the blocked count without joining the clean one.** It was retracted rather than re-run end to end, so it is in the denominator as tested and in neither bucket. **A retraction is not a pass.** The evidence never met the bar: a component fingerprint was read as sufficient with no `.focus()` test, which is the tooling-summary failure this study already records six of.
