@@ -1220,6 +1220,20 @@ python3 ua_volatile_check.py --selftest   # 8 fixtures, including the real one
 
 **What it cannot do, and this is in its own output:** it cannot tell whether a future claim is TRUE, cannot resolve "soon" or "in the coming months", and does not recompute elapsed counters.
 
+### A DATE STAMP IS ONLY A SCOPE IF IT IS PART OF THE CLAIM
+**Otherwise it is a decaying freshness signal, and it rots exactly like an elapsed counter.** Found 30 August 2026: four pages read *"No EAA fine has been issued in any market as of June 2026."* The stamp scoped nothing, because the claim was already universal over every member state. What it did do was invite the reader to infer currency, two months after anyone checked.
+
+**A duration rewrites itself daily. A stale date stamp does the same work more quietly**, because it looks fixed. The reader does the decay, not the sentence.
+
+**So ask what the date is doing.** If it bounds the claim, keep it and say what it bounds: *"no fine has been imposed in France"* needs no stamp, *"as of 30 August 2026"* on the citation status page is the claim. If it is only saying when somebody last looked, either commit to re-checking on a stated rhythm and date every change, or take it out. **A stamp nobody maintains is worse than none**, because it converts an unmaintained claim into an apparently maintained one.
+
+**The replacement wording is the scope, not the date.** Those four pages now say *"in the seven markets we monitor"*, which is checkable, bounded, and does not decay.
+
+### AND ON WHAT A CHECK IS WATCHING, NOT WHETHER IT IS
+**Recorded the same day.** A note asserted that this script watches an elapsed duration. It does: the COUNTER check fires on the shape. **It never reads the value**, so a wrong month count and a right one produce identical output.
+
+**A note claiming monitoring that does not exist is caught by looking for the watcher. A note claiming monitoring that exists but is the wrong kind survives that check.** The watcher is there, it fires, and it is green on the defect. **Before trusting any "X is watched" note, ask what X is watched *for*.**
+
 ### PRECISION IS A WRITING RULE, NOT ONLY A CHECKING ONE
 
 **The one ACM claim that survived was the most precisely worded one.** Stated sample, stated failure mode, stated figure: approximately 100 of the largest Dutch webshops, ordering impossible with assistive technology, 61%. **Every claim that failed was loosely worded**, and the looseness is what let it drift from a source it never had.
