@@ -45,6 +45,9 @@
     .method-table th{background:var(--colour-bg-subtle);font-weight:600}
     .table-scroll{overflow-x:auto;margin-bottom:var(--space-xl)}
     .table-scroll .method-table{margin-bottom:0}
+    .criteria-list{list-style:none;padding:0;margin:0 0 var(--space-lg) 0}
+    .criteria-list li{padding:var(--space-md) 0;border-bottom:1px solid var(--colour-border)}
+    .criteria-list li:last-child{border-bottom:0}
     .meta-line{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-bottom:var(--space-md)}
     .figures-note{font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta);margin-top:calc(var(--space-md)*-1)}
   </style>
@@ -226,6 +229,19 @@
 <p>Two things will not change, and both are quotable from the Commission&rsquo;s own page.</p>
 <p><strong>Harmonised standards remain voluntary.</strong> The Commission states that &ldquo;the use of these standards remains voluntary&rdquo;, and that an operator is free to choose another technical solution.</p>
 <p><strong>The obligation does not move.</strong> The EAA has applied since 28 June 2025. Citation creates a route to demonstrating conformity. It does not create a deadline, and anything describing it as a new deadline is wrong.</p>
+
+<h2>Which six criteria</h2>
+<p>WCAG 2.2 adds nine criteria in total. Three are Level AAA and sit outside the conformance requirement, so six is the number that affects you. The standard settles this itself: conformance with WCAG 2.1 Level AA equals all of clauses 9.1 to 9.4 except 9.2.4.11, 9.2.5.7, 9.2.5.8, 9.3.2.6, 9.3.3.7 and 9.3.3.8. That exception list is the delta.</p>
+<ul class="criteria-list">
+<li><strong>Focus Not Obscured, Minimum (2.4.11, AA).</strong> When a keyboard user tabs to a control, it must not be entirely hidden behind a sticky header, a cookie banner or a chat widget.</li>
+<li><strong>Dragging Movements (2.5.7, AA).</strong> Anything you can do by dragging must also be possible without dragging. Sliders and reorderable lists are the common cases.</li>
+<li><strong>Target Size Minimum (2.5.8, AA).</strong> Tap targets must be at least 24 by 24 CSS pixels, with exceptions.</li>
+<li><strong>Consistent Help (3.2.6, Level A).</strong> If help is available, it appears in the same relative place on every page that has it.</li>
+<li><strong>Redundant Entry (3.3.7, Level A).</strong> Do not make someone type the same information twice in one process.</li>
+<li><strong>Accessible Authentication, Minimum (3.3.8, AA).</strong> Do not require a cognitive test, such as transcribing characters or solving a puzzle, as the only way to log in.</li>
+</ul>
+<p>One criterion goes the other way. 4.1.1 Parsing is removed, and now reads &ldquo;Void&rdquo; in the standard.</p>
+<p>If your team has done conformance work to WCAG 2.1 Level AA, that work is not wasted and does not need repeating. These are additions to it.</p>
 
 <div class="callout callout--orange">
 <p>Adopted is not published. Published is not cited. If you are told the new standard has landed and you must act, ask which step has happened, and which Directive is being talked about. That question sorts the accurate accounts from the rest faster than anything else.</p>
