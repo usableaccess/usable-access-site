@@ -390,6 +390,20 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 **The same applies to any subject that appears under more than one name:** the AI Act pages, the Barómetro figures, the Swedish PTS investigations, ComReg. A filename tells you what a page was called when it was created. It does not tell you what the page now says.
 
+### AND WHEN THE SUBJECT IS A REUSED CLAIM, SEARCH THE SHORTEST DISTINCTIVE FRAGMENT
+**Reuse shortens.** A sentence copied to a second page loses its qualifiers, so the full sentence finds the original and misses every copy.
+
+**6 September 2026.** One claim on two pages: `how-we-test.html` read *"Six times, automated accessibility tooling told us a control was correctly labelled when it was not"* and `en-301-549-eaa-citation-status.html` read *"automated tooling"*, with the five-plus-one breakdown dropped. **Matching the full sentence would have corrected one page and left the other live.** The fragment `told us a control` found both.
+
+**So pick the shortest string that is distinctive and survives paraphrase**, and expect it to be the middle of the sentence rather than the start. The opening is where the qualifiers live, and the qualifiers are what get cut.
+
+### A RULE ON ONE SURFACE IS NOT WRITTEN DOWN FOR THE OTHERS
+**Found the same day, and it is why the note above exists here rather than only where it was first written.** The reuse-shortens rule was already recorded in `UA_Cited_Figures_Register`, on the project side. **A session working in this repo cannot read that file**, so from here the rule did not exist, and a grep of `CLAUDE.md` correctly returned nothing.
+
+**Both halves were half right, which is the shape to notice.** One side remembered the rule as recorded; the other checked the only surface it could see and found it absent. **Neither was wrong about its own surface.**
+
+**So: grep before asserting a rule is written down, and name which file it is in.** A rule that exists on one side of the split is not available on the other, and "it's in the register" is ambiguous between two registers.
+
 ---
 
 ## 🔴 STANDING NOTE: A BRIEF THAT QUOTES PAGE COPY IS QUOTING A SNAPSHOT
