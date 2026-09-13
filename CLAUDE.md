@@ -397,6 +397,27 @@ Grep the raw file rather than rendered text, so JSON-LD and meta descriptions ar
 
 **So pick the shortest string that is distinctive and survives paraphrase**, and expect it to be the middle of the sentence rather than the start. The opening is where the qualifiers live, and the qualifiers are what get cut.
 
+### AND SEARCH BOTH ENCODINGS, BECAUSE ONE SITE WRITES THE SAME CHARACTER TWO WAYS
+**A figure or a name can be encoded two ways on this site, and a single-form search finds most of them and reports success.** That is the dangerous part. **Four of five is worse than zero, because it looks like completion.**
+
+**Three instances in two days, 12 and 13 September 2026.**
+
+| Searched | Found | Missed |
+|---|---|---|
+| `H&M` | **0** | ten, all written `H&amp;M` |
+| `roughly &euro;880,000` | **4** | the fifth, written with a literal `€` |
+| the literal `€` (the original trap, already recorded above) | the pages using it | every page writing `&euro;` |
+
+**The second is the one to learn from, because the first search was the corrected one.** After the `H&M` failure the next sweep used the entity form, and it still missed a page — the same figure, on the same subject, encoded the other way round on one page out of five. **Correcting the direction of a known trap does not cover the case where the estate is mixed.**
+
+**So search both forms, always, and say which you searched.** `&euro;` and `€`. `&amp;` and `&`. `&nbsp;` and a space. `&mdash;` and an em dash. The cheapest way is to unescape before matching:
+
+```python
+html.unescape(re.sub(r"<[^>]+>", " ", raw)).replace("\xa0", " ")
+```
+
+**A count from a raw grep over an entity-encoded estate is a floor, not a total**, which is the corollary already recorded under THE ONE QUESTION TO ASK OF ANY CHECK.
+
 ### A RULE ON ONE SURFACE IS NOT WRITTEN DOWN FOR THE OTHERS
 **Found the same day, and it is why the note above exists here rather than only where it was first written.** The reuse-shortens rule was already recorded in `UA_Cited_Figures_Register`, on the project side. **A session working in this repo cannot read that file**, so from here the rule did not exist, and a grep of `CLAUDE.md` correctly returned nothing.
 
