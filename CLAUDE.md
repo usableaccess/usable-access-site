@@ -1279,6 +1279,15 @@ python3 ua_volatile_check.py --selftest   # 8 fixtures, including the real one
 
 **A note claiming monitoring that does not exist is caught by looking for the watcher. A note claiming monitoring that exists but is the wrong kind survives that check.** The watcher is there, it fires, and it is green on the defect. **Before trusting any "X is watched" note, ask what X is watched *for*.**
 
+### A WATCHER ON A VALUE WE RECORDED CAN ONLY SEE THE WORLD REACHING IT
+**15 September 2026, on the EN 301 549 citation target.** The status page states ETSI's target of 16 December 2026, and `ua_volatile_check.py` will warn on every run from about 17 September until that date passes. **That warning watches the calendar approaching a number we wrote down. It cannot see the number changing.**
+
+**Its output is identical in three different worlds.** The target holds. The target slips to February. Citation happens early. **A slip looks exactly like nothing having changed, and an early citation produces no signal at all.**
+
+**So the weekly re-read of the ETSI schedule is what keeps that page true, and the flag is only the reminder to do it.** Do not read "the volatile check covers this" as coverage of the claim.
+
+**The general form: detecting the world reaching a recorded value is a calendar check. Detecting the value changing needs the source re-read**, which is a different job, and no check here does it.
+
 ### PRECISION IS A WRITING RULE, NOT ONLY A CHECKING ONE
 
 **The one ACM claim that survived was the most precisely worded one.** Stated sample, stated failure mode, stated figure: approximately 100 of the largest Dutch webshops, ordering impossible with assistive technology, 61%. **Every claim that failed was loosely worded**, and the looseness is what let it drift from a source it never had.
