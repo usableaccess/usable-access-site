@@ -198,6 +198,11 @@ client=500  inner=500  dpr=1
 
 **Any past "no overflow at 390px" taken from a screenshot is worth exactly as much as whether the probe ran.** None is recorded in this file, so nothing here needs revisiting. The rule is for the next one.
 
+### THE TENTH INSTANCE: A FETCH TOOL RETURNS AN APPLICATION'S SHELL, AND IT LOOKS LIKE AN ANSWER
+**Found 15 September 2026, on ETSI's project schedule.** The eWPM schedule at `portal.etsi.org/eWPM/index.html#/schedule?WKI_ID=64282` is a JavaScript application. **WebFetch returned the word "eWPM" and nothing else**, which a hurried reading takes as "no milestones listed". Rendered in headless Chrome with `--dump-dom --virtual-time-budget=25000`, it is a 46-row table with Target and Achieved columns, and it gave the citation target that three published sources had wrong.
+
+**Same family as the Radware and Cloudflare interstitials, one layer quieter.** An interstitial at least looks like an error. An empty application shell looks like an empty page. **Before reading absence from a fetched page, confirm the fetch returned the page and not its loader.** Then calibrate before trusting: the Target and Achieved columns were checked against three dates on ETSI's separate work item page before either was quoted.
+
 ### WHY IT IS THE THIRD INSTANCE IN ONE SESSION
 **The correction that produced it was right.** "What does the CSS text say" was replaced with "what does the browser do", which is the eighth instance's own prescription, and the new instrument had a blind spot the old one did not. **Knowing the general pattern did not prevent the specific error**, which is the 9 August finding holding for the third time in a day, after `:last-child` and after the summary-blind harness in JOB 0v.
 
@@ -438,6 +443,11 @@ html.unescape(re.sub(r"<[^>]+>", " ", raw)).replace("\xa0", " ")
 - A brief quoted a "before" paragraph and asked for it to be replaced. **The quoted text predated the em-dash pass and omitted a body link added hours earlier for JOB 0j.** Applying it literally would have deleted the homepage's only link to `eaa-revenue-loss`.
 
 **So: match the quoted text against the file first.** If it does not match exactly, say so and show the difference before changing anything. **The instruction is still the instruction — what changes is which text it lands on**, and a brief cannot account for edits made after it was written.
+
+### AND A THIRD-PARTY READING OF A LIVE DOCUMENT IS A SNAPSHOT TOO
+**15 September 2026.** Three sources gave 30 November 2026 as ETSI's target for citing EN 301 549 V4.1.1. Two were readings of ETSI's schedule taken in early September, one of them giving the schedule's target publication date as though it were the actual one. The third gave no source. **The schedule itself, read that day, said 16 December.**
+
+**Their agreement looked like corroboration and was three copies of one outdated reading.** A schedule, a supervision list and a status page are live documents. **Quoting someone else's reading of one quotes a snapshot. Read the document.**
 
 ---
 
