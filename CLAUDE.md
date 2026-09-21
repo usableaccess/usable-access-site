@@ -210,6 +210,16 @@ client=500  inner=500  dpr=1
 
 **So the remedy list above is not a list of answers. It is a list of instruments**, and each one needs its own calibration reported with its result.
 
+### THE ELEVENTH INSTANCE: A COMMAND THAT DOES NOT EXIST AND A COMMAND THAT FAILS LOOK IDENTICAL
+**Found 21 September 2026, trying to read the DGCCRF communiqu&eacute;.** Two attempts to render a PDF produced no file, and the result was reported as a capability limit: headless Chrome cannot screenshot a PDF. **Chrome was never invoked.** The wrapper was `timeout 90 "$CHROME" ...`, and **macOS ships no `timeout` binary**, so the shell returned 127 before Chrome started. Chrome screenshots PDFs perfectly well, and the attempt without the wrapper returned a legible three-page render that settled the question.
+
+**The conclusion was about the instrument. The fact was about the wrapper.** Those produce identical output, and the wrong one is the more interesting claim, which is why it was the one written down and reported.
+
+**Same family as the tenth instance above, and the reason both belong here.** A loader looks like an empty page. A missing command looks like a failing command. **In each, the output has the shape of an answer**, so nothing prompts a second look.
+
+**The tell is the exit code, not the message.** 127 is "command not found", and it is the one status that says the thing you were testing never ran. **Before reporting any negative from a shell pipeline, confirm every binary in it exists.** A pipeline that cannot tell a missing dependency from a real failure is not measuring what its author thinks.
+
+
 
 **The sixth is the sharpest, because the check existed for nothing else.** `ua_orphan_check.py` was written on 9 August precisely to separate a body-copy link from a listing card, since that distinction is what the publishing protocol turns on. It classified a card by looking for a class matching `card`, and `insights.html` wraps each entry in `<div class="article-list">`, which contains no such word. **A check whose entire purpose was one distinction could not see that distinction.** Fixing it moved the under-linked count from 8 to 22, so the first run understated the problem by nearly three times. **A checker is not exempt from the rule it enforces. Test a new check against the case it was written for, not against the case that is easy to construct.**
 
