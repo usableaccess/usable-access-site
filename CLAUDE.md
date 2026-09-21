@@ -219,6 +219,18 @@ client=500  inner=500  dpr=1
 
 **The tell is the exit code, not the message.** 127 is "command not found", and it is the one status that says the thing you were testing never ran. **Before reporting any negative from a shell pipeline, confirm every binary in it exists.** A pipeline that cannot tell a missing dependency from a real failure is not measuring what its author thinks.
 
+**Three instances in one day, and the third was the worst.** `timeout` absent, then `tac` absent, then **zsh does not word-split an unquoted `$VAR`** the way bash does. A `for F in $FILES` loop over a multi-file commit therefore ran once with every filename bound to `$F`, so the per-file diff it asked for matched nothing and every file came back clean. **The derivation reported that `bebf87b` changed no metadata. That commit changed a `<title>` and three meta descriptions**, and the output was a Search Console list missing its most important entry.
+
+**This environment is macOS and zsh.** GNU coreutils are not installed and bash word-splitting does not apply. `timeout`, `tac`, `sed -i`, `readlink -f` and `grep -P` all differ or are missing. **Write for this environment, or test that the binary exists before reading anything into its silence.**
+
+### THE FIXTURE RULE APPLIES TO A DERIVATION, NOT ONLY TO A CHECKER
+**That error was caught only because the operator happened to know what one commit contained.** That is memory, not a check. It does not survive the next operator, the next month, or a longer list.
+
+**So give a derivation a known case before trusting it on the unknown ones.** `bebf87b` changed a title and three meta descriptions, so any future version of the Search Console derivation must tag it metadata-changed or it is broken. **A fixture drawn from a real commit survives its author's model of what the script does**, which is the same argument recorded above for the encoding check, whose `H&M` and `&euro;880,000` fixtures came from the two failures that actually happened.
+
+**The general form, and it is the sharpest version of this file's oldest rule.** A checker, a trap, a gate and a one-off derivation are all instruments. **An instrument nobody has shown a known answer to is reporting, not checking.**
+
+
 
 
 **The sixth is the sharpest, because the check existed for nothing else.** `ua_orphan_check.py` was written on 9 August precisely to separate a body-copy link from a listing card, since that distinction is what the publishing protocol turns on. It classified a card by looking for a class matching `card`, and `insights.html` wraps each entry in `<div class="article-list">`, which contains no such word. **A check whose entire purpose was one distinction could not see that distinction.** Fixing it moved the under-linked count from 8 to 22, so the first run understated the problem by nearly three times. **A checker is not exempt from the rule it enforces. Test a new check against the case it was written for, not against the case that is easy to construct.**
