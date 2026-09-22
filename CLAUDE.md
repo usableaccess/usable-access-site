@@ -230,6 +230,16 @@ client=500  inner=500  dpr=1
 
 **The general form, and it is the sharpest version of this file's oldest rule.** A checker, a trap, a gate and a one-off derivation are all instruments. **An instrument nobody has shown a known answer to is reporting, not checking.**
 
+### AND WHEN A RESULT COMES BACK EMPTY, RUN A CONTROL BEFORE BELIEVING IT
+**Standing step, 22 September 2026.** Any sweep, grep or derivation that returns empty or clean gets the same command run once more against a case known to return something: a date with known commits, a phrase known to be on a page, a file known to contain the term. **If the control also returns nothing, the instrument is broken and the estate is not clean.** Report the control result alongside the real one.
+
+**Four instrument failures in one day promoted this from a note to a standing step.** `timeout` absent, `tac` absent, zsh not word-splitting an unquoted `$VAR`, and `git log --oneline --since=2026-09-22` returning nothing while `--since='2026-09-22 00:00'` returned all three of that day's commits. **Every one returned empty or clean rather than erroring**, and two were reported as findings before being caught.
+
+**The last is the one to keep, because it would have been invisible.** Had the Search Console list been built with the bare-date form, it would have reported no pages changed that day. **An empty list of changed pages and a day with no changes produce identical output.**
+
+**This generalises the control-query rule already recorded for CELEX**, where the 2016/2102 query must return `Results 1 - 10 of 12` before any negative about 2019/882 means anything. That was written as a rule about one search. **It is a rule about every search.** A negative is a claim about the world made by an instrument, and it is worth exactly what the evidence that the instrument was working is worth.
+
+
 
 
 
