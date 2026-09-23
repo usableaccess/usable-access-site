@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EAA Compliance for SaaS — Software Platforms | UA</title>
-  <meta name="description" content="Most SaaS companies assume the EAA does not apply to them. Most are wrong. Here is what compliance actually requires for software platforms.">
+  <title>EAA Compliance for SaaS — When It Applies | UA</title>
+  <meta name="description" content="Whether the EAA reaches a SaaS company depends on who your service is provided to and what it is. Three routes in, and what each one means.">
   <link rel="canonical" href="https://usableaccess.io/eaa-compliance-saas.html">
   <!-- ua:og:start -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="EAA Compliance for SaaS — Software Platforms | UA">
-  <meta property="og:description" content="Most SaaS companies assume the EAA does not apply to them. Most are wrong. Here is what compliance actually requires for software platforms.">
+  <meta property="og:title" content="EAA Compliance for SaaS — When It Applies | UA">
+  <meta property="og:description" content="Whether the EAA reaches a SaaS company depends on who your service is provided to and what it is. Three routes in, and what each one means.">
   <meta property="og:url" content="https://usableaccess.io/eaa-compliance-saas.html">
   <meta property="og:image" content="https://usableaccess.io/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -17,8 +17,8 @@
   <meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
   <meta property="og:site_name" content="Usable Access">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EAA Compliance for SaaS — Software Platforms | UA">
-  <meta name="twitter:description" content="Most SaaS companies assume the EAA does not apply to them. Most are wrong. Here is what compliance actually requires for software platforms.">
+  <meta name="twitter:title" content="EAA Compliance for SaaS — When It Applies | UA">
+  <meta name="twitter:description" content="Whether the EAA reaches a SaaS company depends on who your service is provided to and what it is. Three routes in, and what each one means.">
   <meta name="twitter:image" content="https://usableaccess.io/og-image.png">
   <!-- ua:og:end -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -225,10 +225,10 @@
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:var(--space-md);flex-wrap:wrap">
             <span style="display:inline-block;font-family:var(--font-body);font-size:.625rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;background:var(--colour-teal-badge);color:var(--colour-teal-deep)">Sector guide &mdash; SaaS</span>
             <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">&middot;</span>
-            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">2 Jul 2026</span>
+            <span style="font-family:var(--font-body);font-size:.8125rem;color:var(--colour-meta)">Updated 23 Sep 2026</span>
           </div>
-          <h1>EAA compliance for SaaS: the B2B assumption worth checking</h1>
-          <p class="deck">Most SaaS companies assume they are out of scope because they sell to businesses, not consumers. Most are wrong. Here is what actually determines whether the EAA applies to your platform.</p>
+          <h1>EAA compliance for SaaS: when it applies, and when it does not</h1>
+          <p class="deck">&ldquo;We are B2B, so the EAA does not apply to us&rdquo; is sometimes true and sometimes not. What decides it is who the service is provided to, and whether it is one of the services the Act lists.</p>
         </div>
       </div>
     </div>
@@ -237,25 +237,26 @@
       <div class="container">
         <div class="article-container">
 
-          <h2>The B2B argument does not hold for most SaaS platforms</h2>
-          <p>&ldquo;We are B2B, the EAA does not apply to us&rdquo; is the most common misunderstanding we encounter when talking to SaaS companies. It is also the most expensive one.</p>
-          <p>The EAA applies to digital services provided to consumers in the EU. It does not ask who signs the contract. It asks who uses the product. A SaaS platform sold to a business customer is still in scope if that business customer&rsquo;s own users, employees, or end customers who are EU consumers interact with it. A workforce scheduling tool sold to a retailer is used by that retailer&rsquo;s staff. An insurance quoting platform sold to a broker is used by that broker&rsquo;s customers. The contract is B2B; the usage is not.</p>
-          <p>The narrower true exemption is for platforms genuinely confined to internal, professional use with no consumer-facing surface at any point in the chain: a shrinking category as SaaS products increasingly serve customer-facing functions for their business clients.</p>
-
-          <div class="callout">
-            <p><strong>The question to ask is not &ldquo;who is our customer?&rdquo; but &ldquo;who ultimately uses this, and are any of them EU consumers?&rdquo;</strong> If the answer is yes at any point in the chain, EN 301 549 and WCAG 2.1 AA apply to your interface.</p>
-          </div>
+          <h2>What the Act actually covers</h2>
+          <p>The European Accessibility Act does not cover software in general. It covers a list of services provided to consumers: e-commerce, consumer banking, electronic communications, access to audiovisual media services, elements of passenger transport services, and e-books with the software used to read them. A consumer, in the Act&rsquo;s terms, is a person acting outside their trade or profession. The duties fall on the organisation that provides the service to those consumers.</p>
+          <p>That gives a SaaS company three routes into the Act, and one way out.</p>
+          <p><strong>1. You sell to consumers online.</strong> If people can buy your product or subscribe to it through your website or app, that selling process is an e-commerce service, and the journey from landing page to payment is in scope. This is the route most B2C and &ldquo;prosumer&rdquo; SaaS companies are on without realising it.</p>
+          <p><strong>2. Your product is how a client delivers an in-scope service.</strong> A bank&rsquo;s account opening built on your platform, a retailer&rsquo;s checkout, an airline&rsquo;s booking flow, a streaming service&rsquo;s player: the client is the service provider and carries the duty, but what its customers use is your interface. Expect the requirement to arrive through contracts, procurement questionnaires and audits rather than from a regulator. Your client cannot meet its obligation if your component does not.</p>
+          <p><strong>3. Your product is one of the listed services.</strong> An e-reader app, a consumer payments product, a messaging service: then you are the service provider, and the duties are yours directly.</p>
+          <p><strong>The way out: a tool used only by businesses and their staff.</strong> A workforce scheduling system, an internal analytics dashboard or a back-office tool used by employees is not provided to consumers, so the EAA does not reach it. Other obligations may. Public-sector buyers have their own accessibility rules, and EN 301 549 is widely used in procurement.</p>
+          <p>Microenterprises providing services are exempt from the Act&rsquo;s accessibility requirements and the obligations that go with them (Article 4(5)).</p>
+          <p>The question to ask is not only &ldquo;who is our customer?&rdquo; It is &ldquo;which of these routes are we on, and for which parts of the product?&rdquo;</p>
 
           <h2>Why governance is harder in SaaS than e-commerce</h2>
           <p>An e-commerce site changes its interface in discrete releases. A SaaS platform ships continuously. Feature velocity that is a competitive advantage in product development becomes a compliance liability without a governance process attached to it. Every sprint is an opportunity for a new accessibility barrier to enter production, and without a review step, none of them get caught before they ship.</p>
           <p>This is compounded by AI-assisted development. The AIMAC benchmark found that most AI coding models produce non-compliant HTML by default. Accessibility hasn&rsquo;t been a primary training objective for any major model tested. A SaaS team using AI tools to accelerate feature development is very likely accelerating the accumulation of accessibility debt at the same time, unless an explicit review step is built into the release process.</p>
           <p>The technical fix for a single barrier is usually straightforward. The governance failure that let it ship unreviewed, and will let the next one ship the same way, is the actual risk.</p>
 
-          <h2>The four requirements in a SaaS context</h2>
+          <h2>The four areas of work in a SaaS context</h2>
           <ul>
-            <li><strong>Technical conformance</strong>: EN 301 549 and WCAG 2.1 AA apply to the software interface itself, not just marketing pages. Desktop and web application interfaces are both in scope.</li>
-            <li><strong>Accessibility statement</strong>: published, current, and covering the actual product interface, not just the public-facing website.</li>
-            <li><strong>Active governance</strong>: the requirement that matters most for SaaS specifically. An accessibility review step in the release pipeline, not a one-off audit disconnected from ongoing development.</li>
+            <li><strong>Technical conformance</strong>: where the product is in scope, that means the interface people actually use, not just marketing pages. In practice the benchmark is EN 301 549 V3.2.1 and WCAG 2.1 AA.</li>
+            <li><strong>Published accessibility information</strong>: current, and covering the in-scope service itself, not just the public-facing website. On route 2, your client will usually need this from you to write its own.</li>
+            <li><strong>Active governance</strong>: the area that matters most for SaaS specifically. An accessibility review step in the release pipeline, not a one-off audit disconnected from ongoing development.</li>
             <li><strong>Documentary evidence</strong>: a dated record that accessibility review is genuinely happening release over release, not a single certificate from a year ago.</li>
           </ul>
 
@@ -275,8 +276,6 @@
             </div>
           </div>
 
-          <h2>The demand signal</h2>
-          <p>This is not a theoretical risk. Search data shows organisations already looking for guidance on this exact question before this page existed, a clear sign that SaaS companies are starting to ask whether the EAA applies to them, often prompted by a customer, a board member, or a competitor's compliance statement raising the question first.</p>
 
           <p>Not certain the Act reaches you at all? <a href="/does-the-eaa-apply.html">Five questions will tell you</a>, including what the microenterprise exemption actually says, which is commonly stated wrongly.</p>
 
@@ -301,7 +300,7 @@
             <li><a href="/eaa-compliance-ireland.html">EAA compliance in Ireland: criminal sanctions and director liability</a></li>
             <li><a href="/eaa-compliance-netherlands.html">EAA compliance in the Netherlands &mdash; ACM enforcement</a></li>
             <li><a href="/eaa-compliance-sweden.html">EAA compliance in Sweden &mdash; PTS enforcement and market ban authority</a></li>
-            <li><a href="/eaa-compliance-checklist.html">EAA compliance checklist &mdash; four requirements in practice</a></li>
+            <li><a href="/eaa-compliance-checklist.html">EAA compliance checklist &mdash; four areas of work in practice</a></li>
           </ul>
         </div>
       </div>
