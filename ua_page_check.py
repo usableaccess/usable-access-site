@@ -423,8 +423,15 @@ def check(path):
         # only form anticipated first time, and it missed "the first EAA ruling
         # ORDERING AN ORGANISATION to make its digital services accessible" -
         # the same paraphrase problem JOB 0p records, in a trap written to fix it.
+        # 23 Sep 2026: "of any kind" added, "in the EU" and "in Europe" removed.
+        # Those two are SCOPE words, not KIND words: they say where the ruling was
+        # first, not which kind of first it was, which is the whole point of this
+        # rule. Batch 2e removed both from the site as unsupportable EU-wide
+        # claims, and their removal made a corrected sentence fail this trap while
+        # the uncorrected one passed. A trap that passes the wrong text on a word
+        # that answers a different question is not testing what it claims to.
         if re.search(r"(?i)dismiss|procedural|threshold|order(?:ing|ed)|"
-                     r"defendant|in the EU|in Europe|compliance order", sent):
+                     r"defendant|of any kind|compliance order", sent):
             continue
         fails.append("FACT: bare 'first EAA ruling' claim - say which first. Lille "
                      "5 May 2026 was first overall and was DISMISSED on a procedural "
