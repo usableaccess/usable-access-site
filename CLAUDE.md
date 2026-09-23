@@ -482,6 +482,20 @@ python3 ua_encoding_check.py . --term "H&M"    # counts both forms, and says so
 
 **So after correcting a name, enumerate every mention of the new name and read what each one asserts.** Not a term sweep, which has nothing left to match. A list, read one by one. On 45 pages that was 13 mentions and it took one pass. **The zero from the old term is evidence the rename landed, and evidence of nothing else.**
 
+### AND CHECK EVERY SWEEP TERM AGAINST THE SITE'S OWN BOILERPLATE
+**Found 23 September 2026, sweeping for `first EAA`. It returned 56 hits. Eight were real.** The other 48 were the OG image alt text, which every page carries:
+
+```
+<meta property="og:image:alt" content="Usable Access &mdash; clarity-first EAA compliance. Building accessibility that works.">
+```
+
+**`clarity-first EAA` contains `first EAA`.** Two further pages carry the title-case form in `og:title` and `twitter:title`. A short phrase is very likely to appear inside the strapline, the OG block or the nav, and boilerplate repeats on all 45 pages, so one collision becomes 48 hits and buries the eight that matter.
+
+**So before trusting a sweep count, run the term against the boilerplate and report brand hits as their own number.** "56 hits" and "8 real hits, 48 in the site name" are different findings, and only the second is usable.
+
+**The case trap sits on top of this.** Checking the above, a case-sensitive search for the title-case `Clarity-first EAA` found 3 and reported the brand share as negligible, which was wrong by a factor of sixteen: the alt text is lowercase and the titles are not. **The same brand string is written two ways on this site**, which is the both-encodings rule wearing yet another costume. Search case-insensitively, and confirm the boilerplate's exact casing before quoting a split.
+
+
 
 ### A RULE ON ONE SURFACE IS NOT WRITTEN DOWN FOR THE OTHERS
 **Found the same day, and it is why the note above exists here rather than only where it was first written.** The reuse-shortens rule was already recorded in `UA_Cited_Figures_Register`, on the project side. **A session working in this repo cannot read that file**, so from here the rule did not exist, and a grep of `CLAUDE.md` correctly returned nothing.
