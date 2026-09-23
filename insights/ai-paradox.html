@@ -201,7 +201,7 @@
 
           <p>Two things are happening simultaneously in the AI and accessibility space. <a href="/insights/aimac-deep-dive.html">AI coding tools are generating non-compliant HTML by default</a>, creating a continuous stream of accessibility failures in products built with AI assistance. A separate category of AI-powered tools, the overlay products, is being sold as the solution to exactly that problem.</p>
 
-          <p>Aaron Gustafson, presenting at Microsoft Build in June 2026 alongside Jessie Lorenz, a blind PM at Microsoft, and GitHub&rsquo;s Carie Fisher, framed the underlying dynamic precisely: AI does not fix a broken process. It accelerates whatever process you already have. If accessibility is part of the workflow, AI can help scale inclusion. If it is not, AI will accelerate and scale the barriers being shipped. That is the paradox. Overlay tools sit squarely on the wrong side of it.</p>
+          <p>Aaron Gustafson, presenting at Microsoft Build in June 2026 alongside Jessie Lorenz, AI Product Manager at Microsoft and Paralympic Gold Medalist, and GitHub&rsquo;s Carie Fisher, framed the underlying dynamic precisely: AI does not fix a broken process. It accelerates whatever process you already have. If accessibility is part of the workflow, AI can help scale inclusion. If it is not, AI will accelerate and scale the barriers being shipped. That is the paradox. Overlay tools sit squarely on the wrong side of it.</p>
 
           <p>One line of JavaScript. Instant compliance. No development work required. That is the claim. It is worth examining carefully.</p>
 
@@ -231,7 +231,7 @@
 
           <h2>The EAA position</h2>
 
-          <p>An overlay tool does not constitute EAA compliance. EN&nbsp;301&nbsp;549 is the harmonised European accessibility standard, and it requires conformance with WCAG 2.1 Level AA. Conformance is measured against the underlying HTML, not against a JavaScript layer applied on top of it.</p>
+          <p>An overlay tool does not constitute EAA compliance. No harmonised standard is yet cited under the EAA. In practice conformance is assessed against EN&nbsp;301&nbsp;549 V3.2.1, which carries WCAG 2.1 Level AA. Conformance is measured against the underlying HTML, not against a JavaScript layer applied on top of it.</p>
 
           <p>Enforcement bodies assess the product as a user experiences it, particularly as a disabled user with assistive technology experiences it. An overlay that makes that experience worse does not bring the product closer to conformance. It moves it further away.</p>
 
@@ -255,7 +255,7 @@
 
           <p><strong>Technical remediation</strong> of the underlying code: fixing the HTML, the ARIA, the keyboard interactions, the colour contrast, the form labels. All of it in the source, not in a layer on top of it. This is the work that overlays claim to replace. It cannot be replaced.</p>
 
-          <p><strong>A published <a href="/eaa-accessibility-statement.html">accessibility statement</a></strong> that accurately reflects the current state of the product, identifies what is not yet accessible, and includes a remediation plan. A statement that claims full compliance through an overlay does not meet this requirement.</p>
+          <p><strong>A published <a href="/eaa-accessibility-statement.html">accessibility statement</a></strong> that accurately reflects the current state of the product. Saying what is not yet accessible, and your plan, is good practice. A statement that claims full compliance through an overlay is inaccurate.</p>
 
           <p><strong>Active <a href="/eaa-governance.html">governance</a></strong>: a named owner for accessibility, a testing process, and a mechanism for catching regressions before they reach production. <a href="/insights/aimac-deep-dive.html">AI-assisted development</a> makes this more important, not less. The pace of code generation means accessibility failures can accumulate between review cycles if there is no process to catch them.</p>
 
