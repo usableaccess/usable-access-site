@@ -473,6 +473,16 @@ python3 ua_encoding_check.py . --term "H&M"    # counts both forms, and says so
 
 **A count from a raw grep over an entity-encoded estate is a floor, not a total**, which is the corollary already recorded under THE ONE QUESTION TO ASK OF ANY CHECK.
 
+### AND CORRECTING A NAME MAKES ITS REMAINING ERRORS UNFINDABLE
+**Found 23 September 2026, across batches 2c and 2d.** The site named the wrong German regulator: the BFSG authority is the MLBF, not the Bundesnetzagentur. 2c corrected it on six pages and the sweep returned `Bundesnetzagentur -> 0`, which read as complete.
+
+**Two pages were still wrong and no search term could reach them.** Both said "MLBF" correctly and then said the wrong thing about it: one that it "entered its active enforcement phase in January 2026", which the registry debunks, and one that it was "still forming", against "operational since 26 September 2025" on the page just corrected. **The estate named one authority and described its status three ways.**
+
+**The term that marked the error is the term the correction removes.** While the pages said "Bundesnetzagentur", one grep found every instance. Once they said "MLBF", the wrong claims were indistinguishable from the right ones by any string search, because the string was now correct in all of them.
+
+**So after correcting a name, enumerate every mention of the new name and read what each one asserts.** Not a term sweep, which has nothing left to match. A list, read one by one. On 45 pages that was 13 mentions and it took one pass. **The zero from the old term is evidence the rename landed, and evidence of nothing else.**
+
+
 ### A RULE ON ONE SURFACE IS NOT WRITTEN DOWN FOR THE OTHERS
 **Found the same day, and it is why the note above exists here rather than only where it was first written.** The reuse-shortens rule was already recorded in `UA_Cited_Figures_Register`, on the project side. **A session working in this repo cannot read that file**, so from here the rule did not exist, and a grep of `CLAUDE.md` correctly returned nothing.
 
@@ -1003,6 +1013,14 @@ Do not delete `data-type`. The card styling depends on it, and the type is still
 | `sitemap.xml` | ISO `YYYY-MM-DD` | `2026-08-12` |
 
 Searching for `8 Aug 2026` finds two of the three and misses the sitemap entirely. **Change all three by hand and check each one.**
+
+### AND A DATE RULE WRITTEN FOR A CONTENT PAGE MISFIRES ON A LISTING PAGE
+**Found 23 September 2026, in batch 2e, caught in the read-back and reverted before commit.** A pass to move the `Updated D Mon YYYY` badge on every page a batch touched ran a regex over each changed file. On twelve content pages it replaced one badge each, which is right. **On `insights.html` it replaced eighteen**, because that page's dates are not its own: they are the card dates of eighteen other articles. Every article on the index briefly claimed it had been updated that day.
+
+**Nothing would have caught it.** The markup is valid, the dates are well-formed, and no checker compares a card's date to the page it points at. It was found by reading the output line that said `badge x18`.
+
+**The rule is that a page's own badge and a listing page's cards are different objects with the same markup.** On a listing page, move only the cards whose target changed, by hand, and leave `Published` dates alone: publication is not revision. The safe form of the bulk pass is per-file with an expected count, and any file where the count is not 1 stops for a look.
+
 
 **This will recur, because writing ahead of shipping is now the normal pattern rather than the exception.** `what-happens-if-you-do-nothing.html` was written on 8 August and ships on the 12th, and the mismatch was caught by reading rather than by any check.
 
