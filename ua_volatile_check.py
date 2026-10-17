@@ -65,9 +65,20 @@ FUTURE = re.compile(r"(?i)\b(expected|expects?|expecting|will|due|upcoming|comin
                     r"anticipat\w+|forecast\w*|imminent|any week now|any day now|"
                     r"soon|shortly|set to|likely to|projected|planned|scheduled|"
                     r"moving toward|move toward|moves toward|ahead of|no later than)\b")
+# 17 Oct 2026: done, announced, had been, recorded, delivered, adopted,
+# achieved and imposed added. Once September 2026 ended, STALE fired on three
+# pages whose sentences are history: "Done, 2 September 2026, ... than the work
+# programme scheduled", and "on 4 September 2026 it announced ... with results
+# due in early 2027" on two pages. In each the FUTURE word belongs to a
+# DIFFERENT period in the same sentence - "scheduled" to the past plan, "due"
+# to early 2027 - while the period it flagged is finished. Sentence-level
+# framing cannot tell those apart, which is the same adjacency lesson recorded
+# for ELAPSED below. Widening PAST is the narrow fix; the guard fixture proves
+# a genuinely future-framed passed period still fails.
 PAST = re.compile(r"(?i)\b(arrived|issued|took effect|came into force|began|begun|"
-                  r"entered|launched|was|were|has been|have been|since|reported|"
-                  r"published|found|ruled|ordered|concluded|already)\b")
+                  r"entered|launched|was|were|has been|have been|had been|since|"
+                  r"reported|published|found|ruled|ordered|concluded|already|done|"
+                  r"announced|recorded|delivered|adopted|achieved|imposed)\b")
 
 def _eom(y, m):
     return datetime.date(y + (m == 12), 1 if m == 12 else m + 1, 1) - datetime.timedelta(days=1)
@@ -213,6 +224,17 @@ FIXTURES = [
     # number was already wrong: June 2025 to August 2026 is fourteen.
     ("The Act became applicable in June 2025. Thirteen months on, businesses are unsure.",
      "2026-08-08", False, "must WARN as a COUNTER, which the fail check does not cover"),
+    # The three real STALE false positives of 17 Oct 2026, once September ended.
+    ("Done, 2 September 2026, as V4.1.1, a day earlier than the work programme scheduled.",
+     "2026-10-17", False, "real: a completed step; 'scheduled' describes the past plan"),
+    ("On 4 September 2026 it announced corrective or repressive follow-up for about half of "
+     "the sites it had checked, with results due in early 2027.",
+     "2026-10-17", False, "real: past announcement; 'due' belongs to early 2027"),
+    ("As of 23 September 2026 no penalty had been imposed on any of them.",
+     "2026-10-17", False, "real: past perfect reporting"),
+    # Guard: the widening must not blind the check it exists for.
+    ("Sanctions are expected in September 2026.",
+     "2026-10-17", True, "guard: future-framed period that has passed must still fail"),
 ]
 
 COUNTER_FIXTURES = [

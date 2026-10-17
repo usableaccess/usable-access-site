@@ -50,7 +50,7 @@ Recorded 11 August 2026, after a practitioner published an account of Claude gre
 | Script | State |
 |---|---|
 | `ua_page_check.py` | **present** |
-| `ua_a11y_check.py` | **present** (needs `beautifulsoup4`; installed 8 Aug) |
+| `ua_a11y_check.py` | **present** (needs `beautifulsoup4`; installed 8 Aug, **missing again and reinstalled 17 Oct 2026** &mdash; see the note below) |
 | `ua_sync_blocks.py` | **present** — written 8 Aug because it was needed. OG block only |
 | `ua_orphan_check.py` | **present** — written 9 Aug because JOB 0j could not be re-derived without it. `--selftest` included |
 | `ua_insights_sync.py` | missing |
@@ -58,7 +58,7 @@ Recorded 11 August 2026, after a practitioner published an account of Claude gre
 | `ua_erase.py` | missing |
 | `ua_study_export.py` | missing |
 | `ua_merge_cowork.py` | missing |
-| `ua_volatile_check.py` | **present** — written 8 Aug because a stale prediction shipped. `--selftest` runs 8 fixtures |
+| `ua_volatile_check.py` | **present** — written 8 Aug because a stale prediction shipped. `--selftest` runs 13 period fixtures and 4 counter fixtures |
 | `ua_encoding_check.py` | **present** — written 16 Sep 2026, after the same character was found written two ways three times in two days. Reports the split; `--term` expands a search into both forms; `--selftest` |
 | `ua_lastmod_check.py` | **present** — written 16 Sep 2026, after the `lastmod` rule lapsed on the one commit where the job was about wording. Compares every entry to `git log`; `--selftest` |
 | `ua_claim_check.py` | **elsewhere, deliberately for now** — lives in the Claude project. See the gap note below |
@@ -1335,15 +1335,27 @@ The piece arguing that automated tools confirm presence while only a person conf
 
 **This belongs in tooling, not in a FACT trap, and the distinction matters.** A FACT trap is a bookmark of wordings we have been burned by, so its count is a floor. **A quarter or a year that has passed is mechanically detectable** — compute the end of the period, compare to today. There is no phrasing list to widen and no source to check. It has passed or it has not.
 
-**`ua_volatile_check.py`, written 8 August 2026.** It answers one question: *does this page state a period as still ahead when the calendar has passed it?* It parses `Q2 2026`, `second half of 2026`, `H1 2026`, `June 2026`, `mid-2026` and bare years, computes the end, and requires future framing (`expected`, `due`, `set to`, `any week now`) with no past framing (`arrived`, `entered`, `since`) in the same sentence. **History is never flagged.** It also warns on `as of <period>` stamps older than 120 days, on periods ending within 90 days, and on elapsed counters such as "thirteen months".
+**`ua_volatile_check.py`, written 8 August 2026.** It answers one question: *does this page state a period as still ahead when the calendar has passed it?* It parses `Q2 2026`, `second half of 2026`, `H1 2026`, `June 2026`, `mid-2026` and bare years, computes the end, and requires future framing (`expected`, `due`, `set to`, `any week now`) with no past framing (`arrived`, `entered`, `since`, and from 17 Oct 2026 also `done`, `announced`, `had been` and five more) in the same sentence. **History is never flagged.** It also warns on `as of <period>` stamps older than 120 days, on periods ending within 90 days, and on elapsed counters such as "thirteen months".
 
 ```bash
 python3 ua_volatile_check.py .            # today
 python3 ua_volatile_check.py . --today 2027-01-04   # see what goes stale
-python3 ua_volatile_check.py --selftest   # 8 fixtures, including the real one
+python3 ua_volatile_check.py --selftest   # 13 period + 4 counter fixtures, all from real defects
 ```
 
-**It found a second instance on its first run**, on `bfsg-germany-accessibility-compliance.html`, the country page. The same "expected in Q2 2026" sentence that had just been deleted from the insights page. Both now gone. Root reports 0 failures and 3 warnings, insights 0 and 0.
+**It found a second instance on its first run**, on `bfsg-germany-accessibility-compliance.html`, the country page. The same "expected in Q2 2026" sentence that had just been deleted from the insights page. Both now gone. **Root and insights both report 0 failures. The warning totals are not pinned here**, because they move with the calendar rather than with the site: a period ending within 90 days starts warning on a date nobody chose.
+
+### AND SENTENCE-LEVEL FRAMING CANNOT TELL TWO PERIODS APART — 17 October 2026
+**Three pages failed STALE on sentences that are history**, the morning after September 2026 ended: `en-301-549-eaa-citation-status.html` on *"Done, 2 September 2026, as V4.1.1, a day earlier than the work programme scheduled"*, and `eaa-compliance-france.html` and `what-happens-if-you-do-nothing.html` on *"on 4 September 2026 it announced corrective or repressive follow-up ... with results due in early 2027"*.
+
+**In each one the FUTURE word belongs to a different period than the one flagged.** "Scheduled" describes the past work programme; "due" attaches to early 2027. The check reads framing across the whole sentence and periods one at a time, so it paired a future word with a finished month. **That is the adjacency lesson the ELAPSED check already carries in its own comment**, arriving a second time on a different rule in the same file.
+
+**Fixed by widening PAST, not by editing the pages**, at Laura&rsquo;s instruction: `done`, `announced`, `had been`, `recorded`, `delivered`, `adopted`, `achieved` and `imposed`. **The three real sentences are now fixtures, and so is a guard** &mdash; *"Sanctions are expected in September 2026"* must still fail, which is what proves the widening did not blind the check it exists for. **A bypass that is widened without a guard fixture is how a trap stops testing what it claims to.**
+
+### AND `beautifulsoup4` WENT MISSING AGAIN — 17 October 2026
+**`ua_a11y_check.py` and `ua_orphan_check.py` both crashed with `ModuleNotFoundError: No module named 'bs4'`.** Two of the four gating checkers could not run at all, and the first run reported their summary lines as empty rather than as an error, which reads exactly like a clean result. Reinstalled (`beautifulsoup4` 4.15.0) and both returned to baseline.
+
+**The lesson is the reporting, not the dependency.** A checker that cannot start and a checker that found nothing are the same blank line in a summary. **Read the exit status or the per-page body, never the absence of output**, which is the eleventh instance of this file&rsquo;s oldest rule.
 
 **What it cannot do, and this is in its own output:** it cannot tell whether a future claim is TRUE, cannot resolve "soon" or "in the coming months", and does not recompute elapsed counters.
 
