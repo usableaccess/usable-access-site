@@ -10,3 +10,11 @@
 # would sweep one in. Same reason as .DS_Store above.
 webfetch-*
 *.pdf.tmp
+
+# Python bytecode. Written on 26 Oct 2026 when ua_orphan_check.py was imported
+# as a module, to read inbound-link counts for pages the checker only details
+# when they fail. Importing a checker rather than reimplementing its counting is
+# the right move; the .pyc it leaves behind is not ours to commit. Same reason
+# as the two above: `git add -A` would sweep it in.
+__pycache__/
+*.pyc
