@@ -822,6 +822,24 @@
       max-width: 36em;
     }
 
+    /* No base link colour is set anywhere, so without this the link renders
+       browser-default blue on teal (1.49:1). Matches .contact-link below. */
+    .contact .section-intro a {
+      color: var(--colour-white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact .section-intro a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .contact .section-intro a:focus-visible {
+      outline: 3px solid var(--colour-white);
+      outline-offset: 3px;
+      box-shadow: none;
+    }
+
     .contact-options {
       display: grid;
       grid-template-columns: 1fr;
