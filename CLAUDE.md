@@ -643,18 +643,17 @@ git fetch origin -q && git status -sb && git log --oneline -3 && git status --sh
 **The general lesson, which extends JOB 0q rather than repeating it.** The Netherlands defects came in through English-language vendor summaries, so the rule there was to go to the primary source. **Here the primary source is the one that is wrong.** Being on the regulator's domain is not the same as being the regulator's position on the question you are asking, and a national regulator restating an EU timetable is describing the EU, not itself.
 
 ### WHAT THE SITE CURRENTLY SAYS
-**One mention, on `eaa-compliance-finland.html` line 220**, in the Nordic enforcement passage. It says Norway *"operates under equivalent EEA obligations rather than the EAA directly"*, which is the careful framing and does not assert the EAA applies. **That half survives.** The rest was checked against `ua_regulator_facts.json` on 15 August 2026 and **neither part has an entry behind it.**
+**One passage, on `eaa-compliance-finland.html`, under its own heading: "A Nordic comparison: Norway (outside the EAA)".** Updated 2 November 2026 to match the page.
 
-| On the page | State |
-|---|---|
-| The HelsaMi enforcement detail: December 2025, NOK 50,000 daily, 64 of 119 issues unresolved, 425,000 residents | **Not in the facts file. None of it.** Not the case, not the figure, not the counts |
-| "equivalent EEA obligations" | **Names nothing.** No instrument, no source |
+**It opens by saying Norway is outside the EAA**, because the directive has not been incorporated into the EEA Agreement, and that the example is a Norwegian mechanism under Norwegian law, not a description of Finland's. That opener and the heading were added on 2 November 2026. Before that the passage sat under "Enforcement in the Nordic region: the Norway case", on a page about Finland, with nothing saying which country the mechanism belonged to.
 
-**So a live page carries a precisely worded enforcement claim about Norway with nothing behind it, established on the day Norway was confirmed out of EAA scope.** Read that against the precision note in JOB 0q, which was misread earlier the same day to mean the opposite: **precision without a source is the more dangerous shape, not the safer one.**
+**The HelsaMi detail is sourced on the page.** It links two uutilsynet.no notices: the press release on the coercive daily fines, and the notice that the supervision was concluded. **This is Norway's regulator describing its own case under its own law**, which is the opposite of the trap above, where the same domain restates the EU timetable as though it were Norway's. Added in `3bced46` on 13 September 2026.
 
-**Two content decisions, flagged rather than fixed, and neither is a repo change:**
-- **The HelsaMi detail comes off the page until it has a primary source.** If it is real it belongs in the facts file first. If it came from a summary, that is the same route as the three claims that dissolved this month.
-- **"equivalent EEA obligations" needs replacing or removing.** Norway has domestic accessibility law predating and independent of the EAA, which is plausibly what it means. **Plausibly is not a claim**, and naming the instrument is the whole of the fix if it is right.
+**"equivalent EEA obligations" is gone**, removed in the same commit. The page now names the instruments: the Equality and Anti-Discrimination Act and the regulation on universal design of ICT, which predate the EAA.
+
+**What the repo cannot confirm:** whether `ua_regulator_facts.json` has a `NO` entry for the HelsaMi case. On 15 August it did not, and the facts file is on the project side. **The page links a primary source. Whether the registry agrees can only be checked over there.**
+
+**Still worth watching:** the passage describes a daily coercive fine, on the same page that now says Traficom can attach a conditional fine (uhkasakko) to an order. The opener separates them. **Do not let a later edit merge them.** The Finnish statute read on 2 November 2026 does not say the conditional fine runs daily.
 
 ---
 
